@@ -48,6 +48,8 @@ execute if score #global br_phase matches 1..2 if score #global br_timer matches
 #靈魂祭壇
 execute as @e[type=text_display,tag=br_altar] run function game_core:gamemode/br_altar_tick
 
+
+
 execute if score #global br_timer matches 20.. run scoreboard players set #global br_timer 0
 
 

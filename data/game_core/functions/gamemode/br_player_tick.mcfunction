@@ -13,8 +13,16 @@ execute if score @s gd656killicon.death matches 6 if score @s death_prev matches
 execute if score @s br_death_state matches 1 unless data entity @s {Inventory:[{Slot:8b, id:"map_atlases:atlas"}]} run clear @s map_atlases:atlas
 execute if score @s br_death_state matches 1 unless data entity @s {Inventory:[{Slot:8b, id:"map_atlases:atlas"}]} run item replace entity @s hotbar.8 from block 1 14 4 container.13
 
-# --- [著陸偵測 (跨 Phase 安全版)] ---
-execute if entity @s[tag=br_jumped,tag=!was_on_cart,nbt={OnGround:1b}] run function game_core:gamemode/br_on_landed
+# --- [著陸偵測 (跨 Phase 安全版與客戶端 NBT 延遲修復)] ---
+# 當獲得跳傘標籤時，開始累加寬限期計時
+execute if entity @s[tag=br_jumped] run scoreboard players add @s jump_time 1
+
+# 必須超過 20 Ticks (1秒寬限期)，且 NBT 判定確實在地上時，才觸發著陸！
+execute if entity @s[tag=br_jumped,tag=!was_on_cart,nbt={OnGround:1b}] if score @s jump_time matches 5.. run function game_core:gamemode/br_on_landed
+
+# 如果沒有在跳傘，確保計時器歸零
+execute if entity @s[tag=br_jumped,tag=!was_on_cart,nbt={OnGround:0b}] run scoreboard players set @s jump_time 0
+execute unless entity @s[tag=br_jumped] run scoreboard players set @s jump_time 0
 
 # 更新上一 Tick 的狀態 
 tag @s remove was_on_cart
@@ -41,12 +49,12 @@ execute if score @s vanilla_death > @s death_prev run function game_core:gamemod
 execute if score @s vanilla_death > @s death_prev run scoreboard players operation @s death_prev = @s vanilla_death
 
 # --- [4] 專屬追蹤器跟隨 (Tracker TP) ---
-execute store result score @s br_max_hp run attribute @s generic.max_health base get
-execute if score @s br_health matches 1.. if score @s br_max_hp matches 21.. at @s as @e[type=marker,tag=br_tracker,distance=..32] if score @s br_id = #current_player br_id run tp @s ~ ~ ~
+# 【修復虛空TP】無條件跟隨！只要狀態是 1，追蹤器絕對不罷工！
+execute if score @s br_death_state matches 1 at @s as @e[type=marker,tag=br_tracker] if score @s br_id = #current_player br_id run tp @s ~ ~ ~
 
 # --- [4.5] 追蹤器重力同步 ---
 execute if entity @s[tag=br_downed,tag=has_slime] as @e[type=villager,tag=br_downed_mob] if score @s br_id = #current_player br_id at @s as @e[type=marker,tag=br_tracker] if score @s br_id = #current_player br_id run tp @s ~ ~ ~
-execute if score @s br_health matches 1.. if score @s br_max_hp matches 21.. at @s as @e[type=marker,tag=br_tracker,distance=..32] if score @s br_id = #current_player br_id run tp @s ~ ~ ~
+execute if score @s br_death_state matches 1 at @s as @e[type=marker,tag=br_tracker] if score @s br_id = #current_player br_id run tp @s ~ ~ ~
 
 # --- [5] 倒地狀態 2：視角強制鎖定 ---
 tag @s add my_cam_target
@@ -175,16 +183,16 @@ execute if entity @s[tag=near_altar] as @a if score @s team_id = #current_player
 # 4. 累加進度與 UI 顯示 (加入 br_death_state=1 鎖頭)
 execute if score @s br_death_state matches 1 if entity @s[tag=near_altar] if score @s revive_progress matches 0 if score #team_has_soul br_sys matches 1 if score @s sneak_time matches 1.. run scoreboard players add @s altar_progress 1
 
-execute if score @s altar_progress matches 1..199 run scoreboard players operation @s altar_pct = @s altar_progress
-execute if score @s altar_progress matches 1..199 run scoreboard players operation @s altar_pct /= #2 br_sys
-execute if score @s altar_progress matches 1..199 run title @s actionbar ["",{"text":"[⛩️ 正在啟用祭壇] 進度: ","color":"aqua"},{"score":{"name":"@s","objective":"altar_pct"},"color":"white"},{"text":"%","color":"white"}]
+execute if score @s br_death_state matches 1 if score @s altar_progress matches 1..199 run scoreboard players operation @s altar_pct = @s altar_progress
+execute if score @s br_death_state matches 1 if score @s altar_progress matches 1..199 run scoreboard players operation @s altar_pct /= #2 br_sys
+execute if score @s br_death_state matches 1 if score @s altar_progress matches 1..199 run title @s actionbar ["",{"text":"[⛩️ 正在啟用祭壇] 進度: ","color":"aqua"},{"score":{"name":"@s","objective":"altar_pct"},"color":"white"},{"text":"%","color":"white"}]
 
 # 4.5 【實體方塊快門：烽火台光束切換】
-execute if score @s altar_progress matches 1..199 at @s as @e[type=text_display,tag=br_altar,tag=altar_ready,distance=..6,limit=1,sort=nearest] at @s run setblock ~ ~-3 ~ air
-execute if score @s altar_progress matches 0 at @s as @e[type=text_display,tag=br_altar,tag=altar_ready,distance=..7,limit=1,sort=nearest] at @s run setblock ~ ~-3 ~ soul_sand
+execute if score @s br_death_state matches 1 if score @s altar_progress matches 1..199 at @s as @e[type=text_display,tag=br_altar,tag=altar_ready,distance=..6,limit=1,sort=nearest] at @s run setblock ~ ~-3 ~ air
+execute if score @s br_death_state matches 1 if score @s altar_progress matches 0 at @s as @e[type=text_display,tag=br_altar,tag=altar_ready,distance=..7,limit=1,sort=nearest] at @s run setblock ~ ~-3 ~ soul_sand
 
-execute if score @s altar_progress matches 1..199 if score #global br_timer matches 0 at @s as @e[type=text_display,tag=br_altar,distance=..6,limit=1,sort=nearest] at @s run playsound block.beacon.ambient master @a[distance=..180] ~ ~ ~ 1 1
-execute if score @s altar_progress matches 1..199 if score #global br_timer matches 0 at @s as @a[distance=..180] unless score @s team_id = #current_player team_id run title @s actionbar {"text":"⚠ 附近有人正在啟用祭壇！","color":"gold","bold":true}
+execute if score @s br_death_state matches 1 if score @s altar_progress matches 1..199 if score #global br_timer matches 0 at @s as @e[type=text_display,tag=br_altar,distance=..6,limit=1,sort=nearest] at @s run playsound block.beacon.ambient master @a[distance=..180] ~ ~ ~ 1 1
+execute if score @s br_death_state matches 1 if score @s altar_progress matches 1..199 if score #global br_timer matches 0 at @s as @a[distance=..180] unless score @s team_id = #current_player team_id run title @s actionbar {"text":"⚠ 附近有人正在啟用祭壇！","color":"gold","bold":true}
 
 # 5. 滿 10 秒觸發復活
 execute if score @s altar_progress matches 200.. run function game_core:gamemode/br_altar_execute

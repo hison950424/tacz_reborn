@@ -24,7 +24,7 @@ clear @s
 item replace entity @s armor.chest with elytra{Damage:428,Enchantments:[{id:"minecraft:binding_curse",lvl:1s}]} 1
 
 # 4. 給予無限期恢復狀態
-effect give @s minecraft:regeneration infinite 0 true
+effect give @s minecraft:regeneration infinite 1 true
 effect give @s minecraft:saturation infinite 1 true
 
 tag @s add br_jumped

@@ -270,6 +270,7 @@ scoreboard objectives add spectate_idx dummy "當前觀看索引"
 scoreboard objectives add sys_index dummy "系統分配流水號"
 scoreboard objectives add watching_team dummy "復仇觀看隊伍"
 scoreboard objectives add spectate_cd dummy "觀戰切換冷卻"
+scoreboard objectives add jump_time dummy "跳傘寬限計時"
 
 function game_core:system/match_reset
 function game_core:system/game_end

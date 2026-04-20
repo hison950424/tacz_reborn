@@ -21,7 +21,7 @@ attribute @s minecraft:generic.max_health base set 100
 damage @s 14 minecraft:out_of_world
 
 # 4. 給予無限期恢復狀態
-effect give @s minecraft:regeneration infinite 0 true
+effect give @s minecraft:regeneration infinite 1 true
 effect give @s minecraft:saturation infinite 1 true
 
 # 5. 【極度重要】將狀態機分數恢復為 1 (存活)！
