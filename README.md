@@ -1,2 +1,2 @@
-# my-datapack
-mcfunction
+# oi oi oi oi oi
+87
