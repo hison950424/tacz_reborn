@@ -1,0 +1,15 @@
+# 封鎖的功能資料夾
+data/game_core/functions/shop
+data/game_core/functions/class
+data/game_core/functions/ui
+data/game_core/functions/class_switch
+data/game_core/functions/player
+
+# 封鎖 tdm_ / dom_ 前綴的 mcfunction
+data/game_core/functions/gamemode/tdm_*.mcfunction
+data/game_core/functions/gamemode/dom_*.mcfunction
+
+# 封鎖所有非 .mcfunction 資料
+**/*.json
+**/*.mcmeta
+.vscode/

@@ -1,0 +1,2 @@
+execute as @e[type=minecraft:text_display,tag=br_altar,limit=1, sort= nearest] run tag @s remove altar_ready
+execute as @e[type=minecraft:text_display,tag=br_altar,limit=1, sort= nearest] run function game_core:gamemode/br_altar_tick
