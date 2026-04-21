@@ -166,6 +166,7 @@ data modify block 219 14 -115 Items set from block -1 14 20 Items
 tp @a @e[type=marker,tag=lobby_spawn_point,limit=1]
 
 # 7. 補滿血量、給予狀態
+effect clear @a
 execute as @a run attribute @s minecraft:generic.max_health base set 100
 effect give @a minecraft:instant_health 3 50 true
 # --- 全局常駐 BUFF (恢復 I 與 飽食) ---

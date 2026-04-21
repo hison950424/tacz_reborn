@@ -10,13 +10,19 @@ scoreboard players remove #br_countdown br_sys 1
 
 # 顯示倒數 ActionBar（依計時器區間對應秒數）
 # 每秒對應 20 Ticks：81..100="5", 61..80="4", 41..60="3", 21..40="2", 1..20="1"
-execute if score #br_countdown br_sys matches 81..100 run title @a actionbar {"text":"✈ 空投機即將起飛... 5","color":"gold","bold":true}
-execute if score #br_countdown br_sys matches 61..80 run title @a actionbar {"text":"✈ 空投機即將起飛... 4","color":"gold","bold":true}
-execute if score #br_countdown br_sys matches 41..60 run title @a actionbar {"text":"✈ 空投機即將起飛... 3","color":"yellow","bold":true}
-execute if score #br_countdown br_sys matches 21..40 run title @a actionbar {"text":"✈ 空投機即將起飛... 2","color":"yellow","bold":true}
+execute if score #br_countdown br_sys matches 181..200 run title @a actionbar {"text":"✈ 空投機即將起飛... 10","color":"gold","bold":true}
+execute if score #br_countdown br_sys matches 161..180 run title @a actionbar {"text":"✈ 空投機即將起飛... 9","color":"gold","bold":true}
+execute if score #br_countdown br_sys matches 141..160 run title @a actionbar {"text":"✈ 空投機即將起飛... 8","color":"gold","bold":true}
+execute if score #br_countdown br_sys matches 121..140 run title @a actionbar {"text":"✈ 空投機即將起飛... 7","color":"gold","bold":true}
+execute if score #br_countdown br_sys matches 101..120 run title @a actionbar {"text":"✈ 空投機即將起飛... 6","color":"yellow","bold":true}
+execute if score #br_countdown br_sys matches 81..100 run title @a actionbar {"text":"✈ 空投機即將起飛... 5","color":"yellow","bold":true}
+execute if score #br_countdown br_sys matches 61..80 run title @a actionbar {"text":"✈ 空投機即將起飛... 4","color":"yellow","bold":true}
+execute if score #br_countdown br_sys matches 41..60 run title @a actionbar {"text":"✈ 空投機即將起飛... 3","color":"red","bold":true}
+execute if score #br_countdown br_sys matches 21..40 run title @a actionbar {"text":"✈ 空投機即將起飛... 2","color":"red","bold":true}
 execute if score #br_countdown br_sys matches 1..20 run title @a actionbar {"text":"✈ 空投機即將起飛... 1","color":"red","bold":true}
 
 # 整秒切換音效：在計時器剛進入新區間的那一 Tick 播放（各秒音調遞增，製造緊張感）
+execute if score #br_countdown br_sys matches 100 as @a at @s run playsound minecraft:block.note_block.bit master @s ~ ~ ~ 1 1
 execute if score #br_countdown br_sys matches 80 as @a at @s run playsound minecraft:block.note_block.bit master @s ~ ~ ~ 1 1.2
 execute if score #br_countdown br_sys matches 60 as @a at @s run playsound minecraft:block.note_block.bit master @s ~ ~ ~ 1 1.4
 execute if score #br_countdown br_sys matches 40 as @a at @s run playsound minecraft:block.note_block.bit master @s ~ ~ ~ 1 1.6

@@ -19,7 +19,7 @@ execute if score @s br_death_state matches 3..4 run clear @s map_atlases:atlas
 execute if entity @s[tag=br_jumped] run scoreboard players add @s jump_time 1
 
 # 必須超過 20 Ticks (1秒寬限期)，且 NBT 判定確實在地上時，才觸發著陸！
-execute if entity @s[tag=br_jumped,tag=!was_on_cart,nbt={OnGround:1b}] if score @s jump_time matches 5.. run function game_core:gamemode/br_on_landed
+execute if entity @s[tag=br_jumped,tag=!was_on_cart,nbt={OnGround:1b}] if score @s jump_time matches 20.. run function game_core:gamemode/br_on_landed
 
 # 如果沒有在跳傘，確保計時器歸零
 execute if entity @s[tag=br_jumped,tag=!was_on_cart,nbt={OnGround:0b}] run scoreboard players set @s jump_time 0

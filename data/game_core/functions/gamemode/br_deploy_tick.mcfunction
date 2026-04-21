@@ -48,6 +48,8 @@ execute if score #global br_map matches 5 as @e[type=marker,tag=br_dropship,tag=
 # 使用 Slow Falling 取代 Levitation：Levitation 會讓玩家往上飄，Slow Falling 只減緩下落，視覺合理
 execute if entity @e[type=marker,tag=br_dropship] as @a[tag=br_on_cart] at @e[type=marker,tag=br_dropship,limit=1] run tp @s ~ ~ ~
 execute as @a[tag=br_on_cart] run effect give @s minecraft:slow_falling 2 0 true
+execute as @a[tag=br_on_cart] run effect give @s minecraft:invisibility 1 0 true
+
 
 # --- [C] 蹲下偵測：玩家按下蹲下鍵跳出空投機 ---
 # sneak_time 已在 br_deploy_start 重置為 0（倒數結束瞬間），此處 ≥1 代表飛行中首次蹲下

@@ -48,7 +48,7 @@ scoreboard players set @a gd656killicon.kill 0
 scoreboard players set #global game_state 1
 scoreboard players set #global br_phase 0
 # 設定 5 秒倒數計時器（100 Ticks），br_countdown_tick 每 Tick 遞減
-scoreboard players set #br_countdown br_sys 100
+scoreboard players set #br_countdown br_sys 200
 
 # === [2] 玩家基礎初始化 ===
 gamemode adventure @a
@@ -70,10 +70,7 @@ scoreboard players set @a sneak_time 0
 tag @a add br_deploying
 tag @a add br_on_cart
 
-# === [4] 發放 Binding Curse 鞘翅 ===
-# 強制裝備在胸甲槽；Binding Curse 讓玩家無法自行脫下；落地由系統用 item replace 清除
-# Damage:422 = 432(最大耐久) - 10(剩餘耐久)，讓玩家著陸前鞘翅就快耗盡，強化跳傘策略壓力
-item replace entity @a armor.chest with minecraft:elytra{Damage:422,Enchantments:[{id:"minecraft:binding_curse",lvl:1}],display:{Name:'[{"text":"空投鞘翅","italic":false,"color":"gray"}]'}} 1
+
 
 # === [5] 傳送玩家至各地圖開局等待區 ===
 # 等待區是玩家站立、觀看倒數的安全區域
@@ -90,4 +87,4 @@ execute if score #global br_map matches 4 run spawnpoint @a 5001 112 5
 execute if score #global br_map matches 5 run spawnpoint @a 65 245 -5177
 
 # === [6] 廣播開局訊息 ===
-tellraw @a {"text":"[大逃殺] 準備就緒！空投機將在 5 秒後起飛！","color":"gold","bold":true}
+tellraw @a {"text":"[大逃殺] 準備就緒！空投機將在 10 秒後起飛！","color":"gold","bold":true}
