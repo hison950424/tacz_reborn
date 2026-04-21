@@ -17,7 +17,7 @@ scoreboard players set @a sneak_time 0
 # 8 條路線：直線路線 0~5（三條橫向＋三條縱向，垂直偏移在 20% 上下限內）
 #           斜線路線 6~7（從角落內縮 20% 起飛，避免玩家感覺困在邊界）
 # 上下限計算原則：各軸範圍 × 20% = 內縮量，確保起始點不在邊界 20% 死角區
-execute store result score #path_seed br_sys run random value 0..7
+execute store result score #path_seed br_sys run random value 4
 
 # === [2] 先傳送玩家至空投起始點（強制載入遠距地圖的 Chunk）===
 # 等待區附近的 Chunk 雖已載入，但空投機起始座標可能超出玩家渲染距離。

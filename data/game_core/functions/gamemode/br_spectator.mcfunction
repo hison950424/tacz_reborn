@@ -36,7 +36,7 @@ scoreboard players remove #target_count br_sys 1
 
 # 5. 循環防呆 (如果按超過存活總人數，回到第 1 個人)
 execute if score @s spectate_idx > #target_count br_sys run scoreboard players set @s spectate_idx 1
-execute if score @s spectate_idx > #target_count br_sys run scoreboard players operation #current_player spectate_idx = @s spectate_idx
+scoreboard players operation #current_player spectate_idx = @s spectate_idx
 
 # 6. 執行觀戰鎖定！(增加數量防呆，確保有目標才執行)
 execute if score #target_count br_sys matches 1.. as @a[tag=valid_target] if score @s sys_index = #current_player spectate_idx run spectate @s @a[tag=spectating_player,limit=1]

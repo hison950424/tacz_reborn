@@ -18,5 +18,3 @@ execute if score #br_alive_solo br_sys matches 1.. run scoreboard players operat
 # 存活隊伍數 <= 1：遊戲結束（隊伍模式剩最後一隊，或孤狼模式剩最後一人）
 execute if score #teams_alive br_sys matches ..1 run tellraw @a {"text":"[大逃殺] 遊戲結束！感謝所有人的參與！","color":"gold","bold":true}
 execute if score #teams_alive br_sys matches ..1 run schedule function game_core:system/match_reset 10s
-execute if score #teams_alive br_sys matches ..1 run scoreboard players set #global arms_sub_mode 0
-

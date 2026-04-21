@@ -19,6 +19,7 @@ tag @a remove br_downed
 tag @a remove has_slime
 tag @a remove br_eliminated
 tag @a remove near_altar
+tag @a remove has_used_altar_temp
 # 復活標籤洗掉
 tag @a remove br_used_altar
 kill @e[type=marker,tag=br_tracker]

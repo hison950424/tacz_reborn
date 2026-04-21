@@ -21,7 +21,7 @@ execute as @s[team=white] run scoreboard players set @s team_id 4
 execute as @s[team=solo] run scoreboard players set @s team_id 5
 
 execute as @s run attribute @s minecraft:generic.max_health base set 100
-effect give @s minecraft:instant_health 3 100
+effect give @s minecraft:instant_health 3 50
 
 # 給予第一次加入大逃殺的玩家狀態 1
 scoreboard players set @s br_death_state 1

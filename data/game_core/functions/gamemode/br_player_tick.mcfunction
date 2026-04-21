@@ -12,6 +12,7 @@ execute if score @s gd656killicon.death matches 6 if score @s death_prev matches
 # --- [裝備鎖定：強制第 9 格為地圖] ---
 execute if score @s br_death_state matches 1 unless data entity @s {Inventory:[{Slot:8b, id:"map_atlases:atlas"}]} run clear @s map_atlases:atlas
 execute if score @s br_death_state matches 1 unless data entity @s {Inventory:[{Slot:8b, id:"map_atlases:atlas"}]} run item replace entity @s hotbar.8 from block 1 14 4 container.13
+execute if score @s br_death_state matches 3..4 run clear @s map_atlases:atlas
 
 # --- [著陸偵測 (跨 Phase 安全版與客戶端 NBT 延遲修復)] ---
 # 當獲得跳傘標籤時，開始累加寬限期計時
@@ -54,7 +55,6 @@ execute if score @s br_death_state matches 1 at @s as @e[type=marker,tag=br_trac
 
 # --- [4.5] 追蹤器重力同步 ---
 execute if entity @s[tag=br_downed,tag=has_slime] as @e[type=villager,tag=br_downed_mob] if score @s br_id = #current_player br_id at @s as @e[type=marker,tag=br_tracker] if score @s br_id = #current_player br_id run tp @s ~ ~ ~
-execute if score @s br_death_state matches 1 at @s as @e[type=marker,tag=br_tracker] if score @s br_id = #current_player br_id run tp @s ~ ~ ~
 
 # --- [5] 倒地狀態 2：視角強制鎖定 ---
 tag @s add my_cam_target
@@ -79,34 +79,21 @@ execute if entity @s[team=white,scores={br_death_state=1}] run scoreboard player
 
 
 # --- [7] 旁觀者循環切換與防脫逃系統 ---
-execute if score @s spectate_cd matches 1.. run scoreboard players remove @s spectate_cd 1
 
 # 目標自動初始化與死亡跳轉
 scoreboard players set #target_alive br_sys 0
-execute if score @s br_death_state matches 3..4 as @a if score @s br_id = #current_player target_id if score @s br_death_state matches 1 run scoreboard players set #target_alive br_sys 1
-
+execute if score @s br_death_state matches 3..4 if score #current_player target_id matches 1.. as @a if score @s br_id = #current_player target_id if score @s br_death_state matches 1 run scoreboard players set #target_alive br_sys 1
 execute if score @s br_death_state matches 3..4 if score #target_alive br_sys matches 0 run function game_core:gamemode/br_spectator
 
-# 玩家手動按蹲下切換
-execute if score @s br_death_state matches 3..4 if score @s sneak_time matches 1.. if score @s spectate_cd matches 0 run function game_core:gamemode/br_spectator
-
-# 瞬間防脫逃拉回 (攔截按 Shift)
-tag @s add my_cam_target
-execute if score @s br_death_state matches 3..4 if score @s sneak_time matches 1.. if score @s spectate_cd matches 1.. as @a if score @s br_id = #current_player target_id run spectate @s @a[tag=my_cam_target,limit=1]
-tag @s remove my_cam_target
-
-execute if score @s br_death_state matches 3..4 if score @s sneak_time matches 1.. run scoreboard players set @s spectate_cd 10
-execute if score @s br_death_state matches 3..4 if score @s sneak_time matches 1.. run scoreboard players set @s sneak_time 0
+# 偵測玩家是否自己切換了觀戰目標（離開鎖定位置超過 1 格）→ 切換到下一個合法目標
+execute as @a if score @s br_id = #current_player target_id run tag @s add current_target_temp
+execute if score @s br_death_state matches 3..4 unless entity @a[tag=current_target_temp,distance=..0.05] run function game_core:gamemode/br_spectator
+tag @a remove current_target_temp
 
 execute if score @s br_death_state matches 3..4 run function game_core:gamemode/br_spectator_ui
 
 
-# --- [7.5] 終極防脫逃：重生與斷線重連防護 (距離判定法) ---
-# 【修復 Bug 2 & 3】如果狀態 3 或 4 的玩家，與他的觀戰目標距離超過 2 格 (代表他剛點擊重生，或斷線重連)
-# 系統會每 Tick 瞬間將他強制吸回目標身上，解決死亡畫面卡指令導致的自由視角 Bug！
-tag @s add my_cam_target
-execute if score @s br_death_state matches 3..4 as @a if score @s br_id = #current_player target_id at @s unless entity @a[tag=my_cam_target,distance=..0.5,limit=1] run spectate @s @a[tag=my_cam_target,limit=1]
-tag @s remove my_cam_target
+
 
 
 # --- [8] 視線救援系統 ---

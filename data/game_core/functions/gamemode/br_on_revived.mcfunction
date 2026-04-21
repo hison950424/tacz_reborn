@@ -14,11 +14,10 @@ execute as @e[type=villager,tag=revive_success] if score @s br_id = #current_pla
 tag @s remove my_revive_target
 
 # 2. 將村民丟進虛空刪除
-execute as @e[type=villager,tag=revive_success] if score @s br_id = #current_player br_id run tp @s ~ -500 ~
+execute as @e[type=villager,tag=revive_success] if score @s br_id = #current_player br_id run kill @s
 
 # 3. 安全控血 (維持在 6 HP 虛弱狀態)
 attribute @s minecraft:generic.max_health base set 100
-damage @s 14 minecraft:out_of_world
 
 # 4. 給予無限期恢復狀態
 effect give @s minecraft:regeneration infinite 1 true
