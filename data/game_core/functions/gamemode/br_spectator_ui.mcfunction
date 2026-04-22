@@ -3,6 +3,9 @@
 # 執行者: @s (狀態 4 玩家)
 # ==========================================
 
+# 將觀戰者個人的 target_id 同步到全域黑板，確保每次執行環境乾淨
+scoreboard players operation #current_player target_id = @s target_id
+
 # 抓取目前正在觀看對象的名字 (利用 br_spectator 存下的 target_id)
 execute as @a if score @s br_id = #current_player target_id run tag @s add my_target
 

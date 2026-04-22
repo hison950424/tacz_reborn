@@ -3,6 +3,9 @@
 # 執行者: @s (所有的祭壇 text_display Marker)
 # ==========================================
 
+# 階段防護：僅在 Phase 1 (空投) 與 Phase 2 (戰鬥) 允許祭壇運作
+execute unless score #global br_phase matches 1..2 run return 0
+
 # 1. 倒數冷卻 (如果大於 0)
 execute if score @s altar_cd matches 1.. run scoreboard players remove @s altar_cd 1
 

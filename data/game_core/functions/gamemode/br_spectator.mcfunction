@@ -41,6 +41,9 @@ scoreboard players operation #current_player spectate_idx = @s spectate_idx
 # 6. 執行觀戰鎖定！(增加數量防呆，確保有目標才執行)
 execute if score #target_count br_sys matches 1.. as @a[tag=valid_target] if score @s sys_index = #current_player spectate_idx run spectate @s @a[tag=spectating_player,limit=1]
 
+# 將鎖定目標的 br_id 寫入觀戰者個人的 target_id 計分板，避免全域污染
+execute if score #target_count br_sys matches 1.. as @a[tag=valid_target] if score @s sys_index = #current_player spectate_idx run scoreboard players operation @a[tag=spectating_player,limit=1] target_id = @s br_id
+
 # 7. 抄寫對象 ID 供 UI 顯示，並同步更新自己的 target_id 用於防脫逃！
 execute if score #target_count br_sys matches 1.. as @a[tag=valid_target] if score @s sys_index = #current_player spectate_idx run scoreboard players operation #current_player target_id = @s br_id
 execute if score #target_count br_sys matches 1.. run scoreboard players operation @s target_id = #current_player target_id
