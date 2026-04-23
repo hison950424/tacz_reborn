@@ -272,6 +272,8 @@ scoreboard objectives add watching_team dummy "復仇觀看隊伍"
 scoreboard objectives add spectate_cd dummy "觀戰切換冷卻"
 scoreboard objectives add jump_time dummy "跳傘寬限計時"
 
+scoreboard objectives add rand_val dummy "隨機數暫存"
+
 function game_core:system/match_reset
 function game_core:system/game_end
 

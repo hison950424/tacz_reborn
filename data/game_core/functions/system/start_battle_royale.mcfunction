@@ -50,6 +50,9 @@ scoreboard players set #global br_phase 0
 # 設定 5 秒倒數計時器（100 Ticks），br_countdown_tick 每 Tick 遞減
 scoreboard players set #br_countdown br_sys 200
 
+# === [1.5] 動態物資佈署 ===
+function game_core:gamemode/br_loot_spawn
+
 # === [2] 玩家基礎初始化 ===
 gamemode adventure @a
 execute as @a run attribute @s minecraft:generic.max_health base set 100

@@ -161,6 +161,16 @@ data modify block 219 14 -115 Items set from block -1 14 20 Items
 # ⚠️ 注意: 這裡使用了 tag=arena_center，你需要在大廳以外的戰鬥區域中心放置一個帶有此標籤的 Marker 實體
 # execute at @e[type=marker,tag=arena_center] run kill @e[type=item,distance=..150]
 
+# 強制清空所有木桶與視覺模型
+# 1. 殺死所有視覺模型
+kill @e[type=item_display,tag=loot_display]
+
+# 2. 精準清理剛才那張地圖的木桶
+execute as @e[type=marker,tag=active_loot] at @s run setblock ~ ~ ~ air replace
+
+# 3. 撕掉啟動標籤，讓所有 marker 進入休眠狀態，等待下一局喚醒
+tag @e[type=marker,tag=active_loot] remove active_loot
+
 # 6. 傳送回大廳
 # ⚠️ 注意: 這裡使用了 tag=lobby_spawn_point，請在大廳放置一個對應的 Marker，取代絕對座標
 tp @a @e[type=marker,tag=lobby_spawn_point,limit=1]
