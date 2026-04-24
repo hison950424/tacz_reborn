@@ -1,0 +1,415 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "tacz:modern_kinetic_gun",
+          "weight": 100,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{GunId:\"tacz:rpg7\",GunFireMode:\"SEMI\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:modern_kinetic_gun",
+          "weight": 100,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{GunId:\"tacz:m320\",GunFireMode:\"SEMI\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:modern_kinetic_gun",
+          "weight": 80,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{GunId:\"suffuse:m79\",GunFireMode:\"SEMI\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:modern_kinetic_gun",
+          "weight": 80,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{GunId:\"suffuse:m203\",GunFireMode:\"SEMI\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:modern_kinetic_gun",
+          "weight": 60,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{GunId:\"suffuse:aiyasinrpg\",GunFireMode:\"SEMI\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:modern_kinetic_gun",
+          "weight": 40,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{GunId:\"suffuse:pf98a\",GunFireMode:\"SEMI\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:modern_kinetic_gun",
+          "weight": 70,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{GunId:\"suffuse:qlu11\",GunFireMode:\"SEMI\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:modern_kinetic_gun",
+          "weight": 30,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{GunId:\"tacz:minigun\",GunFireMode:\"AUTO\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:modern_kinetic_gun",
+          "weight": 40,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{GunId:\"tacz:m95\",GunFireMode:\"SEMI\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:modern_kinetic_gun",
+          "weight": 35,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{GunId:\"suffuse:aw50\",GunFireMode:\"SEMI\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:modern_kinetic_gun",
+          "weight": 35,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{GunId:\"suffuse:gm6\",GunFireMode:\"SEMI\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:modern_kinetic_gun",
+          "weight": 30,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{GunId:\"suffuse:m200\",GunFireMode:\"SEMI\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:modern_kinetic_gun",
+          "weight": 40,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{GunId:\"tacz:fn_evolys\",GunFireMode:\"AUTO\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:modern_kinetic_gun",
+          "weight": 40,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{GunId:\"suffuse:pkp\",GunFireMode:\"AUTO\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:modern_kinetic_gun",
+          "weight": 35,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{GunId:\"suffuse:n4\",GunFireMode:\"AUTO\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 200,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{HideFlags:0,display:{Name:'[{\"text\":\"\",\"italic\":false},{\"text\":\"\\u5927\\u88dc\",\"color\":\"red\"}]',Lore:['[{\"text\":\"\",\"italic\":false},{\"text\":\"\\u4e00\\u6b21\\u88dc\\u6eff\\u7684\\u88dc\\u5305\",\"color\":\"red\"}]']},CustomPotionEffects:[{Id:6b,Amplifier:120b,Duration:20,ShowParticles:0b,ShowIcon:0b}],CustomPotionColor:16711680}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:lingering_potion",
+          "weight": 100,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{HideFlags:0,display:{Name:'[{\"text\":\"\",\"italic\":false},{\"text\":\"\\u667a\\u88dc\",\"color\":\"red\"}]',Lore:['[{\"text\":\"\",\"italic\":false},{\"text\":\"\\u6709\\u9ede\\u7528...\\u4f46\\u8981\\u770b\\u4f60\\u600e\\u9ebc\\u7528\",\"color\":\"red\"}]']},CustomPotionEffects:[{Id:24b,Amplifier:0b,Duration:20,ShowParticles:0b,ShowIcon:0b},{Id:12b,Amplifier:0b,Duration:200,ShowParticles:0b,ShowIcon:0b},{Id:6b,Amplifier:2b,Duration:20,ShowParticles:0b,ShowIcon:0b},{Id:11b,Amplifier:1b,Duration:60,ShowParticles:0b,ShowIcon:0b}],CustomPotionColor:16711680}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_helmet",
+          "weight": 60
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_chestplate",
+          "weight": 60
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_leggings",
+          "weight": 60
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_boots",
+          "weight": 60
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 80,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"tacz:ammo_mod_he\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 60,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"tacz:ammo_mod_hp\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 60,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"tacz:ammo_mod_fmj\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 50,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"tacz:ammo_mod_slug\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 60,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"tacz:ammo_mod_i\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 80,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"tacz:light_extended_mag_3\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 80,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"tacz:extended_mag_3\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 60,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"tacz:shotgun_extended_mag_3\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 70,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"tacz:sniper_extended_mag_3\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:purple_shulker_box",
+          "weight": 80,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{Name:'[{\"text\":\"三級背包\",\"italic\":false}]'}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_helmet",
+          "weight": 80,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{Name:'[{\"text\":\"吉利頭盔\",\"italic\":false}]',color:5609010},AttributeModifiers:[{AttributeName:\"generic.armor\",Name:\"armor\",Slot:\"head\",Operation:0,Amount:3.0d,UUID:[I;201,0,0,1]},{AttributeName:\"generic.armor_toughness\",Name:\"toughness\",Slot:\"head\",Operation:0,Amount:3.0d,UUID:[I;201,0,0,2]},{AttributeName:\"generic.knockback_resistance\",Name:\"knockback\",Slot:\"head\",Operation:0,Amount:0.1d,UUID:[I;201,0,0,3]}],Unbreakable:1b}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_chestplate",
+          "weight": 80,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{Name:'[{\"text\":\"吉利外套\",\"italic\":false}]',color:5609010},AttributeModifiers:[{AttributeName:\"generic.armor\",Name:\"armor\",Slot:\"chest\",Operation:0,Amount:8.0d,UUID:[I;202,0,0,1]},{AttributeName:\"generic.armor_toughness\",Name:\"toughness\",Slot:\"chest\",Operation:0,Amount:3.0d,UUID:[I;202,0,0,2]},{AttributeName:\"generic.knockback_resistance\",Name:\"knockback\",Slot:\"chest\",Operation:0,Amount:0.1d,UUID:[I;202,0,0,3]}],Unbreakable:1b}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_leggings",
+          "weight": 80,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{Name:'[{\"text\":\"吉利護腿\",\"italic\":false}]',color:5609010},AttributeModifiers:[{AttributeName:\"generic.armor\",Name:\"armor\",Slot:\"legs\",Operation:0,Amount:6.0d,UUID:[I;203,0,0,1]},{AttributeName:\"generic.armor_toughness\",Name:\"toughness\",Slot:\"legs\",Operation:0,Amount:3.0d,UUID:[I;203,0,0,2]},{AttributeName:\"generic.knockback_resistance\",Name:\"knockback\",Slot:\"legs\",Operation:0,Amount:0.1d,UUID:[I;203,0,0,3]}],Unbreakable:1b}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_boots",
+          "weight": 80,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{Name:'[{\"text\":\"吉利靴\",\"italic\":false}]',color:5609010},AttributeModifiers:[{AttributeName:\"generic.armor\",Name:\"armor\",Slot:\"feet\",Operation:0,Amount:3.0d,UUID:[I;204,0,0,1]},{AttributeName:\"generic.armor_toughness\",Name:\"toughness\",Slot:\"feet\",Operation:0,Amount:3.0d,UUID:[I;204,0,0,2]},{AttributeName:\"generic.knockback_resistance\",Name:\"knockback\",Slot:\"feet\",Operation:0,Amount:0.1d,UUID:[I;204,0,0,3]}],Unbreakable:1b}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_helmet",
+          "weight": 60,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{Name:'[{\"text\":\"吉利頭盔\",\"italic\":false}]',color:14466690},AttributeModifiers:[{AttributeName:\"generic.armor\",Name:\"armor\",Slot:\"head\",Operation:0,Amount:3.0d,UUID:[I;201,0,0,1]},{AttributeName:\"generic.armor_toughness\",Name:\"toughness\",Slot:\"head\",Operation:0,Amount:3.0d,UUID:[I;201,0,0,2]},{AttributeName:\"generic.knockback_resistance\",Name:\"knockback\",Slot:\"head\",Operation:0,Amount:0.1d,UUID:[I;201,0,0,3]}],Unbreakable:1b}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_chestplate",
+          "weight": 60,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{Name:'[{\"text\":\"吉利外套\",\"italic\":false}]',color:14466690},AttributeModifiers:[{AttributeName:\"generic.armor\",Name:\"armor\",Slot:\"chest\",Operation:0,Amount:8.0d,UUID:[I;202,0,0,1]},{AttributeName:\"generic.armor_toughness\",Name:\"toughness\",Slot:\"chest\",Operation:0,Amount:3.0d,UUID:[I;202,0,0,2]},{AttributeName:\"generic.knockback_resistance\",Name:\"knockback\",Slot:\"chest\",Operation:0,Amount:0.1d,UUID:[I;202,0,0,3]}],Unbreakable:1b}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_leggings",
+          "weight": 60,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{Name:'[{\"text\":\"吉利護腿\",\"italic\":false}]',color:14466690},AttributeModifiers:[{AttributeName:\"generic.armor\",Name:\"armor\",Slot:\"legs\",Operation:0,Amount:6.0d,UUID:[I;203,0,0,1]},{AttributeName:\"generic.armor_toughness\",Name:\"toughness\",Slot:\"legs\",Operation:0,Amount:3.0d,UUID:[I;203,0,0,2]},{AttributeName:\"generic.knockback_resistance\",Name:\"knockback\",Slot:\"legs\",Operation:0,Amount:0.1d,UUID:[I;203,0,0,3]}],Unbreakable:1b}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_boots",
+          "weight": 60,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{Name:'[{\"text\":\"吉利靴\",\"italic\":false}]',color:14466690},AttributeModifiers:[{AttributeName:\"generic.armor\",Name:\"armor\",Slot:\"feet\",Operation:0,Amount:3.0d,UUID:[I;204,0,0,1]},{AttributeName:\"generic.armor_toughness\",Name:\"toughness\",Slot:\"feet\",Operation:0,Amount:3.0d,UUID:[I;204,0,0,2]},{AttributeName:\"generic.knockback_resistance\",Name:\"knockback\",Slot:\"feet\",Operation:0,Amount:0.1d,UUID:[I;204,0,0,3]}],Unbreakable:1b}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

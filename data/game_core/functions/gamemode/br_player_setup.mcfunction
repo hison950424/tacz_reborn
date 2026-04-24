@@ -4,22 +4,6 @@
 # 目的: 分配流水號 ID 並生成專屬追蹤器
 # ==========================================
 
-# 殘留狀態絕對清理 (防範斷線重連污染)
-tag @s remove br_deploying
-tag @s remove br_on_cart
-tag @s remove br_jumped
-tag @s remove br_downed
-tag @s remove has_slime
-tag @s remove br_eliminated
-tag @s remove near_altar
-tag @s remove has_used_altar_temp
-tag @s remove br_used_altar
-tag @s remove soul_picked
-tag @s remove check_wipe
-tag @s remove cause_void
-tag @s remove cause_wipe
-tag @s remove cause_solo
-
 scoreboard players set @s altar_progress 0
 scoreboard players set @s revive_progress 0
 scoreboard players set @s is_reviving 0

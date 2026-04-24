@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": {
+        "min": 1,
+        "max": 2
+      },
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "name": "br:pools/high",
+          "weight": 7200
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "br:pools/general",
+          "weight": 900
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "br:pools/medical",
+          "weight": 1000
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "br:pools/attach",
+          "weight": 900
+        }
+      ]
+    }
+  ]
+}

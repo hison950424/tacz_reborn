@@ -8,7 +8,7 @@
 scoreboard players set #scan_x dom_math 0
 
 # 將執行座標定錨在玩家左下後方，並啟動 X 軸迴圈
-execute positioned ~-10 ~-5 ~-10 run function game_core:dev/loop_x
+execute positioned ~-50 ~-10 ~-50 run function game_core:dev/loop_x
 
 # 掃描完成回報
 tellraw @s {"text":"[系統] 區域羊毛掃描與轉化完畢！(消耗: 1 Tick)","color":"green"}

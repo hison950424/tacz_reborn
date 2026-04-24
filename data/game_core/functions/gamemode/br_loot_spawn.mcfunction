@@ -24,18 +24,18 @@ execute as @e[type=marker,tag=active_loot] run execute store result score @s ran
 
 # --- [3. 箱子生成與 NBT 注入 (50% 機率)] ---
 # 一般箱
-execute as @e[type=marker,tag=active_loot,tag=crate_general,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ barrel{LootTable:"br:pools/general"}
+execute as @e[type=marker,tag=active_loot,tag=crate_general,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ barrel{LootTable:"br:chests/general"}
 
 # 醫療箱與視覺模型
-execute as @e[type=marker,tag=active_loot,tag=crate_medical,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ barrel{LootTable:"br:pools/medical"}
+execute as @e[type=marker,tag=active_loot,tag=crate_medical,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ barrel{LootTable:"br:chests/medical"}
 execute as @e[type=marker,tag=active_loot,tag=crate_medical,scores={rand_val=1..50}] at @s run summon item_display ~ ~0.5 ~ {Tags:["loot_display"],item:{id:"minecraft:paper",Count:1b,tag:{CustomModelData:102}}}
 
 # 配件箱與視覺模型
-execute as @e[type=marker,tag=active_loot,tag=crate_attach,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ barrel{LootTable:"br:pools/attach"}
+execute as @e[type=marker,tag=active_loot,tag=crate_attach,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ barrel{LootTable:"br:chests/attach"}
 execute as @e[type=marker,tag=active_loot,tag=crate_attach,scores={rand_val=1..50}] at @s run summon item_display ~ ~0.5 ~ {Tags:["loot_display"],item:{id:"minecraft:paper",Count:1b,tag:{CustomModelData:104}}}
 
 # 高階箱與視覺模型
-execute as @e[type=marker,tag=active_loot,tag=crate_high,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ barrel{LootTable:"br:pools/high"}
+execute as @e[type=marker,tag=active_loot,tag=crate_high,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ barrel{LootTable:"br:chests/high"}
 execute as @e[type=marker,tag=active_loot,tag=crate_high,scores={rand_val=1..50}] at @s run summon item_display ~ ~0.5 ~ {Tags:["loot_display"],item:{id:"minecraft:paper",Count:1b,tag:{CustomModelData:103}}}
 
 # 備註: 這裡「不」移除 active_loot 標籤，讓它保留到遊戲結束，方便重置時精準清理。

@@ -167,6 +167,7 @@ kill @e[type=item_display,tag=loot_display]
 
 # 2. 精準清理剛才那張地圖的木桶
 execute as @e[type=marker,tag=active_loot] at @s run setblock ~ ~ ~ air replace
+kill @e[type=item]
 
 # 3. 撕掉啟動標籤，讓所有 marker 進入休眠狀態，等待下一局喚醒
 tag @e[type=marker,tag=active_loot] remove active_loot

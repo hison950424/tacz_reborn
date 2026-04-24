@@ -1,0 +1,9 @@
+/replace ##trapdoors air
+/replace lever air
+/replace ##buttons air
+/replace ##fence_gates air
+/replace chest air
+/replace anvil air
+/replace barrel air
+/replace note_block air
+/replace hopper air

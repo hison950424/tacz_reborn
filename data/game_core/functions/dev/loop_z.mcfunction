@@ -8,4 +8,4 @@ function game_core:dev/check_wool
 scoreboard players add #scan_z dom_math 1
 
 # 只要 Z <= 20，就把執行座標往正 Z 軸移動 1 格，並遞迴呼叫自己
-execute if score #scan_z dom_math matches ..20 positioned ~ ~ ~1 run function game_core:dev/loop_z
+execute if score #scan_z dom_math matches ..50 positioned ~ ~ ~1 run function game_core:dev/loop_z

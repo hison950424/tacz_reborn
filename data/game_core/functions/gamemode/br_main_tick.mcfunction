@@ -24,7 +24,7 @@ scoreboard players set #br_stand_green br_sys 0
 scoreboard players set #br_stand_white br_sys 0
 
 # --- [B] Phase 路由分發 ---
-# Phase 0 (等待倒數)：5 秒倒數計時，結束後呼叫 br_deploy_start 啟動空投
+# Phase 0 (等待倒數)：10 秒倒數計時，結束後呼叫 br_deploy_start 啟動空投
 execute if score #global br_phase matches 0 run function game_core:gamemode/br_countdown_tick
 
 # Phase 1 (空投部署)：執行空投機移動、跟隨、著陸偵測等邏輯

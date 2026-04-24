@@ -47,7 +47,7 @@ scoreboard players set @a gd656killicon.kill 0
 # br_phase = 0：等待倒數階段，5 秒後由 br_deploy_start 切換至 Phase 1（空投）
 scoreboard players set #global game_state 1
 scoreboard players set #global br_phase 0
-# 設定 5 秒倒數計時器（100 Ticks），br_countdown_tick 每 Tick 遞減
+# 設定 10 秒倒數計時器（200 Ticks），br_countdown_tick 每 Tick 遞減
 scoreboard players set #br_countdown br_sys 200
 
 # === [1.5] 動態物資佈署 ===
