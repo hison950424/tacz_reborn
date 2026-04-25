@@ -3,29 +3,29 @@
   "pools": [
     {
       "rolls": {
-        "min": 3,
+        "min": 2,
         "max": 5
       },
       "entries": [
         {
           "type": "minecraft:loot_table",
           "name": "br:pools/medical",
-          "weight": 8400
+          "weight": 8500
         },
         {
           "type": "minecraft:loot_table",
           "name": "br:pools/general",
-          "weight": 700
+          "weight": 300
         },
         {
           "type": "minecraft:loot_table",
           "name": "br:pools/attach",
-          "weight": 600
+          "weight": 1000
         },
         {
           "type": "minecraft:loot_table",
           "name": "br:pools/high",
-          "weight": 300
+          "weight": 200
         }
       ]
     }

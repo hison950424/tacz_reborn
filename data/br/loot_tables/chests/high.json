@@ -10,22 +10,22 @@
         {
           "type": "minecraft:loot_table",
           "name": "br:pools/high",
-          "weight": 7200
+          "weight": 7000
         },
         {
           "type": "minecraft:loot_table",
           "name": "br:pools/general",
-          "weight": 900
+          "weight": 2000
         },
         {
           "type": "minecraft:loot_table",
           "name": "br:pools/medical",
-          "weight": 1000
+          "weight": 500
         },
         {
           "type": "minecraft:loot_table",
           "name": "br:pools/attach",
-          "weight": 900
+          "weight": 500
         }
       ]
     }

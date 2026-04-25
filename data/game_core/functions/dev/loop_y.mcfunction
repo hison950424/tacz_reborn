@@ -9,4 +9,4 @@ function game_core:dev/loop_z
 scoreboard players add #scan_y dom_math 1
 
 # 只要 Y <= 10，就把執行座標往正 Y 軸移動 1 格，並遞迴呼叫自己
-execute if score #scan_y dom_math matches ..20 positioned ~ ~1 ~ run function game_core:dev/loop_y
+execute if score #scan_y dom_math matches ..10 positioned ~ ~1 ~ run function game_core:dev/loop_y

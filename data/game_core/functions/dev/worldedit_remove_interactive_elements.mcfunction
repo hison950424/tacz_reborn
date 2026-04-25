@@ -7,3 +7,10 @@
 /replace barrel air
 /replace note_block air
 /replace hopper air
+/replace ##shulker_boxes air
+/replace enchanting_table air
+/replace ender_chest air
+/replace furnace air
+/replace blast_furnace air
+/replace smoker air
+/replace crafting_table air
