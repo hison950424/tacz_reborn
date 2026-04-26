@@ -17,6 +17,7 @@ execute if score #global br_map matches 5 as @e[type=marker,tag=map_5] run tag @
 # (以下維持你原本正確的程式碼不變...)
 execute as @e[type=marker,tag=active_loot] at @s run setblock ~ ~ ~ air replace
 kill @e[type=item_display,tag=loot_display]
+kill @e[type=item]
 
 # --- [2. 全域亂數賦值] ---
 # 只為被喚醒的 marker 抽隨機數

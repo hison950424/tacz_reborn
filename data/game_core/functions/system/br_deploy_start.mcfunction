@@ -5,6 +5,9 @@
 # 由 gamemode/br_countdown_tick 在計時器歸零時呼叫
 # ==========================================
 
+# === [0.5] 動態物資佈署 ===
+function game_core:gamemode/br_loot_spawn
+
 # 切換至空投階段：br_main_tick 從此 Tick 開始改呼叫 br_deploy_tick
 scoreboard players set #global br_phase 1
 
@@ -129,6 +132,8 @@ execute if score #path_seed br_sys matches 6..7 run scoreboard players set #depl
 
 # === [3] 延遲 10 tick 後生成 Dropship ===
 schedule function game_core:system/br_deploy_summon 10t
+
+
 
 # === [4] 起飛廣播與音效 ===
 tellraw @a ["",{"text":"[大逃殺] 空投機已起飛！","color":"gold"},{"text":"蹲下","color":"red","bold":true},{"text":"即可跳出，祝各位好運！","color":"gold"}]

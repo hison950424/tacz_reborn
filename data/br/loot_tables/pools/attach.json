@@ -231,7 +231,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{AttachmentId:\"suffise:scope_sig_tango_msr_1_6\"}"
+              "tag": "{AttachmentId:\"suffuse:scope_sig_tango_msr_1_6\"}"
             }
           ]
         },

@@ -1,0 +1,69 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_helmet",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{Name:'[{\"text\":\"吉利頭盔\",\"italic\":false}]',color:10188870},AttributeModifiers:[{AttributeName:\"generic.armor\",Name:\"armor\",Slot:\"head\",Operation:0,Amount:3.0d,UUID:[I;201,0,0,1]},{AttributeName:\"generic.armor_toughness\",Name:\"toughness\",Slot:\"head\",Operation:0,Amount:3.0d,UUID:[I;201,0,0,2]},{AttributeName:\"generic.knockback_resistance\",Name:\"knockback\",Slot:\"head\",Operation:0,Amount:0.1d,UUID:[I;201,0,0,3]}],Unbreakable:1b}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_chestplate",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{Name:'[{\"text\":\"吉利外套\",\"italic\":false}]',color:10188870},AttributeModifiers:[{AttributeName:\"generic.armor\",Name:\"armor\",Slot:\"chest\",Operation:0,Amount:8.0d,UUID:[I;202,0,0,1]},{AttributeName:\"generic.armor_toughness\",Name:\"toughness\",Slot:\"chest\",Operation:0,Amount:3.0d,UUID:[I;202,0,0,2]},{AttributeName:\"generic.knockback_resistance\",Name:\"knockback\",Slot:\"chest\",Operation:0,Amount:0.1d,UUID:[I;202,0,0,3]}],Unbreakable:1b}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_leggings",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{Name:'[{\"text\":\"吉利護腿\",\"italic\":false}]',color:10188870},AttributeModifiers:[{AttributeName:\"generic.armor\",Name:\"armor\",Slot:\"legs\",Operation:0,Amount:6.0d,UUID:[I;203,0,0,1]},{AttributeName:\"generic.armor_toughness\",Name:\"toughness\",Slot:\"legs\",Operation:0,Amount:3.0d,UUID:[I;203,0,0,2]},{AttributeName:\"generic.knockback_resistance\",Name:\"knockback\",Slot:\"legs\",Operation:0,Amount:0.1d,UUID:[I;203,0,0,3]}],Unbreakable:1b}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_boots",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{Name:'[{\"text\":\"吉利靴\",\"italic\":false}]',color:10188870},AttributeModifiers:[{AttributeName:\"generic.armor\",Name:\"armor\",Slot:\"feet\",Operation:0,Amount:3.0d,UUID:[I;204,0,0,1]},{AttributeName:\"generic.armor_toughness\",Name:\"toughness\",Slot:\"feet\",Operation:0,Amount:3.0d,UUID:[I;204,0,0,2]},{AttributeName:\"generic.knockback_resistance\",Name:\"knockback\",Slot:\"feet\",Operation:0,Amount:0.1d,UUID:[I;204,0,0,3]}],Unbreakable:1b}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
