@@ -306,7 +306,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{Name:'[{\"text\":\"三級背包\",\"italic\":false}]'}}"
+              "tag": "{tag:{backpack_3:1b},display:{Name:'{\"text\":\"三級背包\",\"color\":\"#AA00AA\",\"italic\":false}'}}"
             }
           ]
         },

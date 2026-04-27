@@ -43,10 +43,49 @@ scoreboard players set @a sneak_time 0
 # --- [C] 全域計時器 ---
 # 維持 20 Ticks = 1 秒的循環，供祭壇、流血等系統使用
 scoreboard players add #global br_timer 1
+
+
+# ==========================================
+# --- 靈魂標籤 ---
+# ==========================================
 # 執行靈魂標籤的視覺特效
 execute if score #global br_phase matches 1..2 if score #global br_timer matches 20 as @e[type=marker,tag=br_soul_marker] at @s run function game_core:gamemode/br_soul_tick
 #靈魂祭壇
 execute as @e[type=text_display,tag=br_altar] run function game_core:gamemode/br_altar_tick
+
+
+
+# ==========================================
+# --- 背包系統 ---10tick一次
+# ==========================================
+# ====== 背包系統：升級與防護 ======
+# 偵測背包內是否有對應的潛影盒，並執行升級解鎖
+execute if score #global br_timer matches 10 as @a if data entity @s {Inventory:[{tag:{tag:{backpack_3:1b}}}]} if score @s backpack_level matches ..2 at @s run function game_core:backpack/upgrade_3
+execute if score #global br_timer matches 10 as @a if data entity @s {Inventory:[{tag:{tag:{backpack_2:1b}}}]} if score @s backpack_level matches ..1 at @s run function game_core:backpack/upgrade_2
+execute if score #global br_timer matches 10 as @a if data entity @s {Inventory:[{tag:{tag:{backpack_1:1b}}}]} if score @s backpack_level matches ..0 at @s run function game_core:backpack/upgrade_1
+
+# 執行背包系統防護網，把硬塞進鎖定格的非法物品吐回地上
+execute if score #global br_timer matches 10 run function game_core:backpack/protect_slots
+# ====== 背包系統：升級與防護 ======
+# 偵測背包內是否有對應的潛影盒，並執行升級解鎖
+execute if score #global br_timer matches 20 as @a if data entity @s {Inventory:[{tag:{tag:{backpack_3:1b}}}]} if score @s backpack_level matches ..2 at @s run function game_core:backpack/upgrade_3
+execute if score #global br_timer matches 20 as @a if data entity @s {Inventory:[{tag:{tag:{backpack_2:1b}}}]} if score @s backpack_level matches ..1 at @s run function game_core:backpack/upgrade_2
+execute if score #global br_timer matches 20 as @a if data entity @s {Inventory:[{tag:{tag:{backpack_1:1b}}}]} if score @s backpack_level matches ..0 at @s run function game_core:backpack/upgrade_1
+
+# 執行背包系統防護網，把硬塞進鎖定格的非法物品吐回地上
+execute if score #global br_timer matches 20 run function game_core:backpack/protect_slots
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -328,3 +328,8 @@ scoreboard players set @a[scores={join_team=1..}] join_team 0
 scoreboard players set @a[scores={admin_team_ctrl=1..}] admin_team_ctrl 0
 scoreboard players enable @a join_team
 scoreboard players enable @a admin_team_ctrl
+
+
+# scoreboard players add test dummy 1
+# execute if score test dummy matches 100 run function game_core:dev/check_marker
+# execute if score test dummy matches 100.. run scoreboard players set test dummy 0

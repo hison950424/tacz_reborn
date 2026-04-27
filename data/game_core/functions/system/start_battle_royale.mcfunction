@@ -61,8 +61,12 @@ effect give @a minecraft:instant_health 3 50 true
 effect give @a minecraft:regeneration infinite 1 true
 # 飽食 (amplifier 0)，隱藏粒子，確保飢餓值不掉
 effect give @a minecraft:saturation infinite 1 true
+# 重置所有人為 0 級背包
+scoreboard players set @a backpack_level 0
 # 大逃殺從零開始，強制清空背包
 clear @a
+# 執行上鎖，這會瞬間把未解鎖的空間塞滿灰玻璃
+execute as @a at @s run function game_core:backpack/lock_slots
 
 # === [3] 標記為「部署中」===
 # 重置蹲下計時：sneak_time 是累積計分板，不重置會讓遊戲開局第一 Tick 就誤觸跳機偵測

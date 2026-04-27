@@ -7,7 +7,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:potion",
-          "weight": 60,
+          "weight": 399,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -18,7 +18,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:splash_potion",
-          "weight": 180,
+          "weight": 1196,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -29,7 +29,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:lingering_potion",
-          "weight": 100,
+          "weight": 664,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -40,35 +40,110 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:light_gray_shulker_box",
-          "weight": 120,
+          "weight": 1332,
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{Name:'[{\"text\":\"一級背包\",\"italic\":false}]'}}"
+              "tag": "{tag:{backpack_1:1b},display:{Name:'{\"text\":\"一級背包\",\"color\":\"#AAAAAA\",\"italic\":false}'}}"
             }
           ]
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:blue_shulker_box",
-          "weight": 70,
+          "weight": 465,
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{Name:'[{\"text\":\"二級背包\",\"italic\":false}]'}}"
+              "tag": "{tag:{backpack_2:1b},display:{Name:'{\"text\":\"二級背包\",\"color\":\"#55FFFF\",\"italic\":false}'}}"
             }
           ]
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:purple_shulker_box",
-          "weight": 25,
+          "weight": 166,
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{Name:'[{\"text\":\"三級背包\",\"italic\":false}]'}}"
+              "tag": "{tag:{backpack_3:1b},display:{Name:'{\"text\":\"三級背包\",\"color\":\"#AA00AA\",\"italic\":false}'}}"
             }
           ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "lrtactical:throwable",
+          "weight": 664,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{ThrowableId:\"lrtactical:m67\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "lrtactical:throwable",
+          "weight": 532,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{ThrowableId:\"lrtactical:rgn\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "lrtactical:throwable",
+          "weight": 797,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{ThrowableId:\"lrtactical:smoke_grenade\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "lrtactical:throwable",
+          "weight": 664,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{ThrowableId:\"lrtactical:flash_grenade\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "lrtactical:throwable",
+          "weight": 465,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{ThrowableId:\"lrtactical:molotov\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_helmet",
+          "weight": 664
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_chestplate",
+          "weight": 664
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_leggings",
+          "weight": 664
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_boots",
+          "weight": 664
         }
       ]
     }

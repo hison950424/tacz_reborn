@@ -11,4 +11,4 @@ scoreboard players set #scan_x dom_math 0
 execute positioned ~-10 ~-5 ~-10 run function game_core:dev/loop_x
 
 # 掃描完成回報
-tellraw @s {"text":"[系統] 區域羊毛掃描與轉化完畢！(消耗: 1 Tick)","color":"green"}
+# tellraw @s {"text":"[系統] 區域羊毛掃描與轉化完畢！(消耗: 1 Tick)","color":"green"}

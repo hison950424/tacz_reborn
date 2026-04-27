@@ -11,6 +11,7 @@ scoreboard players set #60 dom_const 60
 scoreboard players set #100 dom_const 100
 scoreboard players set #-1 dom_const -1
 scoreboard objectives add dom_math dummy "數學運算用"
+scoreboard objectives add dummy dummy "運算用"
 #殺一個人20元
 execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit ASSIST expression 0.2
 execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit BRAVE_RETURN expression 10
@@ -273,6 +274,10 @@ scoreboard objectives add spectate_cd dummy "觀戰切換冷卻"
 scoreboard objectives add jump_time dummy "跳傘寬限計時"
 
 scoreboard objectives add rand_val dummy "隨機數暫存"
+
+#背包系統
+scoreboard objectives add backpack_level dummy
+data modify storage backpack:temp item set value {}
 
 function game_core:system/match_reset
 function game_core:system/game_end

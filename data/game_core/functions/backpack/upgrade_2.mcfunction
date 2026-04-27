@@ -1,0 +1,1 @@
+execute if score @s backpack_level matches 0..1 if data entity @s {Inventory:[{tag:{tag:{backpack_2:1b}}}]} at @s run function game_core:backpack/unlock_lv2

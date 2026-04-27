@@ -7,7 +7,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 200,
+          "weight": 612,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -18,7 +18,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 150,
+          "weight": 459,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -29,7 +29,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 150,
+          "weight": 459,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -40,7 +40,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 80,
+          "weight": 245,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -51,7 +51,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 80,
+          "weight": 245,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -62,7 +62,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 50,
+          "weight": 153,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -73,7 +73,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 180,
+          "weight": 550,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -84,7 +84,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 140,
+          "weight": 428,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -95,7 +95,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 140,
+          "weight": 428,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -106,7 +106,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 140,
+          "weight": 428,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -117,7 +117,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 140,
+          "weight": 428,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -128,7 +128,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 60,
+          "weight": 183,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -139,7 +139,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 100,
+          "weight": 306,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -150,7 +150,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 60,
+          "weight": 183,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -161,7 +161,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 40,
+          "weight": 122,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -172,7 +172,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 100,
+          "weight": 306,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -183,7 +183,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 120,
+          "weight": 367,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -194,7 +194,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 120,
+          "weight": 367,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -205,7 +205,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 80,
+          "weight": 245,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -216,7 +216,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 100,
+          "weight": 306,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -227,7 +227,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 70,
+          "weight": 214,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -238,7 +238,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 60,
+          "weight": 183,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -249,7 +249,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 80,
+          "weight": 245,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -260,7 +260,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 70,
+          "weight": 214,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -271,7 +271,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 60,
+          "weight": 183,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -282,7 +282,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 60,
+          "weight": 183,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -293,7 +293,7 @@
         {
           "type": "minecraft:item",
           "name": "tacz:modern_kinetic_gun",
-          "weight": 80,
+          "weight": 245,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -304,7 +304,7 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:melee",
-          "weight": 60,
+          "weight": 183,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -315,7 +315,7 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:melee",
-          "weight": 50,
+          "weight": 153,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -326,7 +326,7 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:melee",
-          "weight": 70,
+          "weight": 214,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -337,7 +337,7 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:melee",
-          "weight": 40,
+          "weight": 122,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -348,7 +348,7 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:melee",
-          "weight": 40,
+          "weight": 122,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -359,7 +359,7 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:melee",
-          "weight": 40,
+          "weight": 122,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -370,7 +370,7 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:melee",
-          "weight": 40,
+          "weight": 122,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -381,7 +381,7 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:melee",
-          "weight": 35,
+          "weight": 107,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -392,7 +392,7 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:melee",
-          "weight": 35,
+          "weight": 107,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -403,7 +403,7 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:melee",
-          "weight": 35,
+          "weight": 107,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -414,7 +414,7 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:melee",
-          "weight": 35,
+          "weight": 107,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -425,7 +425,7 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:melee",
-          "weight": 30,
+          "weight": 92,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -436,7 +436,7 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:melee",
-          "weight": 30,
+          "weight": 92,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -447,93 +447,7 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:flash_shield",
-          "weight": 20
-        },
-        {
-          "type": "minecraft:item",
-          "name": "lrtactical:throwable",
-          "weight": 100,
-          "functions": [
-            {
-              "function": "minecraft:set_nbt",
-              "tag": "{ThrowableId:\"lrtactical:m67\"}"
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "lrtactical:throwable",
-          "weight": 80,
-          "functions": [
-            {
-              "function": "minecraft:set_nbt",
-              "tag": "{ThrowableId:\"lrtactical:rgn\"}"
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "lrtactical:throwable",
-          "weight": 120,
-          "functions": [
-            {
-              "function": "minecraft:set_nbt",
-              "tag": "{ThrowableId:\"lrtactical:smoke_grenade\"}"
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "lrtactical:throwable",
-          "weight": 100,
-          "functions": [
-            {
-              "function": "minecraft:set_nbt",
-              "tag": "{ThrowableId:\"lrtactical:flash_grenade\"}"
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "lrtactical:throwable",
-          "weight": 70,
-          "functions": [
-            {
-              "function": "minecraft:set_nbt",
-              "tag": "{ThrowableId:\"lrtactical:molotov\"}"
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:leather_helmet",
-          "weight": 100
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:leather_chestplate",
-          "weight": 100
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:leather_leggings",
-          "weight": 100
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:leather_boots",
-          "weight": 100
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:light_gray_shulker_box",
-          "weight": 80,
-          "functions": [
-            {
-              "function": "minecraft:set_nbt",
-              "tag": "{display:{Name:'[{\"text\":\"一級背包\",\"italic\":false}]'}}"
-            }
-          ]
+          "weight": 63
         }
       ]
     }

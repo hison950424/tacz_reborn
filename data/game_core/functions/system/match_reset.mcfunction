@@ -194,6 +194,13 @@ execute as @a[tag=admin] run gamemode creative @s
 #重設所有玩家重生點在大廳
 spawnpoint @a -4 32 -1
 
+#隊伍名稱不可見
+team modify blue nametagVisibility hideForOtherTeams
+team modify red nametagVisibility hideForOtherTeams
+team modify green nametagVisibility hideForOtherTeams
+team modify white nametagVisibility hideForOtherTeams
+team modify solo nametagVisibility never
+
 # 2. 給予一般玩家「隊伍選擇書」
 execute as @a[tag=!admin] run give @s written_book{title:"隊伍選擇",author:"系統",pages:['{"text":" ==== 選擇隊伍 ====\\n\\n","color":"dark_purple","bold":true,"extra":[{"text":"[▶ 加入 紅隊 ]\\n\\n","color":"red","bold":false,"clickEvent":{"action":"run_command","value":"/trigger join_team set 1"}},{"text":"[▶ 加入 藍隊 ]\\n\\n","color":"blue","bold":false,"clickEvent":{"action":"run_command","value":"/trigger join_team set 2"}},{"text":"[▶ 加入 白隊 ]\\n\\n","color":"gray","bold":false,"clickEvent":{"action":"run_command","value":"/trigger join_team set 3"}},{"text":"[▶ 加入 綠隊 ]\\n\\n","color":"green","bold":false,"clickEvent":{"action":"run_command","value":"/trigger join_team set 4"}},{"text":"[▶ 成為 孤狼 ]\\n","color":"dark_gray","bold":false,"clickEvent":{"action":"run_command","value":"/trigger join_team set 5"}}]}']} 1
 # 3. 給予管理員模式選擇書、隊伍選擇書 Plus
