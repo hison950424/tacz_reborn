@@ -57,7 +57,24 @@ execute if score #global br_map matches 5 if score #path_seed br_sys matches 7 r
 # === [2] 動態物資佈署 ===
 function game_core:gamemode/br_loot_spawn
 
-# === 解除強制載入（marker 已生成，不再需要）===
+# === [3] 縮圈系統佈署 ===
+# 載入地圖設定（worldborder center/size + #map 座標）
+execute if score #global br_map matches 1 run function game_core:br_map/map1
+execute if score #global br_map matches 2 run function game_core:br_map/map2
+execute if score #global br_map matches 3 run function game_core:br_map/map3
+execute if score #global br_map matches 4 run function game_core:br_map/map4
+execute if score #global br_map matches 5 run function game_core:br_map/map5
+
+# 進入準備期（同時預算所有圓心）
+function game_core:gamemode/br_phase0_start
+
+# 緩衝距離（在圈外幾格內不受傷，預設 5 格）
+worldborder damage buffer 1
+
+# 每格每秒傷害量（預設 0.2，單位是 HP）
+worldborder damage amount 0.2
+
+# === [4]解除強制載入（marker 已生成，不再需要）===
 # === 地圖一 (16 段) ===
 execute if score #global br_map matches 1 run forceload remove -512 -512 511 -449
 execute if score #global br_map matches 1 run forceload remove -512 -448 511 -385

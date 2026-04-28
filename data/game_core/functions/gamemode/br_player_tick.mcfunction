@@ -9,10 +9,10 @@ clear @s minecraft:glass_bottle
 execute if score @s gd656killicon.kill matches 6 if score @s kill_prev matches 0 run function game_core:gamemode/arms_race_score_debug
 execute if score @s gd656killicon.death matches 6 if score @s death_prev matches 0 run function game_core:gamemode/arms_race_score_debug
 
-# --- [裝備鎖定：強制第 9 格為地圖] ---
-execute if score @s br_death_state matches 1 unless data entity @s {Inventory:[{Slot:8b, id:"map_atlases:atlas"}]} run clear @s map_atlases:atlas
-execute if score @s br_death_state matches 1 unless data entity @s {Inventory:[{Slot:8b, id:"map_atlases:atlas"}]} run item replace entity @s hotbar.8 from block 1 14 4 container.13
-execute if score @s br_death_state matches 3..4 run clear @s map_atlases:atlas
+# # --- [裝備鎖定：強制第 9 格為地圖] ---
+# execute if score @s br_death_state matches 1 unless data entity @s {Inventory:[{Slot:8b, id:"map_atlases:atlas"}]} run clear @s map_atlases:atlas
+# execute if score @s br_death_state matches 1 unless data entity @s {Inventory:[{Slot:8b, id:"map_atlases:atlas"}]} run item replace entity @s hotbar.8 from block 1 14 4 container.13
+# execute if score @s br_death_state matches 3..4 run clear @s map_atlases:atlas
 
 # --- [著陸偵測 (跨 Phase 安全版與客戶端 NBT 延遲修復)] ---
 # 當獲得跳傘標籤時，開始累加寬限期計時
@@ -70,7 +70,7 @@ execute if entity @s[team=red,scores={br_death_state=1..3}] run scoreboard playe
 execute if entity @s[team=blue,scores={br_death_state=1..3}] run scoreboard players add #br_alive_blue br_sys 1
 execute if entity @s[team=green,scores={br_death_state=1..3}] run scoreboard players add #br_alive_green br_sys 1
 execute if entity @s[team=white,scores={br_death_state=1..3}] run scoreboard players add #br_alive_white br_sys 1
-execute if entity @s[team=solo,scores={br_death_state=1..3}] run scoreboard players add #br_alive_solo br_sys 1
+execute if entity @s[tag=solo,scores={br_death_state=1..3}] run scoreboard players add #br_alive_solo br_sys 1
 
 execute if entity @s[team=red,scores={br_death_state=1}] run scoreboard players add #br_stand_red br_sys 1
 execute if entity @s[team=blue,scores={br_death_state=1}] run scoreboard players add #br_stand_blue br_sys 1
@@ -87,7 +87,7 @@ execute if score @s br_death_state matches 3..4 if score #target_alive br_sys ma
 
 # 偵測玩家是否自己切換了觀戰目標（離開鎖定位置超過 1 格）→ 切換到下一個合法目標
 execute as @a if score @s br_id = #current_player target_id run tag @s add current_target_temp
-execute if score @s br_death_state matches 3..4 unless entity @a[tag=current_target_temp,distance=..0.05] run function game_core:gamemode/br_spectator
+execute if score @s br_death_state matches 3..4 unless entity @a[tag=current_target_temp,distance=..1] run function game_core:gamemode/br_spectator
 tag @a remove current_target_temp
 
 execute if score @s br_death_state matches 3..4 run function game_core:gamemode/br_spectator_ui

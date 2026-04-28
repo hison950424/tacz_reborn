@@ -6,6 +6,7 @@
 # ==========================================
 # [BR 模式] 清理所有部署相關狀態
 # ==========================================
+#tag
 tag @a remove soul_picked
 tag @a remove check_wipe
 tag @a remove cause_void
@@ -20,12 +21,26 @@ tag @a remove has_slime
 tag @a remove br_eliminated
 tag @a remove near_altar
 tag @a remove has_used_altar_temp
-# 復活標籤洗掉
+tag @a remove mvp_killer
+tag @a remove mvp_helper
+tag @a remove mvp_loser
+tag @a remove in_base
+tag @a remove deaths
+tag @a remove has_player_id
+tag @a remove in_border
+tag @a remove hunter_for_ui
+tag @a remove shop_admin
 tag @a remove br_used_altar
+execute as @a[tag=solo] run team leave @s
+execute as @a[tag=solo] run tag @s remove solo
+
+
+# marker 屍體 倒地村民 掉落物
 kill @e[type=marker,tag=br_tracker]
 kill @e[type=marker,tag=br_soul_marker]
 kill @e[type=villager,tag=br_downed_mob]
 kill @e[type=marker,tag=br_dropship]
+kill @e[type=minecraft:marker,tag=next_center]
 kill @e[type=corpse:corpse]
 kill @e[type=item]
 scoreboard players set #global br_phase 0
@@ -199,7 +214,22 @@ team modify blue nametagVisibility hideForOtherTeams
 team modify red nametagVisibility hideForOtherTeams
 team modify green nametagVisibility hideForOtherTeams
 team modify white nametagVisibility hideForOtherTeams
-team modify solo nametagVisibility never
+team modify solo1 nametagVisibility never
+team modify solo2 nametagVisibility never
+team modify solo3 nametagVisibility never
+team modify solo4 nametagVisibility never
+team modify solo5 nametagVisibility never
+team modify solo6 nametagVisibility never
+team modify solo7 nametagVisibility never
+team modify solo8 nametagVisibility never
+team modify solo9 nametagVisibility never
+team modify solo10 nametagVisibility never
+team modify solo11 nametagVisibility never
+team modify solo12 nametagVisibility never
+team modify solo13 nametagVisibility never
+team modify solo14 nametagVisibility never
+team modify solo15 nametagVisibility never
+team modify solo16 nametagVisibility never
 
 # 2. 給予一般玩家「隊伍選擇書」
 execute as @a[tag=!admin] run give @s written_book{title:"隊伍選擇",author:"系統",pages:['{"text":" ==== 選擇隊伍 ====\\n\\n","color":"dark_purple","bold":true,"extra":[{"text":"[▶ 加入 紅隊 ]\\n\\n","color":"red","bold":false,"clickEvent":{"action":"run_command","value":"/trigger join_team set 1"}},{"text":"[▶ 加入 藍隊 ]\\n\\n","color":"blue","bold":false,"clickEvent":{"action":"run_command","value":"/trigger join_team set 2"}},{"text":"[▶ 加入 白隊 ]\\n\\n","color":"gray","bold":false,"clickEvent":{"action":"run_command","value":"/trigger join_team set 3"}},{"text":"[▶ 加入 綠隊 ]\\n\\n","color":"green","bold":false,"clickEvent":{"action":"run_command","value":"/trigger join_team set 4"}},{"text":"[▶ 成為 孤狼 ]\\n","color":"dark_gray","bold":false,"clickEvent":{"action":"run_command","value":"/trigger join_team set 5"}}]}']} 1
@@ -214,5 +244,8 @@ execute if score #global arms_sub_mode matches 2 run bossbar set game_core:dom_h
 execute if score #global arms_sub_mode matches 2 run bossbar set game_core:dom_hud_b visible false
 execute if score #global arms_sub_mode matches 2 run bossbar set game_core:dom_hud_c visible false
 
+
+#邊界重置
+worldborder set 9999999
 
 scoreboard players set @a death_prev 0

@@ -21,13 +21,6 @@ execute if score #teams_alive br_sys matches ..1 if score #br_alive_blue br_sys 
 execute if score #teams_alive br_sys matches ..1 if score #br_alive_green br_sys matches 1.. run title @a title {"text":"綠隊獲勝！","color":"green","bold":true}
 execute if score #teams_alive br_sys matches ..1 if score #br_alive_white br_sys matches 1.. run title @a title {"text":"白隊獲勝！","color":"white","bold":true}
 execute if score #teams_alive br_sys matches ..1 if score #br_alive_solo br_sys matches 1.. run title @a title {"text":"孤狼獲勝！","color":"gray","bold":true}
-execute if score #teams_alive br_sys matches ..1 if score #br_alive_solo br_sys matches 0 if score #br_alive_white br_sys matches 0 if score #br_alive_green br_sys matches 0 if score #br_alive_blue br_sys matches 0 if score #br_alive_red br_sys matches 0 run title @a title {"text":"同時死亡，平手！","color":"dark_gray","bold":true}
-
-#隊伍名稱可見
-execute if score #teams_alive br_sys matches ..1 run team modify blue nametagVisibility always
-execute if score #teams_alive br_sys matches ..1 run team modify red nametagVisibility always
-execute if score #teams_alive br_sys matches ..1 run team modify green nametagVisibility always
-execute if score #teams_alive br_sys matches ..1 run team modify white nametagVisibility always
-execute if score #teams_alive br_sys matches ..1 run team modify solo nametagVisibility always
+execute if score #teams_alive br_sys matches 0 run title @a title {"text":"同時死亡，無人獲勝。","color":"dark_gray","bold":true}
 
 execute if score #teams_alive br_sys matches ..1 run function game_core:system/match_end_sequence

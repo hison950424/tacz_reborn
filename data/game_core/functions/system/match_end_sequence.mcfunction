@@ -11,8 +11,8 @@ scoreboard players set #global game_state 3
 # 作用: 沒收槍械與投擲物，防止玩家在看 MVP 時互相攻擊
 gamemode adventure @a
 clear @a
-effect give @a minecraft:weakness 10 255 true
-effect give @a minecraft:slowness 10 5 true
+effect give @a minecraft:weakness 10 100 true
+# effect give @a minecraft:slowness 10 5 true
 
 # 3. 執行 MVP 計算與展示
 # ⚠️ 依賴對接: 這裡呼叫我們最一開始討論的 MVP 標籤賦予系統

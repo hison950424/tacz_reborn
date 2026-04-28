@@ -31,6 +31,16 @@ scoreboard players set @a vanilla_death 0
 scoreboard players set @a death_prev 0
 scoreboard players set @a revive_progress 0
 scoreboard players set @a kill_prev 0
+
+scoreboard players set #game br_phase -1
+scoreboard players set #game br_timer 0
+scoreboard players set #game br_tick20 0
+scoreboard players set #map br_center_x 0
+scoreboard players set #map br_center_z 0
+scoreboard players set #map br_zone1_sq 0
+scoreboard players set #map br_zone2_sq 0
+scoreboard players set #map br_safe_sq 0
+
 # 重置 GD656 模組的底層分數 (金錢) 為 1 
 gd656killicon server statistics set score @a 0
 gd656killicon server statistics set assist @a 0

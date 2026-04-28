@@ -15,3 +15,4 @@ tellraw @s [{"text":"[debug]","color":"red","clickEvent":{"action":"run_command"
 tellraw @s ["",{"text":"\n[參數] ","color":"gold"},{"text":":團隊死鬥模式: ","color":"yellow"}]
 
 tellraw @s [{"text":"[debug]","color":"red","clickEvent":{"action":"run_command","value":"/function game_core:gamemode/tdm_debug2"}},{"text":"  |  ","color":"gray"},{"text":"[undebug]","color":"red","clickEvent":{"action":"run_command","value":"/function game_core:gamemode/tdm_debug1"}}]
+tellraw @s ["",{"text":"\n================================\n","color":"gray"},{"text":"⚠︎   軍備競賽debug   ⚠︎","color":"gold","bold":false}]

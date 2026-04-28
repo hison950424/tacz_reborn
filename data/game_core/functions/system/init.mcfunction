@@ -63,19 +63,107 @@ team add red "紅隊"
 team add blue "藍隊"
 team add green "綠隊"
 team add white "白隊"
-team add solo "孤狼"
+team add solo1 "孤狼"
+team add solo2 "孤狼"
+team add solo3 "孤狼"
+team add solo4 "孤狼"
+team add solo5 "孤狼"
+team add solo6 "孤狼"
+team add solo7 "孤狼"
+team add solo8 "孤狼"
+team add solo9 "孤狼"
+team add solo10 "孤狼"
+team add solo11 "孤狼"
+team add solo12 "孤狼"
+team add solo13 "孤狼"
+team add solo14 "孤狼"
+team add solo15 "孤狼"
+team add solo16 "孤狼"
 
 team modify red color red
 team modify blue color blue
 team modify green color green
 team modify white color white
-team modify solo color yellow
+team modify solo1 color gray
+team modify solo2 color gray
+team modify solo3 color gray
+team modify solo4 color gray
+team modify solo5 color gray
+team modify solo6 color gray
+team modify solo7 color gray
+team modify solo8 color gray
+team modify solo9 color gray
+team modify solo10 color gray
+team modify solo11 color gray
+team modify solo12 color gray
+team modify solo13 color gray
+team modify solo14 color gray
+team modify solo15 color gray
+team modify solo16 color gray
 
 team modify red friendlyFire false
 team modify blue friendlyFire false
 team modify green friendlyFire false
 team modify white friendlyFire false
-team modify solo friendlyFire true
+team modify solo1 friendlyFire true
+team modify solo2 friendlyFire true
+team modify solo3 friendlyFire true
+team modify solo4 friendlyFire true
+team modify solo5 friendlyFire true
+team modify solo6 friendlyFire true
+team modify solo7 friendlyFire true
+team modify solo8 friendlyFire true
+team modify solo9 friendlyFire true
+team modify solo10 friendlyFire true
+team modify solo11 friendlyFire true
+team modify solo12 friendlyFire true
+team modify solo13 friendlyFire true
+team modify solo14 friendlyFire true
+team modify solo15 friendlyFire true
+team modify solo16 friendlyFire true
+
+team modify red seeFriendlyInvisibles true
+team modify blue seeFriendlyInvisibles true
+team modify green seeFriendlyInvisibles true
+team modify white seeFriendlyInvisibles true
+team modify solo1 seeFriendlyInvisibles false
+team modify solo2 seeFriendlyInvisibles false
+team modify solo3 seeFriendlyInvisibles false
+team modify solo4 seeFriendlyInvisibles false
+team modify solo5 seeFriendlyInvisibles false
+team modify solo6 seeFriendlyInvisibles false
+team modify solo7 seeFriendlyInvisibles false
+team modify solo8 seeFriendlyInvisibles false
+team modify solo9 seeFriendlyInvisibles false
+team modify solo10 seeFriendlyInvisibles false
+team modify solo11 seeFriendlyInvisibles false
+team modify solo12 seeFriendlyInvisibles false
+team modify solo13 seeFriendlyInvisibles false
+team modify solo14 seeFriendlyInvisibles false
+team modify solo15 seeFriendlyInvisibles false
+team modify solo16 seeFriendlyInvisibles false
+
+team modify red nametagVisibility hideForOtherTeams
+team modify blue nametagVisibility hideForOtherTeams
+team modify green nametagVisibility hideForOtherTeams
+team modify white nametagVisibility hideForOtherTeams
+team modify solo1 nametagVisibility never
+team modify solo2 nametagVisibility never
+team modify solo3 nametagVisibility never
+team modify solo4 nametagVisibility never
+team modify solo5 nametagVisibility never
+team modify solo6 nametagVisibility never
+team modify solo7 nametagVisibility never
+team modify solo8 nametagVisibility never
+team modify solo9 nametagVisibility never
+team modify solo10 nametagVisibility never
+team modify solo11 nametagVisibility never
+team modify solo12 nametagVisibility never
+team modify solo13 nametagVisibility never
+team modify solo14 nametagVisibility never
+team modify solo15 nametagVisibility never
+team modify solo16 nametagVisibility never
+
 
 # 5. 大廳控制台變數
 # select_mode: 接收房主點擊指令書的訊號 (1=大逃殺, 2=軍備競賽)
@@ -279,7 +367,39 @@ scoreboard objectives add rand_val dummy "隨機數暫存"
 scoreboard objectives add backpack_level dummy
 data modify storage backpack:temp item set value {}
 
+#=============================================
+#=========         縮圈系統         ===========
+#=============================================
+# 全域狀態
+scoreboard players set #br_phase dummy -1
+scoreboard players set #br_timer dummy 0
+scoreboard players set #br_tick20 dummy 0
+
+# 地圖圓心座標
+scoreboard players set #br_cx dummy 0
+scoreboard players set #br_cz dummy 0
+
+# 預算圓心（Phase 0 計算後填入）
+scoreboard players set #br_p2cx dummy 0
+scoreboard players set #br_p2cz dummy 0
+scoreboard players set #br_p4cx dummy 0
+scoreboard players set #br_p4cz dummy 0
+scoreboard players set #br_p6cx dummy 0
+scoreboard players set #br_p6cz dummy 0
+
+# 平滑移動（毫格座標與步進）
+scoreboard players set #br_cxm dummy 0
+scoreboard players set #br_czm dummy 0
+scoreboard players set #br_sx dummy 0
+scoreboard players set #br_sz dummy 0
+
+# 常數
+scoreboard players set #br_c1000 dummy 1000
+
+# 動態縮圈 tick 數（供步進除法使用，每個縮圈 phase 開始時依地圖 set）
+scoreboard players set #br_pticks dummy 0
+
+
 function game_core:system/match_reset
 function game_core:system/game_end
-
 

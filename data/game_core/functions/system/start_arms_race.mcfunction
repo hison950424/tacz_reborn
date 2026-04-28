@@ -57,11 +57,12 @@ execute if score #global game_state matches 0 run tag @a remove in_base
 # ------------------------------------------
 # 說明: 將不在正規編制內(綠隊、白隊、孤狼隊)的玩家踢出隊伍，
 # 然後呼叫我們寫好的自動平衡程式，把無隊伍玩家平均分發到紅藍兩隊。
-execute if score #global game_state matches 0 run team join solo @a[team=green]
-execute if score #global game_state matches 0 run team join solo @a[team=white]
-execute if score #global game_state matches 0 run tellraw @a[sort=random,team=solo] {"text":"[系統] 你已被強制分配隊伍！","color":"red"}
+execute if score #global game_state matches 0 as @a[team=green] run tag @s add solo
+execute if score #global game_state matches 0 as @a[team=white] run tag @s add solo
+execute if score #global game_state matches 0 run tellraw @a[sort=random,tag=solo] {"text":"[系統] 你已被強制分配隊伍！","color":"red"}
 execute if score #global game_state matches 0 run execute store result score #team_turn temp_score run random value 1..2
-execute if score #global game_state matches 0 run execute as @a[sort=random,team=solo] run function game_core:system/random_team_2
+execute if score #global game_state matches 0 run execute as @a[sort=random,tag=solo] run function game_core:system/random_team_2
+execute if score #global game_state matches 0 run tag @a remove solo
 
 # ------------------------------------------
 # [步驟 4] 收回大廳選單與防呆機制

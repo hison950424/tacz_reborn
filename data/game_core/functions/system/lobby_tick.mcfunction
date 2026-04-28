@@ -279,20 +279,102 @@ execute as @a[scores={select_mode=10},tag=admin] run function game_core:system/s
 # ------------------------------------------
 # 路由 F: 處理玩家加入隊伍 (join_team)
 # ------------------------------------------
+# 先清除舊的 solo tag，避免重複選擇時標記殘留
+execute as @a[scores={join_team=1}] run tag @s remove solo
 execute as @a[scores={join_team=1}] run team join red @s
 execute as @a[scores={join_team=1}] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"紅隊！","color":"red"}]
 
+# 先清除舊的 solo tag，避免重複選擇時標記殘留
+execute as @a[scores={join_team=2}] run tag @s remove solo
 execute as @a[scores={join_team=2}] run team join blue @s
 execute as @a[scores={join_team=2}] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"藍隊！","color":"blue"}]
 
+# 先清除舊的 solo tag，避免重複選擇時標記殘留
+execute as @a[scores={join_team=3}] run tag @s remove solo
 execute as @a[scores={join_team=3}] run team join white @s
 execute as @a[scores={join_team=3}] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"白隊！","color":"white"}]
 
+# 先清除舊的 solo tag，避免重複選擇時標記殘留
+execute as @a[scores={join_team=4}] run tag @s remove solo
 execute as @a[scores={join_team=4}] run team join green @s
 execute as @a[scores={join_team=4}] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"綠隊！","color":"green"}]
 
-execute as @a[scores={join_team=5}] run team join solo @s
-execute as @a[scores={join_team=5}] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 選擇成為 ","color":"yellow"},{"text":"孤狼 (Solo)！","color":"dark_gray"}]
+#加入孤狼
+# 先清除舊的 solo tag，避免重複選擇時標記殘留
+execute as @a[scores={join_team=5}] run tag @s remove solo
+
+# ── slot 1 ──
+execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo1,gamemode=!spectator] run team join solo1 @s
+execute as @a[scores={join_team=5}] if entity @s[team=solo1] run tag @s add solo
+
+# ── slot 2 ──
+execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo2,gamemode=!spectator] run team join solo2 @s
+execute as @a[scores={join_team=5}] if entity @s[team=solo2] run tag @s add solo
+
+# ── slot 3 ──
+execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo3,gamemode=!spectator] run team join solo3 @s
+execute as @a[scores={join_team=5}] if entity @s[team=solo3] run tag @s add solo
+
+# ── slot 4 ──
+execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo4,gamemode=!spectator] run team join solo4 @s
+execute as @a[scores={join_team=5}] if entity @s[team=solo4] run tag @s add solo
+
+# ── slot 5 ──
+execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo5,gamemode=!spectator] run team join solo5 @s
+execute as @a[scores={join_team=5}] if entity @s[team=solo5] run tag @s add solo
+
+# ── slot 6 ──
+execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo6,gamemode=!spectator] run team join solo6 @s
+execute as @a[scores={join_team=5}] if entity @s[team=solo6] run tag @s add solo
+
+# ── slot 7 ──
+execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo7,gamemode=!spectator] run team join solo7 @s
+execute as @a[scores={join_team=5}] if entity @s[team=solo7] run tag @s add solo
+
+# ── slot 8 ──
+execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo8,gamemode=!spectator] run team join solo8 @s
+execute as @a[scores={join_team=5}] if entity @s[team=solo8] run tag @s add solo
+
+# ── slot 9 ──
+execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo9,gamemode=!spectator] run team join solo9 @s
+execute as @a[scores={join_team=5}] if entity @s[team=solo9] run tag @s add solo
+
+# ── slot 10 ──
+execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo10,gamemode=!spectator] run team join solo10 @s
+execute as @a[scores={join_team=5}] if entity @s[team=solo10] run tag @s add solo
+
+# ── slot 11 ──
+execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo11,gamemode=!spectator] run team join solo11 @s
+execute as @a[scores={join_team=5}] if entity @s[team=solo11] run tag @s add solo
+
+# ── slot 12 ──
+execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo12,gamemode=!spectator] run team join solo12 @s
+execute as @a[scores={join_team=5}] if entity @s[team=solo12] run tag @s add solo
+
+# ── slot 13 ──
+execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo13,gamemode=!spectator] run team join solo13 @s
+execute as @a[scores={join_team=5}] if entity @s[team=solo13] run tag @s add solo
+
+# ── slot 14 ──
+execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo14,gamemode=!spectator] run team join solo14 @s
+execute as @a[scores={join_team=5}] if entity @s[team=solo14] run tag @s add solo
+
+# ── slot 15 ──
+execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo15,gamemode=!spectator] run team join solo15 @s
+execute as @a[scores={join_team=5}] if entity @s[team=solo15] run tag @s add solo
+
+# ── slot 16 ──
+execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo16,gamemode=!spectator] run team join solo16 @s
+execute as @a[scores={join_team=5}] if entity @s[team=solo16] run tag @s add solo
+
+
+
+# ── 溢出：16 格全滿，循環分配至四色隊（不給 tag=solo）──
+execute as @a[scores={join_team=5},tag=!solo] run title @s actionbar {"text":"孤狼名額已滿，已自動分配至組隊模式","color":"yellow"}
+execute as @a[scores={join_team=5},tag=!solo] run function game_core:system/random_team_2
+
+execute as @a[scores={join_team=5},tag=solo] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"孤狼！","color":"gray"}]
+
 
 # ------------------------------------------
 # 路由 G: 管理員隊伍控制 (admin_team_ctrl) (原封不動保留)

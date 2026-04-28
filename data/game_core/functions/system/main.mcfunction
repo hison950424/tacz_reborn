@@ -13,6 +13,7 @@ execute if score #global game_state matches 2 run function game_core:system/arms
 
 # 狀態 0 (大廳): 執行大廳待機邏輯
 #強制將沒有隊伍的玩家加入孤狼
-execute if score #global game_state matches 0 run team join solo @a[team=]
+execute if score #global game_state matches 0 as @a[team=,sort=random,limit=1] run scoreboard players set @s join_team 5
+
 #執行大廳待機邏輯
 execute if score #global game_state matches 0 run function game_core:system/lobby_tick
