@@ -76,7 +76,9 @@ scoreboard players set #br_sz dummy 0
 
 execute at @e[type=minecraft:marker,tag=br_center,limit=1] run worldborder center ~ ~
 
-title @a times 10 60 20
-# title @a title {"text":"遊戲開始！","color":"gold","bold":true}
-# title @a subtitle {"text":"自由探索，縮圈前請找好位置","color":"yellow"}
-tellraw @a {"text":"[縮圈] 準備期開始。","color":"gold"}
+# ── 公告（依地圖顯示不同時間）──
+execute if score #global br_map matches 2 run tellraw @a ["",{"text":"[縮圈] ","color":"gold"},{"text":"準備期，4 分鐘後第一次縮圈。","color":"yellow"}]
+execute if score #global br_map matches 4 run tellraw @a ["",{"text":"[縮圈] ","color":"gold"},{"text":"準備期，4 分鐘後第一次縮圈。","color":"yellow"}]
+execute if score #global br_map matches 5 run tellraw @a ["",{"text":"[縮圈] ","color":"gold"},{"text":"準備期，4 分鐘後第一次縮圈。","color":"yellow"}]
+execute if score #global br_map matches 1 run tellraw @a ["",{"text":"[縮圈] ","color":"gold"},{"text":"準備期，5 分鐘後第一次縮圈。","color":"yellow"}]
+execute if score #global br_map matches 3 run tellraw @a ["",{"text":"[縮圈] ","color":"gold"},{"text":"準備期，6 分鐘後第一次縮圈。","color":"yellow"}]

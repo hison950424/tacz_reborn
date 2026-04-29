@@ -126,6 +126,19 @@ execute if score #br_phase dummy matches 4 if score #br_timer dummy matches ..0 
 execute if score #br_phase dummy matches 5 if score #br_timer dummy matches ..0 run function game_core:gamemode/br_phase6_start
 execute if score #br_phase dummy matches 6 if score #br_timer dummy matches ..0 run function game_core:gamemode/br_phase7_start
 
+#公告
+execute if score #br_phase dummy matches 0 if score #br_timer dummy matches 1200 run tellraw @a ["",{"text":"[縮圈] ","color":"aqua"},{"text":" 1 分鐘後縮圈。","color":"white"}]
+execute if score #br_phase dummy matches 0 if score #br_timer dummy matches 600 run tellraw @a ["",{"text":"[縮圈] ","color":"aqua"},{"text":" 30 秒後縮圈。","color":"white"}]
+execute if score #br_phase dummy matches 0 if score #br_timer dummy matches 200 run tellraw @a ["",{"text":"[縮圈] ","color":"red"},{"text":"10 秒後縮圈。","color":"white"}]
+execute if score #br_phase dummy matches 2 if score #br_timer dummy matches 1200 run tellraw @a ["",{"text":"[縮圈] ","color":"aqua"},{"text":" 1 分鐘後縮圈。","color":"white"}]
+execute if score #br_phase dummy matches 2 if score #br_timer dummy matches 600 run tellraw @a ["",{"text":"[縮圈] ","color":"aqua"},{"text":" 30 秒後縮圈。","color":"white"}]
+execute if score #br_phase dummy matches 2 if score #br_timer dummy matches 200 run tellraw @a ["",{"text":"[縮圈] ","color":"red"},{"text":"10 秒後縮圈。","color":"white"}]
+execute if score #br_phase dummy matches 4 if score #br_timer dummy matches 1200 run tellraw @a ["",{"text":"[縮圈] ","color":"aqua"},{"text":" 1 分鐘後縮圈。","color":"white"}]
+execute if score #br_phase dummy matches 4 if score #br_timer dummy matches 600 run tellraw @a ["",{"text":"[縮圈] ","color":"aqua"},{"text":" 30 秒後縮圈。","color":"white"}]
+execute if score #br_phase dummy matches 4 if score #br_timer dummy matches 200 run tellraw @a ["",{"text":"[縮圈] ","color":"red"},{"text":"10 秒後縮圈。","color":"white"}]
+execute if score #br_phase dummy matches 6 if score #br_timer dummy matches 1200 run tellraw @a ["",{"text":"[縮圈] ","color":"aqua"},{"text":" 1 分鐘後縮圈。","color":"white"}]
+execute if score #br_phase dummy matches 6 if score #br_timer dummy matches 600 run tellraw @a ["",{"text":"[縮圈] ","color":"aqua"},{"text":" 30 秒後縮圈。","color":"white"}]
+execute if score #br_phase dummy matches 6 if score #br_timer dummy matches 200 run tellraw @a ["",{"text":"[縮圈] ","color":"red"},{"text":"10 秒後縮圈。","color":"white"}]
 # ══════════════════════════════════════════
 # center marker 平滑移動（縮圈期 phase 1,3,5）
 # ══════════════════════════════════════════
@@ -158,18 +171,11 @@ execute if score #br_phase dummy matches 5 run execute store result score #br_cz
 execute if score #br_phase dummy matches 0.. at @e[type=minecraft:marker,tag=br_center,limit=1] run worldborder center ~ ~
 
 # ══════════════════════════════════════════
-# 每秒工作（tick20 = 0）
+# 空頭落地偵測
 # ══════════════════════════════════════════
 
-# 距離傷害（縮圈期 + 決賽圈）
-execute if score #br_phase dummy matches 1 if score #br_tick20 dummy matches 0 run function game_core:gamemode/br_calc_distance
-execute if score #br_phase dummy matches 3 if score #br_tick20 dummy matches 0 run function game_core:gamemode/br_calc_distance
-execute if score #br_phase dummy matches 5 if score #br_tick20 dummy matches 0 run function game_core:gamemode/br_calc_distance
-execute if score #br_phase dummy matches 7 if score #br_tick20 dummy matches 0 run function game_core:gamemode/br_calc_distance
+# delay 計數（-1 代表無空投在途中）
+execute if score #br_airdrop_delay dummy matches 0.. run scoreboard players add #br_airdrop_delay dummy 1
 
-# # br_next 粒子標記（縮圈期 + 停頓期，phase 1~5）
-# execute if score #br_phase dummy matches 1 if score #br_tick20 dummy matches 0 as @e[type=minecraft:marker,tag=br_next,limit=1] at @s run particle minecraft:end_rod ~ ~1 ~ 0.4 2 0.4 0.01 50
-# execute if score #br_phase dummy matches 2 if score #br_tick20 dummy matches 0 as @e[type=minecraft:marker,tag=br_next,limit=1] at @s run particle minecraft:end_rod ~ ~1 ~ 0.4 2 0.4 0.01 50
-# execute if score #br_phase dummy matches 3 if score #br_tick20 dummy matches 0 as @e[type=minecraft:marker,tag=br_next,limit=1] at @s run particle minecraft:end_rod ~ ~1 ~ 0.4 2 0.4 0.01 50
-# execute if score #br_phase dummy matches 4 if score #br_tick20 dummy matches 0 as @e[type=minecraft:marker,tag=br_next,limit=1] at @s run particle minecraft:end_rod ~ ~1 ~ 0.4 2 0.4 0.01 50
-# execute if score #br_phase dummy matches 5 if score #br_tick20 dummy matches 0 as @e[type=minecraft:marker,tag=br_next,limit=1] at @s run particle minecraft:end_rod ~ ~1 ~ 0.4 2 0.4 0.01 50
+# delay >= 20 且村民存在時才偵測 OnGround
+execute if score #br_airdrop_delay dummy matches 20.. if entity @e[type=minecraft:villager,tag=airdrop_bird] run function game_core:gamemode/br_airdrop_check

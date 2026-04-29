@@ -15,8 +15,9 @@ execute if score #global br_map matches 5 run worldborder set 10 120
 execute if score #global br_map matches 1 run worldborder set 10 150
 execute if score #global br_map matches 3 run worldborder set 10 150
 
-title @a times 5 80 20
-# title @a title {"text":"★ 決賽圈 ★","color":"dark_red","bold":true}
-# title @a subtitle {"text":"沒有人能逃出這場風暴！","color":"red"}
-tellraw @a {"text":"[縮圈] 決賽縮圈開始！決出勝者！","color":"dark_red","bold":true}
-playsound minecraft:entity.ender_dragon.growl master @a ~ ~ ~ 1 1
+# ── 公告 ──
+execute if score #global br_map matches 2 run tellraw @a ["",{"text":"[縮圈] ","color":"dark_red","bold":true},{"text":"★ 決賽縮圈開始！ ★","color":"red","bold":true}]
+execute if score #global br_map matches 4 run tellraw @a ["",{"text":"[縮圈] ","color":"dark_red","bold":true},{"text":"★ 決賽縮圈開始！ ★","color":"red","bold":true}]
+execute if score #global br_map matches 5 run tellraw @a ["",{"text":"[縮圈] ","color":"dark_red","bold":true},{"text":"★ 決賽縮圈開始！ ★","color":"red","bold":true}]
+execute if score #global br_map matches 1 run tellraw @a ["",{"text":"[縮圈] ","color":"dark_red","bold":true},{"text":"★ 決賽縮圈開始！ ★","color":"red","bold":true}]
+execute if score #global br_map matches 3 run tellraw @a ["",{"text":"[縮圈] ","color":"dark_red","bold":true},{"text":"★ 決賽縮圈開始！ ★","color":"red","bold":true}]

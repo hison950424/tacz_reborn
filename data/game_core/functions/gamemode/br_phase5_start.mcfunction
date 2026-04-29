@@ -35,7 +35,9 @@ summon minecraft:marker 0 64 0 {Tags:["br_next"]}
 execute store result entity @e[type=minecraft:marker,tag=br_next,limit=1] Pos[0] double 1.0 run scoreboard players get #br_p6cx dummy
 execute store result entity @e[type=minecraft:marker,tag=br_next,limit=1] Pos[2] double 1.0 run scoreboard players get #br_p6cz dummy
 
-title @a times 10 60 20
-# title @a title {"text":"⚠ 第三次縮圈！","color":"dark_red","bold":true}
-# title @a subtitle {"text":"決賽圈即將到來！","color":"yellow"}
-tellraw @a {"text":"[縮圈] 第三次縮圈開始！","color":"dark_red"}
+# ── 公告 ──
+execute if score #global br_map matches 2 run tellraw @a ["",{"text":"[縮圈] ","color":"dark_red"},{"text":"第三次縮圈開始！","color":"yellow"}]
+execute if score #global br_map matches 4 run tellraw @a ["",{"text":"[縮圈] ","color":"dark_red"},{"text":"第三次縮圈開始！","color":"yellow"}]
+execute if score #global br_map matches 5 run tellraw @a ["",{"text":"[縮圈] ","color":"dark_red"},{"text":"第三次縮圈開始！","color":"yellow"}]
+execute if score #global br_map matches 1 run tellraw @a ["",{"text":"[縮圈] ","color":"dark_red"},{"text":"第三次縮圈開始！","color":"yellow"}]
+execute if score #global br_map matches 3 run tellraw @a ["",{"text":"[縮圈] ","color":"dark_red"},{"text":"第三次縮圈開始！","color":"yellow"}]

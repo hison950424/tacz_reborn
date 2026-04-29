@@ -29,7 +29,12 @@ summon minecraft:marker 0 64 0 {Tags:["br_next"]}
 execute store result entity @e[type=minecraft:marker,tag=br_next,limit=1] Pos[0] double 1.0 run scoreboard players get #br_p4cx dummy
 execute store result entity @e[type=minecraft:marker,tag=br_next,limit=1] Pos[2] double 1.0 run scoreboard players get #br_p4cz dummy
 
-title @a times 10 60 20
-# title @a title {"text":"安全區已確定","color":"aqua","bold":true}
-# title @a subtitle {"text":"停頓期，救援隊友、補給資源","color":"white"}
-tellraw @a {"text":"[縮圈] 暫停縮圈。","color":"aqua"}
+# 空頭投放
+function game_core:gamemode/br_airdrop_spawn
+
+# ── 公告 ──
+execute if score #global br_map matches 2 run tellraw @a ["",{"text":"[縮圈] ","color":"aqua"},{"text":"第一次縮圈完畢，2 分鐘後第二次縮圈。","color":"white"}]
+execute if score #global br_map matches 4 run tellraw @a ["",{"text":"[縮圈] ","color":"aqua"},{"text":"第一次縮圈完畢，2 分鐘後第二次縮圈。","color":"white"}]
+execute if score #global br_map matches 5 run tellraw @a ["",{"text":"[縮圈] ","color":"aqua"},{"text":"第一次縮圈完畢，2 分鐘後第二次縮圈。","color":"white"}]
+execute if score #global br_map matches 1 run tellraw @a ["",{"text":"[縮圈] ","color":"aqua"},{"text":"第一次縮圈完畢，2 分 30 秒後第二次縮圈。","color":"white"}]
+execute if score #global br_map matches 3 run tellraw @a ["",{"text":"[縮圈] ","color":"aqua"},{"text":"第一次縮圈完畢，3 分鐘後第二次縮圈。","color":"white"}]

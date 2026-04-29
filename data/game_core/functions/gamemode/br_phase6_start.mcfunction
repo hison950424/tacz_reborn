@@ -25,7 +25,9 @@ scoreboard players operation #br_cz dummy = #br_p6cz dummy
 
 kill @e[type=minecraft:marker,tag=br_next]
 
-title @a times 10 60 20
-# title @a title {"text":"決賽圈位置已確定","color":"dark_red","bold":true}
-# title @a subtitle {"text":"最後的停頓期，做好準備！","color":"white"}
-tellraw @a {"text":"[縮圈] 暫停縮圈。","color":"dark_red"}
+# ── 公告 ──
+execute if score #global br_map matches 2 run tellraw @a ["",{"text":"[縮圈] ","color":"dark_red"},{"text":"第三次縮圈完畢， 1 分鐘後進入決賽縮圈。","color":"white"}]
+execute if score #global br_map matches 4 run tellraw @a ["",{"text":"[縮圈] ","color":"dark_red"},{"text":"第三次縮圈完畢， 1 分鐘後進入決賽縮圈。","color":"white"}]
+execute if score #global br_map matches 5 run tellraw @a ["",{"text":"[縮圈] ","color":"dark_red"},{"text":"第三次縮圈完畢， 1 分鐘後進入決賽縮圈。","color":"white"}]
+execute if score #global br_map matches 1 run tellraw @a ["",{"text":"[縮圈] ","color":"dark_red"},{"text":"第三次縮圈完畢， 1 分 30 秒後進入決賽縮圈。","color":"white"}]
+execute if score #global br_map matches 3 run tellraw @a ["",{"text":"[縮圈] ","color":"dark_red"},{"text":"第三次縮圈完畢， 1 分 30 秒後進入決賽縮圈。","color":"white"}]

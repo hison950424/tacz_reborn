@@ -375,6 +375,30 @@ execute as @a[scores={join_team=5},tag=!solo] run function game_core:system/rand
 
 execute as @a[scores={join_team=5},tag=solo] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"孤狼！","color":"gray"}]
 
+#防止solo玩家退出遊戲再進遊戲後與其他玩家在同一個solo隊伍
+scoreboard players set #solo_team dummy 0
+scoreboard players set #solo_team_count dummy 0
+execute as @a[team=solo1,limit=1] run scoreboard players add #solo_team dummy 1
+execute as @a[team=solo2,limit=1] run scoreboard players add #solo_team dummy 1
+execute as @a[team=solo3,limit=1] run scoreboard players add #solo_team dummy 1
+execute as @a[team=solo4,limit=1] run scoreboard players add #solo_team dummy 1
+execute as @a[team=solo5,limit=1] run scoreboard players add #solo_team dummy 1
+execute as @a[team=solo6,limit=1] run scoreboard players add #solo_team dummy 1
+execute as @a[team=solo7,limit=1] run scoreboard players add #solo_team dummy 1
+execute as @a[team=solo8,limit=1] run scoreboard players add #solo_team dummy 1
+execute as @a[team=solo9,limit=1] run scoreboard players add #solo_team dummy 1
+execute as @a[team=solo10,limit=1] run scoreboard players add #solo_team dummy 1
+execute as @a[team=solo11,limit=1] run scoreboard players add #solo_team dummy 1
+execute as @a[team=solo12,limit=1] run scoreboard players add #solo_team dummy 1
+execute as @a[team=solo13,limit=1] run scoreboard players add #solo_team dummy 1
+execute as @a[team=solo14,limit=1] run scoreboard players add #solo_team dummy 1
+execute as @a[team=solo15,limit=1] run scoreboard players add #solo_team dummy 1
+execute as @a[team=solo16,limit=1] run scoreboard players add #solo_team dummy 1
+execute as @a[tag=solo] run scoreboard players add #solo_team_count dummy 1
+execute unless score #solo_team dummy = #solo_team_count dummy as @a[tag=solo] run team leave @s
+execute unless score #solo_team dummy = #solo_team_count dummy as @a[tag=solo] run tag @s remove solo
+
+
 
 # ------------------------------------------
 # 路由 G: 管理員隊伍控制 (admin_team_ctrl) (原封不動保留)
@@ -412,6 +436,6 @@ scoreboard players enable @a join_team
 scoreboard players enable @a admin_team_ctrl
 
 
-# scoreboard players add test dummy 1
-# execute if score test dummy matches 100 run function game_core:dev/check_marker
-# execute if score test dummy matches 100.. run scoreboard players set test dummy 0
+scoreboard players add test dummy 1
+execute if score test dummy matches 60 run function game_core:dev/check_marker
+execute if score test dummy matches 60.. run scoreboard players set test dummy 0

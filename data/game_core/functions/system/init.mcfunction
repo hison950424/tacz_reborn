@@ -399,6 +399,11 @@ scoreboard players set #br_c1000 dummy 1000
 # 動態縮圈 tick 數（供步進除法使用，每個縮圈 phase 開始時依地圖 set）
 scoreboard players set #br_pticks dummy 0
 
+# 空頭系統
+scoreboard players set #br_airdrop_delay dummy -1
+scoreboard players set #air_x dummy 0
+scoreboard players set #air_z dummy 0
+
 
 function game_core:system/match_reset
 function game_core:system/game_end

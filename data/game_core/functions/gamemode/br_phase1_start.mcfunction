@@ -38,7 +38,9 @@ summon minecraft:marker 0 64 0 {Tags:["br_next"]}
 execute store result entity @e[type=minecraft:marker,tag=br_next,limit=1] Pos[0] double 1.0 run scoreboard players get #br_p2cx dummy
 execute store result entity @e[type=minecraft:marker,tag=br_next,limit=1] Pos[2] double 1.0 run scoreboard players get #br_p2cz dummy
 
-title @a times 10 60 20
-# title @a title {"text":"⚠ 縮圈開始！","color":"red","bold":true}
-# title @a subtitle {"text":"邊界正在縮小，粒子標記為安全區中心","color":"yellow"}
-tellraw @a {"text":"[縮圈] 第一次縮圈開始！前往安全區。","color":"red"}
+# ── 公告 ──
+execute if score #global br_map matches 2 run tellraw @a ["",{"text":"[縮圈] ","color":"red"},{"text":"第一次縮圈開始！","color":"yellow"}]
+execute if score #global br_map matches 4 run tellraw @a ["",{"text":"[縮圈] ","color":"red"},{"text":"第一次縮圈開始！","color":"yellow"}]
+execute if score #global br_map matches 5 run tellraw @a ["",{"text":"[縮圈] ","color":"red"},{"text":"第一次縮圈開始！","color":"yellow"}]
+execute if score #global br_map matches 1 run tellraw @a ["",{"text":"[縮圈] ","color":"red"},{"text":"第一次縮圈開始！","color":"yellow"}]
+execute if score #global br_map matches 3 run tellraw @a ["",{"text":"[縮圈] ","color":"red"},{"text":"第一次縮圈開始！","color":"yellow"}]

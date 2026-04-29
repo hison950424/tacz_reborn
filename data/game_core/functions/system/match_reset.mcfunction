@@ -31,8 +31,6 @@ tag @a remove in_border
 tag @a remove hunter_for_ui
 tag @a remove shop_admin
 tag @a remove br_used_altar
-execute as @a[tag=solo] run team leave @s
-execute as @a[tag=solo] run tag @s remove solo
 
 
 # marker 屍體 倒地村民 掉落物
@@ -43,6 +41,27 @@ kill @e[type=marker,tag=br_dropship]
 kill @e[type=minecraft:marker,tag=next_center]
 kill @e[type=corpse:corpse]
 kill @e[type=item]
+kill @e[type=minecraft:marker,tag=br_center]
+kill @e[type=minecraft:marker,tag=br_calc]
+kill @e[type=minecraft:marker,tag=br_next]
+
+#空頭重置
+# 步驟 1：刪除所有 crate_airdrop marker 位置的方塊（空頭箱）
+execute as @e[type=minecraft:marker,tag=crate_airdrop] at @s run setblock ~ ~ ~ air
+
+# 步驟 2：刪除所有 airdrop 相關 marker
+kill @e[type=minecraft:marker,tag=crate_airdrop]
+
+
+# 步驟 3：清除在途中的空投村民（如果遊戲結束時空頭還在天上）
+kill @e[type=minecraft:villager,tag=airdrop_bird]
+
+# 步驟 4：重設空頭系統狀態
+scoreboard players set #br_airdrop_delay dummy -1
+scoreboard players set #air_x dummy 0
+scoreboard players set #air_z dummy 0
+
+
 scoreboard players set #global br_phase 0
 #強制將全伺服器玩家的生死狀態洗白為 1 (存活)
 scoreboard players set @a br_death_state 1
