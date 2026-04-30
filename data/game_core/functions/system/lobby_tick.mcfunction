@@ -436,6 +436,4 @@ scoreboard players enable @a join_team
 scoreboard players enable @a admin_team_ctrl
 
 
-scoreboard players add test dummy 1
-execute if score test dummy matches 60 run function game_core:dev/check_marker
-execute if score test dummy matches 60.. run scoreboard players set test dummy 0
+

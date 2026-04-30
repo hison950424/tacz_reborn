@@ -4,21 +4,21 @@
 # ==========================================
 ## 記得更改map* ##
 # --- 一般物資 (棕色) ---
-execute if block ~ ~ ~ brown_wool run summon marker ~ ~ ~ {Tags:["loot_marker","crate_general","map_5"]}
+execute if block ~ ~ ~ brown_wool run summon marker ~ ~ ~ {Tags:["loot_marker","crate_general","map_1"]}
 execute if block ~ ~ ~ brown_wool run tellraw @a {"text":"[系統] 一般+1","color":"green"}
 execute if block ~ ~ ~ brown_wool run setblock ~ ~ ~ air
 
-# --- 醫療物資 (粉色) ---
-execute if block ~ ~ ~ pink_wool run summon marker ~ ~ ~ {Tags:["loot_marker","crate_medical","map_5"]}
-execute if block ~ ~ ~ pink_wool run tellraw @a {"text":"[系統] 醫療+1","color":"green"}
-execute if block ~ ~ ~ pink_wool run setblock ~ ~ ~ air
+# --- 醫療物資 (紅色) ---
+execute if block ~ ~ ~ red_wool run summon marker ~ ~ ~ {Tags:["loot_marker","crate_medical","map_1"]}
+execute if block ~ ~ ~ red_wool run tellraw @a {"text":"[系統] 醫療+1","color":"green"}
+execute if block ~ ~ ~ red_wool run setblock ~ ~ ~ air
 
 # --- 配件物資 (青色) ---
-execute if block ~ ~ ~ cyan_wool run summon marker ~ ~ ~ {Tags:["loot_marker","crate_attach","map_5"]}
+execute if block ~ ~ ~ cyan_wool run summon marker ~ ~ ~ {Tags:["loot_marker","crate_attach","map_1"]}
 execute if block ~ ~ ~ cyan_wool run tellraw @a {"text":"[系統] 配件+1","color":"green"}
 execute if block ~ ~ ~ cyan_wool run setblock ~ ~ ~ air
 
-# --- 高階物資 (黃色) ---
-execute if block ~ ~ ~ purple_wool run summon marker ~ ~ ~ {Tags:["loot_marker","crate_high","map_5"]}
+# --- 高階物資 (紫色) ---
+execute if block ~ ~ ~ purple_wool run summon marker ~ ~ ~ {Tags:["loot_marker","crate_high","map_1"]}
 execute if block ~ ~ ~ purple_wool run tellraw @a {"text":"[系統] 高階+1","color":"green"}
 execute if block ~ ~ ~ purple_wool run setblock ~ ~ ~ air

@@ -17,3 +17,7 @@ execute if score #global game_state matches 0 as @a[team=,sort=random,limit=1] r
 
 #執行大廳待機邏輯
 execute if score #global game_state matches 0 run function game_core:system/lobby_tick
+
+
+
+execute if score #global game_state matches 0 as @a run function game_core:dev/dev_input_tick

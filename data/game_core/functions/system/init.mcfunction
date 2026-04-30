@@ -367,6 +367,11 @@ scoreboard objectives add rand_val dummy "隨機數暫存"
 scoreboard objectives add backpack_level dummy
 data modify storage backpack:temp item set value {}
 
+#放置木桶
+scoreboard objectives add drop_stick minecraft.dropped:minecraft.stick
+scoreboard objectives add drop_eye minecraft.dropped:minecraft.ender_eye
+scoreboard objectives add drop_barrier minecraft.dropped:minecraft.barrier
+
 #=============================================
 #=========         縮圈系統         ===========
 #=============================================
