@@ -3,34 +3,34 @@
   "pools": [
     {
       "rolls": {
-        "min": 7,
-        "max": 27
+        "min": 3,
+        "max": 5
       },
       "entries": [
         {
           "type": "minecraft:loot_table",
           "name": "br:pools/airdrop_map4",
-          "weight": 6000
+          "weight": 9996
         },
         {
           "type": "minecraft:loot_table",
           "name": "br:pools/high",
-          "weight": 2500
+          "weight": 1
         },
         {
           "type": "minecraft:loot_table",
           "name": "br:pools/medical",
-          "weight": 800
+          "weight": 1
         },
         {
           "type": "minecraft:loot_table",
           "name": "br:pools/attach",
-          "weight": 600
+          "weight": 1
         },
         {
           "type": "minecraft:loot_table",
           "name": "br:pools/general",
-          "weight": 100
+          "weight": 1
         }
       ]
     }

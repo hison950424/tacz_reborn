@@ -25,7 +25,7 @@ execute as @e[type=minecraft:marker,tag=airdrop_calc,limit=1] store result score
 execute as @e[type=minecraft:marker,tag=airdrop_calc,limit=1] store result score #air_z dummy run data get entity @s Pos[2] 1
 
 # 召喚空投村民（名稱：空頭，緩降Id=28，隱形Id=14，緩速Id=2 Amp=99）
-execute at @e[type=minecraft:marker,tag=airdrop_calc,limit=1] run summon minecraft:villager ~ 260 ~ {CustomName:'{"text":"空頭","color":"gold","bold":true}',CustomNameVisible:1b,Silent:1b,Invulnerable:1b,Glowing:1b,ActiveEffects:[{Id:28,Amplifier:0,Duration:600,ShowParticles:0b},{Id:14,Amplifier:0,Duration:600,ShowParticles:0b},{Id:2,Amplifier:99,Duration:600,ShowParticles:0b}],Tags:["airdrop_bird"]}
+execute at @e[type=minecraft:marker,tag=airdrop_calc,limit=1] run summon minecraft:villager ~ 260 ~ {CustomName:'{"text":"空頭","color":"gold","bold":true}',CustomNameVisible:1b,Silent:1b,Invulnerable:1b,Glowing:1b,ActiveEffects:[{Id:28,Amplifier:1,Duration:600,ShowParticles:0b},{Id:14,Amplifier:0,Duration:600,ShowParticles:0b},{Id:2,Amplifier:99,Duration:600,ShowParticles:0b}],Tags:["airdrop_bird"]}
 
 kill @e[type=minecraft:marker,tag=airdrop_calc]
 
