@@ -51,9 +51,9 @@ execute if entity @s[tag=transfer_active] if score @s in_base_score matches 0 ru
 
 
 # --- 3. 死亡與重生緩衝 ---
-execute if score @s gd656killicon.death matches 0 as @s run scoreboard players set @s death_prev 0
-execute if score @s gd656killicon.death > @s death_prev run scoreboard players set @s respawn_timer 10
-execute if score @s gd656killicon.death > @s death_prev run scoreboard players operation @s death_prev = @s gd656killicon.death
+execute if score @s vanilla_death matches 0 as @s run scoreboard players set @s death_prev 0
+execute if score @s vanilla_death > @s death_prev run scoreboard players set @s respawn_timer 10
+execute if score @s vanilla_death > @s death_prev run scoreboard players operation @s death_prev = @s vanilla_death
 execute if score @s respawn_timer matches 1.. run scoreboard players remove @s respawn_timer 1
 
 execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. run function game_core:class/apply_class

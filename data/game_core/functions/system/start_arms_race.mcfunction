@@ -36,6 +36,7 @@ gd656killicon server statistics set kill @a 0
 scoreboard players set @a gd656killicon.score 0
 scoreboard players set @a gd656killicon.assist 0
 scoreboard players set @a gd656killicon.death 0
+scoreboard players set @a vanilla_death 0
 scoreboard players set @a gd656killicon.kill 0
 scoreboard players set #arms_race_score_debug dummy 0
 scoreboard players set @a respawn_timer -1

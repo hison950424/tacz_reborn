@@ -67,6 +67,7 @@ scoreboard players set #global br_phase 0
 scoreboard players set @a br_death_state 1
 scoreboard players set @a altar_progress 0
 scoreboard players set @a revive_progress 0
+scoreboard players set @a vanilla_death 0
 
 
 
