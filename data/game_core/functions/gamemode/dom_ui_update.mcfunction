@@ -153,12 +153,12 @@ execute if score #Point_a dom_state matches 4 at @e[type=marker,tag=Point_a] pos
 
 # --- B 點區域提示 ---
 #正常推進
-execute if score #Point_b dom_state matches 1..3 if score #b_contested temp_score matches 0 at @e[type=marker,tag=Point_b] positioned ~-5 ~-1 ~-5 as @a[dx=10,dy=3,dz=10] run title @s actionbar ["",{"text":"[B點] 佔領進度: ","color":"white"},{"score":{"name":"#b_prog_pct","objective":"temp_score"},"color":"aqua"},{"text":"%","color":"aqua"}]
+execute if score #Point_b dom_state matches 1..3 if score #b_contested temp_score matches 0 at @e[type=marker,tag=Point_b] positioned ~-5 ~-1 ~-5 as @a[dx=9,dy=3,dz=9] run title @s actionbar ["",{"text":"[B點] 佔領進度: ","color":"white"},{"score":{"name":"#b_prog_pct","objective":"temp_score"},"color":"aqua"},{"text":"%","color":"aqua"}]
 #奪回據點(1..是紅隊領先，所以顯示給藍隊。..-1是藍隊領先，所以顯示給紅隊)
-execute if score #Point_b dom_state matches 1..3 if score #b_contested temp_score matches 0 if score #Point_b dom_prog_b matches 1.. at @e[type=marker,tag=Point_b] positioned ~-5 ~-1 ~-5 as @a[dx=10,dy=3,dz=10] run title @s[team=blue] actionbar ["",{"text":"[B點] 敵方佔領進度: ","color":"white"},{"score":{"name":"#b_prog_pct","objective":"temp_score"},"color":"aqua"},{"text":"%","color":"aqua"}]
-execute if score #Point_b dom_state matches 1..3 if score #b_contested temp_score matches 0 if score #Point_b dom_prog_b matches ..-1 at @e[type=marker,tag=Point_b] positioned ~-5 ~-1 ~-5 as @a[dx=10,dy=3,dz=10] run title @s[team=red] actionbar ["",{"text":"[B點] 敵方佔領進度: ","color":"white"},{"score":{"name":"#b_prog_pct","objective":"temp_score"},"color":"aqua"},{"text":"%","color":"aqua"}]
+execute if score #Point_b dom_state matches 1..3 if score #b_contested temp_score matches 0 if score #Point_b dom_prog_b matches 1.. at @e[type=marker,tag=Point_b] positioned ~-5 ~-1 ~-5 as @a[dx=9,dy=3,dz=9] run title @s[team=blue] actionbar ["",{"text":"[B點] 敵方佔領進度: ","color":"white"},{"score":{"name":"#b_prog_pct","objective":"temp_score"},"color":"aqua"},{"text":"%","color":"aqua"}]
+execute if score #Point_b dom_state matches 1..3 if score #b_contested temp_score matches 0 if score #Point_b dom_prog_b matches ..-1 at @e[type=marker,tag=Point_b] positioned ~-5 ~-1 ~-5 as @a[dx=9,dy=3,dz=9] run title @s[team=red] actionbar ["",{"text":"[B點] 敵方佔領進度: ","color":"white"},{"score":{"name":"#b_prog_pct","objective":"temp_score"},"color":"aqua"},{"text":"%","color":"aqua"}]
 #雙方衝突
-execute if score #Point_b dom_state matches 1..3 if score #b_contested temp_score matches 1.. at @e[type=marker,tag=Point_b] positioned ~-5 ~-1 ~-5 as @a[dx=10,dy=3,dz=10] run title @s actionbar ["",{"text":"[B點] ⚠ 爭奪中 ","color":"gold"}]
+execute if score #Point_b dom_state matches 1..3 if score #b_contested temp_score matches 1.. at @e[type=marker,tag=Point_b] positioned ~-5 ~-1 ~-5 as @a[dx=9,dy=3,dz=9] run title @s actionbar ["",{"text":"[B點] ⚠ 爭奪中 ","color":"gold"}]
 #休戰模式
 execute if score #Point_b dom_state matches 4 at @e[type=marker,tag=Point_b] positioned ~-5 ~-1 ~-5 as @a[dx=9,dy=3,dz=9] run title @s actionbar ["",{"text":"[B點] ⏳ 據點休戰中，暫停推進","color":"gray"}]
 

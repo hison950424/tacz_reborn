@@ -31,7 +31,7 @@ execute store result entity @e[type=minecraft:marker,tag=br_next,limit=1] Pos[2]
 
 # 空頭投放
 execute store result score airdrop dummy run random value 1..100
-execute if score airdrop dummy matches 1..50 run function game_core:gamemode/br_airdrop_spawn
+execute if score airdrop dummy matches 1..25 run function game_core:gamemode/br_airdrop_spawn
 
 # ── 公告 ──
 execute if score #global br_map matches 2 run tellraw @a ["",{"text":"[縮圈] ","color":"aqua"},{"text":"第一次縮圈完畢，2 分鐘後第二次縮圈。","color":"white"}]

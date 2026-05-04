@@ -181,24 +181,9 @@
           ]
         },
         {
-          "type": "minecraft:item",
-          "name": "minecraft:netherite_helmet",
-          "weight": 60
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:netherite_chestplate",
-          "weight": 60
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:netherite_leggings",
-          "weight": 60
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:netherite_boots",
-          "weight": 60
+          "type": "minecraft:loot_table",
+          "name": "br:custom/netherite_set",
+          "weight": 240
         },
         {
           "type": "minecraft:item",

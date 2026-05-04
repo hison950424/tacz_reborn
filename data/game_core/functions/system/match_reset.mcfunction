@@ -68,11 +68,20 @@ scoreboard players set @a br_death_state 1
 scoreboard players set @a altar_progress 0
 scoreboard players set @a revive_progress 0
 
+
+
+
 #靈魂祭壇CD重置
 execute as @e[type=text_display,tag=br_altar] run scoreboard players set @s altar_cd 0
 
 # 1. 狀態機重置 (切換回大廳模式)
 scoreboard players set #global game_state 0
+
+# [軍備競賽]轉帳系統防呆 強制關閉並清理所有轉帳狀態與金額
+tag @a remove transfer_active
+tag @a remove transfer_target
+scoreboard players set @a transfer_val 0
+scoreboard players set #arms_race_score_debug dummy 0
 
 # [團隊死鬥]關閉側邊欄顯示，並徹底移除該計分板
 scoreboard objectives setdisplay sidebar
@@ -256,6 +265,7 @@ execute as @a[tag=!admin] run give @s written_book{title:"隊伍選擇",author:"
 execute as @a[tag=admin] run give @s written_book{title:"模式選擇書",author:"系統",pages:['{"text":" ==== 模式選擇 ====\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"[▶ 大逃殺模式]\\n\\n","color":"dark_gray","bold":false,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 1"}},{"text":"[▶ 軍備競賽模式]\\n","color":"dark_green","bold":false,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 2"}}]}']} 1
 
 execute as @a[tag=admin] run give @s written_book{title:"隊伍選擇 Plus",author:"系統",pages:['{"text":" == 選擇隊伍 ==\\n","color":"dark_purple","bold":true,"extra":[{"text":"[紅] ","color":"red","bold":false,"clickEvent":{"action":"run_command","value":"/trigger join_team set 1"}},{"text":"[藍] ","color":"blue","bold":false,"clickEvent":{"action":"run_command","value":"/trigger join_team set 2"}},{"text":"[白] ","color":"gray","bold":false,"clickEvent":{"action":"run_command","value":"/trigger join_team set 3"}},{"text":"[綠] ","color":"green","bold":false,"clickEvent":{"action":"run_command","value":"/trigger join_team set 4"}},{"text":"[孤狼]\\n\\n","color":"dark_gray","bold":false,"clickEvent":{"action":"run_command","value":"/trigger join_team set 5"}},{"text":" == 管理員控制 ==\\n","color":"dark_red","bold":true},{"text":"[隨機雙分隊 (紅/藍)]\\n","color":"gold","bold":false,"clickEvent":{"action":"run_command","value":"/trigger admin_team_ctrl set 1"}},{"text":"[隨機三分隊 (紅/藍/白)]\\n","color":"gold","bold":false,"clickEvent":{"action":"run_command","value":"/trigger admin_team_ctrl set 2"}},{"text":"[隨機四分隊 (全)]\\n\\n","color":"gold","bold":false,"clickEvent":{"action":"run_command","value":"/trigger admin_team_ctrl set 3"}},{"text":"[沒收玩家隊伍書]\\n","color":"dark_gray","bold":false,"clickEvent":{"action":"run_command","value":"/trigger admin_team_ctrl set 4"}}]}']} 1
+
 
 
 #隱藏bossbar

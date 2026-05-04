@@ -37,9 +37,14 @@ scoreboard players set @a gd656killicon.score 0
 scoreboard players set @a gd656killicon.assist 0
 scoreboard players set @a gd656killicon.death 0
 scoreboard players set @a gd656killicon.kill 0
+scoreboard players set #arms_race_score_debug dummy 0
 scoreboard players set @a respawn_timer -1
 scoreboard players set @a death_prev 0
 scoreboard players set @a kill_prev 0
+# [轉帳系統防呆] 強制關閉並清理所有轉帳狀態與金額
+tag @a remove transfer_active
+tag @a remove transfer_target
+scoreboard players set @a transfer_val 0
 
 
 # 不能設為 0，因為我們用 < shop_price 來判定餘額不足，所以必須保留一點初始值，剛好有BUG會讓自由人開局時多5元，那就讓不是自由人的玩家也加5元，確保平衡
@@ -83,6 +88,10 @@ execute if score #global game_state matches 0 as @a run function game_core:class
 execute if score #global game_state matches 0 as @a run function game_core:class/reset_throwables
 execute if score #global game_state matches 0 as @a run function game_core:class/give_ammo_box
 
+# --- 同步 TDM 與 DOM 的隊伍 ID (Team ID) ---
+# 說明: BR 以外的模式原生缺乏 team_id，在此處強制同步，以利後續轉帳等同隊判定。
+execute if score #global game_state matches 0 as @a[team=red] run scoreboard players set @s team_id 1
+execute if score #global game_state matches 0 as @a[team=blue] run scoreboard players set @s team_id 2
 
 # 1. 動態綁定死亡重生點 (讓玩家死亡後在 Marker 處復活)
 execute if score #global game_state matches 0 at @e[type=marker,tag=red_spawn,limit=1] run spawnpoint @a[team=red] ~ ~ ~

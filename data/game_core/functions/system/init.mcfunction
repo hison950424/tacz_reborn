@@ -50,6 +50,11 @@ scoreboard objectives add shop_buy trigger "Shop Action"
 # shop_balance: 後台計算機，用來在買東西瞬間暫存玩家的 GD656 分數以判斷餘額
 scoreboard objectives add shop_balance dummy "Shop Balance"
 
+# --- 電子轉帳系統變數 ---
+scoreboard objectives add transfer_menu trigger "啟動轉帳選單"
+scoreboard objectives add transfer_act trigger "轉帳操作按鈕"
+scoreboard objectives add transfer_val dummy "暫存轉帳金額"
+
 # 3. 伺服器規則防護
 gamerule commandBlockOutput false
 #詳細指令(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)
