@@ -23,12 +23,18 @@ execute as @a[tag=confirm_target,limit=1] run function game_core:shop/sync_add
 scoreboard players operation @s gd656killicon.score -= #transfer_amount temp_score
 execute as @a[tag=confirm_target,limit=1] run scoreboard players operation @s gd656killicon.score += #transfer_amount temp_score
 
-# 6. 音效與視覺回饋
+# 6. [冷卻] 設定雙方轉帳冷卻時間 (900 ticks = 45秒)
+# 防止記分板同步延遲期間的二次轉帳洗錢
+scoreboard players set @s transfer_cooldown 900
+execute as @a[tag=confirm_target,limit=1] run scoreboard players set @s transfer_cooldown 900
+execute as @a[tag=confirm_target,limit=1] run function game_core:shop/force_cancel
+
+# 7. 音效與視覺回饋
 playsound entity.player.levelup master @s ~ ~ ~ 1 1.5
 execute as @a[tag=confirm_target,limit=1] run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 1
 tellraw @s ["",{"text":"[系統] 成功匯出 💰 ","color":"green"},{"score":{"name":"#transfer_amount","objective":"temp_score"},"color":"yellow"},{"text":" 元。","color":"green"}]
 execute as @a[tag=confirm_target,limit=1] run tellraw @s ["",{"text":"[系統] 收到隊友的匯款 💰 ","color":"green"},{"score":{"name":"#transfer_amount","objective":"temp_score"},"color":"yellow"},{"text":" 元！","color":"green"}]
 
-# 7. 強制關閉與清理
+# 8. 強制關閉與清理
 tag @a remove confirm_target
 function game_core:shop/force_cancel

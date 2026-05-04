@@ -232,6 +232,9 @@ scoreboard objectives add temp_score dummy "系統暫存"
 scoreboard objectives add shop_trigger dummy "商店觸發器"
 scoreboard objectives add temp dummy "商店與系統用的暫存計分板"
 
+#轉帳系統
+scoreboard objectives add transfer_cooldown dummy "轉帳系統冷卻tick"
+
 # ==========================================
 # 新增: TDM 動態設定變數與觸發器 (請加入 init.mcfunction)
 # ==========================================

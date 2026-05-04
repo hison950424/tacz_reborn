@@ -3,10 +3,10 @@
 # 執行者: @s (每個玩家每 Tick 僅執行一次)
 # ==========================================
 
-#debug
-scoreboard players add #arms_race_score_debug dummy 1
-execute if score #arms_race_score_debug dummy matches 22.. run scoreboard players set #arms_race_score_debug dummy 21
-execute if score #arms_race_score_debug dummy matches 0..20 as @s run function game_core:gamemode/arms_race_score_debug
+execute as @s if score @s gd656killicon.score matches 5 run scoreboard players set @s gd656killicon.score 0
+# scoreboard players add #arms_race_score_debug dummy 1
+# execute if score #arms_race_score_debug dummy matches 22.. run scoreboard players set #arms_race_score_debug dummy 21
+# execute if score #arms_race_score_debug dummy matches 0..20 as @s run function game_core:gamemode/arms_race_score_debug
 
 # --- 1. 雜項清理 ---
 clear @s tacz:ammo
@@ -42,6 +42,8 @@ execute if entity @s[team=blue,tag=in_base] if score @s in_base_score matches 0 
 execute if entity @s[team=blue,tag=in_base] if score @s in_base_score matches 0 run tag @s remove in_base
 
 # --- 轉帳系統事件監聽 ---
+# 0. 轉帳冷卻倒計時 (每 tick -1，共 600 ticks = 30秒)
+execute if score @s transfer_cooldown matches 1.. run scoreboard players remove @s transfer_cooldown 1
 # 1. 監聽玩家點擊「開啟轉帳」按鈕
 execute if score @s transfer_menu matches 1.. run function game_core:shop/open_menu
 # 2. 監聽玩家點擊「增減金額/取消」按鈕

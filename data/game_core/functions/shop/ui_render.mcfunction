@@ -7,7 +7,7 @@ scoreboard players enable @s transfer_act
 
 # 推播高密度控制台 (以大量的空白推走舊訊息防洗頻)
 tellraw @s {"text":"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"}
-tellraw @s ["",{"text":"=== 💸 戰術轉帳終端 ===","color":"gold","bold":true}]
+tellraw @s ["",{"text":"=== 💸 轉帳終端 ===","color":"gold","bold":true}]
 tellraw @s ["",{"text":"當前可用餘額: ","color":"gray"},{"score":{"name":"@s","objective":"gd656killicon.score"},"color":"green"},{"text":" 元","color":"green"}]
 tellraw @s ["",{"text":"預計匯出金額: ","color":"gray"},{"score":{"name":"@s","objective":"transfer_val"},"color":"yellow"},{"text":" 元","color":"yellow"}]
 tellraw @s {"text":"-----------------------","color":"dark_gray"}

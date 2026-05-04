@@ -9,6 +9,10 @@ execute at @s run playsound ui.button.click master @s ~ ~ ~ 1 1.5
 execute store result score #action_id temp_score run scoreboard players get @s transfer_act
 scoreboard players set @s transfer_act 0
 
+# 獲取真實可轉帳上限 (若餘額為負數，視為 0)
+scoreboard players operation #max_transfer temp_score = @s gd656killicon.score
+execute if score #max_transfer temp_score matches ..-1 run scoreboard players set #max_transfer temp_score 0
+
 # 運算
 execute if score #action_id temp_score matches 1 run scoreboard players remove @s transfer_val 500
 execute if score #action_id temp_score matches 2 run scoreboard players remove @s transfer_val 50
