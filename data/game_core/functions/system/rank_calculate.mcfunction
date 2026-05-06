@@ -4,6 +4,39 @@
 # 孤狼BR獲勝時，br_win_check 需預先對獲勝玩家 tag br_winner
 # ==========================================
 
+# --- 依模式切換 RP 常數 ---
+# BR（arms_sub_mode=0）：擊殺/助攻/勝負倍率全面提升，死亡懲罰降低
+#擊殺+(倍率)
+execute if score #global arms_sub_mode matches 0 run scoreboard players set #rp_k5 rank_const 10
+#助攻+(倍率)
+execute if score #global arms_sub_mode matches 0 run scoreboard players set #rp_a2 rank_const 4
+#死亡-(倍率)
+execute if score #global arms_sub_mode matches 0 run scoreboard players set #rp_d3 rank_const 2
+#連勝+(倍率)
+execute if score #global arms_sub_mode matches 0 run scoreboard players set #rp_s20 rank_const 40
+#勝利+(常數)
+execute if score #global arms_sub_mode matches 0 run scoreboard players set #rp_w50 rank_const 120
+#敗場-(常數)
+execute if score #global arms_sub_mode matches 0 run scoreboard players set #rp_l15 rank_const 10
+#拉起+(倍率)
+execute if score #global arms_sub_mode matches 0 run scoreboard players set #rp_rev rank_const 15
+#靈魂祭壇復活+(倍率)
+execute if score #global arms_sub_mode matches 0 run scoreboard players set #rp_alt rank_const 30
+
+# 軍備競賽（TDM/DOM）：確保使用預設值
+#擊殺+(倍率)
+execute if score #global arms_sub_mode matches 1..2 run scoreboard players set #rp_k5 rank_const 5
+#助攻+(倍率)
+execute if score #global arms_sub_mode matches 1..2 run scoreboard players set #rp_a2 rank_const 2
+#死亡-(倍率)
+execute if score #global arms_sub_mode matches 1..2 run scoreboard players set #rp_d3 rank_const 3
+#連勝+(倍率)
+execute if score #global arms_sub_mode matches 1..2 run scoreboard players set #rp_s20 rank_const 20
+#勝利+(常數)
+execute if score #global arms_sub_mode matches 1..2 run scoreboard players set #rp_w50 rank_const 50
+#敗場-(常數)
+execute if score #global arms_sub_mode matches 1..2 run scoreboard players set #rp_l15 rank_const 15
+
 tag @a remove rp_winner
 tag @a remove rp_loser
 

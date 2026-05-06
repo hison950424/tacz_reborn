@@ -13,7 +13,11 @@ gamemode adventure @s
 # 移除跑酷或死鬥標記以防萬一
 tag @s remove on_parkour
 tag @s remove on_minidm
-tag @s remove fight
+execute as @s[tag=!fight] run gd656killicon server statistics set score @s 0
+execute as @s[tag=!fight] run gd656killicon server statistics set assist @s 0
+execute as @s[tag=!fight] run gd656killicon server statistics set death @s 0
+execute as @s[tag=!fight] run gd656killicon server statistics set kill @s 0
+execute as @s[tag=!fight] run tag @s add fight
 tag @s add in_lobby
 
 

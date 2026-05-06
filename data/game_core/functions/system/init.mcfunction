@@ -187,6 +187,23 @@ scoreboard players set #rp_k5 rank_const 5
 scoreboard players set #rp_a2 rank_const 2
 scoreboard players set #rp_d3 rank_const 3
 scoreboard players set #rp_s20 rank_const 20
+scoreboard players set #rp_w50 rank_const 50
+scoreboard players set #rp_l15 rank_const 15
+scoreboard players set #rp_rev rank_const 15
+scoreboard players set #rp_alt rank_const 30
+scoreboard objectives add stat_wins_br dummy "BR勝場"
+scoreboard objectives add stat_wins_tdm dummy "TDM勝場"
+scoreboard objectives add stat_wins_dom dummy "DOM勝場"
+scoreboard objectives add stat_losses_br dummy "BR敗場"
+scoreboard objectives add stat_losses_tdm dummy "TDM敗場"
+scoreboard objectives add stat_losses_dom dummy "DOM敗場"
+scoreboard objectives add stat_streak_br dummy "BR連勝"
+scoreboard objectives add stat_streak_tdm dummy "TDM連勝"
+scoreboard objectives add stat_streak_dom dummy "DOM連勝"
+scoreboard objectives add stat_br_revives dummy "BR拉起累計"
+scoreboard objectives add stat_br_revives_match dummy "本局拉起次數"
+scoreboard objectives add stat_br_altars dummy "BR祭壇累計"
+scoreboard objectives add stat_br_altars_match dummy "本局祭壇次數"
 scoreboard objectives add dummy dummy "運算用"
 scoreboard players set #winner_team dummy 0
 
@@ -425,6 +442,7 @@ scoreboard objectives add drop_stick minecraft.dropped:minecraft.stick
 scoreboard objectives add drop_eye minecraft.dropped:minecraft.ender_eye
 scoreboard objectives add drop_barrier minecraft.dropped:minecraft.barrier
 scoreboard objectives add potion_count dummy "大補藥水數量暫存"
+scoreboard objectives add show_stat trigger "展示個人戰績"
 
 #=============================================
 #=========         縮圈系統         ===========

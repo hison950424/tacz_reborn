@@ -82,6 +82,19 @@ execute as @a unless score @s park_best_display matches 0.. run scoreboard playe
 execute as @a unless score @s stat_wins matches 0.. run scoreboard players set @s stat_wins 0
 execute as @a unless score @s stat_losses matches 0.. run scoreboard players set @s stat_losses 0
 execute as @a unless score @s stat_streak matches 0.. run scoreboard players set @s stat_streak 0
+execute as @a unless score @s stat_wins_br matches 0.. run scoreboard players set @s stat_wins_br 0
+execute as @a unless score @s stat_wins_tdm matches 0.. run scoreboard players set @s stat_wins_tdm 0
+execute as @a unless score @s stat_wins_dom matches 0.. run scoreboard players set @s stat_wins_dom 0
+execute as @a unless score @s stat_losses_br matches 0.. run scoreboard players set @s stat_losses_br 0
+execute as @a unless score @s stat_losses_tdm matches 0.. run scoreboard players set @s stat_losses_tdm 0
+execute as @a unless score @s stat_losses_dom matches 0.. run scoreboard players set @s stat_losses_dom 0
+execute as @a unless score @s stat_streak_br matches 0.. run scoreboard players set @s stat_streak_br 0
+execute as @a unless score @s stat_streak_tdm matches 0.. run scoreboard players set @s stat_streak_tdm 0
+execute as @a unless score @s stat_streak_dom matches 0.. run scoreboard players set @s stat_streak_dom 0
+execute as @a unless score @s stat_br_revives matches 0.. run scoreboard players set @s stat_br_revives 0
+execute as @a unless score @s stat_br_altars matches 0.. run scoreboard players set @s stat_br_altars 0
+scoreboard players set @a stat_br_revives_match 0
+scoreboard players set @a stat_br_altars_match 0
 
 
 #靈魂祭壇CD重置

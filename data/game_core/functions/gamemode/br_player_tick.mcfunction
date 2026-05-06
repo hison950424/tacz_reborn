@@ -115,6 +115,8 @@ execute if score @s sneak_time matches 1.. at @s anchored eyes positioned ^ ^ ^1
 
 execute if score @s revive_progress matches 200.. run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 1.2
 execute if score @s revive_progress matches 200.. at @s anchored eyes positioned ^ ^ ^1.5 run tag @e[type=villager,tag=being_revived,distance=..1.2,limit=1] add revive_success
+execute if score @s revive_progress matches 200.. run scoreboard players add @s stat_br_revives 1
+execute if score @s revive_progress matches 200.. run scoreboard players add @s stat_br_revives_match 1
 execute if score @s revive_progress matches 200.. run scoreboard players set @s revive_progress 0
 
 # --- [9] 倒地玩家狀態監聽 ---
@@ -182,6 +184,8 @@ execute if score @s br_death_state matches 1 if score @s altar_progress matches 
 execute if score @s br_death_state matches 1 if score @s altar_progress matches 1..199 if score #global br_timer matches 0 at @s as @a[distance=..180] unless score @s team_id = #current_player team_id run title @s actionbar {"text":"⚠ 附近有人正在啟用祭壇！","color":"gold","bold":true}
 
 # 5. 滿 10 秒觸發復活
+execute if score @s altar_progress matches 200.. run scoreboard players add @s stat_br_altars 1
+execute if score @s altar_progress matches 200.. run scoreboard players add @s stat_br_altars_match 1
 execute if score @s altar_progress matches 200.. run function game_core:gamemode/br_altar_execute
 
 # --- [13] 負重系統 ---
