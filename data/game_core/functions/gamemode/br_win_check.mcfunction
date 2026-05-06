@@ -17,10 +17,22 @@ execute if score #br_alive_solo br_sys matches 1.. run scoreboard players operat
 
 # 存活隊伍數 <= 1：遊戲結束（隊伍模式剩最後一隊，或孤狼模式剩最後一人）
 execute if score #teams_alive br_sys matches ..1 if score #br_alive_red br_sys matches 1.. run title @a title {"text":"紅隊獲勝！","color":"red","bold":true}
+execute if score #teams_alive br_sys matches ..1 if score #br_alive_red br_sys matches 1.. run scoreboard players set #winner_team dummy 1
+
 execute if score #teams_alive br_sys matches ..1 if score #br_alive_blue br_sys matches 1.. run title @a title {"text":"藍隊獲勝！","color":"blue","bold":true}
+execute if score #teams_alive br_sys matches ..1 if score #br_alive_blue br_sys matches 1.. run scoreboard players set #winner_team dummy 2
+
 execute if score #teams_alive br_sys matches ..1 if score #br_alive_green br_sys matches 1.. run title @a title {"text":"綠隊獲勝！","color":"green","bold":true}
+execute if score #teams_alive br_sys matches ..1 if score #br_alive_green br_sys matches 1.. run scoreboard players set #winner_team dummy 3
+
 execute if score #teams_alive br_sys matches ..1 if score #br_alive_white br_sys matches 1.. run title @a title {"text":"白隊獲勝！","color":"white","bold":true}
+execute if score #teams_alive br_sys matches ..1 if score #br_alive_white br_sys matches 1.. run scoreboard players set #winner_team dummy 4
+
 execute if score #teams_alive br_sys matches ..1 if score #br_alive_solo br_sys matches 1.. run title @a title {"text":"孤狼獲勝！","color":"gray","bold":true}
+execute if score #teams_alive br_sys matches ..1 if score #br_alive_solo br_sys matches 1.. as @a if score @s br_death_state matches 1 run tag @s add br_winner
+execute if score #teams_alive br_sys matches ..1 if score #br_alive_solo br_sys matches 1.. run scoreboard players set #winner_team dummy 5
+
 execute if score #teams_alive br_sys matches 0 run title @a title {"text":"同時死亡，無人獲勝。","color":"dark_gray","bold":true}
+scoreboard players set #winner_team dummy 0
 
 execute if score #teams_alive br_sys matches ..1 run function game_core:system/match_end_sequence

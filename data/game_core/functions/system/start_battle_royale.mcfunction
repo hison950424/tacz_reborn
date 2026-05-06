@@ -16,6 +16,12 @@ tag @a remove br_downed
 tag @a remove has_slime
 tag @a remove br_eliminated
 tag @a remove br_used_altar
+# 玩家離開大廳 → 移除安全領域標記
+tag @a remove in_lobby
+tag @a remove on_parkour
+tag @a remove in_combat
+tag @a remove has_lobby_terminal
+
 # 清除所有 BR 相關實體
 kill @e[type=marker,tag=br_tracker]
 kill @e[type=marker,tag=br_soul_marker]
@@ -23,6 +29,8 @@ kill @e[type=villager,tag=br_downed_mob]
 kill @e[type=marker,tag=br_dropship]
 kill @e[type=corpse:corpse]
 # 清除計分板殘留數值
+# 重置 #winner_team（防止上局殘留）
+scoreboard players set #winner_team dummy 0
 scoreboard players set #global_id br_sys 0
 scoreboard players set #global br_timer 0
 scoreboard players reset @a br_id
@@ -85,8 +93,8 @@ scoreboard players set @a sneak_time 0
 # br_on_cart：還在空投機上，尚未跳出
 tag @a add br_deploying
 tag @a add br_on_cart
-
-
+tag @s remove fight
+tag @s remove on_minidm
 
 # === [5] 傳送玩家至各地圖開局等待區 ===
 # 等待區是玩家站立、觀看倒數的安全區域

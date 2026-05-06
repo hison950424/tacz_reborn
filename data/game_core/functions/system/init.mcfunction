@@ -174,6 +174,51 @@ team modify solo16 nametagVisibility never
 # select_mode: 接收房主點擊指令書的訊號 (1=大逃殺, 2=軍備競賽)
 scoreboard objectives add select_mode trigger "Select Mode"
 
+# ========== 十一階競技榮譽系統 ==========
+scoreboard objectives add rp_score dummy "RP積分"
+scoreboard objectives add rp_delta dummy "RP計算暫存"
+scoreboard objectives add rank_tier dummy "軍階等級(1-11)"
+scoreboard objectives add stat_wins dummy "累計勝場"
+scoreboard objectives add stat_losses dummy "累計敗場"
+scoreboard objectives add stat_streak dummy "當前連勝"
+scoreboard objectives add rank_temp dummy "排名計算暫存"
+scoreboard objectives add rank_const dummy "排名計算常數"
+scoreboard players set #rp_k5 rank_const 5
+scoreboard players set #rp_a2 rank_const 2
+scoreboard players set #rp_d3 rank_const 3
+scoreboard players set #rp_s20 rank_const 20
+scoreboard objectives add dummy dummy "運算用"
+scoreboard players set #winner_team dummy 0
+
+# ========== 大廳指令書 ==========
+scoreboard objectives add lobby_terminal trigger "大廳指令書"
+scoreboard objectives add admin_terminal trigger "管理員指令書"
+scoreboard objectives add combat_tag dummy "戰鬥標記計時(tick)"
+scoreboard objectives add combat_tag_sec dummy "戰鬥標記剩餘(秒)"
+scoreboard objectives add prev_health dummy "前一tick血量暫存"
+
+# ========== 迷你死鬥 ==========
+scoreboard objectives add minidm_streak dummy "迷你死鬥連殺"
+scoreboard objectives add minidm_kill_prev dummy "迷你死鬥殺敵前值"
+scoreboard objectives add minidm_death_prev dummy "迷你死鬥死亡前值"
+
+# ========== 跑酷系統 ==========
+scoreboard objectives add park_timer dummy "跑酷計時(tick)"
+scoreboard objectives add park_current_sec dummy "跑酷即時秒數"
+scoreboard objectives add park_best dummy "個人最佳(tick)"
+scoreboard objectives add park_best_sec dummy "個人最佳(秒)"
+scoreboard objectives add park_best_display dummy "個人最佳顯示(秒)"
+scoreboard objectives add park_leaderboard dummy "跑酷排行榜"
+scoreboard players set #park_div20 rank_const 20
+# scoreboard players set #park_top1_time park_leaderboard 9999
+# scoreboard players set #park_top2_time park_leaderboard 9999
+# scoreboard players set #park_top3_time park_leaderboard 9999
+
+# ========== 大廳環境計時 ==========
+scoreboard objectives add lobby_env_timer dummy "大廳環境計時(tick)"
+scoreboard players set #lobby_env_timer lobby_env_timer 0
+
+
 # 6. 職業與觸發器變數
 scoreboard objectives add class_type dummy "Class"
 scoreboard objectives add select_mode trigger "Mode Selection"
@@ -206,7 +251,7 @@ scoreboard objectives add team_score dummy "Team Score"
 # 1=自由人, 2=突擊兵, 3=支援兵, 4=哨兵
 scoreboard objectives add class_type dummy "Class"
 
-tellraw @a {"text":"[系統] 已初始化。","color":"green"}
+
 
 # 讓 FTB Quests 判斷玩家現在有沒有站在基地裡
 scoreboard objectives add in_base_score dummy "In Base Score"
@@ -418,6 +463,12 @@ scoreboard players set #air_x dummy 0
 scoreboard players set #air_z dummy 0
 
 
+
+
+
 function game_core:system/match_reset
 function game_core:system/game_end
+
+
+tellraw @a {"text":"[系統] 已初始化。","color":"green"}
 

@@ -42,10 +42,23 @@ scoreboard players set #arms_race_score_debug dummy 0
 scoreboard players set @a respawn_timer -1
 scoreboard players set @a death_prev 0
 scoreboard players set @a kill_prev 0
+scoreboard players set @a transfer_val 0
+# 重置 #winner_team（防止上局殘留）
+scoreboard players set #winner_team dummy 0
+
 # [轉帳系統防呆] 強制關閉並清理所有轉帳狀態與金額
 tag @a remove transfer_active
 tag @a remove transfer_target
-scoreboard players set @a transfer_val 0
+# [NEW] 玩家離開大廳 → 移除安全領域標記
+tag @a remove in_lobby
+tag @a remove on_parkour
+tag @a remove in_combat
+tag @a remove has_lobby_terminal
+tag @s remove fight
+tag @s remove on_minidm
+
+# [NEW] 重置 #winner_team（防止上局殘留）
+scoreboard players set #winner_team dummy 0
 
 
 # 不能設為 0，因為我們用 < shop_price 來判定餘額不足，所以必須保留一點初始值，剛好有BUG會讓自由人開局時多5元，那就讓不是自由人的玩家也加5元，確保平衡

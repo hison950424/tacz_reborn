@@ -3,17 +3,28 @@
 # 目的: 大廳多層級書本路由控制 (完整修復版)
 # ==========================================
 
+# --- 每 tick 環境效果 ---
+function game_core:system/lobby_environment_tick
+
+# --- 每秒（20 tick）邏輯 ---
+scoreboard players add #lobby_env_timer lobby_env_timer 1
+execute if score #lobby_env_timer lobby_env_timer matches 20.. run scoreboard players set #lobby_env_timer lobby_env_timer 0
+execute if score #lobby_env_timer lobby_env_timer matches 0 run function game_core:system/lobby_second_tick
+
+# --- 指令書路由（大廳終端）---
+function game_core:lobby/terminal_tick
+
 # ------------------------------------------
 # 路由 A: 從 [模式選擇書] 進行選擇
 # ------------------------------------------
 # 選擇 1: 大逃殺 -> 清除模式選擇書，發放地圖選擇書
 execute as @a[scores={select_mode=1}] run scoreboard players set #global arms_sub_mode 0
 execute as @a[scores={select_mode=1}] run clear @s written_book{title:"模式選擇書"}
-execute as @a[scores={select_mode=1}] run give @s written_book{title:"大逃殺地圖選擇",author:"系統",pages:['{"text":" ==== 大逃殺 ====\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"選擇地圖:\\n\\n","color":"gold","bold":false},{"text":"[▶ 地圖一: 經典]\\n","color":"dark_green","bold":false,"clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 1"}},{"text":"[▶ 地圖二: 腐蝕之地]\\n","color":"dark_green","bold":false,"clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 2"}},{"text":"[▶ 地圖三: 櫻峰之城]\\n","color":"dark_green","bold":false,"clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 3"}},{"text":"[▶ 地圖四: 山吹城]\\n","color":"dark_green","bold":false,"clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 4"}},{"text":"[▶ 地圖五: 普羅米修斯禁區]\\n\\n","color":"dark_green","bold":false,"clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 5"}},{"text":"[▶ 開始遊戲 ]\\n","color":"dark_blue","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 10"}},{"text":"[ 返回上一步 ]","color":"gray","bold":false,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 9"}}]}']} 1
+execute as @a[scores={select_mode=1}] run give @s written_book{title:"大逃殺地圖選擇",author:"系統",pages:['{"text":" ==== 大逃殺 ====\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"選擇地圖:\\n\\n","color":"gold","bold":true},{"text":"[▶ 地圖一: 經典]\\n","color":"dark_green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 1"}},{"text":"[▶ 地圖二: 腐蝕之地]\\n","color":"dark_green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 2"}},{"text":"[▶ 地圖三: 櫻峰之城]\\n","color":"dark_green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 3"}},{"text":"[▶ 地圖四: 山吹城]\\n","color":"dark_green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 4"}},{"text":"[▶ 地圖五: 普羅米修斯禁區]\\n\\n","color":"dark_green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 5"}},{"text":"[▶ 開始遊戲 ]\\n","color":"dark_blue","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 10"}},{"text":"[ ◄ 上一頁 ]","color":"gray","bold":true,"bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 9"}}]}']} 1
 
 # 選擇 2: 軍備競賽 -> 給予【軍備競賽模式選擇書】
 execute as @a[scores={select_mode=2}] run clear @s written_book{title:"模式選擇書"}
-execute as @a[scores={select_mode=2}] run give @s written_book{title:"軍備競賽模式選擇書",author:"系統",pages:['{"text":" ==== 軍備競賽 ====\\n\\n","color":"gold","bold":true,"extra":[{"text":"[▶ 佔點模式]\\n\\n","color":"dark_aqua","bold":false,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 3"}},{"text":"[▶ 團隊死鬥模式]\\n\\n\\n","color":"dark_green","bold":false,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 4"}},{"text":"[ 返回上一步 ]\\n","color":"gray","bold":false,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 9"}}]}']} 1
+execute as @a[scores={select_mode=2}] run give @s written_book{title:"軍備競賽模式選擇書",author:"系統",pages:['{"text":" ==== 軍備競賽 ====\\n\\n","color":"gold","bold":true,"extra":[{"text":"[▶ 佔點模式]\\n\\n","color":"dark_aqua","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 3"}},{"text":"[▶ 團隊死鬥模式]\\n\\n\\n","color":"dark_green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 4"}},{"text":"[ ◄ 上一頁 ]\\n","color":"gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 9"}}]}']} 1
 execute as @a[scores={select_mode=2}] run tellraw @s {"text":"[系統] 已開啟軍備競賽選單。","color":"yellow"}
 
 # ------------------------------------------
@@ -21,7 +32,9 @@ execute as @a[scores={select_mode=2}] run tellraw @s {"text":"[系統] 已開啟
 # ------------------------------------------
 execute as @a[scores={select_mode=9}] run clear @s written_book{title:"軍備競賽模式選擇書"}
 execute as @a[scores={select_mode=9}] run clear @s written_book{title:"大逃殺地圖選擇"}
-execute as @a[scores={select_mode=9}] run give @s written_book{title:"模式選擇書",author:"系統",pages:['{"text":" ==== 模式選擇 ====\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"[▶ 大逃殺模式]\\n\\n","color":"dark_gray","bold":false,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 1"}},{"text":"[▶ 軍備競賽模式]\\n","color":"dark_green","bold":false,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 2"}}]}']} 1
+execute as @a[scores={select_mode=9}] run clear @s written_book{title:"模式選擇書"}
+execute as @a[scores={select_mode=9}] run clear @s written_book{title:"模式與隊伍"}
+execute as @a[scores={select_mode=9}] run give @s written_book{title:"模式選擇書",author:"系統",pages:['{"text":" ==== 模式選擇 ====\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"[▶ 大逃殺模式]\\n\\n","color":"dark_gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 1"}},{"text":"[▶ 軍備競賽模式]\\n\\n","color":"dark_green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 2"}},{"text":"[ ◄ 上一頁 ]\\n","color":"gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger lobby_terminal set 9"}}]}']} 1
 
 # ------------------------------------------
 # 路由 B: 軍備競賽 -> 佔點模式設定 (select_mode = 3)
@@ -34,7 +47,7 @@ execute as @a[scores={select_mode=3}] run clear @s written_book{title:"佔點模
 execute as @a[scores={select_mode=3}] run clear @s written_book{title:"團隊死鬥設定"}
 
 # 發放「代理設定書」，提供返回與重新喚出 UI 的功能
-execute as @a[scores={select_mode=3}] run give @s written_book{title:"佔點模式設定",author:"系統",pages:['{"text":" == 佔點參數設定 ==\\n\\n","color":"gold","bold":true,"extra":[{"text":"請在「聊天欄」中進行連點設定。\\n若聊天欄被洗掉，可點擊下方按鈕重新喚出介面。\\n\\n\\n","color":"dark_gray"},{"text":"[ 💬 重新喚出設定介面 ]\\n\\n\\n","color":"dark_purple","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 3"}},{"text":"[▶ 確認並進入職業選擇 ]\\n\\n","color":"dark_blue","bold":false,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 6"}},{"text":"[ 返回上一步 ]\\n","color":"gray","bold":false,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 7"}}]}']} 1
+execute as @a[scores={select_mode=3}] run give @s written_book{title:"佔點模式設定",author:"系統",pages:['{"text":" == 佔點參數設定 ==\\n\\n","color":"gold","bold":true,"extra":[{"text":"請在「聊天欄」中進行連點設定。\\n若聊天欄被洗掉，可點擊下方按鈕重新喚出介面。\\n\\n\\n","color":"dark_gray"},{"text":"[ 💬 重新喚出設定介面 ]\\n\\n\\n","color":"dark_purple","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 3"}},{"text":"[▶ 確認並進入職業選擇 ]\\n\\n","color":"dark_blue","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 6"}},{"text":"[ ◄ 上一頁 ]\\n","color":"gray","bold":true,"bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 7"}}]}']} 1
 
 execute as @a[scores={select_mode=3}] run tellraw @s {"text":"[系統] 已選擇佔點模式，請在聊天欄設定參數。","color":"yellow"}
 # 職業選擇後呼叫系統資料夾中的渲染 UI 所以在下面
@@ -51,7 +64,7 @@ execute as @a[scores={select_mode=4}] run clear @s written_book{title:"佔點模
 execute as @a[scores={select_mode=4}] run clear @s written_book{title:"團隊死鬥設定"}
 
 # 發放「代理設定書」，提供返回與重新喚出 UI 的功能
-execute as @a[scores={select_mode=4}] run give @s written_book{title:"團隊死鬥設定",author:"系統",pages:['{"text":" == TDM 參數設定 ==\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"請在「聊天欄」中進行連點設定。\\n若聊天欄被洗掉，可點擊下方按鈕重新喚出介面。\\n\\n\\n","color":"dark_gray"},{"text":"[ 💬 重新喚出設定介面 ]\\n\\n\\n","color":"dark_purple","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 4"}},{"text":"[▶ 確認並進入職業選擇 ]\\n\\n","color":"dark_blue","bold":false,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 6"}},{"text":"[ 返回上一步 ]\\n","color":"gray","bold":false,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 7"}}]}']} 1
+execute as @a[scores={select_mode=4}] run give @s written_book{title:"團隊死鬥設定",author:"系統",pages:['{"text":" == TDM 參數設定 ==\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"請在「聊天欄」中進行連點設定。\\n若聊天欄被洗掉，可點擊下方按鈕重新喚出介面。\\n\\n\\n","color":"dark_gray"},{"text":"[ 💬 重新喚出設定介面 ]\\n\\n\\n","color":"dark_purple","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 4"}},{"text":"[▶ 確認並進入職業選擇 ]\\n\\n","color":"dark_blue","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 6"}},{"text":"[ ◄ 上一頁 ]\\n","color":"gray","bold":true,"bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 7"}}]}']} 1
 
 execute as @a[scores={select_mode=4}] run tellraw @s {"text":"[系統] 已選擇團隊死鬥，請在聊天欄設定參數。","color":"yellow"}
 # 職業選擇後呼叫系統資料夾中的渲染 UI 所以在下面
@@ -62,7 +75,7 @@ execute as @a[scores={select_mode=4}] run tellraw @s {"text":"[系統] 已選擇
 # ------------------------------------------
 execute as @a[scores={select_mode=7}] run clear @s written_book{title:"團隊死鬥設定"}
 execute as @a[scores={select_mode=7}] run clear @s written_book{title:"佔點模式設定"}
-execute as @a[scores={select_mode=7}] run give @s written_book{title:"軍備競賽模式選擇書",author:"系統",pages:['{"text":" ==== 軍備競賽 ====\\n\\n","color":"gold","bold":true,"extra":[{"text":"[▶ 佔點模式]\\n\\n","color":"dark_aqua","bold":false,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 3"}},{"text":"[▶ 團隊死鬥模式]\\n\\n\\n","color":"dark_green","bold":false,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 4"}},{"text":"[ 返回上一步 ]\\n","color":"gray","bold":false,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 9"}}]}']} 1
+execute as @a[scores={select_mode=7}] run give @s written_book{title:"軍備競賽模式選擇書",author:"系統",pages:['{"text":" ==== 軍備競賽 ====\\n\\n","color":"gold","bold":true,"extra":[{"text":"[▶ 佔點模式]\\n\\n","color":"dark_aqua","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 3"}},{"text":"[▶ 團隊死鬥模式]\\n\\n\\n","color":"dark_green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 4"}},{"text":"[ ◄ 上一頁 ]\\n","color":"gray","bold":true,"bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 9"}}]}']} 1
 
 # 開啟觸發權限 (每 Tick 執行)
 scoreboard players enable @a btn_score_up
@@ -160,10 +173,10 @@ execute as @a[scores={select_mode=6}] run clear @s written_book{title:"系統啟
 
 # 發放職業書給所有人，並清空管理員手上的設定書
 execute as @a[scores={select_mode=6}] run clear @s written_book{title:"佔點模式設定"}
-execute as @a[scores={select_mode=6}] at @s run give @a written_book{title:"職業選擇",author:"系統",pages:['{"text":" ==== 選擇職業 ====\\n\\n","color":"dark_aqua","bold":true,"extra":[{"text":"[ 自由人 (80 HP) ]\\n\\n","color":"gray","bold":false,"clickEvent":{"action":"run_command","value":"/trigger select_class set 1"}},{"text":"[ 突擊兵 (100 HP) ]\\n\\n","color":"red","bold":false,"clickEvent":{"action":"run_command","value":"/trigger select_class set 2"}},{"text":"[ 支援兵 (100 HP) ]\\n\\n","color":"green","bold":false,"clickEvent":{"action":"run_command","value":"/trigger select_class set 3"}},{"text":"[ 哨兵 (100 HP) ]\\n","color":"blue","bold":false,"clickEvent":{"action":"run_command","value":"/trigger select_class set 4"}}]}']} 1
+execute as @a[scores={select_mode=6}] at @s run give @a written_book{title:"職業選擇",author:"系統",pages:['{"text":" ==== 選擇職業 ====\\n\\n","color":"dark_aqua","bold":true,"extra":[{"text":"[ 自由人 (80 HP) ]\\n\\n","color":"gray","bold":true,"bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_class set 1"}},{"text":"[ 突擊兵 (100 HP) ]\\n\\n","color":"red","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_class set 2"}},{"text":"[ 支援兵 (100 HP) ]\\n\\n","color":"green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_class set 3"}},{"text":"[ 哨兵 (100 HP) ]\\n","color":"blue","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_class set 4"}}]}']} 1
 
 # 給予管理員「強制啟動」的權限書
-execute as @a[scores={select_mode=6},tag=admin] run give @s written_book{title:"系統啟動確認",author:"系統",pages:['{"text":" ==== 啟動確認 ====\\n\\n請等待所有玩家選擇完畢後，點擊下方按鈕正式開始遊戲。\\n\\n\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"[▶ 開始遊戲 ]\\n\\n","color":"dark_green","bold":false,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 5"}},{"text":"[ 返回重選模式 ]\\n","color":"gray","bold":false,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 8"}}]}']} 1
+execute as @a[scores={select_mode=6},tag=admin] run give @s written_book{title:"系統啟動確認",author:"系統",pages:['{"text":" ==== 啟動確認 ====\\n\\n請等待所有玩家選擇完畢後，點擊下方按鈕正式開始遊戲。\\n\\n\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"[▶ 開始遊戲 ]\\n\\n","color":"dark_green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 5"}},{"text":"[ 返回重選模式 ]\\n","color":"gray","bold":true,"bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 8"}}]}']} 1
 
 
 # ==========================================
@@ -180,7 +193,7 @@ execute as @a[scores={select_mode=8}] run scoreboard players set @a class_type 0
 execute as @a[scores={select_mode=8}] run tellraw @a {"text":"[系統] 管理員已取消遊戲啟動，請等待重新設定。","color":"yellow"}
 
 # 給予初始的「模式選擇書」重新開始
-execute as @a[scores={select_mode=8}] run give @s written_book{title:"模式選擇書",author:"系統",pages:['{"text":" ==== 模式選擇 ====\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"[▶ 大逃殺模式]\\n\\n","color":"dark_gray","bold":false,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 1"}},{"text":"[▶ 軍備競賽模式]\\n","color":"dark_green","bold":false,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 2"}}]}']} 1
+execute as @a[scores={select_mode=8}] run give @s written_book{title:"模式選擇書",author:"系統",pages:['{"text":" ==== 模式選擇 ====\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"[▶ 大逃殺模式]\\n\\n","color":"dark_gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 1"}},{"text":"[▶ 軍備競賽模式]\\n","color":"dark_green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 2"}}]}']} 1
 
 
 # ------------------------------------------
@@ -404,14 +417,17 @@ execute unless score #solo_team dummy = #solo_team_count dummy as @a[tag=solo] r
 # 路由 G: 管理員隊伍控制 (admin_team_ctrl) (原封不動保留)
 # ------------------------------------------
 execute as @a[scores={admin_team_ctrl=1}] run tellraw @a {"text":"[系統] 管理員已將所有人隨機分為 兩隊！","color":"yellow"}
+execute as @a[scores={admin_team_ctrl=1}] run tag @a remove solo
 execute as @a[scores={admin_team_ctrl=1}] run execute store result score #team_turn temp_score run random value 1..2
 execute as @a[scores={admin_team_ctrl=1}] run execute as @a[sort=random] run function game_core:system/random_team_2
 
 execute as @a[scores={admin_team_ctrl=2}] run tellraw @a {"text":"[系統] 管理員已將所有人隨機分為 三隊！","color":"yellow"}
+execute as @a[scores={admin_team_ctrl=2}] run tag @a remove solo
 execute as @a[scores={admin_team_ctrl=2}] run execute store result score #team_turn temp_score run random value 1..3
 execute as @a[scores={admin_team_ctrl=2}] run execute as @a[sort=random] run function game_core:system/random_team_3
 
 execute as @a[scores={admin_team_ctrl=3}] run tellraw @a {"text":"[系統] 管理員已將所有人隨機分為 四隊！","color":"yellow"}
+execute as @a[scores={admin_team_ctrl=3}] run tag @a remove solo
 execute as @a[scores={admin_team_ctrl=3}] run execute store result score #team_turn temp_score run random value 1..4
 execute as @a[scores={admin_team_ctrl=3}] run execute as @a[sort=random] run function game_core:system/random_team_4
 

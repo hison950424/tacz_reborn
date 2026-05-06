@@ -9,6 +9,7 @@ scoreboard players set #global game_state 3
 title @a title {"text":"藍隊獲勝！","color":"blue","bold":true}
 tellraw @a {"text":"[系統] 藍隊 達到了目標佔領分數，獲得勝利！","color":"blue","bold":true}
 execute at @a run playsound ui.toast.challenge_complete master @s ~ ~ ~ 1 1
+scoreboard players set #winner_team dummy 2
 
 # 3. 啟動通用的結算過場管線 (取代舊版的 end_game)
 function game_core:system/match_end_sequence

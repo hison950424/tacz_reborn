@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -rnP '\\(?<!\\\\\\\\\\\\\\\\\\)\\\\\\\\\\\\\\\\n' \"C:/mcdatapack/1.20.1 Proving Grounds_Server Side_V3.0.0/world/datapacks/tacz_reborn/data/game_core/functions/\" --include=\"*.mcfunction\")",
+      "Bash(git ls-tree *)",
+      "Bash(grep -rn \"\\\\\\\\\\\\\\\\u[0-9a-fA-F]\" \"C:/mcdatapack/1.20.1 Proving Grounds_Server Side_V3.0.0/world/datapacks/tacz_reborn/data/game_core/functions/system/\" --include=\"*.mcfunction\")",
+      "Bash(grep -v \"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n\")",
+      "Bash(grep \"\\\\\\\\\\\\\\\\n\")",
+      "Bash(grep -rPn \"pages:.*\\(?<!\\\\\\\\\\\\\\\\\\)\\\\\\\\\\\\\\\\u[0-9a-fA-F]\" \"C:/mcdatapack/1.20.1 Proving Grounds_Server Side_V3.0.0/world/datapacks/tacz_reborn/data/game_core/functions/shop/\")",
+      "Bash(python3 -c \"import sys,json; lines=sys.stdin.read\\(\\).split\\('\\\\n'\\); [print\\(json.loads\\(l\\).get\\('message',{}\\).get\\('content',''\\)[:500]\\) for l in lines[:5] if l.strip\\(\\) and 'message' in json.loads\\(l\\)]\")",
+      "Bash(xargs grep *)"
+    ]
+  }
+}

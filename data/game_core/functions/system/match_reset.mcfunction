@@ -31,6 +31,11 @@ tag @a remove in_border
 tag @a remove hunter_for_ui
 tag @a remove shop_admin
 tag @a remove br_used_altar
+tag @a remove rp_winner
+tag @a remove rp_loser
+tag @a remove br_winner
+tag @a remove fight
+tag @a remove on_minidm
 
 
 # marker 屍體 倒地村民 掉落物
@@ -69,7 +74,14 @@ scoreboard players set @a altar_progress 0
 scoreboard players set @a revive_progress 0
 scoreboard players set @a vanilla_death 0
 
-
+#防止分數不為0
+execute as @a unless score @s rp_score matches 0.. run scoreboard players set @s rp_score 0
+execute as @a run function game_core:system/rank_tier_update
+execute as @a unless score @s park_best matches 1.. run scoreboard players set @s park_best 999999999
+execute as @a unless score @s park_best_display matches 0.. run scoreboard players set @s park_best_display 0
+execute as @a unless score @s stat_wins matches 0.. run scoreboard players set @s stat_wins 0
+execute as @a unless score @s stat_losses matches 0.. run scoreboard players set @s stat_losses 0
+execute as @a unless score @s stat_streak matches 0.. run scoreboard players set @s stat_streak 0
 
 
 #靈魂祭壇CD重置
@@ -233,7 +245,7 @@ effect give @a minecraft:saturation infinite 1 true
 # 1. 將所有管理員切換為創造模式
 clear @a written_book
 gamemode adventure @a
-execute as @a[tag=admin] run gamemode creative @s
+# execute as @a[tag=admin] run gamemode creative @s
 
 #重設所有玩家重生點在大廳
 spawnpoint @a -4 32 -1
@@ -260,13 +272,31 @@ team modify solo14 nametagVisibility never
 team modify solo15 nametagVisibility never
 team modify solo16 nametagVisibility never
 
-# 2. 給予一般玩家「隊伍選擇書」
-execute as @a[tag=!admin] run give @s written_book{title:"隊伍選擇",author:"系統",pages:['{"text":" ==== 選擇隊伍 ====\\n\\n","color":"dark_purple","bold":true,"extra":[{"text":"[▶ 加入 紅隊 ]\\n\\n","color":"red","bold":false,"clickEvent":{"action":"run_command","value":"/trigger join_team set 1"}},{"text":"[▶ 加入 藍隊 ]\\n\\n","color":"blue","bold":false,"clickEvent":{"action":"run_command","value":"/trigger join_team set 2"}},{"text":"[▶ 加入 白隊 ]\\n\\n","color":"gray","bold":false,"clickEvent":{"action":"run_command","value":"/trigger join_team set 3"}},{"text":"[▶ 加入 綠隊 ]\\n\\n","color":"green","bold":false,"clickEvent":{"action":"run_command","value":"/trigger join_team set 4"}},{"text":"[▶ 成為 孤狼 ]\\n","color":"dark_gray","bold":false,"clickEvent":{"action":"run_command","value":"/trigger join_team set 5"}}]}']} 1
-# 3. 給予管理員模式選擇書、隊伍選擇書 Plus
-execute as @a[tag=admin] run give @s written_book{title:"模式選擇書",author:"系統",pages:['{"text":" ==== 模式選擇 ====\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"[▶ 大逃殺模式]\\n\\n","color":"dark_gray","bold":false,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 1"}},{"text":"[▶ 軍備競賽模式]\\n","color":"dark_green","bold":false,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 2"}}]}']} 1
+# 標記大廳狀態
+tag @a add in_lobby
+tag @a remove on_parkour
+tag @a remove in_combat
 
-execute as @a[tag=admin] run give @s written_book{title:"隊伍選擇 Plus",author:"系統",pages:['{"text":" == 選擇隊伍 ==\\n","color":"dark_purple","bold":true,"extra":[{"text":"[紅] ","color":"red","bold":false,"clickEvent":{"action":"run_command","value":"/trigger join_team set 1"}},{"text":"[藍] ","color":"blue","bold":false,"clickEvent":{"action":"run_command","value":"/trigger join_team set 2"}},{"text":"[白] ","color":"gray","bold":false,"clickEvent":{"action":"run_command","value":"/trigger join_team set 3"}},{"text":"[綠] ","color":"green","bold":false,"clickEvent":{"action":"run_command","value":"/trigger join_team set 4"}},{"text":"[孤狼]\\n\\n","color":"dark_gray","bold":false,"clickEvent":{"action":"run_command","value":"/trigger join_team set 5"}},{"text":" == 管理員控制 ==\\n","color":"dark_red","bold":true},{"text":"[隨機雙分隊 (紅/藍)]\\n","color":"gold","bold":false,"clickEvent":{"action":"run_command","value":"/trigger admin_team_ctrl set 1"}},{"text":"[隨機三分隊 (紅/藍/白)]\\n","color":"gold","bold":false,"clickEvent":{"action":"run_command","value":"/trigger admin_team_ctrl set 2"}},{"text":"[隨機四分隊 (全)]\\n\\n","color":"gold","bold":false,"clickEvent":{"action":"run_command","value":"/trigger admin_team_ctrl set 3"}},{"text":"[沒收玩家隊伍書]\\n","color":"dark_gray","bold":false,"clickEvent":{"action":"run_command","value":"/trigger admin_team_ctrl set 4"}}]}']} 1
+# 清除戰鬥標記計時
+scoreboard players set @a combat_tag 0
+scoreboard players set @a combat_tag_sec 0
 
+# 重置迷你死鬥前值
+scoreboard players set @a minidm_streak 0
+scoreboard players operation @a minidm_kill_prev = @a gd656killicon.kill
+scoreboard players operation @a minidm_death_prev = @a vanilla_death
+
+# 重置跑酷計時
+scoreboard players set @a park_timer 0
+scoreboard players set @a park_current_sec 0
+
+# 開放 trigger 並發放書本（NBT 機制會在下一秒補發，此處主動補發確保即時）
+scoreboard players enable @a lobby_terminal
+execute as @a run function game_core:lobby/give_lobby_terminal
+execute as @a[tag=admin] run function game_core:lobby/give_admin_terminal
+
+# 返回大廳時通知軍階
+execute as @a run function game_core:system/rank_announce_player
 
 
 #隱藏bossbar
