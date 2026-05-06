@@ -13,8 +13,9 @@ gamemode adventure @s
 # 移除跑酷或死鬥標記以防萬一
 tag @s remove on_parkour
 tag @s remove on_minidm
+tag @s remove fight
 tag @s add in_lobby
-execute as @s[tag=!fight] run tag @s add fight
+
 
 # 給予無限彈藥箱
 clear @s tacz:ammo_box{AllTypeCreative:1b}
@@ -23,6 +24,12 @@ give @s tacz:ammo_box{AllTypeCreative:1b} 1
 #調整最高血量
 execute as @s run attribute @s minecraft:generic.max_health base set 100
 effect give @s minecraft:instant_health 3 50 true
+
+# --- 全局常駐 BUFF (恢復 I 與 飽食) ---
+# 恢復 I (amplifier 0)，隱藏粒子
+effect give @s minecraft:regeneration infinite 1 true
+# 飽食 (amplifier 0)，隱藏粒子，確保飢餓值不掉
+effect give @s minecraft:saturation infinite 1 true
 
 #去除跑庫塔殘留訊息
 title @s actionbar {"text":""}

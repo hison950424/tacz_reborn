@@ -58,7 +58,7 @@ scoreboard objectives add transfer_val dummy "暫存轉帳金額"
 # 3. 伺服器規則防護
 gamerule commandBlockOutput false
 #詳細指令(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)
-gamerule sendCommandFeedback true
+gamerule sendCommandFeedback false
 gamerule doDaylightCycle false
 gamerule doWeatherCycle false
 gamerule keepInventory true
@@ -424,6 +424,7 @@ data modify storage backpack:temp item set value {}
 scoreboard objectives add drop_stick minecraft.dropped:minecraft.stick
 scoreboard objectives add drop_eye minecraft.dropped:minecraft.ender_eye
 scoreboard objectives add drop_barrier minecraft.dropped:minecraft.barrier
+scoreboard objectives add potion_count dummy "大補藥水數量暫存"
 
 #=============================================
 #=========         縮圈系統         ===========

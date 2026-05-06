@@ -14,6 +14,7 @@ gamemode adventure @s
 tag @s add in_lobby
 tag @s remove on_parkour
 tag @s remove on_minidm
+tag @s remove fight
 
 
 # 重置迷你死鬥連殺
@@ -32,6 +33,12 @@ title @s actionbar {"text":""}
 #調整最高血量
 execute as @s run attribute @s minecraft:generic.max_health base set 100
 effect give @s minecraft:instant_health 3 50 true
+
+# --- 全局常駐 BUFF (恢復 I 與 飽食) ---
+# 恢復 I (amplifier 0)，隱藏粒子
+effect give @s minecraft:regeneration infinite 1 true
+# 飽食 (amplifier 0)，隱藏粒子，確保飢餓值不掉
+effect give @s minecraft:saturation infinite 1 true
 
 # 清除跑酷計時
 scoreboard players set @s park_timer 0

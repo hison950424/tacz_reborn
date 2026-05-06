@@ -15,7 +15,7 @@ execute as @a[scores={lobby_terminal=1},tag=in_combat] run tellraw @s [{"text":"
 execute as @a[scores={lobby_terminal=1},tag=!in_combat] run function game_core:lobby/goto_training
 
 # 路由 2: 迷你死鬥
-execute as @a[scores={lobby_terminal=2},tag=on_minidm] run tellraw @s [{"text":"[系統] ⚔ 你現在就在迷你死鬥中","color":"red"}]
+execute as @a[scores={lobby_terminal=2},tag=on_minidm,tag=!in_combat] run tellraw @s [{"text":"[系統] ⚔ 你現在就在迷你死鬥中","color":"red"}]
 execute as @a[scores={lobby_terminal=2},tag=in_combat] run tellraw @s [{"text":"[系統] ⚔ 戰鬥標記中，","color":"red"},{"score":{"name":"@s","objective":"combat_tag_sec"}},{"text":" 秒後才能傳送。","color":"red"}]
 execute as @a[scores={lobby_terminal=2},tag=!in_combat,tag=!on_minidm] run function game_core:lobby/goto_minidm
 
@@ -31,8 +31,7 @@ execute as @a[scores={lobby_terminal=5},tag=in_combat] run tellraw @s [{"text":"
 execute as @a[scores={lobby_terminal=5},tag=!in_combat] run function game_core:lobby/return_to_lobby
 
 # 路由 6: 規則書
-execute as @a[scores={lobby_terminal=6}] run tellraw @s [{"text":"\n"},{"text":"════ 伺服器規則 ════","color":"dark_red","bold":true},{"text":"\n1. 禁止惡意騷擾或語言攻擊\n2. 禁止使用作弊或外掛程式\n3. 保持健康競技精神\n4. 遵守管理員指示\n5. 祝你玩得愉快！\n","color":"white"}]
-execute as @a[scores={lobby_terminal=6}] run playsound ui.button.click master @s ~ ~ ~ 1 1
+execute as @a[scores={lobby_terminal=6}] run function game_core:lobby/give_rules_book
 
 # 路由 7: 場景選擇書
 execute as @a[scores={lobby_terminal=7}] run function game_core:lobby/give_scene_book

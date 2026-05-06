@@ -11,6 +11,10 @@ scoreboard players add #lobby_env_timer lobby_env_timer 1
 execute if score #lobby_env_timer lobby_env_timer matches 20.. run scoreboard players set #lobby_env_timer lobby_env_timer 0
 execute if score #lobby_env_timer lobby_env_timer matches 0 run function game_core:system/lobby_second_tick
 
+
+#迷你死鬥判斷
+function game_core:system/combat_tag_tick
+
 # --- 指令書路由（大廳終端）---
 function game_core:lobby/terminal_tick
 

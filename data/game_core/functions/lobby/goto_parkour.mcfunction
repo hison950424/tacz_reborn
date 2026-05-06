@@ -12,6 +12,7 @@ gamemode adventure @s
 # 離開大廳安全領域（跑酷需要正常的重力與墜落傷害）
 tag @s remove in_lobby
 tag @s remove on_minidm
+tag @s remove fight
 tag @s add on_parkour
 
 # 清除計時器
@@ -25,6 +26,12 @@ clear @s tacz:attachment
 #調整最高血量
 execute as @s run attribute @s minecraft:generic.max_health base set 100
 effect give @s minecraft:instant_health 3 50 true
+
+# --- 全局常駐 BUFF (恢復 I 與 飽食) ---
+# 恢復 I (amplifier 0)，隱藏粒子
+effect give @s minecraft:regeneration infinite 1 true
+# 飽食 (amplifier 0)，隱藏粒子，確保飢餓值不掉
+effect give @s minecraft:saturation infinite 1 true
 
 # 重置迷你死鬥連殺（離開死鬥區就歸零）
 scoreboard players set @s minidm_streak 0

@@ -29,6 +29,12 @@ title @s actionbar {"text":""}
 execute as @s run attribute @s minecraft:generic.max_health base set 100
 effect give @s minecraft:instant_health 3 50 true
 
+# --- 全局常駐 BUFF (恢復 I 與 飽食) ---
+# 恢復 I (amplifier 0)，隱藏粒子
+effect give @s minecraft:regeneration infinite 1 true
+# 飽食 (amplifier 0)，隱藏粒子，確保飢餓值不掉
+effect give @s minecraft:saturation infinite 1 true
+
 # 給予無限彈藥箱
 clear @s tacz:ammo_box{AllTypeCreative:1b}
 give @s tacz:ammo_box{AllTypeCreative:1b} 1

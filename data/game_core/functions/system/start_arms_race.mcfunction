@@ -16,6 +16,12 @@ gamemode adventure @a
 #防噴
 gamerule keepInventory true
 
+# --- 全局常駐 BUFF (恢復 I 與 飽食) ---
+# 恢復 I (amplifier 0)，隱藏粒子
+effect give @a minecraft:regeneration infinite 1 true
+# 飽食 (amplifier 0)，隱藏粒子，確保飢餓值不掉
+effect give @a minecraft:saturation infinite 1 true
+
 # ------------------------------------------
 # [步驟 2] 經濟與分數徹底重置 (初始化)
 # ------------------------------------------
