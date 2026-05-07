@@ -21,11 +21,15 @@ execute if score #Point_a dom_prog_a matches ..-45 run scoreboard players set #P
 # 紅隊佔領 (進度達45)
 execute if score #Point_a dom_prog_a matches 45 if score #Point_a dom_state matches ..1 run fill 196 24 -13 188 24 -21 minecraft:red_concrete replace
 execute if score #Point_a dom_prog_a matches 45 if score #Point_a dom_state matches ..1 run tellraw @a {"text":"[系統] 紅隊 成功佔領了 A 點！","color":"red","bold":true}
+execute if score #Point_a dom_prog_a matches 45 if score #Point_a dom_state matches ..1 at @e[type=marker,tag=Point_a] positioned ~-4 ~-1 ~-4 as @a[dx=7,dy=3,dz=7,team=red] run scoreboard players add @s stat_dom_flips_match 1
+execute if score #Point_a dom_prog_a matches 45 if score #Point_a dom_state matches ..1 at @e[type=marker,tag=Point_a] positioned ~-4 ~-1 ~-4 as @a[dx=7,dy=3,dz=7,team=red] run scoreboard players add @s stat_dom_flips 1
 execute if score #Point_a dom_prog_a matches 45 if score #Point_a dom_state matches ..1 run scoreboard players set #Point_a dom_state 2
 
 # 藍隊佔領 (進度達-45)
 execute if score #Point_a dom_prog_a matches ..-45 if score #Point_a dom_state matches ..1 run fill 196 24 -13 188 24 -21 minecraft:blue_concrete replace
 execute if score #Point_a dom_prog_a matches ..-45 if score #Point_a dom_state matches ..1 run tellraw @a {"text":"[系統] 藍隊 成功佔領了 A 點！","color":"blue","bold":true}
+execute if score #Point_a dom_prog_a matches ..-45 if score #Point_a dom_state matches ..1 at @e[type=marker,tag=Point_a] positioned ~-4 ~-1 ~-4 as @a[dx=7,dy=3,dz=7,team=blue] run scoreboard players add @s stat_dom_flips_match 1
+execute if score #Point_a dom_prog_a matches ..-45 if score #Point_a dom_state matches ..1 at @e[type=marker,tag=Point_a] positioned ~-4 ~-1 ~-4 as @a[dx=7,dy=3,dz=7,team=blue] run scoreboard players add @s stat_dom_flips 1
 execute if score #Point_a dom_prog_a matches ..-45 if score #Point_a dom_state matches ..1 run scoreboard players set #Point_a dom_state 3
 
 # 中立化觸發休戰 (由紅/藍方佔領流失至 0，觸發 30s = 600 Ticks 休戰)

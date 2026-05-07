@@ -95,6 +95,12 @@ execute as @a unless score @s stat_br_revives matches 0.. run scoreboard players
 execute as @a unless score @s stat_br_altars matches 0.. run scoreboard players set @s stat_br_altars 0
 scoreboard players set @a stat_br_revives_match 0
 scoreboard players set @a stat_br_altars_match 0
+execute as @a unless score @s stat_dom_caps matches 0.. run scoreboard players set @s stat_dom_caps 0
+execute as @a unless score @s stat_dom_flips matches 0.. run scoreboard players set @s stat_dom_flips 0
+execute as @a unless score @s stat_dom_def matches 0.. run scoreboard players set @s stat_dom_def 0
+scoreboard players set @a stat_dom_caps_match 0
+scoreboard players set @a stat_dom_flips_match 0
+scoreboard players set @a stat_dom_def_match 0
 
 
 #靈魂祭壇CD重置

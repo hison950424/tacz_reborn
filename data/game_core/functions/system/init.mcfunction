@@ -204,6 +204,15 @@ scoreboard objectives add stat_br_revives dummy "BR拉起累計"
 scoreboard objectives add stat_br_revives_match dummy "本局拉起次數"
 scoreboard objectives add stat_br_altars dummy "BR祭壇累計"
 scoreboard objectives add stat_br_altars_match dummy "本局祭壇次數"
+scoreboard objectives add stat_dom_caps dummy "DOM佔點累計"
+scoreboard objectives add stat_dom_caps_match dummy "本局佔點次數"
+scoreboard objectives add stat_dom_flips dummy "DOM佔點成功累計"
+scoreboard objectives add stat_dom_flips_match dummy "本局佔點成功次數"
+scoreboard objectives add stat_dom_def dummy "DOM守點累計"
+scoreboard objectives add stat_dom_def_match dummy "本局守點次數"
+scoreboard players set #rp_dom_cap rank_const 3
+scoreboard players set #rp_dom_flip rank_const 15
+scoreboard players set #rp_dom_def rank_const 2
 scoreboard objectives add dummy dummy "運算用"
 scoreboard players set #winner_team dummy 0
 

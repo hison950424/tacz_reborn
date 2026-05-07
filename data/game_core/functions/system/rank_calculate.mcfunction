@@ -37,6 +37,14 @@ execute if score #global arms_sub_mode matches 1..2 run scoreboard players set #
 #敗場-(常數)
 execute if score #global arms_sub_mode matches 1..2 run scoreboard players set #rp_l15 rank_const 15
 
+# 佔點模式（DOM）：個人佔/守點貢獻倍率
+#佔點過程+(倍率/5秒)
+execute if score #global arms_sub_mode matches 2 run scoreboard players set #rp_dom_cap rank_const 3
+#佔點成功+(常數)
+execute if score #global arms_sub_mode matches 2 run scoreboard players set #rp_dom_flip rank_const 15
+#守點+(倍率/5秒)
+execute if score #global arms_sub_mode matches 2 run scoreboard players set #rp_dom_def rank_const 2
+
 tag @a remove rp_winner
 tag @a remove rp_loser
 

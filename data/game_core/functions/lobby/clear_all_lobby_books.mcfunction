@@ -11,4 +11,5 @@ clear @s written_book{title:"模式與隊伍"}
 clear @s written_book{title:"隊伍選擇"}
 clear @s written_book{title:"模式選擇書"}
 clear @s written_book{title:"規則書"}
+clear @s written_book{title:"個人戰績"}
 

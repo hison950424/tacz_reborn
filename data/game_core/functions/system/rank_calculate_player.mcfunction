@@ -48,6 +48,17 @@ execute if score #global arms_sub_mode matches 0 run scoreboard players operatio
 execute if score #global arms_sub_mode matches 0 run scoreboard players operation #rp_temp rank_temp *= #rp_alt rank_const
 execute if score #global arms_sub_mode matches 0 run scoreboard players operation @s rp_delta += #rp_temp rank_temp
 
+# DOM 個人貢獻加分（佔點過程 / 佔點成功 / 守點，僅 DOM 模式）
+execute if score #global arms_sub_mode matches 2 run scoreboard players operation #rp_temp rank_temp = @s stat_dom_caps_match
+execute if score #global arms_sub_mode matches 2 run scoreboard players operation #rp_temp rank_temp *= #rp_dom_cap rank_const
+execute if score #global arms_sub_mode matches 2 run scoreboard players operation @s rp_delta += #rp_temp rank_temp
+execute if score #global arms_sub_mode matches 2 run scoreboard players operation #rp_temp rank_temp = @s stat_dom_flips_match
+execute if score #global arms_sub_mode matches 2 run scoreboard players operation #rp_temp rank_temp *= #rp_dom_flip rank_const
+execute if score #global arms_sub_mode matches 2 run scoreboard players operation @s rp_delta += #rp_temp rank_temp
+execute if score #global arms_sub_mode matches 2 run scoreboard players operation #rp_temp rank_temp = @s stat_dom_def_match
+execute if score #global arms_sub_mode matches 2 run scoreboard players operation #rp_temp rank_temp *= #rp_dom_def rank_const
+execute if score #global arms_sub_mode matches 2 run scoreboard players operation @s rp_delta += #rp_temp rank_temp
+
 # 套用 delta，下限 0
 execute as @a run scoreboard players operation @s rp_score += @s rp_delta
 execute as @a if score @s rp_score matches ..-1 run scoreboard players set @s rp_score 0

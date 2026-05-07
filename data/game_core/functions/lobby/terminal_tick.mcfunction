@@ -100,13 +100,16 @@ execute as @a[scores={show_stat=3}] run tellraw @a ["",{"text":"[展示] ","colo
 execute as @a[scores={show_stat=4}] run tellraw @a ["",{"text":"[展示] ","color":"gold","bold":true},{"selector":"@s","color":"yellow"},{"text":"  大逃殺  拉起 ","color":"dark_aqua"},{"score":{"name":"@s","objective":"stat_br_revives"},"color":"aqua"},{"text":"  祭壇 ","color":"dark_aqua"},{"score":{"name":"@s","objective":"stat_br_altars"},"color":"light_purple"}]
 
 # TDM 勝/敗/連勝
-execute as @a[scores={show_stat=5}] run tellraw @a ["",{"text":"[展示] ","color":"gold","bold":true},{"selector":"@s","color":"yellow"},{"text":"  TDM  勝 ","color":"dark_red"},{"score":{"name":"@s","objective":"stat_wins_tdm"},"color":"green"},{"text":"  敗 ","color":"dark_red"},{"score":{"name":"@s","objective":"stat_losses_tdm"},"color":"red"},{"text":"  連勝 ","color":"dark_red"},{"score":{"name":"@s","objective":"stat_streak_tdm"},"color":"gold"}]
+execute as @a[scores={show_stat=5}] run tellraw @a ["",{"text":"[展示] ","color":"gold","bold":true},{"selector":"@s","color":"yellow"},{"text":"  團隊死鬥  勝 ","color":"dark_red"},{"score":{"name":"@s","objective":"stat_wins_tdm"},"color":"green"},{"text":"  敗 ","color":"dark_red"},{"score":{"name":"@s","objective":"stat_losses_tdm"},"color":"red"},{"text":"  連勝 ","color":"dark_red"},{"score":{"name":"@s","objective":"stat_streak_tdm"},"color":"gold"}]
 
 # DOM 勝/敗/連勝
-execute as @a[scores={show_stat=6}] run tellraw @a ["",{"text":"[展示] ","color":"gold","bold":true},{"selector":"@s","color":"yellow"},{"text":"  DOM  勝 ","color":"dark_red"},{"score":{"name":"@s","objective":"stat_wins_dom"},"color":"green"},{"text":"  敗 ","color":"dark_red"},{"score":{"name":"@s","objective":"stat_losses_dom"},"color":"red"},{"text":"  連勝 ","color":"dark_red"},{"score":{"name":"@s","objective":"stat_streak_dom"},"color":"gold"}]
+execute as @a[scores={show_stat=6}] run tellraw @a ["",{"text":"[展示] ","color":"gold","bold":true},{"selector":"@s","color":"yellow"},{"text":"  佔點模式  勝 ","color":"dark_red"},{"score":{"name":"@s","objective":"stat_wins_dom"},"color":"green"},{"text":"  敗 ","color":"dark_red"},{"score":{"name":"@s","objective":"stat_losses_dom"},"color":"red"},{"text":"  連勝 ","color":"dark_red"},{"score":{"name":"@s","objective":"stat_streak_dom"},"color":"gold"}]
 
 # 總勝/敗
 execute as @a[scores={show_stat=7}] run tellraw @a ["",{"text":"[展示] ","color":"gold","bold":true},{"selector":"@s","color":"yellow"},{"text":"  總計  勝 ","color":"gray"},{"score":{"name":"@s","objective":"stat_wins"},"color":"green"},{"text":"  敗 ","color":"gray"},{"score":{"name":"@s","objective":"stat_losses"},"color":"red"}]
+
+# DOM 個人貢獻
+execute as @a[scores={show_stat=8}] run tellraw @a ["",{"text":"[展示] ","color":"gold","bold":true},{"selector":"@s","color":"yellow"},{"text":"  佔點模式貢獻  佔點 ","color":"gold"},{"score":{"name":"@s","objective":"stat_dom_caps"},"color":"green"},{"text":"  成功 ","color":"gold"},{"score":{"name":"@s","objective":"stat_dom_flips"},"color":"yellow"},{"text":"  守點 ","color":"gold"},{"score":{"name":"@s","objective":"stat_dom_def"},"color":"aqua"}]
 
 execute as @a[scores={show_stat=1..}] run playsound ui.button.click master @s ~ ~ ~ 1 1
 scoreboard players set @a[scores={show_stat=1..}] show_stat 0
