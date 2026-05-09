@@ -23,6 +23,7 @@ execute as @e[type=marker,tag=training_spawn_point] at @s as @p[distance=..5] ru
 execute as @e[type=marker,tag=training_spawn_point] at @s as @p[distance=..5] run tag @s remove in_combat
 execute as @e[type=marker,tag=training_spawn_point] at @s as @p[distance=..5] run tag @s add in_lobby
 execute as @e[type=marker,tag=training_spawn_point] at @s as @p[distance=..5] run scoreboard players set @s combat_tag_sec -1
+execute as @e[type=marker,tag=training_spawn_point] at @s as @p[distance=..5] run clear @s minecraft:potion
 # execute as @e[type=marker,tag=training_spawn_point] at @s as @p[distance=..5] run 
 # execute as @e[type=marker,tag=training_spawn_point] at @s as @p[distance=..5] run 
 # execute as @e[type=marker,tag=training_spawn_point] at @s as @p[distance=..5] run 

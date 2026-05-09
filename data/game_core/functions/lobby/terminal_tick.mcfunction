@@ -111,6 +111,40 @@ execute as @a[scores={show_stat=7}] run tellraw @a ["",{"text":"[展示] ","colo
 # DOM 個人貢獻
 execute as @a[scores={show_stat=8}] run tellraw @a ["",{"text":"[展示] ","color":"gold","bold":true},{"selector":"@s","color":"yellow"},{"text":"  佔點模式貢獻  佔點 ","color":"gold"},{"score":{"name":"@s","objective":"stat_dom_caps"},"color":"green"},{"text":"  成功 ","color":"gold"},{"score":{"name":"@s","objective":"stat_dom_flips"},"color":"yellow"},{"text":"  守點 ","color":"gold"},{"score":{"name":"@s","objective":"stat_dom_def"},"color":"aqua"}]
 
+# RP 積分（私）
+execute as @a[scores={show_stat=11}] run tellraw @s ["",{"text":"[個人] ","color":"dark_aqua","bold":true},{"text":"RP 積分：","color":"gray"},{"score":{"name":"@s","objective":"rp_score"},"color":"gold","bold":true}]
+
+# 軍階（私）
+execute as @a[scores={show_stat=12}] if score @s rank_tier matches 1 run tellraw @s ["",{"text":"[個人] ","color":"dark_aqua","bold":true},{"text":"軍階：","color":"gray"},{"text":"訓練生","color":"gray"}]
+execute as @a[scores={show_stat=12}] if score @s rank_tier matches 2 run tellraw @s ["",{"text":"[個人] ","color":"dark_aqua","bold":true},{"text":"軍階：","color":"gray"},{"text":"戰術先鋒","color":"white"}]
+execute as @a[scores={show_stat=12}] if score @s rank_tier matches 3 run tellraw @s ["",{"text":"[個人] ","color":"dark_aqua","bold":true},{"text":"軍階：","color":"gray"},{"text":"影之掠奪者","color":"dark_gray"}]
+execute as @a[scores={show_stat=12}] if score @s rank_tier matches 4 run tellraw @s ["",{"text":"[個人] ","color":"dark_aqua","bold":true},{"text":"軍階：","color":"gray"},{"text":"鋼鐵捍衛者","color":"blue"}]
+execute as @a[scores={show_stat=12}] if score @s rank_tier matches 5 run tellraw @s ["",{"text":"[個人] ","color":"dark_aqua","bold":true},{"text":"軍階：","color":"gray"},{"text":"巔峰獵手","color":"gold"}]
+execute as @a[scores={show_stat=12}] if score @s rank_tier matches 6 run tellraw @s ["",{"text":"[個人] ","color":"dark_aqua","bold":true},{"text":"軍階：","color":"gray"},{"text":"灰燼審判官","color":"red"}]
+execute as @a[scores={show_stat=12}] if score @s rank_tier matches 7 run tellraw @s ["",{"text":"[個人] ","color":"dark_aqua","bold":true},{"text":"軍階：","color":"gray"},{"text":"虛空行者","color":"dark_purple"}]
+execute as @a[scores={show_stat=12}] if score @s rank_tier matches 8 run tellraw @s ["",{"text":"[個人] ","color":"dark_aqua","bold":true},{"text":"軍階：","color":"gray"},{"text":"幽靈軍官","color":"aqua"}]
+execute as @a[scores={show_stat=12}] if score @s rank_tier matches 9 run tellraw @s ["",{"text":"[個人] ","color":"dark_aqua","bold":true},{"text":"軍階：","color":"gray"},{"text":"末日指揮官","color":"dark_red","bold":true}]
+execute as @a[scores={show_stat=12}] if score @s rank_tier matches 10 run tellraw @s ["",{"text":"[個人] ","color":"dark_aqua","bold":true},{"text":"軍階：","color":"gray"},{"text":"戰爭主宰","color":"light_purple","bold":true}]
+execute as @a[scores={show_stat=12}] if score @s rank_tier matches 11 run tellraw @s ["",{"text":"[個人] ","color":"dark_aqua","bold":true},{"text":"軍階：","color":"gray"},{"text":"★ 永恆傳奇 ★","color":"yellow","bold":true}]
+
+# 大逃殺 勝/敗/連勝（私）
+execute as @a[scores={show_stat=13}] run tellraw @s ["",{"text":"[個人] ","color":"dark_aqua","bold":true},{"text":"大逃殺  勝 ","color":"dark_aqua"},{"score":{"name":"@s","objective":"stat_wins_br"},"color":"green"},{"text":"  敗 ","color":"dark_aqua"},{"score":{"name":"@s","objective":"stat_losses_br"},"color":"red"},{"text":"  連勝 ","color":"dark_aqua"},{"score":{"name":"@s","objective":"stat_streak_br"},"color":"gold"}]
+
+# 大逃殺 拉起/祭壇（私）
+execute as @a[scores={show_stat=14}] run tellraw @s ["",{"text":"[個人] ","color":"dark_aqua","bold":true},{"text":"大逃殺  拉起 ","color":"dark_aqua"},{"score":{"name":"@s","objective":"stat_br_revives"},"color":"aqua"},{"text":"  祭壇 ","color":"dark_aqua"},{"score":{"name":"@s","objective":"stat_br_altars"},"color":"light_purple"}]
+
+# TDM 勝/敗/連勝（私）
+execute as @a[scores={show_stat=15}] run tellraw @s ["",{"text":"[個人] ","color":"dark_aqua","bold":true},{"text":"TDM  勝 ","color":"dark_red"},{"score":{"name":"@s","objective":"stat_wins_tdm"},"color":"green"},{"text":"  敗 ","color":"dark_red"},{"score":{"name":"@s","objective":"stat_losses_tdm"},"color":"red"},{"text":"  連勝 ","color":"dark_red"},{"score":{"name":"@s","objective":"stat_streak_tdm"},"color":"gold"}]
+
+# DOM 勝/敗/連勝（私）
+execute as @a[scores={show_stat=16}] run tellraw @s ["",{"text":"[個人] ","color":"dark_aqua","bold":true},{"text":"DOM  勝 ","color":"dark_red"},{"score":{"name":"@s","objective":"stat_wins_dom"},"color":"green"},{"text":"  敗 ","color":"dark_red"},{"score":{"name":"@s","objective":"stat_losses_dom"},"color":"red"},{"text":"  連勝 ","color":"dark_red"},{"score":{"name":"@s","objective":"stat_streak_dom"},"color":"gold"}]
+
+# 總勝/敗（私）
+execute as @a[scores={show_stat=17}] run tellraw @s ["",{"text":"[個人] ","color":"dark_aqua","bold":true},{"text":"總計  勝 ","color":"gray"},{"score":{"name":"@s","objective":"stat_wins"},"color":"green"},{"text":"  敗 ","color":"gray"},{"score":{"name":"@s","objective":"stat_losses"},"color":"red"}]
+
+# DOM 個人貢獻（私）
+execute as @a[scores={show_stat=18}] run tellraw @s ["",{"text":"[個人] ","color":"dark_aqua","bold":true},{"text":"DOM貢獻  佔點 ","color":"gold"},{"score":{"name":"@s","objective":"stat_dom_caps"},"color":"green"},{"text":"  成功 ","color":"gold"},{"score":{"name":"@s","objective":"stat_dom_flips"},"color":"yellow"},{"text":"  守點 ","color":"gold"},{"score":{"name":"@s","objective":"stat_dom_def"},"color":"aqua"}]
+
 execute as @a[scores={show_stat=1..}] run playsound ui.button.click master @s ~ ~ ~ 1 1
 scoreboard players set @a[scores={show_stat=1..}] show_stat 0
 
