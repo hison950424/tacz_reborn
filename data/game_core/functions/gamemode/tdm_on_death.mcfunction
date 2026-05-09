@@ -4,10 +4,10 @@
 # ==========================================
 
 # 發放 5 元陣亡補貼 (調用插件指令)
-execute as @s run gd656killicon server statistics add score @s 5
+execute as @s run gd656killicon server statistics add score @s 15
 
 # 聊天欄微弱提示 (不要用大標題，以免干擾視線)
-execute as @s run tellraw @s {"text":"[系統] 陣亡補貼：+5 元","color":"gray","italic":true}
+execute as @s run tellraw @s {"text":"[系統] 陣亡補貼：+15 元","color":"gray","italic":true}
 
 # --- 全局常駐 BUFF (恢復 I 與 飽食) ---
 # 恢復 I (amplifier 0)，隱藏粒子

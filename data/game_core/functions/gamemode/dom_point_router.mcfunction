@@ -24,15 +24,15 @@ execute if score #global arms_sub_mode matches 2 if score #global dom_timer matc
 
 # 團隊站點防守金錢獎勵
 #紅隊佔領
-execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #Point_a dom_state matches 2 if score #a_contested temp_score matches 0 as @a[team=red] run gd656killicon server statistics add score @s 5
+execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #Point_a dom_state matches 2 if score #a_contested temp_score matches 0 as @a[team=red] run gd656killicon server statistics add score @s 10
 #藍隊佔領
-execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #Point_a dom_state matches 3 if score #a_contested temp_score matches 0 as @a[team=blue] run gd656killicon server statistics add score @s 5
+execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #Point_a dom_state matches 3 if score #a_contested temp_score matches 0 as @a[team=blue] run gd656killicon server statistics add score @s 10
 
 # 個人站點防守金錢獎勵
 #紅隊佔領
-execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #Point_a dom_state matches 2 if score #a_contested temp_score matches 0 at @e[type=marker,tag=Point_a] positioned ~-4 ~-1 ~-4 as @a[dx=7,dy=3,dz=7,team=red] run gd656killicon server statistics add score @s 5
+execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #Point_a dom_state matches 2 if score #a_contested temp_score matches 0 at @e[type=marker,tag=Point_a] positioned ~-4 ~-1 ~-4 as @a[dx=7,dy=3,dz=7,team=red] run gd656killicon server statistics add score @s 10
 #藍隊佔領
-execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #Point_a dom_state matches 3 if score #a_contested temp_score matches 0 at @e[type=marker,tag=Point_a] positioned ~-4 ~-1 ~-4 as @a[dx=7,dy=3,dz=7,team=blue] run gd656killicon server statistics add score @s 5
+execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #Point_a dom_state matches 3 if score #a_contested temp_score matches 0 at @e[type=marker,tag=Point_a] positioned ~-4 ~-1 ~-4 as @a[dx=7,dy=3,dz=7,team=blue] run gd656killicon server statistics add score @s 10
 
 # A點 佔點過程貢獻（紅推進：中立or藍控；藍推進：中立or紅控，不含爭奪中）
 execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #a_contested temp_score matches 0 if score #a_red_count temp_score matches 1.. if score #Point_a dom_state matches 1 at @e[type=marker,tag=Point_a] positioned ~-4 ~-1 ~-4 as @a[dx=7,dy=3,dz=7,team=red] run scoreboard players add @s stat_dom_caps_match 1
@@ -75,15 +75,15 @@ execute if score #global arms_sub_mode matches 2 if score #global dom_timer matc
 
 # 團隊站點防守金錢獎勵
 #紅隊佔領
-execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #Point_b dom_state matches 2 if score #b_contested temp_score matches 0 as @a[team=red] run gd656killicon server statistics add score @s 5
+execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #Point_b dom_state matches 2 if score #b_contested temp_score matches 0 as @a[team=red] run gd656killicon server statistics add score @s 10
 #藍隊佔領
-execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #Point_b dom_state matches 3 if score #b_contested temp_score matches 0 as @a[team=blue] run gd656killicon server statistics add score @s 5
+execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #Point_b dom_state matches 3 if score #b_contested temp_score matches 0 as @a[team=blue] run gd656killicon server statistics add score @s 10
 
 # 個人站點防守金錢獎勵
 #紅隊佔領
-execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #Point_b dom_state matches 2 if score #b_contested temp_score matches 0 at @e[type=marker,tag=Point_b] positioned ~-5 ~-1 ~-5 as @a[dx=9,dy=3,dz=9,team=red] run gd656killicon server statistics add score @s 5
+execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #Point_b dom_state matches 2 if score #b_contested temp_score matches 0 at @e[type=marker,tag=Point_b] positioned ~-5 ~-1 ~-5 as @a[dx=9,dy=3,dz=9,team=red] run gd656killicon server statistics add score @s 10
 #藍隊佔領
-execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #Point_b dom_state matches 3 if score #b_contested temp_score matches 0 at @e[type=marker,tag=Point_b] positioned ~-5 ~-1 ~-5 as @a[dx=9,dy=3,dz=9,team=blue] run gd656killicon server statistics add score @s 5
+execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #Point_b dom_state matches 3 if score #b_contested temp_score matches 0 at @e[type=marker,tag=Point_b] positioned ~-5 ~-1 ~-5 as @a[dx=9,dy=3,dz=9,team=blue] run gd656killicon server statistics add score @s 10
 
 # B點 佔點過程貢獻
 execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #b_contested temp_score matches 0 if score #b_red_count temp_score matches 1.. if score #Point_b dom_state matches 1 at @e[type=marker,tag=Point_b] positioned ~-5 ~-1 ~-5 as @a[dx=9,dy=3,dz=9,team=red] run scoreboard players add @s stat_dom_caps_match 1
@@ -126,15 +126,15 @@ execute if score #global arms_sub_mode matches 2 if score #global dom_timer matc
 
 # 團隊站點防守金錢獎勵
 #紅隊佔領
-execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #Point_c dom_state matches 2 if score #c_contested temp_score matches 0 as @a[team=red] run gd656killicon server statistics add score @s 5
+execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #Point_c dom_state matches 2 if score #c_contested temp_score matches 0 as @a[team=red] run gd656killicon server statistics add score @s 10
 #藍隊佔領
-execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #Point_c dom_state matches 3 if score #c_contested temp_score matches 0 as @a[team=blue] run gd656killicon server statistics add score @s 5
+execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #Point_c dom_state matches 3 if score #c_contested temp_score matches 0 as @a[team=blue] run gd656killicon server statistics add score @s 10
 
 # 個人站點防守金錢獎勵
 #紅隊佔領
-execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #Point_c dom_state matches 2 if score #c_contested temp_score matches 0 at @e[type=marker,tag=Point_c] positioned ~-8 ~-1 ~-8 as @a[dx=15,dy=3,dz=15,team=red] run gd656killicon server statistics add score @s 5
+execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #Point_c dom_state matches 2 if score #c_contested temp_score matches 0 at @e[type=marker,tag=Point_c] positioned ~-8 ~-1 ~-8 as @a[dx=15,dy=3,dz=15,team=red] run gd656killicon server statistics add score @s 10
 #藍隊佔領
-execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #Point_c dom_state matches 3 if score #c_contested temp_score matches 0 at @e[type=marker,tag=Point_c] positioned ~-8 ~-1 ~-8 as @a[dx=15,dy=3,dz=15,team=blue] run gd656killicon server statistics add score @s 5
+execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #Point_c dom_state matches 3 if score #c_contested temp_score matches 0 at @e[type=marker,tag=Point_c] positioned ~-8 ~-1 ~-8 as @a[dx=15,dy=3,dz=15,team=blue] run gd656killicon server statistics add score @s 10
 
 # C點 佔點過程貢獻
 execute if score #global arms_sub_mode matches 2 if score #100tick dom_timer matches 100 if score #c_contested temp_score matches 0 if score #c_red_count temp_score matches 1.. if score #Point_c dom_state matches 1 at @e[type=marker,tag=Point_c] positioned ~-8 ~-1 ~-8 as @a[dx=15,dy=3,dz=15,team=red] run scoreboard players add @s stat_dom_caps_match 1

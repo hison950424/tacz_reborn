@@ -215,16 +215,16 @@ execute at @a run playsound minecraft:entity.wither.spawn master @s ~ ~ ~ 1 0.5
 # gd656killicon client preset choose 00001
 
 #[佔點]殺一個人15元 bug1
-execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit ASSIST expression 0.15
-execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit BRAVE_RETURN expression 7
-execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit DESPERATE_COUNTERATTACK expression 7
-execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit INTERRUPTED_STREAK expression 7
-execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit KILL expression 0.15
-execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit KILL_COMBO expression 1.5
-execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit KILL_EXPLOSION expression 0.15
-execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit KILL_HEADSHOT expression 0.15
-execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit POTATO_AIM expression 7
-execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit SLAY_THE_LEADER expression 15
+execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit ASSIST expression 0.2
+execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit BRAVE_RETURN expression 10
+execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit DESPERATE_COUNTERATTACK expression 10
+execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit INTERRUPTED_STREAK expression 10
+execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit KILL expression 0.2
+execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit KILL_COMBO expression 2
+execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit KILL_EXPLOSION expression 0.2
+execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit KILL_HEADSHOT expression 0.2
+execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit POTATO_AIM expression 10
+execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit SLAY_THE_LEADER expression 20
 
 # #[佔點]殺一個人15元 bug2
 # execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit ASSIST expression 0.15
@@ -239,16 +239,16 @@ execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus 
 # execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit SLAY_THE_LEADER expression 15
 
 #[死鬥]殺一個人20元 bug1
-execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit ASSIST expression 0.2
-execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit BRAVE_RETURN expression 10
-execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit DESPERATE_COUNTERATTACK expression 10
-execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit INTERRUPTED_STREAK expression 10
-execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit KILL expression 0.2
-execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit KILL_COMBO expression 2
-execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit KILL_EXPLOSION expression 0.2
-execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit KILL_HEADSHOT expression 0.2
-execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit POTATO_AIM expression 10
-execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit SLAY_THE_LEADER expression 20
+execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit ASSIST expression 0.4
+execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit BRAVE_RETURN expression 20
+execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit DESPERATE_COUNTERATTACK expression 20
+execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit INTERRUPTED_STREAK expression 20
+execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit KILL expression 0.4
+execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit KILL_COMBO expression 4
+execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit KILL_EXPLOSION expression 0.4
+execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit KILL_HEADSHOT expression 0.4
+execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit POTATO_AIM expression 20
+execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit SLAY_THE_LEADER expression 40
 
 # #[死鬥]殺一個人20元 bug2
 # execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit ASSIST expression 0.2
