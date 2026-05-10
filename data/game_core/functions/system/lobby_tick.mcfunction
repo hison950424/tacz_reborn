@@ -435,7 +435,8 @@ execute as @a[scores={admin_team_ctrl=3}] run tag @a remove solo
 execute as @a[scores={admin_team_ctrl=3}] run execute store result score #team_turn temp_score run random value 1..4
 execute as @a[scores={admin_team_ctrl=3}] run execute as @a[sort=random] run function game_core:system/random_team_4
 
-execute as @a[scores={admin_team_ctrl=4}] run clear @a[tag=!admin] written_book{title:"隊伍選擇"}
+execute as @a[scores={admin_team_ctrl=4}] run function game_core:lobby/clear_all_lobby_books
+execute as @a[scores={admin_team_ctrl=4}] run function game_core:lobby/give_all_books
 execute as @a[scores={admin_team_ctrl=4}] run tellraw @a {"text":"[系統] 管理員已收回隊伍選擇書。","color":"yellow"}
 
 # ------------------------------------------

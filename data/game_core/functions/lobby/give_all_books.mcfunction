@@ -4,7 +4,7 @@
 # 呼叫來源: terminal_tick（admin_terminal=2）
 # ==========================================
 
-execute as @a[tag=!admin] run function game_core:lobby/give_lobby_terminal
-execute as @a[tag=admin] run function game_core:lobby/give_admin_terminal
+execute as @s[tag=!admin] run function game_core:lobby/give_lobby_terminal
+execute as @s[tag=admin] run function game_core:lobby/give_admin_terminal
 
-tellraw @a {"text":"[系統] 管理員已重新發放指令書。","color":"green"}
+tellraw @s {"text":"[系統] 已重新發放指令書。","color":"green"}
