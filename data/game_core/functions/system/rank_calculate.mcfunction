@@ -57,9 +57,10 @@ execute if score #winner_team dummy matches 4 run tag @a[team=white] add rp_winn
 execute if score #winner_team dummy matches 5 run tag @a[tag=br_winner] add rp_winner
 
 # --- 敗者標記 ---
-# 隊伍模式（1~4）：所有非獲勝者皆為敗者
+# 隊伍模式（1~4）：所有非獲勝者皆為敗者（扣 RP + 記敗場）
 execute if score #winner_team dummy matches 1..4 run tag @a[tag=!rp_winner] add rp_loser
-# 孤狼模式（5）：其餘孤狼不計 W/L（BR 性質不同，不扣 -15 RP）
+# 孤狼模式（5）：敗者不扣 RP（故不加 rp_loser），但仍需記錄敗場統計
+execute if score #winner_team dummy matches 5 as @a[tag=!rp_winner] if score @s team_id matches 5 run tag @s add rp_stat_loser
 # #winner_team=0（平手）：無人標記
 
 # [1] 計算 RP delta
@@ -76,6 +77,7 @@ function game_core:system/rank_tier11_check
 # [5] 清理標記
 tag @a remove rp_winner
 tag @a remove rp_loser
+tag @a remove rp_stat_loser
 tag @a remove br_winner
 
 # [6] 通知軍階

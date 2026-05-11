@@ -92,16 +92,17 @@ execute if score #global br_timer matches 20.. run scoreboard players set #globa
 # --- [D] 隊伍滅團與靈魂清空系統 ---
 # ==========================================
 # 1. 【滅團核心判定】只要隊伍中「狀態 1」人數為 0，強制將所有「狀態 2 與 3」轉入「狀態 4」！
-execute if score #global br_phase matches 2 if score #br_stand_red br_sys matches 0 as @a[team=red,scores={br_death_state=2..3}] run function game_core:gamemode/br_force_state4
-execute if score #global br_phase matches 2 if score #br_stand_blue br_sys matches 0 as @a[team=blue,scores={br_death_state=2..3}] run function game_core:gamemode/br_force_state4
-execute if score #global br_phase matches 2 if score #br_stand_green br_sys matches 0 as @a[team=green,scores={br_death_state=2..3}] run function game_core:gamemode/br_force_state4
-execute if score #global br_phase matches 2 if score #br_stand_white br_sys matches 0 as @a[team=white,scores={br_death_state=2..3}] run function game_core:gamemode/br_force_state4
+# 【修復 Bug 2】Phase 1 (空投) 同樣需要判定，防止同 Tick 多人死亡的競爭條件。
+execute if score #global br_phase matches 1..2 if score #br_stand_red br_sys matches 0 as @a[team=red,scores={br_death_state=2..3}] run function game_core:gamemode/br_force_state4
+execute if score #global br_phase matches 1..2 if score #br_stand_blue br_sys matches 0 as @a[team=blue,scores={br_death_state=2..3}] run function game_core:gamemode/br_force_state4
+execute if score #global br_phase matches 1..2 if score #br_stand_green br_sys matches 0 as @a[team=green,scores={br_death_state=2..3}] run function game_core:gamemode/br_force_state4
+execute if score #global br_phase matches 1..2 if score #br_stand_white br_sys matches 0 as @a[team=white,scores={br_death_state=2..3}] run function game_core:gamemode/br_force_state4
 
 # 2. 【靈魂大掃除】(防呆機制)
-execute if score #global br_phase matches 2 if score #br_alive_red br_sys matches 0 run kill @e[type=marker,tag=br_soul_marker,scores={team_id=1}]
-execute if score #global br_phase matches 2 if score #br_alive_blue br_sys matches 0 run kill @e[type=marker,tag=br_soul_marker,scores={team_id=2}]
-execute if score #global br_phase matches 2 if score #br_alive_green br_sys matches 0 run kill @e[type=marker,tag=br_soul_marker,scores={team_id=3}]
-execute if score #global br_phase matches 2 if score #br_alive_white br_sys matches 0 run kill @e[type=marker,tag=br_soul_marker,scores={team_id=4}]
+execute if score #global br_phase matches 1..2 if score #br_alive_red br_sys matches 0 run kill @e[type=marker,tag=br_soul_marker,scores={team_id=1}]
+execute if score #global br_phase matches 1..2 if score #br_alive_blue br_sys matches 0 run kill @e[type=marker,tag=br_soul_marker,scores={team_id=2}]
+execute if score #global br_phase matches 1..2 if score #br_alive_green br_sys matches 0 run kill @e[type=marker,tag=br_soul_marker,scores={team_id=3}]
+execute if score #global br_phase matches 1..2 if score #br_alive_white br_sys matches 0 run kill @e[type=marker,tag=br_soul_marker,scores={team_id=4}]
 
 
 

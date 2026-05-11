@@ -5,6 +5,10 @@
 # 注意: 此為基礎版 Stub，Phase 5 時將擴充為完整結算系統
 # ==========================================
 
+# 【防重複觸發】match_end_sequence 已執行（game_state=3）時直接跳出
+# 避免 br_force_state4 立即觸發 + schedule 延遲觸發導致雙重結算
+execute if score #global game_state matches 3 run return 0
+
 # 計算場上存活隊伍數量（只統計有至少 1 人存活的隊伍）
 # 存活人數在 br_player_tick 的 [6] 段落每 Tick 重新統計
 scoreboard players set #teams_alive br_sys 0
@@ -33,6 +37,9 @@ execute if score #teams_alive br_sys matches ..1 if score #br_alive_solo br_sys 
 execute if score #teams_alive br_sys matches ..1 if score #br_alive_solo br_sys matches 1.. run scoreboard players set #winner_team dummy 5
 
 execute if score #teams_alive br_sys matches 0 run title @a title {"text":"同時死亡，無人獲勝。","color":"dark_gray","bold":true}
-scoreboard players set #winner_team dummy 0
 
 execute if score #teams_alive br_sys matches ..1 run function game_core:system/match_end_sequence
+
+# 【修復】#winner_team 必須在 match_end_sequence (rank_calculate) 讀取完畢後才能歸零
+# 原本放在 match_end_sequence 之前，導致 rank_calculate 永遠讀到 0，RP 與勝敗統計全部失效
+scoreboard players set #winner_team dummy 0

@@ -439,6 +439,34 @@ execute as @a[scores={admin_team_ctrl=4}] run function game_core:lobby/clear_all
 execute as @a[scores={admin_team_ctrl=4}] run function game_core:lobby/give_all_books
 execute as @a[scores={admin_team_ctrl=4}] run tellraw @a {"text":"[系統] 管理員已收回隊伍選擇書。","color":"yellow"}
 
+# 全員加入孤狼（清空所有隊伍，依序分配至孤狼槽位）
+execute as @a[scores={admin_team_ctrl=5}] run tag @a remove solo
+execute as @a[scores={admin_team_ctrl=5}] run team leave @a
+# execute as @a[scores={admin_team_ctrl=5}] run execute as @a run function game_core:system/assign_solo_slot
+execute as @a[scores={admin_team_ctrl=5}] run tellraw @a {"text":"[系統] 管理員已將所有玩家設為孤狼！","color":"yellow"}
+
+# ------------------------------------------
+# 路由 H: 管理員比賽模式控制 (admin_event_ctrl)
+# ------------------------------------------
+scoreboard players enable @a[tag=admin] admin_event_ctrl
+
+execute as @a[scores={admin_event_ctrl=1},tag=admin] run scoreboard players set #global event_mode 1
+execute as @a[scores={admin_event_ctrl=1},tag=admin] run tellraw @a ["",{"text":"[系統] ","color":"gold","bold":true},{"text":"比賽模式已開啟！每場比賽的 RP 將累計至比賽積分。","color":"green"}]
+execute if entity @a[scores={admin_event_ctrl=1},tag=admin] run function game_core:lobby/event_leaderboard_auto_refresh
+execute as @a[scores={admin_event_ctrl=1},tag=admin] at @s run playsound entity.player.levelup master @a ~ ~ ~ 1 1.2
+
+execute as @a[scores={admin_event_ctrl=2},tag=admin] run scoreboard players set #global event_mode 0
+execute as @a[scores={admin_event_ctrl=2},tag=admin] run tellraw @a ["",{"text":"[系統] ","color":"gold","bold":true},{"text":"比賽模式已關閉。","color":"yellow"}]
+execute if entity @a[scores={admin_event_ctrl=2},tag=admin] run function game_core:lobby/event_leaderboard_auto_refresh
+execute as @a[scores={admin_event_ctrl=2},tag=admin] at @s run playsound block.note_block.bass master @a ~ ~ ~ 1 0.8
+
+execute as @a[scores={admin_event_ctrl=3},tag=admin] run scoreboard players set @a event_score 0
+execute as @a[scores={admin_event_ctrl=3},tag=admin] run function game_core:lobby/event_leaderboard_update
+execute as @a[scores={admin_event_ctrl=3},tag=admin] run tellraw @a ["",{"text":"[系統] ","color":"gold","bold":true},{"text":"比賽積分已重置為 0。","color":"red"}]
+execute as @a[scores={admin_event_ctrl=3},tag=admin] at @s run playsound block.anvil.land master @a ~ ~ ~ 1 1.2
+
+scoreboard players set @a[scores={admin_event_ctrl=1..}] admin_event_ctrl 0
+
 # ------------------------------------------
 # 收尾防呆與音效回饋 (原封不動保留)
 # ------------------------------------------

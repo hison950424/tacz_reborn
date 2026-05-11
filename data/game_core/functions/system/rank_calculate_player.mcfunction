@@ -60,8 +60,10 @@ execute if score #global arms_sub_mode matches 2 run scoreboard players operatio
 execute if score #global arms_sub_mode matches 2 run scoreboard players operation @s rp_delta += #rp_temp rank_temp
 
 # 套用 delta，下限 0
-execute as @a run scoreboard players operation @s rp_score += @s rp_delta
-execute as @a if score @s rp_score matches ..-1 run scoreboard players set @s rp_score 0
+# 【修復】移除多餘的 execute as @a run，此函式本身已由 rank_calculate 以 as @a 呼叫
+# 原本的寫法導致有 N 名玩家時，每個人的 rp_delta 被累加 N 次（RP 暴增 N 倍）
+scoreboard players operation @s rp_score += @s rp_delta
+execute if score @s rp_score matches ..-1 run scoreboard players set @s rp_score 0
 
 # 更新連勝 & 勝敗統計（各模式獨立）
 # BR（arms_sub_mode=0）
@@ -71,6 +73,10 @@ execute if entity @s[tag=rp_winner] if score #global arms_sub_mode matches 0 run
 execute if entity @s[tag=rp_loser] if score #global arms_sub_mode matches 0 run scoreboard players set @s stat_streak_br 0
 execute if entity @s[tag=rp_loser] if score #global arms_sub_mode matches 0 run scoreboard players add @s stat_losses_br 1
 execute if entity @s[tag=rp_loser] if score #global arms_sub_mode matches 0 run scoreboard players add @s stat_losses 1
+# 孤狼BR敗場（rp_stat_loser：不扣RP，只記統計）
+execute if entity @s[tag=rp_stat_loser] if score #global arms_sub_mode matches 0 run scoreboard players set @s stat_streak_br 0
+execute if entity @s[tag=rp_stat_loser] if score #global arms_sub_mode matches 0 run scoreboard players add @s stat_losses_br 1
+execute if entity @s[tag=rp_stat_loser] if score #global arms_sub_mode matches 0 run scoreboard players add @s stat_losses 1
 # TDM（arms_sub_mode=1）
 execute if entity @s[tag=rp_winner] if score #global arms_sub_mode matches 1 run scoreboard players add @s stat_streak_tdm 1
 execute if entity @s[tag=rp_winner] if score #global arms_sub_mode matches 1 run scoreboard players add @s stat_wins_tdm 1

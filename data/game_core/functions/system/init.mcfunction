@@ -453,6 +453,16 @@ scoreboard objectives add drop_barrier minecraft.dropped:minecraft.barrier
 scoreboard objectives add potion_count dummy "大補藥水數量暫存"
 scoreboard objectives add show_stat trigger "展示個人戰績"
 
+# ========== 比賽系統 ==========
+scoreboard objectives add event_mode dummy "比賽模式開關"
+scoreboard objectives add event_score dummy "比賽積分"
+scoreboard objectives add admin_event_ctrl trigger "管理員比賽控制"
+scoreboard players set #global event_mode 0
+
+# ========== 排行榜 ==========
+scoreboard objectives add rp_leaderboard dummy "RP排行榜暫存"
+scoreboard objectives add evt_leaderboard dummy "比賽積分排行榜暫存"
+
 #=============================================
 #=========         縮圈系統         ===========
 #=============================================

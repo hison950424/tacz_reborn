@@ -145,6 +145,12 @@ execute as @a[scores={show_stat=17}] run tellraw @s ["",{"text":"[個人] ","col
 # DOM 個人貢獻（私）
 execute as @a[scores={show_stat=18}] run tellraw @s ["",{"text":"[個人] ","color":"dark_aqua","bold":true},{"text":"DOM貢獻  佔點 ","color":"gold"},{"score":{"name":"@s","objective":"stat_dom_caps"},"color":"green"},{"text":"  成功 ","color":"gold"},{"score":{"name":"@s","objective":"stat_dom_flips"},"color":"yellow"},{"text":"  守點 ","color":"gold"},{"score":{"name":"@s","objective":"stat_dom_def"},"color":"aqua"}]
 
+# 比賽積分（私）
+execute as @a[scores={show_stat=19}] run tellraw @s ["",{"text":"[個人] ","color":"dark_aqua","bold":true},{"text":"比賽積分：","color":"gray"},{"score":{"name":"@s","objective":"event_score"},"color":"light_purple","bold":true}]
+
+# 比賽積分（全體展示）
+execute as @a[scores={show_stat=20}] run tellraw @a ["",{"text":"[展示] ","color":"gold","bold":true},{"selector":"@s","color":"yellow"},{"text":"  比賽積分：","color":"gray"},{"score":{"name":"@s","objective":"event_score"},"color":"light_purple","bold":true}]
+
 execute as @a[scores={show_stat=1..}] run playsound ui.button.click master @s ~ ~ ~ 1 1
 scoreboard players set @a[scores={show_stat=1..}] show_stat 0
 

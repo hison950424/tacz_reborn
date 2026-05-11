@@ -41,24 +41,20 @@ execute if score @s br_death_state matches 1 unless score @s team_id matches 5 r
 
 execute if entity @s[tag=check_wipe] run scoreboard players set @s br_death_state 2
 
-scoreboard players set #team_stand br_sys 0
-execute if entity @s[tag=check_wipe] as @a if score @s team_id = #current_player team_id unless score @s br_death_state matches 1..4 run scoreboard players set @s br_death_state 1
-execute if entity @s[tag=check_wipe] as @a if score @s team_id = #current_player team_id if score @s br_death_state matches 1 run scoreboard players add #team_stand br_sys 1
-
-execute if entity @s[tag=check_wipe] if score #team_stand br_sys matches 0 as @a if score @s team_id = #current_player team_id if score @s br_death_state matches 2..3 run tag @s add cause_wipe
-execute if entity @s[tag=check_wipe] if score #team_stand br_sys matches 0 as @a if score @s team_id = #current_player team_id if score @s br_death_state matches 2..3 run function game_core:gamemode/br_force_state4
-
-# 重新同步全域變數，防止 br_force_state4 內部污染
+# 重新同步全域變數
 scoreboard players operation #current_player br_id = @s br_id
 scoreboard players operation #current_player team_id = @s team_id
 
-execute if entity @s[tag=check_wipe] if score #team_stand br_sys matches 1.. run tag @s add br_downed_processing
+# 【修復 Bug 2 - 同 Tick 多人死亡競爭條件】
+# 不在此處做滅團判定，由 br_main_tick [D] 在所有 player_tick 完成後統一處理。
+# 只要隊伍模式且狀態 1 死亡，一律先進入倒地狀態 2，讓主迴圈下一 Tick 再確認是否全滅。
+execute if entity @s[tag=check_wipe] run tag @s add br_downed_processing
 
 execute if entity @s[tag=br_downed_processing] run title @s title {"text":"🩸 你已倒地","color":"red","bold":true}
 execute if entity @s[tag=br_downed_processing] run title @s subtitle {"text":"請等待隊友救援","color":"gray"}
 
 # 生成村民
-execute if entity @s[tag=br_downed_processing] as @e[type=marker,tag=br_tracker] if score @s br_id = #current_player br_id at @s run summon villager ~ ~ ~ {PersistenceRequired:1b,Tags:["br_downed_mob"],Age:-2147483648,Silent:1b,Health:300f,DeathLootTable:"minecraft:empty",Attributes:[{Name:"generic.max_health",Base:300f},{Name:"generic.knockback_resistance",Base:1f},{Name:"generic.movement_speed",Base:0f}],ActiveEffects:[{Id:2b,Amplifier:255,Duration:-1,ShowParticles:0b},{Id:8b,Amplifier:250,Duration:-1,ShowParticles:0b},{Id:18b,Amplifier:255,Duration:-1,ShowParticles:0b}]}
+execute if entity @s[tag=br_downed_processing] as @e[type=marker,tag=br_tracker] if score @s br_id = #current_player br_id at @s run summon villager ~ ~ ~ {PersistenceRequired:1b,Tags:["br_downed_mob"],Age:-2147483648,Silent:1b,Health:350f,DeathLootTable:"minecraft:empty",Attributes:[{Name:"generic.max_health",Base:350f},{Name:"generic.knockback_resistance",Base:1f},{Name:"generic.movement_speed",Base:0f}],ActiveEffects:[{Id:2b,Amplifier:255,Duration:-1,ShowParticles:0b},{Id:8b,Amplifier:250,Duration:-1,ShowParticles:0b},{Id:18b,Amplifier:255,Duration:-1,ShowParticles:0b}]}
 
 # 綁定 ID 
 execute if entity @s[tag=br_downed_processing] as @e[type=marker,tag=br_tracker] if score @s br_id = #current_player br_id at @s as @e[type=villager,tag=br_downed_mob,distance=..1,limit=1,sort=nearest] run scoreboard players operation @s br_id = #current_player br_id
