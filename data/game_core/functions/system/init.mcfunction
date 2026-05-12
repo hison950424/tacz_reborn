@@ -58,7 +58,7 @@ scoreboard objectives add transfer_val dummy "暫存轉帳金額"
 # 3. 伺服器規則防護
 gamerule commandBlockOutput false
 #詳細指令(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)
-gamerule sendCommandFeedback false
+gamerule sendCommandFeedback true
 gamerule doDaylightCycle false
 gamerule doWeatherCycle false
 gamerule keepInventory true
@@ -89,22 +89,22 @@ team modify red color red
 team modify blue color blue
 team modify green color green
 team modify white color white
-team modify solo1 color gray
-team modify solo2 color gray
-team modify solo3 color gray
-team modify solo4 color gray
-team modify solo5 color gray
-team modify solo6 color gray
-team modify solo7 color gray
-team modify solo8 color gray
-team modify solo9 color gray
-team modify solo10 color gray
-team modify solo11 color gray
-team modify solo12 color gray
-team modify solo13 color gray
-team modify solo14 color gray
-team modify solo15 color gray
-team modify solo16 color gray
+team modify solo1 color dark_gray
+team modify solo2 color dark_gray
+team modify solo3 color dark_gray
+team modify solo4 color dark_gray
+team modify solo5 color dark_gray
+team modify solo6 color dark_gray
+team modify solo7 color dark_gray
+team modify solo8 color dark_gray
+team modify solo9 color dark_gray
+team modify solo10 color dark_gray
+team modify solo11 color dark_gray
+team modify solo12 color dark_gray
+team modify solo13 color dark_gray
+team modify solo14 color dark_gray
+team modify solo15 color dark_gray
+team modify solo16 color dark_gray
 
 team modify red friendlyFire false
 team modify blue friendlyFire false
@@ -457,11 +457,14 @@ scoreboard objectives add show_stat trigger "展示個人戰績"
 scoreboard objectives add event_mode dummy "比賽模式開關"
 scoreboard objectives add event_score dummy "比賽積分"
 scoreboard objectives add admin_event_ctrl trigger "管理員比賽控制"
-scoreboard players set #global event_mode 0
+# scoreboard players set #global event_mode 0
 
 # ========== 排行榜 ==========
 scoreboard objectives add rp_leaderboard dummy "RP排行榜暫存"
 scoreboard objectives add evt_leaderboard dummy "比賽積分排行榜暫存"
+#更新排行榜
+function game_core:lobby/rp_leaderboard_update
+function game_core:lobby/event_leaderboard_update
 
 #=============================================
 #=========         縮圈系統         ===========
@@ -505,7 +508,6 @@ scoreboard players set #air_z dummy 0
 
 
 function game_core:system/match_reset
-function game_core:system/game_end
 
 
 tellraw @a {"text":"[系統] 已初始化。","color":"green"}

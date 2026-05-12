@@ -36,6 +36,19 @@ execute if score #teams_alive br_sys matches ..1 if score #br_alive_solo br_sys 
 execute if score #teams_alive br_sys matches ..1 if score #br_alive_solo br_sys matches 1.. as @a if score @s br_death_state matches 1 run tag @s add br_winner
 execute if score #teams_alive br_sys matches ..1 if score #br_alive_solo br_sys matches 1.. run scoreboard players set #winner_team dummy 5
 
+
+# --- 勝者標記 ---
+execute if score #winner_team dummy matches 1 run tag @a[team=red] add rp_winner
+execute if score #winner_team dummy matches 2 run tag @a[team=blue] add rp_winner
+execute if score #winner_team dummy matches 3 run tag @a[team=green] add rp_winner
+execute if score #winner_team dummy matches 4 run tag @a[team=white] add rp_winner
+# 孤狼：只有 br_winner 一人獲勝
+execute if score #winner_team dummy matches 5 run tag @a[tag=br_winner] add rp_winner
+
+################把所有玩家傳送至贏家身上
+execute as @a[tag = rp_winner] at @s run tp @a @s
+
+
 execute if score #teams_alive br_sys matches 0 run title @a title {"text":"同時死亡，無人獲勝。","color":"dark_gray","bold":true}
 
 execute if score #teams_alive br_sys matches ..1 run function game_core:system/match_end_sequence

@@ -25,7 +25,7 @@ gamemode spectator @s
 
 # A. 預設提示 (例如被敵人補刀、已用過祭壇等常規淘汰)
 execute unless entity @s[tag=cause_void] unless entity @s[tag=cause_wipe] unless entity @s[tag=cause_solo] run title @s title {"text":"☠ 徹底淘汰","color":"dark_red","bold":true}
-execute unless entity @s[tag=cause_void] unless entity @s[tag=cause_wipe] unless entity @s[tag=cause_solo] run title @s subtitle {"text":"無法再被復活，按 [蹲下] 切換觀戰","color":"gray"}
+execute unless entity @s[tag=cause_void] unless entity @s[tag=cause_wipe] unless entity @s[tag=cause_solo] run title @s subtitle {"text":"無法再被復活","color":"gray"}
 
 # B. 掉入虛空
 execute if entity @s[tag=cause_void] run title @s title {"text":"☠ 墜入深淵","color":"dark_red","bold":true}

@@ -424,16 +424,24 @@ execute as @a[scores={admin_team_ctrl=1}] run tellraw @a {"text":"[系統] 管�
 execute as @a[scores={admin_team_ctrl=1}] run tag @a remove solo
 execute as @a[scores={admin_team_ctrl=1}] run execute store result score #team_turn temp_score run random value 1..2
 execute as @a[scores={admin_team_ctrl=1}] run execute as @a[sort=random] run function game_core:system/random_team_2
+execute as @a[scores={admin_team_ctrl=1}] run execute as @a[sort=random] run function game_core:lobby/rp_leaderboard_update
+execute as @a[scores={admin_team_ctrl=1}] run execute as @a[sort=random] run function game_core:lobby/event_leaderboard_update
+
 
 execute as @a[scores={admin_team_ctrl=2}] run tellraw @a {"text":"[系統] 管理員已將所有人隨機分為 三隊！","color":"yellow"}
 execute as @a[scores={admin_team_ctrl=2}] run tag @a remove solo
 execute as @a[scores={admin_team_ctrl=2}] run execute store result score #team_turn temp_score run random value 1..3
 execute as @a[scores={admin_team_ctrl=2}] run execute as @a[sort=random] run function game_core:system/random_team_3
+execute as @a[scores={admin_team_ctrl=2}] run execute as @a[sort=random] run function game_core:lobby/rp_leaderboard_update
+execute as @a[scores={admin_team_ctrl=2}] run execute as @a[sort=random] run function game_core:lobby/event_leaderboard_update
+
 
 execute as @a[scores={admin_team_ctrl=3}] run tellraw @a {"text":"[系統] 管理員已將所有人隨機分為 四隊！","color":"yellow"}
 execute as @a[scores={admin_team_ctrl=3}] run tag @a remove solo
 execute as @a[scores={admin_team_ctrl=3}] run execute store result score #team_turn temp_score run random value 1..4
 execute as @a[scores={admin_team_ctrl=3}] run execute as @a[sort=random] run function game_core:system/random_team_4
+execute as @a[scores={admin_team_ctrl=3}] run execute as @a[sort=random] run function game_core:lobby/rp_leaderboard_update
+execute as @a[scores={admin_team_ctrl=3}] run execute as @a[sort=random] run function game_core:lobby/event_leaderboard_update
 
 execute as @a[scores={admin_team_ctrl=4}] run function game_core:lobby/clear_all_lobby_books
 execute as @a[scores={admin_team_ctrl=4}] run function game_core:lobby/give_all_books
@@ -478,6 +486,8 @@ scoreboard players enable @a select_mode
 scoreboard players enable @a select_class
 
 execute as @a[scores={join_team=1..}] at @s run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 1.2
+execute as @a[scores={join_team=1..}] at @s run function game_core:lobby/rp_leaderboard_update
+execute as @a[scores={join_team=1..}] at @s run function game_core:lobby/event_leaderboard_update
 execute as @a[scores={admin_team_ctrl=1..}] at @s run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 1.2
 scoreboard players set @a[scores={join_team=1..}] join_team 0
 scoreboard players set @a[scores={admin_team_ctrl=1..}] admin_team_ctrl 0

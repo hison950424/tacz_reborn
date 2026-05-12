@@ -119,3 +119,4 @@ data modify storage rp_lb:top top10_tier set from storage rp_lb:temp current_tie
 
 # 更新顯示
 function game_core:lobby/rp_leaderboard_refresh
+execute as @a at @s run function game_core:system/rank_tier_update
