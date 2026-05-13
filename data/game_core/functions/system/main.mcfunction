@@ -7,6 +7,8 @@
 
 # 狀態 1 (大逃殺): 執行大逃殺專屬邏輯
 execute if score #global game_state matches 1 run function game_core:gamemode/br_main_tick
+#大逃殺模式中途加入者轉為觀察者模式
+execute if score #global game_state matches 1 unless entity @s[tag=br_setup] run gamemode spectator @s
 
 # 狀態 2 (軍備競賽): 執行軍備競賽專屬邏輯
 execute if score #global game_state matches 2 run function game_core:system/arms_race_tick
@@ -18,6 +20,8 @@ execute if score #global game_state matches 0 as @a[team=,sort=random,limit=1] r
 
 #執行大廳待機邏輯
 execute if score #global game_state matches 0 run function game_core:system/lobby_tick
+
+
 
 
 

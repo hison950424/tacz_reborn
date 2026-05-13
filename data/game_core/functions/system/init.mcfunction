@@ -422,8 +422,14 @@ scoreboard objectives add br_max_hp dummy "血量上限暫存"
 scoreboard objectives add br_map dummy "BR 地圖選擇"
 scoreboard objectives add br_phase dummy "BR 子階段 (1=空投, 2=戰鬥)"
 scoreboard objectives add br_map_pick trigger "BR 地圖選擇觸發器"
+scoreboard objectives add br_time dummy "BR 遊戲時間 (1=白天 2=黃昏 3=夜晚)"
+scoreboard objectives add br_weather dummy "BR 天氣 (1=晴天 2=雨天 3=雷雨)"
+scoreboard objectives add br_time_pick trigger "BR 時間選擇觸發器"
+scoreboard objectives add br_weather_pick trigger "BR 天氣選擇觸發器"
 scoreboard players set #global br_map 1
 scoreboard players set #global br_phase 0
+scoreboard players set #global br_time 1
+scoreboard players set #global br_weather 1
 scoreboard objectives add slime_alive dummy "史萊姆存活確認"
 scoreboard objectives add is_reviving dummy "是否正在被救援"
 scoreboard objectives add target_id dummy "正在救援的目標ID"

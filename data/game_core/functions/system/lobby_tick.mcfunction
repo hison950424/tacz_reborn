@@ -24,7 +24,8 @@ function game_core:lobby/terminal_tick
 # 選擇 1: 大逃殺 -> 清除模式選擇書，發放地圖選擇書
 execute as @a[scores={select_mode=1}] run scoreboard players set #global arms_sub_mode 0
 execute as @a[scores={select_mode=1}] run clear @s written_book{title:"模式選擇書"}
-execute as @a[scores={select_mode=1}] run give @s written_book{title:"大逃殺地圖選擇",author:"系統",pages:['{"text":" ==== 大逃殺 ====\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"選擇地圖:\\n\\n","color":"gold","bold":true},{"text":"[▶ 地圖一: 經典]\\n","color":"dark_green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 1"}},{"text":"[▶ 地圖二: 腐蝕之地]\\n","color":"dark_green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 2"}},{"text":"[▶ 地圖三: 櫻峰之城]\\n","color":"dark_green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 3"}},{"text":"[▶ 地圖四: 山吹城]\\n","color":"dark_green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 4"}},{"text":"[▶ 地圖五: 普羅米修斯禁區]\\n\\n","color":"dark_green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 5"}},{"text":"[▶ 開始遊戲 ]\\n","color":"dark_blue","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 10"}},{"text":"[ ◄ 上一頁 ]","color":"gray","bold":true,"bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 9"}}]}']} 1
+execute as @a[scores={select_mode=1}] run clear @s written_book{title:"大逃殺參數設定"}
+execute as @a[scores={select_mode=1}] run give @s written_book{title:"大逃殺地圖選擇",author:"系統",pages:['{"text":" <<< 地圖選擇 >>>\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"[ ▶ 地圖一: 經典 ]\\n\\n","color":"dark_green","clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 1"}},{"text":"[ ▶ 地圖二: 腐蝕之地 ]\\n\\n","color":"dark_green","clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 2"}},{"text":"[ ▶ 地圖三: 櫻峰之城 ]\\n\\n","color":"dark_green","clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 3"}},{"text":"[ ▶ 地圖四: 山吹城 ]\\n\\n","color":"dark_green","clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 4"}},{"text":"[ ▶ 地圖五 ]\\n","color":"dark_green","clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 5"}},{"text":"   普羅米修斯禁區\\n\\n","color":"gray"},{"text":"[ ◄ 上一頁 ]","color":"gray","clickEvent":{"action":"run_command","value":"/trigger select_mode set 9"}}]}']} 1
 
 # 選擇 2: 軍備競賽 -> 給予【軍備競賽模式選擇書】
 execute as @a[scores={select_mode=2}] run clear @s written_book{title:"模式選擇書"}
@@ -36,6 +37,7 @@ execute as @a[scores={select_mode=2}] run tellraw @s {"text":"[系統] 已開啟
 # ------------------------------------------
 execute as @a[scores={select_mode=9}] run clear @s written_book{title:"軍備競賽模式選擇書"}
 execute as @a[scores={select_mode=9}] run clear @s written_book{title:"大逃殺地圖選擇"}
+execute as @a[scores={select_mode=9}] run clear @s written_book{title:"大逃殺參數設定"}
 execute as @a[scores={select_mode=9}] run clear @s written_book{title:"模式選擇書"}
 execute as @a[scores={select_mode=9}] run clear @s written_book{title:"模式與隊伍"}
 execute as @a[scores={select_mode=9}] run give @s written_book{title:"模式選擇書",author:"系統",pages:['{"text":" ==== 模式選擇 ====\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"[▶ 大逃殺模式]\\n\\n","color":"dark_gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 1"}},{"text":"[▶ 軍備競賽模式]\\n\\n","color":"dark_green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 2"}},{"text":"[ ◄ 上一頁 ]\\n","color":"gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger lobby_terminal set 9"}}]}']} 1
@@ -285,12 +287,57 @@ execute as @a[scores={br_map_pick=4}] run tellraw @s {"text":"[系統] 已選擇
 execute as @a[scores={br_map_pick=5}] run scoreboard players set #global br_map 5
 execute as @a[scores={br_map_pick=5}] run tellraw @s {"text":"[系統] 已選擇地圖五：普羅米修斯禁區","color":"green"}
 execute as @a[scores={br_map_pick=1..}] at @s run playsound ui.button.click master @s ~ ~ ~ 1 1
+# 選圖完成後，對管理員發放 BR 參數設定書
+execute as @a[scores={br_map_pick=1..},tag=admin] run function game_core:lobby/give_br_params_book
 scoreboard players set @a[scores={br_map_pick=1..}] br_map_pick 0
+
+# ------------------------------------------
+# 路由 BR-TIME: 遊戲時間選擇 (br_time_pick trigger)
+# ------------------------------------------
+scoreboard players enable @a br_time_pick
+execute as @a[scores={br_time_pick=1}] run scoreboard players set #global br_time 1
+execute as @a[scores={br_time_pick=1}] run tellraw @s {"text":"[系統] 遊戲時間已設定：☀ 白天","color":"gold"}
+execute as @a[scores={br_time_pick=2}] run scoreboard players set #global br_time 2
+execute as @a[scores={br_time_pick=2}] run tellraw @s {"text":"[系統] 遊戲時間已設定：🌅 黃昏","color":"dark_red"}
+execute as @a[scores={br_time_pick=3}] run scoreboard players set #global br_time 3
+execute as @a[scores={br_time_pick=3}] run tellraw @s {"text":"[系統] 遊戲時間已設定：🌙 夜晚","color":"dark_purple"}
+execute as @a[scores={br_time_pick=1..}] at @s run playsound ui.button.click master @s ~ ~ ~ 1 1
+scoreboard players set @a[scores={br_time_pick=1..}] br_time_pick 0
+
+# ------------------------------------------
+# 路由 BR-WEATHER: 天氣選擇 (br_weather_pick trigger)
+# ------------------------------------------
+scoreboard players enable @a br_weather_pick
+execute as @a[scores={br_weather_pick=1}] run scoreboard players set #global br_weather 1
+execute as @a[scores={br_weather_pick=1}] run tellraw @s {"text":"[系統] 天氣已設定：☀ 晴天","color":"yellow"}
+execute as @a[scores={br_weather_pick=2}] run scoreboard players set #global br_weather 2
+execute as @a[scores={br_weather_pick=2}] run tellraw @s {"text":"[系統] 天氣已設定：🌧 雨天","color":"aqua"}
+execute as @a[scores={br_weather_pick=3}] run scoreboard players set #global br_weather 3
+execute as @a[scores={br_weather_pick=3}] run tellraw @s {"text":"[系統] 天氣已設定：⛈ 雷雨","color":"dark_aqua"}
+execute as @a[scores={br_weather_pick=1..}] at @s run playsound ui.button.click master @s ~ ~ ~ 1 1
+scoreboard players set @a[scores={br_weather_pick=1..}] br_weather_pick 0
+
+# ------------------------------------------
+# 路由 BR-INFO: 查看目前 BR 遊戲配置 (select_mode = 13)
+# ------------------------------------------
+execute as @a[scores={select_mode=13}] run tellraw @s ["",{"text":"━━━ BR 目前配置 ━━━","color":"gold","bold":true}]
+execute as @a[scores={select_mode=13}] if score #global br_map matches 1 run tellraw @s {"text":"  🗺 地圖：地圖一 - 經典","color":"dark_green"}
+execute as @a[scores={select_mode=13}] if score #global br_map matches 2 run tellraw @s {"text":"  🗺 地圖：地圖二 - 腐蝕之地","color":"dark_green"}
+execute as @a[scores={select_mode=13}] if score #global br_map matches 3 run tellraw @s {"text":"  🗺 地圖：地圖三 - 櫻峰之城","color":"dark_green"}
+execute as @a[scores={select_mode=13}] if score #global br_map matches 4 run tellraw @s {"text":"  🗺 地圖：地圖四 - 山吹城","color":"dark_green"}
+execute as @a[scores={select_mode=13}] if score #global br_map matches 5 run tellraw @s {"text":"  🗺 地圖：地圖五 - 普羅米修斯禁區","color":"dark_green"}
+execute as @a[scores={select_mode=13}] if score #global br_time matches 1 run tellraw @s {"text":"  ☀ 時間：白天","color":"yellow"}
+execute as @a[scores={select_mode=13}] if score #global br_time matches 2 run tellraw @s {"text":"  🌅 時間：黃昏","color":"dark_red"}
+execute as @a[scores={select_mode=13}] if score #global br_time matches 3 run tellraw @s {"text":"  🌙 時間：夜晚","color":"dark_purple"}
+execute as @a[scores={select_mode=13}] if score #global br_weather matches 1 run tellraw @s {"text":"  ☀ 天氣：晴天","color":"yellow"}
+execute as @a[scores={select_mode=13}] if score #global br_weather matches 2 run tellraw @s {"text":"  🌧 天氣：雨天","color":"aqua"}
+execute as @a[scores={select_mode=13}] if score #global br_weather matches 3 run tellraw @s {"text":"  ⛈ 天氣：雷雨","color":"dark_aqua"}
 
 # ------------------------------------------
 # 路由 E2: 管理員按下【開始大逃殺】(select_mode = 10)
 # ------------------------------------------
 execute as @a[scores={select_mode=10},tag=admin] run clear @s written_book{title:"大逃殺地圖選擇"}
+execute as @a[scores={select_mode=10},tag=admin] run clear @s written_book{title:"大逃殺參數設定"}
 execute as @a[scores={select_mode=10},tag=admin] run function game_core:system/start_battle_royale
 
 # ------------------------------------------

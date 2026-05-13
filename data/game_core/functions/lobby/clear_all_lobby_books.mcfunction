@@ -12,4 +12,5 @@ clear @s written_book{title:"隊伍選擇"}
 clear @s written_book{title:"模式選擇書"}
 clear @s written_book{title:"規則書"}
 clear @s written_book{title:"個人戰績"}
+clear @s written_book{title:"大逃殺參數設定"}
 
