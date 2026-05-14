@@ -126,6 +126,8 @@ execute if score #br_phase dummy matches 3 if score #br_timer dummy matches ..0 
 execute if score #br_phase dummy matches 4 if score #br_timer dummy matches ..0 run function game_core:gamemode/br_phase5_start
 execute if score #br_phase dummy matches 5 if score #br_timer dummy matches ..0 run function game_core:gamemode/br_phase6_start
 execute if score #br_phase dummy matches 6 if score #br_timer dummy matches ..0 run function game_core:gamemode/br_phase7_start
+execute if score #br_phase dummy matches 7 if score #br_timer dummy matches ..0 run function game_core:gamemode/br_phase8_start
+execute if score #br_phase dummy matches 8 if score #br_timer dummy matches ..0 run function game_core:gamemode/br_phase9_start
 
 #公告
 execute if score #br_phase dummy matches 0 if score #br_timer dummy matches 1200 run tellraw @a ["",{"text":"[縮圈] ","color":"aqua"},{"text":" 1 分鐘後縮圈。","color":"white"}]
@@ -140,6 +142,7 @@ execute if score #br_phase dummy matches 4 if score #br_timer dummy matches 200 
 execute if score #br_phase dummy matches 6 if score #br_timer dummy matches 1200 run tellraw @a ["",{"text":"[縮圈] ","color":"aqua"},{"text":" 1 分鐘後縮圈。","color":"white"}]
 execute if score #br_phase dummy matches 6 if score #br_timer dummy matches 600 run tellraw @a ["",{"text":"[縮圈] ","color":"aqua"},{"text":" 30 秒後縮圈。","color":"white"}]
 execute if score #br_phase dummy matches 6 if score #br_timer dummy matches 200 run tellraw @a ["",{"text":"[縮圈] ","color":"red"},{"text":"10 秒後縮圈。","color":"white"}]
+execute if score #br_phase dummy matches 8 if score #br_timer dummy matches 200 run tellraw @a ["",{"text":"[系統] ","color":"red"},{"text":"10 秒後場地傷害啟動！所有存活玩家將開始持續受傷！","color":"white"}]
 # ══════════════════════════════════════════
 # center marker 平滑移動（縮圈期 phase 1,3,5）
 # ══════════════════════════════════════════
@@ -180,3 +183,11 @@ execute if score #br_airdrop_delay dummy matches 0.. run scoreboard players add 
 
 # delay >= 20 且村民存在時才偵測 OnGround
 execute if score #br_airdrop_delay dummy matches 20.. if entity @e[type=minecraft:villager,tag=airdrop_bird] run function game_core:gamemode/br_airdrop_check
+
+
+# ==========================================
+# --- [Phase 8] 決勝時刻：全體存活玩家每秒受傷 ---
+# ==========================================
+# 每 20 tick（1 秒）對所有存活玩家（br_death_state=1）造成 2 HP 固定傷害
+# 此傷害不受距離影響，配合圈外遞增傷害共同逼迫玩家交戰
+execute if score #br_phase dummy matches 9 if score #br_tick20 dummy matches 0 as @a if score @s br_death_state matches 1 at @s run damage @s 5 minecraft:out_of_world

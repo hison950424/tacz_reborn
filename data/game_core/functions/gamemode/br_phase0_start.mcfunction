@@ -76,9 +76,9 @@ scoreboard players set #br_sz dummy 0
 
 execute at @e[type=minecraft:marker,tag=br_center,limit=1] run worldborder center ~ ~
 
-# ── 公告（依地圖顯示不同時間）──
-execute if score #global br_map matches 2 run tellraw @a ["",{"text":"[縮圈] ","color":"gold"},{"text":"準備期，4 分鐘後第一次縮圈。","color":"yellow"}]
-execute if score #global br_map matches 4 run tellraw @a ["",{"text":"[縮圈] ","color":"gold"},{"text":"準備期，4 分鐘後第一次縮圈。","color":"yellow"}]
-execute if score #global br_map matches 5 run tellraw @a ["",{"text":"[縮圈] ","color":"gold"},{"text":"準備期，4 分鐘後第一次縮圈。","color":"yellow"}]
-execute if score #global br_map matches 1 run tellraw @a ["",{"text":"[縮圈] ","color":"gold"},{"text":"準備期，5 分鐘後第一次縮圈。","color":"yellow"}]
-execute if score #global br_map matches 3 run tellraw @a ["",{"text":"[縮圈] ","color":"gold"},{"text":"準備期，6 分鐘後第一次縮圈。","color":"yellow"}]
+# ── 公告（依地圖顯示不同時間；快速模式跳過此公告）──
+execute if score #global br_fast_mode matches 0 if score #global br_map matches 2 run tellraw @a ["",{"text":"[縮圈] ","color":"gold"},{"text":"準備期，4 分鐘後第一次縮圈。","color":"yellow"}]
+execute if score #global br_fast_mode matches 0 if score #global br_map matches 4 run tellraw @a ["",{"text":"[縮圈] ","color":"gold"},{"text":"準備期，4 分鐘後第一次縮圈。","color":"yellow"}]
+execute if score #global br_fast_mode matches 0 if score #global br_map matches 5 run tellraw @a ["",{"text":"[縮圈] ","color":"gold"},{"text":"準備期，4 分鐘後第一次縮圈。","color":"yellow"}]
+execute if score #global br_fast_mode matches 0 if score #global br_map matches 1 run tellraw @a ["",{"text":"[縮圈] ","color":"gold"},{"text":"準備期，5 分鐘後第一次縮圈。","color":"yellow"}]
+execute if score #global br_fast_mode matches 0 if score #global br_map matches 3 run tellraw @a ["",{"text":"[縮圈] ","color":"gold"},{"text":"準備期，6 分鐘後第一次縮圈。","color":"yellow"}]

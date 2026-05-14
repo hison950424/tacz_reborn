@@ -10,38 +10,64 @@
 effect give @a minecraft:resistance 2 10 true
 
 
-# --- [A] 空投機移動（速度依地圖各軸距離計算，所有地圖統一 60 秒 = 1200 Ticks）---
-# 速度公式：各軸路徑距離（格）÷ 1200 Ticks
-# 地圖一: X=Z=800格 → 0.666667/tick（各軸相同）
-# 地圖二: X=Z=600格 → 0.5/tick（各軸相同）
-# 地圖三: X=1100格→0.916667/tick，Z=1000格→0.833333/tick（X、Z 跨度不同）
-# 地圖四: X=Z=600格 → 0.5/tick（各軸相同）
-# 地圖五: X=500格→0.416667/tick，Z=600格→0.5/tick（X、Z 跨度不同）
+# --- [A] 空投機移動 ---
+# 一般模式：60 秒（1200 Ticks）；快速模式：15 秒（300 Ticks，速度 ×4）
+# 速度公式：各軸路徑距離（格）÷ 各模式 Ticks
+# 地圖一: X=Z=800格 → 一般 0.666667/tick，快速 2.666667/tick
+# 地圖二: X=Z=600格 → 一般 0.5/tick，    快速 2.0/tick
+# 地圖三: X=Z=900格（對齊初始邊界直徑）→一般 0.75/快速 1.733333
+# 地圖四: X=Z=600格 → 一般 0.5/tick，    快速 2.0/tick
+# 地圖五: X=500格→一般 0.416667/快速 1.666667；Z=600格→一般 0.5/快速 2.0
 
-execute if score #global br_map matches 1 as @e[type=marker,tag=br_dropship,tag=br_dir_px] at @s run tp @s ~0.666667 ~ ~
-execute if score #global br_map matches 1 as @e[type=marker,tag=br_dropship,tag=br_dir_pz] at @s run tp @s ~ ~ ~0.666667
-execute if score #global br_map matches 1 as @e[type=marker,tag=br_dropship,tag=br_dir_pxpz] at @s run tp @s ~0.666667 ~ ~0.666667
-execute if score #global br_map matches 1 as @e[type=marker,tag=br_dropship,tag=br_dir_nxpz] at @s run tp @s ~-0.666667 ~ ~0.666667
+# --- 地圖一 ---
+execute if score #global br_fast_mode matches 0 if score #global br_map matches 1 as @e[type=marker,tag=br_dropship,tag=br_dir_px] at @s run tp @s ~0.666667 ~ ~
+execute if score #global br_fast_mode matches 0 if score #global br_map matches 1 as @e[type=marker,tag=br_dropship,tag=br_dir_pz] at @s run tp @s ~ ~ ~0.666667
+execute if score #global br_fast_mode matches 0 if score #global br_map matches 1 as @e[type=marker,tag=br_dropship,tag=br_dir_pxpz] at @s run tp @s ~0.666667 ~ ~0.666667
+execute if score #global br_fast_mode matches 0 if score #global br_map matches 1 as @e[type=marker,tag=br_dropship,tag=br_dir_nxpz] at @s run tp @s ~-0.666667 ~ ~0.666667
+execute if score #global br_fast_mode matches 1 if score #global br_map matches 1 as @e[type=marker,tag=br_dropship,tag=br_dir_px] at @s run tp @s ~1.533333 ~ ~
+execute if score #global br_fast_mode matches 1 if score #global br_map matches 1 as @e[type=marker,tag=br_dropship,tag=br_dir_pz] at @s run tp @s ~ ~ ~1.533333
+execute if score #global br_fast_mode matches 1 if score #global br_map matches 1 as @e[type=marker,tag=br_dropship,tag=br_dir_pxpz] at @s run tp @s ~1.533333 ~ ~1.533333
+execute if score #global br_fast_mode matches 1 if score #global br_map matches 1 as @e[type=marker,tag=br_dropship,tag=br_dir_nxpz] at @s run tp @s ~-1.533333 ~ ~1.533333
 
-execute if score #global br_map matches 2 as @e[type=marker,tag=br_dropship,tag=br_dir_px] at @s run tp @s ~0.5 ~ ~
-execute if score #global br_map matches 2 as @e[type=marker,tag=br_dropship,tag=br_dir_pz] at @s run tp @s ~ ~ ~0.5
-execute if score #global br_map matches 2 as @e[type=marker,tag=br_dropship,tag=br_dir_pxpz] at @s run tp @s ~0.5 ~ ~0.5
-execute if score #global br_map matches 2 as @e[type=marker,tag=br_dropship,tag=br_dir_pxnz] at @s run tp @s ~0.5 ~ ~-0.5
+# --- 地圖二 ---
+execute if score #global br_fast_mode matches 0 if score #global br_map matches 2 as @e[type=marker,tag=br_dropship,tag=br_dir_px] at @s run tp @s ~0.5 ~ ~
+execute if score #global br_fast_mode matches 0 if score #global br_map matches 2 as @e[type=marker,tag=br_dropship,tag=br_dir_pz] at @s run tp @s ~ ~ ~0.5
+execute if score #global br_fast_mode matches 0 if score #global br_map matches 2 as @e[type=marker,tag=br_dropship,tag=br_dir_pxpz] at @s run tp @s ~0.5 ~ ~0.5
+execute if score #global br_fast_mode matches 0 if score #global br_map matches 2 as @e[type=marker,tag=br_dropship,tag=br_dir_pxnz] at @s run tp @s ~0.5 ~ ~-0.5
+execute if score #global br_fast_mode matches 1 if score #global br_map matches 2 as @e[type=marker,tag=br_dropship,tag=br_dir_px] at @s run tp @s ~1.166667 ~ ~
+execute if score #global br_fast_mode matches 1 if score #global br_map matches 2 as @e[type=marker,tag=br_dropship,tag=br_dir_pz] at @s run tp @s ~ ~ ~1.166667
+execute if score #global br_fast_mode matches 1 if score #global br_map matches 2 as @e[type=marker,tag=br_dropship,tag=br_dir_pxpz] at @s run tp @s ~1.166667 ~ ~1.166667
+execute if score #global br_fast_mode matches 1 if score #global br_map matches 2 as @e[type=marker,tag=br_dropship,tag=br_dir_pxnz] at @s run tp @s ~1.166667 ~ ~-1.166667
 
-execute if score #global br_map matches 3 as @e[type=marker,tag=br_dropship,tag=br_dir_px] at @s run tp @s ~0.916667 ~ ~
-execute if score #global br_map matches 3 as @e[type=marker,tag=br_dropship,tag=br_dir_pz] at @s run tp @s ~ ~ ~0.833333
-execute if score #global br_map matches 3 as @e[type=marker,tag=br_dropship,tag=br_dir_pxpz] at @s run tp @s ~0.916667 ~ ~0.833333
-execute if score #global br_map matches 3 as @e[type=marker,tag=br_dropship,tag=br_dir_nxpz] at @s run tp @s ~-0.916667 ~ ~0.833333
+# --- 地圖三 ---
+execute if score #global br_fast_mode matches 0 if score #global br_map matches 3 as @e[type=marker,tag=br_dropship,tag=br_dir_px] at @s run tp @s ~0.75 ~ ~
+execute if score #global br_fast_mode matches 0 if score #global br_map matches 3 as @e[type=marker,tag=br_dropship,tag=br_dir_pz] at @s run tp @s ~ ~ ~0.75
+execute if score #global br_fast_mode matches 0 if score #global br_map matches 3 as @e[type=marker,tag=br_dropship,tag=br_dir_pxpz] at @s run tp @s ~0.75 ~ ~0.75
+execute if score #global br_fast_mode matches 0 if score #global br_map matches 3 as @e[type=marker,tag=br_dropship,tag=br_dir_nxpz] at @s run tp @s ~-0.75 ~ ~0.75
+execute if score #global br_fast_mode matches 1 if score #global br_map matches 3 as @e[type=marker,tag=br_dropship,tag=br_dir_px] at @s run tp @s ~1.733333 ~ ~
+execute if score #global br_fast_mode matches 1 if score #global br_map matches 3 as @e[type=marker,tag=br_dropship,tag=br_dir_pz] at @s run tp @s ~ ~ ~1.733333
+execute if score #global br_fast_mode matches 1 if score #global br_map matches 3 as @e[type=marker,tag=br_dropship,tag=br_dir_pxpz] at @s run tp @s ~1.733333 ~ ~1.733333
+execute if score #global br_fast_mode matches 1 if score #global br_map matches 3 as @e[type=marker,tag=br_dropship,tag=br_dir_nxpz] at @s run tp @s ~-1.733333 ~ ~1.733333
 
-execute if score #global br_map matches 4 as @e[type=marker,tag=br_dropship,tag=br_dir_px] at @s run tp @s ~0.5 ~ ~
-execute if score #global br_map matches 4 as @e[type=marker,tag=br_dropship,tag=br_dir_pz] at @s run tp @s ~ ~ ~0.5
-execute if score #global br_map matches 4 as @e[type=marker,tag=br_dropship,tag=br_dir_pxpz] at @s run tp @s ~0.5 ~ ~0.5
-execute if score #global br_map matches 4 as @e[type=marker,tag=br_dropship,tag=br_dir_nxpz] at @s run tp @s ~-0.5 ~ ~0.5
+# --- 地圖四 ---
+execute if score #global br_fast_mode matches 0 if score #global br_map matches 4 as @e[type=marker,tag=br_dropship,tag=br_dir_px] at @s run tp @s ~0.5 ~ ~
+execute if score #global br_fast_mode matches 0 if score #global br_map matches 4 as @e[type=marker,tag=br_dropship,tag=br_dir_pz] at @s run tp @s ~ ~ ~0.5
+execute if score #global br_fast_mode matches 0 if score #global br_map matches 4 as @e[type=marker,tag=br_dropship,tag=br_dir_pxpz] at @s run tp @s ~0.5 ~ ~0.5
+execute if score #global br_fast_mode matches 0 if score #global br_map matches 4 as @e[type=marker,tag=br_dropship,tag=br_dir_nxpz] at @s run tp @s ~-0.5 ~ ~0.5
+execute if score #global br_fast_mode matches 1 if score #global br_map matches 4 as @e[type=marker,tag=br_dropship,tag=br_dir_px] at @s run tp @s ~1.166667 ~ ~
+execute if score #global br_fast_mode matches 1 if score #global br_map matches 4 as @e[type=marker,tag=br_dropship,tag=br_dir_pz] at @s run tp @s ~ ~ ~1.166667
+execute if score #global br_fast_mode matches 1 if score #global br_map matches 4 as @e[type=marker,tag=br_dropship,tag=br_dir_pxpz] at @s run tp @s ~1.166667 ~ ~1.166667
+execute if score #global br_fast_mode matches 1 if score #global br_map matches 4 as @e[type=marker,tag=br_dropship,tag=br_dir_nxpz] at @s run tp @s ~-1.166667 ~ ~1.166667
 
-execute if score #global br_map matches 5 as @e[type=marker,tag=br_dropship,tag=br_dir_px] at @s run tp @s ~0.416667 ~ ~
-execute if score #global br_map matches 5 as @e[type=marker,tag=br_dropship,tag=br_dir_nz] at @s run tp @s ~ ~ ~-0.5
-execute if score #global br_map matches 5 as @e[type=marker,tag=br_dropship,tag=br_dir_pxnz] at @s run tp @s ~0.416667 ~ ~-0.5
-execute if score #global br_map matches 5 as @e[type=marker,tag=br_dropship,tag=br_dir_nxnz] at @s run tp @s ~-0.416667 ~ ~-0.5
+# --- 地圖五 ---
+execute if score #global br_fast_mode matches 0 if score #global br_map matches 5 as @e[type=marker,tag=br_dropship,tag=br_dir_px] at @s run tp @s ~0.416667 ~ ~
+execute if score #global br_fast_mode matches 0 if score #global br_map matches 5 as @e[type=marker,tag=br_dropship,tag=br_dir_nz] at @s run tp @s ~ ~ ~-0.5
+execute if score #global br_fast_mode matches 0 if score #global br_map matches 5 as @e[type=marker,tag=br_dropship,tag=br_dir_pxnz] at @s run tp @s ~0.416667 ~ ~-0.5
+execute if score #global br_fast_mode matches 0 if score #global br_map matches 5 as @e[type=marker,tag=br_dropship,tag=br_dir_nxnz] at @s run tp @s ~-0.416667 ~ ~-0.5
+execute if score #global br_fast_mode matches 1 if score #global br_map matches 5 as @e[type=marker,tag=br_dropship,tag=br_dir_px] at @s run tp @s ~1.166667 ~ ~
+execute if score #global br_fast_mode matches 1 if score #global br_map matches 5 as @e[type=marker,tag=br_dropship,tag=br_dir_nz] at @s run tp @s ~ ~ ~-1.166667
+execute if score #global br_fast_mode matches 1 if score #global br_map matches 5 as @e[type=marker,tag=br_dropship,tag=br_dir_pxnz] at @s run tp @s ~1.166667 ~ ~-1.166667
+execute if score #global br_fast_mode matches 1 if score #global br_map matches 5 as @e[type=marker,tag=br_dropship,tag=br_dir_nxnz] at @s run tp @s ~-1.166667 ~ ~-1.166667
 
 # --- [B] 玩家跟隨空投機 ---
 # 將仍在機上的玩家 TP 至 Dropship 當前位置（[A] 已移動後的新位置）

@@ -128,15 +128,18 @@ execute if score #global br_map matches 2 if score #path_seed br_sys matches 5 r
 execute if score #global br_map matches 2 if score #path_seed br_sys matches 6 run summon marker -5480 250 120 {Tags:["br_dropship","br_dir_pxpz"]}
 execute if score #global br_map matches 2 if score #path_seed br_sys matches 7 run summon marker -5480 250 480 {Tags:["br_dropship","br_dir_pxnz"]}
 
-# --- 地圖三: X:-750~350, Z:4500~5500（X 軸 1100 格 20%=220 → -530~130；Z 軸 1000 格 20%=200 → 4700~5300）---
-execute if score #global br_map matches 3 if score #path_seed br_sys matches 0 run summon marker -750 250 4700 {Tags:["br_dropship","br_dir_px"]}
-execute if score #global br_map matches 3 if score #path_seed br_sys matches 1 run summon marker -750 250 5000 {Tags:["br_dropship","br_dir_px"]}
-execute if score #global br_map matches 3 if score #path_seed br_sys matches 2 run summon marker -750 250 5300 {Tags:["br_dropship","br_dir_px"]}
-execute if score #global br_map matches 3 if score #path_seed br_sys matches 3 run summon marker -530 250 4500 {Tags:["br_dropship","br_dir_pz"]}
-execute if score #global br_map matches 3 if score #path_seed br_sys matches 4 run summon marker -200 250 4500 {Tags:["br_dropship","br_dir_pz"]}
-execute if score #global br_map matches 3 if score #path_seed br_sys matches 5 run summon marker 130 250 4500 {Tags:["br_dropship","br_dir_pz"]}
-execute if score #global br_map matches 3 if score #path_seed br_sys matches 6 run summon marker -530 250 4700 {Tags:["br_dropship","br_dir_pxpz"]}
-execute if score #global br_map matches 3 if score #path_seed br_sys matches 7 run summon marker 130 250 4700 {Tags:["br_dropship","br_dir_nxpz"]}
+# --- 地圖三: 起點在邊界內側約 130 格（直徑900，中心-86,5037，半徑450；X範圍:-536~364，Z範圍:4587~5487）---
+# px: 從 X=-400 出發（西邊界內 136 格），Z 分三條路線
+execute if score #global br_map matches 3 if score #path_seed br_sys matches 0 run summon marker -400 250 4812 {Tags:["br_dropship","br_dir_px"]}
+execute if score #global br_map matches 3 if score #path_seed br_sys matches 1 run summon marker -400 250 5037 {Tags:["br_dropship","br_dir_px"]}
+execute if score #global br_map matches 3 if score #path_seed br_sys matches 2 run summon marker -400 250 5262 {Tags:["br_dropship","br_dir_px"]}
+# pz: 從 Z=4720 出發（南邊界內 133 格），X 分三條路線
+execute if score #global br_map matches 3 if score #path_seed br_sys matches 3 run summon marker -311 250 4720 {Tags:["br_dropship","br_dir_pz"]}
+execute if score #global br_map matches 3 if score #path_seed br_sys matches 4 run summon marker -86 250 4720 {Tags:["br_dropship","br_dir_pz"]}
+execute if score #global br_map matches 3 if score #path_seed br_sys matches 5 run summon marker 139 250 4720 {Tags:["br_dropship","br_dir_pz"]}
+# 對角線：從西南內側/東南內側出發
+execute if score #global br_map matches 3 if score #path_seed br_sys matches 6 run summon marker -400 250 4720 {Tags:["br_dropship","br_dir_pxpz"]}
+execute if score #global br_map matches 3 if score #path_seed br_sys matches 7 run summon marker 200 250 4720 {Tags:["br_dropship","br_dir_nxpz"]}
 
 # --- 地圖四: X:4700~5300, Z:-300~300（各軸 600 格，20% = 120，X 上下限 4820~5180, Z 上下限 -180~180）---
 execute if score #global br_map matches 4 if score #path_seed br_sys matches 0 run summon marker 4700 250 -180 {Tags:["br_dropship","br_dir_px"]}
@@ -160,8 +163,11 @@ execute if score #global br_map matches 5 if score #path_seed br_sys matches 7 r
 
 
 # === [2.9] 先設定部署計時器（必須在 schedule 之前，否則 deploy_tick 會立刻判定結束）===
-execute if score #path_seed br_sys matches 0..5 run scoreboard players set #deploy_ticks br_sys 1200
-execute if score #path_seed br_sys matches 6..7 run scoreboard players set #deploy_ticks br_sys 960
+# 一般模式：60 秒（1200 ticks 直線 / 960 ticks 斜線）
+execute if score #global br_fast_mode matches 0 if score #path_seed br_sys matches 0..5 run scoreboard players set #deploy_ticks br_sys 1200
+execute if score #global br_fast_mode matches 0 if score #path_seed br_sys matches 6..7 run scoreboard players set #deploy_ticks br_sys 960
+# 快速模式：15 秒（300 ticks，所有路線統一）
+execute if score #global br_fast_mode matches 1 run scoreboard players set #deploy_ticks br_sys 300
 
 
 # === [3] 延遲 10 tick 後生成 Dropship ===

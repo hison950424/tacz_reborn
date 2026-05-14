@@ -15,6 +15,9 @@ execute if score #global br_map matches 5 run worldborder set 10 120
 execute if score #global br_map matches 1 run worldborder set 10 150
 execute if score #global br_map matches 3 run worldborder set 10 150
 
+# ── 圈外傷害 ──
+worldborder damage amount 1
+
 # ── 公告 ──
 execute if score #global br_map matches 2 run tellraw @a ["",{"text":"[縮圈] ","color":"dark_red","bold":true},{"text":"★ 決賽縮圈開始！ ★","color":"red","bold":true}]
 execute if score #global br_map matches 4 run tellraw @a ["",{"text":"[縮圈] ","color":"dark_red","bold":true},{"text":"★ 決賽縮圈開始！ ★","color":"red","bold":true}]

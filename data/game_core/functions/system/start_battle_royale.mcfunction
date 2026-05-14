@@ -110,15 +110,5 @@ execute if score #global br_map matches 3 run spawnpoint @a 5 1 5037
 execute if score #global br_map matches 4 run spawnpoint @a 5001 112 5
 execute if score #global br_map matches 5 run spawnpoint @a 65 245 -5177
 
-# === [6] 套用遊戲時間與天氣 ===
-# 時間（預設白天；#global br_time: 1=白天 2=黃昏 3=夜晚）
-execute if score #global br_time matches 1 run time set day
-execute if score #global br_time matches 2 run time set 12400
-execute if score #global br_time matches 3 run time set midnight
-# 天氣（預設晴天；#global br_weather: 1=晴天 2=雨天 3=雷雨）
-execute if score #global br_weather matches 1 run weather clear 999999
-execute if score #global br_weather matches 2 run weather rain 999999
-execute if score #global br_weather matches 3 run weather thunder 999999
-
 # === [7] 廣播開局訊息 ===
 tellraw @a {"text":"[大逃殺] 準備就緒！空投機將在 10 秒後起飛！","color":"gold","bold":true}

@@ -35,9 +35,9 @@ summon minecraft:marker 0 64 0 {Tags:["br_next"]}
 execute store result entity @e[type=minecraft:marker,tag=br_next,limit=1] Pos[0] double 1.0 run scoreboard players get #br_p4cx dummy
 execute store result entity @e[type=minecraft:marker,tag=br_next,limit=1] Pos[2] double 1.0 run scoreboard players get #br_p4cz dummy
 
-# ── 公告 ──
-execute if score #global br_map matches 2 run tellraw @a ["",{"text":"[縮圈] ","color":"red"},{"text":"第二次縮圈開始！","color":"yellow"}]
-execute if score #global br_map matches 4 run tellraw @a ["",{"text":"[縮圈] ","color":"red"},{"text":"第二次縮圈開始！","color":"yellow"}]
-execute if score #global br_map matches 5 run tellraw @a ["",{"text":"[縮圈] ","color":"red"},{"text":"第二次縮圈開始！","color":"yellow"}]
-execute if score #global br_map matches 1 run tellraw @a ["",{"text":"[縮圈] ","color":"red"},{"text":"第二次縮圈開始！","color":"yellow"}]
-execute if score #global br_map matches 3 run tellraw @a ["",{"text":"[縮圈] ","color":"red"},{"text":"第二次縮圈開始！","color":"yellow"}]
+# ── 圈外傷害 ──
+worldborder damage amount 0.5
+
+# ── 公告（快速模式顯示「第一次」，一般模式顯示「第二次」）──
+execute if score #global br_fast_mode matches 0 run tellraw @a ["",{"text":"[縮圈] ","color":"red"},{"text":"第二次縮圈開始！","color":"yellow"}]
+execute if score #global br_fast_mode matches 1 run tellraw @a ["",{"text":"[縮圈] ","color":"red"},{"text":"第一次縮圈開始！","color":"yellow"}]

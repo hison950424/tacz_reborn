@@ -110,64 +110,64 @@ team modify red friendlyFire false
 team modify blue friendlyFire false
 team modify green friendlyFire false
 team modify white friendlyFire false
-team modify solo1 friendlyFire true
-team modify solo2 friendlyFire true
-team modify solo3 friendlyFire true
-team modify solo4 friendlyFire true
-team modify solo5 friendlyFire true
-team modify solo6 friendlyFire true
-team modify solo7 friendlyFire true
-team modify solo8 friendlyFire true
-team modify solo9 friendlyFire true
-team modify solo10 friendlyFire true
-team modify solo11 friendlyFire true
-team modify solo12 friendlyFire true
-team modify solo13 friendlyFire true
-team modify solo14 friendlyFire true
-team modify solo15 friendlyFire true
-team modify solo16 friendlyFire true
+team modify solo1 friendlyFire false
+team modify solo2 friendlyFire false
+team modify solo3 friendlyFire false
+team modify solo4 friendlyFire false
+team modify solo5 friendlyFire false
+team modify solo6 friendlyFire false
+team modify solo7 friendlyFire false
+team modify solo8 friendlyFire false
+team modify solo9 friendlyFire false
+team modify solo10 friendlyFire false
+team modify solo11 friendlyFire false
+team modify solo12 friendlyFire false
+team modify solo13 friendlyFire false
+team modify solo14 friendlyFire false
+team modify solo15 friendlyFire false
+team modify solo16 friendlyFire false
 
 team modify red seeFriendlyInvisibles true
 team modify blue seeFriendlyInvisibles true
 team modify green seeFriendlyInvisibles true
 team modify white seeFriendlyInvisibles true
-team modify solo1 seeFriendlyInvisibles false
-team modify solo2 seeFriendlyInvisibles false
-team modify solo3 seeFriendlyInvisibles false
-team modify solo4 seeFriendlyInvisibles false
-team modify solo5 seeFriendlyInvisibles false
-team modify solo6 seeFriendlyInvisibles false
-team modify solo7 seeFriendlyInvisibles false
-team modify solo8 seeFriendlyInvisibles false
-team modify solo9 seeFriendlyInvisibles false
-team modify solo10 seeFriendlyInvisibles false
-team modify solo11 seeFriendlyInvisibles false
-team modify solo12 seeFriendlyInvisibles false
-team modify solo13 seeFriendlyInvisibles false
-team modify solo14 seeFriendlyInvisibles false
-team modify solo15 seeFriendlyInvisibles false
-team modify solo16 seeFriendlyInvisibles false
+team modify solo1 seeFriendlyInvisibles true
+team modify solo2 seeFriendlyInvisibles true
+team modify solo3 seeFriendlyInvisibles true
+team modify solo4 seeFriendlyInvisibles true
+team modify solo5 seeFriendlyInvisibles true
+team modify solo6 seeFriendlyInvisibles true
+team modify solo7 seeFriendlyInvisibles true
+team modify solo8 seeFriendlyInvisibles true
+team modify solo9 seeFriendlyInvisibles true
+team modify solo10 seeFriendlyInvisibles true
+team modify solo11 seeFriendlyInvisibles true
+team modify solo12 seeFriendlyInvisibles true
+team modify solo13 seeFriendlyInvisibles true
+team modify solo14 seeFriendlyInvisibles true
+team modify solo15 seeFriendlyInvisibles true
+team modify solo16 seeFriendlyInvisibles true
 
 team modify red nametagVisibility hideForOtherTeams
 team modify blue nametagVisibility hideForOtherTeams
 team modify green nametagVisibility hideForOtherTeams
 team modify white nametagVisibility hideForOtherTeams
-team modify solo1 nametagVisibility never
-team modify solo2 nametagVisibility never
-team modify solo3 nametagVisibility never
-team modify solo4 nametagVisibility never
-team modify solo5 nametagVisibility never
-team modify solo6 nametagVisibility never
-team modify solo7 nametagVisibility never
-team modify solo8 nametagVisibility never
-team modify solo9 nametagVisibility never
-team modify solo10 nametagVisibility never
-team modify solo11 nametagVisibility never
-team modify solo12 nametagVisibility never
-team modify solo13 nametagVisibility never
-team modify solo14 nametagVisibility never
-team modify solo15 nametagVisibility never
-team modify solo16 nametagVisibility never
+team modify solo1 nametagVisibility hideForOtherTeams
+team modify solo2 nametagVisibility hideForOtherTeams
+team modify solo3 nametagVisibility hideForOtherTeams
+team modify solo4 nametagVisibility hideForOtherTeams
+team modify solo5 nametagVisibility hideForOtherTeams
+team modify solo6 nametagVisibility hideForOtherTeams
+team modify solo7 nametagVisibility hideForOtherTeams
+team modify solo8 nametagVisibility hideForOtherTeams
+team modify solo9 nametagVisibility hideForOtherTeams
+team modify solo10 nametagVisibility hideForOtherTeams
+team modify solo11 nametagVisibility hideForOtherTeams
+team modify solo12 nametagVisibility hideForOtherTeams
+team modify solo13 nametagVisibility hideForOtherTeams
+team modify solo14 nametagVisibility hideForOtherTeams
+team modify solo15 nametagVisibility hideForOtherTeams
+team modify solo16 nametagVisibility hideForOtherTeams
 
 
 # 5. 大廳控制台變數
@@ -426,10 +426,13 @@ scoreboard objectives add br_time dummy "BR 遊戲時間 (1=白天 2=黃昏 3=�
 scoreboard objectives add br_weather dummy "BR 天氣 (1=晴天 2=雨天 3=雷雨)"
 scoreboard objectives add br_time_pick trigger "BR 時間選擇觸發器"
 scoreboard objectives add br_weather_pick trigger "BR 天氣選擇觸發器"
+scoreboard objectives add br_fast_mode dummy "BR 快速模式 (0=一般 1=快速)"
+scoreboard objectives add br_fast_mode_pick trigger "BR 快速模式切換觸發器"
 scoreboard players set #global br_map 1
 scoreboard players set #global br_phase 0
 scoreboard players set #global br_time 1
 scoreboard players set #global br_weather 1
+scoreboard players set #global br_fast_mode 0
 scoreboard objectives add slime_alive dummy "史萊姆存活確認"
 scoreboard objectives add is_reviving dummy "是否正在被救援"
 scoreboard objectives add target_id dummy "正在救援的目標ID"

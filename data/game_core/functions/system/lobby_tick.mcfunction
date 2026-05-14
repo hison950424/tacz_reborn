@@ -38,6 +38,7 @@ execute as @a[scores={select_mode=2}] run tellraw @s {"text":"[系統] 已開啟
 execute as @a[scores={select_mode=9}] run clear @s written_book{title:"軍備競賽模式選擇書"}
 execute as @a[scores={select_mode=9}] run clear @s written_book{title:"大逃殺地圖選擇"}
 execute as @a[scores={select_mode=9}] run clear @s written_book{title:"大逃殺參數設定"}
+execute as @a[scores={select_mode=9}] run scoreboard players set #global br_fast_mode 0
 execute as @a[scores={select_mode=9}] run clear @s written_book{title:"模式選擇書"}
 execute as @a[scores={select_mode=9}] run clear @s written_book{title:"模式與隊伍"}
 execute as @a[scores={select_mode=9}] run give @s written_book{title:"模式選擇書",author:"系統",pages:['{"text":" ==== 模式選擇 ====\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"[▶ 大逃殺模式]\\n\\n","color":"dark_gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 1"}},{"text":"[▶ 軍備競賽模式]\\n\\n","color":"dark_green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 2"}},{"text":"[ ◄ 上一頁 ]\\n","color":"gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger lobby_terminal set 9"}}]}']} 1
@@ -296,10 +297,13 @@ scoreboard players set @a[scores={br_map_pick=1..}] br_map_pick 0
 # ------------------------------------------
 scoreboard players enable @a br_time_pick
 execute as @a[scores={br_time_pick=1}] run scoreboard players set #global br_time 1
+execute as @a[scores={br_time_pick=1}] run time set noon
 execute as @a[scores={br_time_pick=1}] run tellraw @s {"text":"[系統] 遊戲時間已設定：☀ 白天","color":"gold"}
 execute as @a[scores={br_time_pick=2}] run scoreboard players set #global br_time 2
+execute as @a[scores={br_time_pick=2}] run time set 12400
 execute as @a[scores={br_time_pick=2}] run tellraw @s {"text":"[系統] 遊戲時間已設定：🌅 黃昏","color":"dark_red"}
 execute as @a[scores={br_time_pick=3}] run scoreboard players set #global br_time 3
+execute as @a[scores={br_time_pick=3}] run time set midnight
 execute as @a[scores={br_time_pick=3}] run tellraw @s {"text":"[系統] 遊戲時間已設定：🌙 夜晚","color":"dark_purple"}
 execute as @a[scores={br_time_pick=1..}] at @s run playsound ui.button.click master @s ~ ~ ~ 1 1
 scoreboard players set @a[scores={br_time_pick=1..}] br_time_pick 0
@@ -309,13 +313,29 @@ scoreboard players set @a[scores={br_time_pick=1..}] br_time_pick 0
 # ------------------------------------------
 scoreboard players enable @a br_weather_pick
 execute as @a[scores={br_weather_pick=1}] run scoreboard players set #global br_weather 1
+execute as @a[scores={br_weather_pick=1}] run weather clear 999999
 execute as @a[scores={br_weather_pick=1}] run tellraw @s {"text":"[系統] 天氣已設定：☀ 晴天","color":"yellow"}
 execute as @a[scores={br_weather_pick=2}] run scoreboard players set #global br_weather 2
+execute as @a[scores={br_weather_pick=2}] run weather rain 999999
 execute as @a[scores={br_weather_pick=2}] run tellraw @s {"text":"[系統] 天氣已設定：🌧 雨天","color":"aqua"}
 execute as @a[scores={br_weather_pick=3}] run scoreboard players set #global br_weather 3
+execute as @a[scores={br_weather_pick=3}] run weather thunder 999999
 execute as @a[scores={br_weather_pick=3}] run tellraw @s {"text":"[系統] 天氣已設定：⛈ 雷雨","color":"dark_aqua"}
 execute as @a[scores={br_weather_pick=1..}] at @s run playsound ui.button.click master @s ~ ~ ~ 1 1
 scoreboard players set @a[scores={br_weather_pick=1..}] br_weather_pick 0
+
+
+# ------------------------------------------
+# 路由 BR-FAST: 快速模式切換 (br_fast_mode_pick trigger)
+# set 1 = 開啟，set 2 = 關閉
+# ------------------------------------------
+scoreboard players enable @a br_fast_mode_pick
+execute as @a[scores={br_fast_mode_pick=1}] run scoreboard players set #global br_fast_mode 1
+execute as @a[scores={br_fast_mode_pick=1}] run tellraw @s {"text":"[系統] ⚡ 快速模式：已開啟","color":"red","bold":true}
+execute as @a[scores={br_fast_mode_pick=2}] run scoreboard players set #global br_fast_mode 0
+execute as @a[scores={br_fast_mode_pick=2}] run tellraw @s {"text":"[系統] ⚡ 快速模式：已關閉","color":"gray"}
+execute as @a[scores={br_fast_mode_pick=1..}] at @s run playsound ui.button.click master @s ~ ~ ~ 1 1
+scoreboard players set @a[scores={br_fast_mode_pick=1..}] br_fast_mode_pick 0
 
 # ------------------------------------------
 # 路由 BR-INFO: 查看目前 BR 遊戲配置 (select_mode = 13)
@@ -332,6 +352,8 @@ execute as @a[scores={select_mode=13}] if score #global br_time matches 3 run te
 execute as @a[scores={select_mode=13}] if score #global br_weather matches 1 run tellraw @s {"text":"  ☀ 天氣：晴天","color":"yellow"}
 execute as @a[scores={select_mode=13}] if score #global br_weather matches 2 run tellraw @s {"text":"  🌧 天氣：雨天","color":"aqua"}
 execute as @a[scores={select_mode=13}] if score #global br_weather matches 3 run tellraw @s {"text":"  ⛈ 天氣：雷雨","color":"dark_aqua"}
+execute as @a[scores={select_mode=13}] if score #global br_fast_mode matches 1 run tellraw @s {"text":"  ⚡ 快速模式：開啟","color":"red","bold":true}
+execute as @a[scores={select_mode=13}] if score #global br_fast_mode matches 0 run tellraw @s {"text":"  ⚡ 快速模式：關閉","color":"gray"}
 
 # ------------------------------------------
 # 路由 E2: 管理員按下【開始大逃殺】(select_mode = 10)

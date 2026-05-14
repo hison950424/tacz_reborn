@@ -25,14 +25,18 @@ execute if score #global br_map matches 2 if score #path_seed br_sys matches 6 r
 execute if score #global br_map matches 2 if score #path_seed br_sys matches 7 run summon marker -5480 250 480 {Tags:["br_dropship","br_dir_pxnz"]}
 
 # --- 地圖三 ---
-execute if score #global br_map matches 3 if score #path_seed br_sys matches 0 run summon marker -750 250 4700 {Tags:["br_dropship","br_dir_px"]}
-execute if score #global br_map matches 3 if score #path_seed br_sys matches 1 run summon marker -750 250 5000 {Tags:["br_dropship","br_dir_px"]}
-execute if score #global br_map matches 3 if score #path_seed br_sys matches 2 run summon marker -750 250 5300 {Tags:["br_dropship","br_dir_px"]}
-execute if score #global br_map matches 3 if score #path_seed br_sys matches 3 run summon marker -530 250 4500 {Tags:["br_dropship","br_dir_pz"]}
-execute if score #global br_map matches 3 if score #path_seed br_sys matches 4 run summon marker -200 250 4500 {Tags:["br_dropship","br_dir_pz"]}
-execute if score #global br_map matches 3 if score #path_seed br_sys matches 5 run summon marker 130 250 4500 {Tags:["br_dropship","br_dir_pz"]}
-execute if score #global br_map matches 3 if score #path_seed br_sys matches 6 run summon marker -530 250 4700 {Tags:["br_dropship","br_dir_pxpz"]}
-execute if score #global br_map matches 3 if score #path_seed br_sys matches 7 run summon marker 130 250 4700 {Tags:["br_dropship","br_dir_nxpz"]}
+# 起點在邊界內側約 130 格（直徑900，中心-86,5037，半徑450；X範圍:-536~364，Z範圍:4587~5487）
+# px: 從 X=-400 出發（西邊界內 136 格），Z 分三條路線
+execute if score #global br_map matches 3 if score #path_seed br_sys matches 0 run summon marker -400 250 4812 {Tags:["br_dropship","br_dir_px"]}
+execute if score #global br_map matches 3 if score #path_seed br_sys matches 1 run summon marker -400 250 5037 {Tags:["br_dropship","br_dir_px"]}
+execute if score #global br_map matches 3 if score #path_seed br_sys matches 2 run summon marker -400 250 5262 {Tags:["br_dropship","br_dir_px"]}
+# pz: 從 Z=4720 出發（南邊界內 133 格），X 分三條路線
+execute if score #global br_map matches 3 if score #path_seed br_sys matches 3 run summon marker -311 250 4720 {Tags:["br_dropship","br_dir_pz"]}
+execute if score #global br_map matches 3 if score #path_seed br_sys matches 4 run summon marker -86 250 4720 {Tags:["br_dropship","br_dir_pz"]}
+execute if score #global br_map matches 3 if score #path_seed br_sys matches 5 run summon marker 139 250 4720 {Tags:["br_dropship","br_dir_pz"]}
+# 對角線：從西南內側/東南內側出發
+execute if score #global br_map matches 3 if score #path_seed br_sys matches 6 run summon marker -400 250 4720 {Tags:["br_dropship","br_dir_pxpz"]}
+execute if score #global br_map matches 3 if score #path_seed br_sys matches 7 run summon marker 200 250 4720 {Tags:["br_dropship","br_dir_nxpz"]}
 
 # --- 地圖四 ---
 execute if score #global br_map matches 4 if score #path_seed br_sys matches 0 run summon marker 4700 250 -180 {Tags:["br_dropship","br_dir_px"]}
@@ -67,6 +71,9 @@ execute if score #global br_map matches 5 run function game_core:br_map/map5
 
 # 進入準備期（同時預算所有圓心）
 function game_core:gamemode/br_phase0_start
+
+# 快速模式：預算完成後，跳過 Phase 0/1，直接設定 Phase 2 狀態
+execute if score #global br_fast_mode matches 1 run function game_core:gamemode/br_phase0_fast_skip
 
 # 緩衝距離（在圈外幾格內不受傷，預設 5 格）
 worldborder damage buffer 1
