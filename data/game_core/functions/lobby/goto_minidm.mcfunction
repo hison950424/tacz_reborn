@@ -40,7 +40,7 @@ clear @s tacz:ammo_box{AllTypeCreative:1b}
 give @s tacz:ammo_box{AllTypeCreative:1b} 1
 
 #確保迷你死鬥擊殺系統正常運行
-scoreboard players operation @s gd656killicon.kill = @s minidm_kill_prev
+scoreboard players operation @s minidm_kill_prev = @s gd656killicon.kill
 
 tellraw @s {"text":"[迷你死鬥] 進入熱身競技場！","color":"gold"}
 playsound minecraft:entity.enderman.teleport master @s ~ ~ ~ 1 1

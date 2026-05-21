@@ -58,7 +58,7 @@ scoreboard objectives add transfer_val dummy "暫存轉帳金額"
 # 3. 伺服器規則防護
 gamerule commandBlockOutput false
 #詳細指令(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)(記得改)
-gamerule sendCommandFeedback true
+gamerule sendCommandFeedback false
 gamerule doDaylightCycle false
 gamerule doWeatherCycle false
 gamerule keepInventory true

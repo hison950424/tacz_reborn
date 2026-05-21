@@ -103,3 +103,5 @@ tag @a remove br_winner
 
 # [6] 通知軍階
 execute as @a run function game_core:system/rank_announce_player
+function game_core:lobby/event_leaderboard_update
+function game_core:lobby/rp_leaderboard_update

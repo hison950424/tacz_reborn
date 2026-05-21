@@ -63,6 +63,8 @@ execute if score #global arms_sub_mode matches 2 run scoreboard players operatio
 # 【修復】移除多餘的 execute as @a run，此函式本身已由 rank_calculate 以 as @a 呼叫
 # 原本的寫法導致有 N 名玩家時，每個人的 rp_delta 被累加 N 次（RP 暴增 N 倍）
 scoreboard players operation @s rp_score += @s rp_delta
+scoreboard players operation @s event_score += @s rp_delta
+
 execute if score @s rp_score matches ..-1 run scoreboard players set @s rp_score 0
 
 # 更新連勝 & 勝敗統計（各模式獨立）
