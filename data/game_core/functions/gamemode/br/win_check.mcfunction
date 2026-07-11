@@ -7,9 +7,9 @@
 
 # 【防重複觸發】match_end_sequence 已執行（game_state=3）時直接跳出
 # 避免 br_force_state4 立即觸發 + schedule 延遲觸發導致雙重結算
+tellraw @a ["",{"text":"[DEBUG] win_check 被呼叫 game_state=","color":"yellow"},{"score":{"name":"#global","objective":"game_state"},"color":"white"}]
+execute if score #global game_state matches 3 run tellraw @a {"text":"[DEBUG] game_state=3 提前返回","color":"red"}
 execute if score #global game_state matches 3 run return 0
-
-tellraw @a ["",{"text":"[DEBUG] win_check 執行中 game_state=","color":"yellow"},{"score":{"name":"#global","objective":"game_state"},"color":"white"}]
 
 # 以即時 entity query 計算存活隊伍（只計 state 1，排除倒地/靈魂/已淘汰）
 # 避免 force_dead 直接呼叫時讀到尚未更新的 cache 值而誤判勝利
