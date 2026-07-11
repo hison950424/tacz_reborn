@@ -37,7 +37,7 @@ execute store result entity @e[type=minecraft:marker,tag=br_next,limit=1] Pos[2]
 
 # 空頭投放（快速模式跳過：時機與圈大小不適合，且快速模式設計上不含空頭）
 execute store result score airdrop dummy run random value 1..100
-execute if score #global br_fast_mode matches 0 if score airdrop dummy matches 1..25 run function game_core:gamemode/br/airdrop/spawn
+execute if score #global br_fast_mode matches 0 if score airdrop dummy matches 1..50 run function game_core:gamemode/br/airdrop/spawn
 
 # ── 公告（快速模式顯示「第一次」，一般模式顯示「第二次」）──
 execute if score #global br_fast_mode matches 0 if score #global br_map matches 2 run tellraw @a ["",{"text":"[縮圈] ","color":"aqua"},{"text":"第二次縮圈完畢， 1 分 30 秒後第三次縮圈。","color":"white"}]
