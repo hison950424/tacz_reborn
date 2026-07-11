@@ -11,8 +11,8 @@ execute unless entity @s[tag=has_used_altar_temp] run particle block redstone_bl
 
 # --- [B] 生成靈魂祭壇標籤 (供隊友回收) ---
 # 注意：如果玩家帶有 has_used_altar_temp 標籤，就不生成靈魂 (規則：每人只能復活一次)
-execute unless entity @s[tag=has_used_altar_temp] run summon marker ~ ~ ~ {Tags:["br_soul_marker"]}
-
-# 將死者的 ID 與隊伍顏色繼承給剛生成的靈魂標籤
-execute unless entity @s[tag=has_used_altar_temp] as @e[type=marker,tag=br_soul_marker,distance=..0.5,limit=1,sort=nearest] run scoreboard players operation @s br_id = #current_player br_id
-execute unless entity @s[tag=has_used_altar_temp] as @e[type=marker,tag=br_soul_marker,distance=..0.5,limit=1,sort=nearest] run scoreboard players operation @s team_id = #current_player team_id
+# 使用 br_soul_newspawn 暫時標籤精準識別剛生成的那一個，避免大量玩家同時死亡時抓到別人的靈魂標籤
+execute unless entity @s[tag=has_used_altar_temp] run summon marker ~ ~ ~ {Tags:["br_soul_marker","br_soul_newspawn"]}
+execute as @e[type=marker,tag=br_soul_newspawn] run scoreboard players operation @s br_id = #current_player br_id
+execute as @e[type=marker,tag=br_soul_newspawn] run scoreboard players operation @s team_id = #current_player team_id
+tag @e[type=marker,tag=br_soul_newspawn] remove br_soul_newspawn

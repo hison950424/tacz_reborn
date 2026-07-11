@@ -19,31 +19,27 @@ execute if entity @a[team=white,scores={br_death_state=1}] run scoreboard player
 # 孤狼每位存活者各算一支「獨立隊伍」
 execute as @a[tag=solo,scores={br_death_state=1}] run scoreboard players add #teams_alive br_sys 1
 
-# 存活隊伍數 <= 1：遊戲結束（隊伍模式剩最後一隊，或孤狼模式剩最後一人）
-execute if score #teams_alive br_sys matches ..1 if entity @a[team=red,scores={br_death_state=1}]   run title @a title {"text":"紅隊獲勝！","color":"red","bold":true}
+# --- 先決定勝者並標記 rp_winner（顯示 title 前先完成，才能在 subtitle 用 selector 顯示名單）---
 execute if score #teams_alive br_sys matches ..1 if entity @a[team=red,scores={br_death_state=1}]   run scoreboard players set #winner_team dummy 1
-
-execute if score #teams_alive br_sys matches ..1 if entity @a[team=blue,scores={br_death_state=1}]  run title @a title {"text":"藍隊獲勝！","color":"blue","bold":true}
 execute if score #teams_alive br_sys matches ..1 if entity @a[team=blue,scores={br_death_state=1}]  run scoreboard players set #winner_team dummy 2
-
-execute if score #teams_alive br_sys matches ..1 if entity @a[team=green,scores={br_death_state=1}] run title @a title {"text":"綠隊獲勝！","color":"green","bold":true}
 execute if score #teams_alive br_sys matches ..1 if entity @a[team=green,scores={br_death_state=1}] run scoreboard players set #winner_team dummy 3
-
-execute if score #teams_alive br_sys matches ..1 if entity @a[team=white,scores={br_death_state=1}] run title @a title {"text":"白隊獲勝！","color":"white","bold":true}
 execute if score #teams_alive br_sys matches ..1 if entity @a[team=white,scores={br_death_state=1}] run scoreboard players set #winner_team dummy 4
-
-execute if score #teams_alive br_sys matches ..1 if entity @a[tag=solo,scores={br_death_state=1}]   run title @a title {"text":"孤狼獲勝！","color":"gray","bold":true}
 execute if score #teams_alive br_sys matches ..1 if entity @a[tag=solo,scores={br_death_state=1}]   as @a[tag=solo,scores={br_death_state=1}] run tag @s add br_winner
 execute if score #teams_alive br_sys matches ..1 if entity @a[tag=solo,scores={br_death_state=1}]   run scoreboard players set #winner_team dummy 5
 
-
-# --- 勝者標記 ---
 execute if score #winner_team dummy matches 1 run tag @a[team=red] add rp_winner
 execute if score #winner_team dummy matches 2 run tag @a[team=blue] add rp_winner
 execute if score #winner_team dummy matches 3 run tag @a[team=green] add rp_winner
 execute if score #winner_team dummy matches 4 run tag @a[team=white] add rp_winner
-# 孤狼：只有 br_winner 一人獲勝
 execute if score #winner_team dummy matches 5 run tag @a[tag=br_winner] add rp_winner
+
+# --- 顯示勝利公告 title + subtitle（subtitle 顯示獲勝名單）---
+execute if score #winner_team dummy matches 1 run title @a title {"text":"紅隊獲勝！","color":"red","bold":true}
+execute if score #winner_team dummy matches 2 run title @a title {"text":"藍隊獲勝！","color":"blue","bold":true}
+execute if score #winner_team dummy matches 3 run title @a title {"text":"綠隊獲勝！","color":"green","bold":true}
+execute if score #winner_team dummy matches 4 run title @a title {"text":"白隊獲勝！","color":"white","bold":true}
+execute if score #winner_team dummy matches 5 run title @a title {"text":"孤狼獲勝！","color":"gray","bold":true}
+execute if score #winner_team dummy matches 1.. run title @a subtitle ["",{"text":"獲勝成員: ","color":"gold","bold":true},{"selector":"@a[tag=rp_winner]","color":"white"}]
 
 ################把所有玩家傳送至贏家身上
 execute as @a[tag = rp_winner] at @s run tp @a @s
