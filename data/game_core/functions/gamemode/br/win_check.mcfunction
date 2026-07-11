@@ -9,32 +9,32 @@
 # 避免 br_force_state4 立即觸發 + schedule 延遲觸發導致雙重結算
 execute if score #global game_state matches 3 run return 0
 
-# 計算場上存活隊伍數量（只統計有至少 1 人存活的隊伍）
-# 存活人數在 br_player_tick 的 [6] 段落每 Tick 重新統計
+# 以即時 entity query 計算存活隊伍（只計 state 1，排除倒地/靈魂/已淘汰）
+# 避免 force_dead 直接呼叫時讀到尚未更新的 cache 值而誤判勝利
 scoreboard players set #teams_alive br_sys 0
-execute if score #br_alive_red br_sys matches 1.. run scoreboard players add #teams_alive br_sys 1
-execute if score #br_alive_blue br_sys matches 1.. run scoreboard players add #teams_alive br_sys 1
-execute if score #br_alive_green br_sys matches 1.. run scoreboard players add #teams_alive br_sys 1
-execute if score #br_alive_white br_sys matches 1.. run scoreboard players add #teams_alive br_sys 1
-# 孤狼有幾個人活著，就等同於有幾支「獨立隊伍」
-execute if score #br_alive_solo br_sys matches 1.. run scoreboard players operation #teams_alive br_sys += #br_alive_solo br_sys
+execute if entity @a[team=red,scores={br_death_state=1}]   run scoreboard players add #teams_alive br_sys 1
+execute if entity @a[team=blue,scores={br_death_state=1}]  run scoreboard players add #teams_alive br_sys 1
+execute if entity @a[team=green,scores={br_death_state=1}] run scoreboard players add #teams_alive br_sys 1
+execute if entity @a[team=white,scores={br_death_state=1}] run scoreboard players add #teams_alive br_sys 1
+# 孤狼每位存活者各算一支「獨立隊伍」
+execute as @a[tag=solo,scores={br_death_state=1}] run scoreboard players add #teams_alive br_sys 1
 
 # 存活隊伍數 <= 1：遊戲結束（隊伍模式剩最後一隊，或孤狼模式剩最後一人）
-execute if score #teams_alive br_sys matches ..1 if score #br_alive_red br_sys matches 1.. run title @a title {"text":"紅隊獲勝！","color":"red","bold":true}
-execute if score #teams_alive br_sys matches ..1 if score #br_alive_red br_sys matches 1.. run scoreboard players set #winner_team dummy 1
+execute if score #teams_alive br_sys matches ..1 if entity @a[team=red,scores={br_death_state=1}]   run title @a title {"text":"紅隊獲勝！","color":"red","bold":true}
+execute if score #teams_alive br_sys matches ..1 if entity @a[team=red,scores={br_death_state=1}]   run scoreboard players set #winner_team dummy 1
 
-execute if score #teams_alive br_sys matches ..1 if score #br_alive_blue br_sys matches 1.. run title @a title {"text":"藍隊獲勝！","color":"blue","bold":true}
-execute if score #teams_alive br_sys matches ..1 if score #br_alive_blue br_sys matches 1.. run scoreboard players set #winner_team dummy 2
+execute if score #teams_alive br_sys matches ..1 if entity @a[team=blue,scores={br_death_state=1}]  run title @a title {"text":"藍隊獲勝！","color":"blue","bold":true}
+execute if score #teams_alive br_sys matches ..1 if entity @a[team=blue,scores={br_death_state=1}]  run scoreboard players set #winner_team dummy 2
 
-execute if score #teams_alive br_sys matches ..1 if score #br_alive_green br_sys matches 1.. run title @a title {"text":"綠隊獲勝！","color":"green","bold":true}
-execute if score #teams_alive br_sys matches ..1 if score #br_alive_green br_sys matches 1.. run scoreboard players set #winner_team dummy 3
+execute if score #teams_alive br_sys matches ..1 if entity @a[team=green,scores={br_death_state=1}] run title @a title {"text":"綠隊獲勝！","color":"green","bold":true}
+execute if score #teams_alive br_sys matches ..1 if entity @a[team=green,scores={br_death_state=1}] run scoreboard players set #winner_team dummy 3
 
-execute if score #teams_alive br_sys matches ..1 if score #br_alive_white br_sys matches 1.. run title @a title {"text":"白隊獲勝！","color":"white","bold":true}
-execute if score #teams_alive br_sys matches ..1 if score #br_alive_white br_sys matches 1.. run scoreboard players set #winner_team dummy 4
+execute if score #teams_alive br_sys matches ..1 if entity @a[team=white,scores={br_death_state=1}] run title @a title {"text":"白隊獲勝！","color":"white","bold":true}
+execute if score #teams_alive br_sys matches ..1 if entity @a[team=white,scores={br_death_state=1}] run scoreboard players set #winner_team dummy 4
 
-execute if score #teams_alive br_sys matches ..1 if score #br_alive_solo br_sys matches 1.. run title @a title {"text":"孤狼獲勝！","color":"gray","bold":true}
-execute if score #teams_alive br_sys matches ..1 if score #br_alive_solo br_sys matches 1.. as @a if score @s br_death_state matches 1 run tag @s add br_winner
-execute if score #teams_alive br_sys matches ..1 if score #br_alive_solo br_sys matches 1.. run scoreboard players set #winner_team dummy 5
+execute if score #teams_alive br_sys matches ..1 if entity @a[tag=solo,scores={br_death_state=1}]   run title @a title {"text":"孤狼獲勝！","color":"gray","bold":true}
+execute if score #teams_alive br_sys matches ..1 if entity @a[tag=solo,scores={br_death_state=1}]   as @a[tag=solo,scores={br_death_state=1}] run tag @s add br_winner
+execute if score #teams_alive br_sys matches ..1 if entity @a[tag=solo,scores={br_death_state=1}]   run scoreboard players set #winner_team dummy 5
 
 
 # --- 勝者標記 ---
