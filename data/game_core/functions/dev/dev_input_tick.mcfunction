@@ -1,5 +1,5 @@
 # ==========================================
-# game_core:system/dev_input_tick
+# game_core:dev/dev_input_tick
 # 偵測玩家 Q 丟特定物品並觸發對應 function
 # 需在主 tick 中呼叫
 # ==========================================

@@ -1,5 +1,5 @@
 {
   "values": [
-    "game_core:system/main"
+    "game_core:core/main"
   ]
 }

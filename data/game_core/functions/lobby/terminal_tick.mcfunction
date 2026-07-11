@@ -70,7 +70,7 @@ scoreboard players set @a[scores={admin_terminal=1..}] admin_terminal 0
 # ===========================================
 # 跑庫塔計時
 # ===========================================
-function game_core:gamemode/parkour_tick
+function game_core:gamemode/parkour/tick
 
 # ===========================================
 # 展示數據按鈕（show_stat trigger）

@@ -51,5 +51,5 @@ execute as @s if score @s temp matches 0 store success score @s temp run clear @
 execute as @s if score @s temp matches 0 store success score @s temp run clear @s minecraft:netherite_boots{shop:1b} 0
 
 
-execute if score @s temp matches 1.. run function game_core:shop/auto_restock
-execute if score @s temp matches 1.. run function game_core:system/shop_tick
+execute if score @s temp matches 1.. run function game_core:shop/restock
+execute if score @s temp matches 1.. run function game_core:shop/tick
