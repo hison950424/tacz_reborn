@@ -9,6 +9,8 @@
 # 避免 br_force_state4 立即觸發 + schedule 延遲觸發導致雙重結算
 execute if score #global game_state matches 3 run return 0
 
+tellraw @a ["",{"text":"[DEBUG] win_check 執行中 game_state=","color":"yellow"},{"score":{"name":"#global","objective":"game_state"},"color":"white"}]
+
 # 以即時 entity query 計算存活隊伍（只計 state 1，排除倒地/靈魂/已淘汰）
 # 避免 force_dead 直接呼叫時讀到尚未更新的 cache 值而誤判勝利
 scoreboard players set #teams_alive br_sys 0
@@ -18,6 +20,8 @@ execute if entity @a[team=green,scores={br_death_state=1}] run scoreboard player
 execute if entity @a[team=white,scores={br_death_state=1}] run scoreboard players add #teams_alive br_sys 1
 # 孤狼每位存活者各算一支「獨立隊伍」
 execute as @a[tag=solo,scores={br_death_state=1}] run scoreboard players add #teams_alive br_sys 1
+
+tellraw @a ["",{"text":"[DEBUG] teams_alive=","color":"yellow"},{"score":{"name":"#teams_alive","objective":"br_sys"},"color":"white"}]
 
 # --- 先決定勝者並標記 rp_winner（顯示 title 前先完成，才能在 subtitle 用 selector 顯示名單）---
 execute if score #teams_alive br_sys matches ..1 if entity @a[team=red,scores={br_death_state=1}]   run scoreboard players set #winner_team dummy 1
@@ -47,6 +51,7 @@ execute as @a[tag = rp_winner] at @s run tp @a @s
 
 execute if score #teams_alive br_sys matches 0 run title @a title {"text":"同時死亡，無人獲勝。","color":"dark_gray","bold":true}
 
+execute if score #teams_alive br_sys matches ..1 run tellraw @a {"text":"[DEBUG] match_end 即將呼叫","color":"green"}
 execute if score #teams_alive br_sys matches ..1 run function game_core:core/match_end
 
 # 【修復】#winner_team 必須在 match_end_sequence (rank_calculate) 讀取完畢後才能歸零
