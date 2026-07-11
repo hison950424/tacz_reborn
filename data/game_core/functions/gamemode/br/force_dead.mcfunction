@@ -47,5 +47,6 @@ tag @s remove cause_wipe
 tag @s remove cause_solo
 
 # 7. 觸發勝利判定層
-tellraw @a {"text":"[DEBUG] force_dead 呼叫 win_check","color":"aqua"}
+tellraw @a {"text":"FORCE_DEAD_CALLING_WIN_CHECK","color":"aqua"}
 function game_core:gamemode/br/win_check
+tellraw @a {"text":"FORCE_DEAD_AFTER_WIN_CHECK","color":"aqua"}
