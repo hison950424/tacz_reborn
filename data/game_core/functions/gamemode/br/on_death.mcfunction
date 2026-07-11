@@ -1,8 +1,7 @@
 # ==========================================
 # 檔案: gamemode/br_on_death.mcfunction
-# 執行者: @s (剛剛死亡、座標已被傳送走的玩家)
-# 倒地狀態
-#{PersistenceRequired:1b,Tags:["br_downed_mob"],Age:-2147483648,Silent:1b,Health:300f,DeathLootTable:"minecraft:empty",Attributes:[{Name:"generic.max_health",Base:300f},{Name:"generic.knockback_resistance",Base:1f},{Name:"generic.movement_speed",Base:0f}],ActiveEffects:[{Id:2b,Amplifier:255,Duration:-1,ShowParticles:0b},{Id:8b,Amplifier:250,Duration:-1,ShowParticles:0b},{Id:18b,Amplifier:255,Duration:-1,ShowParticles:0b}]}
+# 執行者: @s (剛剛死亡的玩家)
+# 死亡後直接進入靈魂標籤階段，不再產生倒地村民
 # ==========================================
 
 #先恢復血量防止誤判掉入虛空
@@ -34,39 +33,11 @@ execute if score @s team_id matches 5 if score @s br_death_state matches 1 run t
 execute if score @s team_id matches 5 if score @s br_death_state matches 1 run function game_core:gamemode/br/force_dead
 
 # ==========================================
-# --- [B] 團隊倒地程序 & 滅團判定 ---
+# --- [B] 靈魂程序（跳過倒地村民，直接進入靈魂標籤階段）---
 # ==========================================
-# (因為上面已經把掉進虛空的人轉成 4 了，所以他們絕對進不來這個 1 的判定，完美防堵雙胞胎！)
-execute if score @s br_death_state matches 1 unless score @s team_id matches 5 run tag @s add check_wipe
-
-execute if entity @s[tag=check_wipe] run scoreboard players set @s br_death_state 2
-
-# 重新同步全域變數
-scoreboard players operation #current_player br_id = @s br_id
-scoreboard players operation #current_player team_id = @s team_id
-
-# 【修復 Bug 2 - 同 Tick 多人死亡競爭條件】
-# 不在此處做滅團判定，由 br_main_tick [D] 在所有 player_tick 完成後統一處理。
-# 只要隊伍模式且狀態 1 死亡，一律先進入倒地狀態 2，讓主迴圈下一 Tick 再確認是否全滅。
-execute if entity @s[tag=check_wipe] run tag @s add br_downed_processing
-
-execute if entity @s[tag=br_downed_processing] run title @s title {"text":"🩸 你已倒地","color":"red","bold":true}
-execute if entity @s[tag=br_downed_processing] run title @s subtitle {"text":"請等待隊友救援","color":"gray"}
-
-# 生成村民
-execute if entity @s[tag=br_downed_processing] as @e[type=marker,tag=br_tracker] if score @s br_id = #current_player br_id at @s run summon villager ~ ~ ~ {PersistenceRequired:1b,Tags:["br_downed_mob"],Age:-2147483648,Silent:1b,Health:350f,DeathLootTable:"minecraft:empty",Attributes:[{Name:"generic.max_health",Base:350f},{Name:"generic.knockback_resistance",Base:1f},{Name:"generic.movement_speed",Base:0f}],ActiveEffects:[{Id:2b,Amplifier:255,Duration:-1,ShowParticles:0b},{Id:8b,Amplifier:250,Duration:-1,ShowParticles:0b},{Id:18b,Amplifier:255,Duration:-1,ShowParticles:0b}]}
-
-# 綁定 ID 
-execute if entity @s[tag=br_downed_processing] as @e[type=marker,tag=br_tracker] if score @s br_id = #current_player br_id at @s as @e[type=villager,tag=br_downed_mob,distance=..1,limit=1,sort=nearest] run scoreboard players operation @s br_id = #current_player br_id
-execute if entity @s[tag=br_downed_processing] as @e[type=marker,tag=br_tracker] if score @s br_id = #current_player br_id at @s as @e[type=villager,tag=br_downed_mob,distance=..1,limit=1,sort=nearest] run scoreboard players operation @s team_id = #current_player team_id
-
-# 狀態切換
-execute if entity @s[tag=br_downed_processing] run tag @s add br_downed
-execute if entity @s[tag=br_downed_processing] run gamemode spectator @s
-execute if entity @s[tag=br_downed_processing] run tag @s add has_slime
-
-# 清除暫存
-tag @s remove check_wipe
-tag @s remove br_downed_processing
+# 不產生倒地村民，直接呼叫 eliminated 進入靈魂標籤流程
+# main_tick [D] 的滅團偵測在下一 Tick 若判定全滅，仍會觸發 force_dead
+execute if score @s br_death_state matches 1 unless score @s team_id matches 5 run gamemode spectator @s
+execute if score @s br_death_state matches 1 unless score @s team_id matches 5 run function game_core:gamemode/br/eliminated
 
 schedule function game_core:gamemode/br/win_check 1s
