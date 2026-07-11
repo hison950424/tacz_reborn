@@ -36,12 +36,14 @@ execute if score #winner_team dummy matches 2 run title @a title {"text":"藍隊
 execute if score #winner_team dummy matches 3 run title @a title {"text":"綠隊獲勝！","color":"green","bold":true}
 execute if score #winner_team dummy matches 4 run title @a title {"text":"白隊獲勝！","color":"white","bold":true}
 execute if score #winner_team dummy matches 5 run title @a title {"text":"孤狼獲勝！","color":"gray","bold":true}
-execute if score #winner_team dummy matches 1.. run title @a subtitle ["",{"text":"獲勝成員: ","color":"gold","bold":true},{"selector":"@a[tag=rp_winner]","color":"white"}]
 
 # 把所有玩家傳送至贏家身上
 execute as @a[tag=rp_winner] at @s run tp @a @s
 
 execute if score #teams_alive br_sys matches 0 run title @a title {"text":"同時死亡，無人獲勝。","color":"dark_gray","bold":true}
+
+# 戰局結算前顯示獲勝名單（聊天欄訊息，比副標題更能容納多人）
+execute if score #teams_alive br_sys matches ..1 run tellraw @a ["",{"text":"⚑ 獲勝名單 » ","color":"gold","bold":true},{"selector":"@a[tag=rp_winner]","color":"white","bold":false}]
 
 execute if score #teams_alive br_sys matches ..1 run function game_core:core/match_end
 
