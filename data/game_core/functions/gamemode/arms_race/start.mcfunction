@@ -162,10 +162,26 @@ scoreboard players set #Point_b dom_truce_timer 0
 scoreboard players set #Point_c dom_truce_timer 0
 
 # [重置隨機開放次數與計時器]
-# execute if score #global arms_sub_mode matches 2 run scoreboard players set #global dom_unlocked_count 0
 execute if score #global arms_sub_mode matches 2 run scoreboard players set #global dom_arms_timer 0
 execute if score #global arms_sub_mode matches 2 run scoreboard players set #100tick dom_timer 0
 execute if score #global arms_sub_mode matches 2 run scoreboard players set #global dom_timer 0
+
+# [回合制變數初始化] - 新系統必要，缺少會導致 second_process 無法啟動
+execute if score #global arms_sub_mode matches 2 run scoreboard players set #dom_phase dom_config 0
+execute if score #global arms_sub_mode matches 2 run scoreboard players set #dom_phase_timer dom_config 0
+execute if score #global arms_sub_mode matches 2 run scoreboard players set #dom_round dom_config 0
+execute if score #global arms_sub_mode matches 2 run scoreboard players set #dom_round_timer dom_config 0
+execute if score #global arms_sub_mode matches 2 run scoreboard players set #dom_open_count dom_config 0
+execute if score #global arms_sub_mode matches 2 run scoreboard players set #dom_stalemate_sec dom_config 0
+execute if score #global arms_sub_mode matches 2 run scoreboard players set #dom_round_winner dom_config 0
+execute if score #global arms_sub_mode matches 2 run scoreboard players set #dom_capture_point dom_config 0
+execute if score #global arms_sub_mode matches 2 run scoreboard players set #Red_loss dom_config 0
+execute if score #global arms_sub_mode matches 2 run scoreboard players set #Blue_loss dom_config 0
+execute if score #global arms_sub_mode matches 2 run scoreboard players set #dom_red_alive dom_config 0
+execute if score #global arms_sub_mode matches 2 run scoreboard players set #dom_blue_alive dom_config 0
+
+# [keepInventory 關閉] DOM 回合制：死亡失去物品
+execute if score #global arms_sub_mode matches 2 run gamerule keepInventory false
 
 # [鋪設初始地板] 全部刷成鐵磚
 execute if score #global arms_sub_mode matches 2 run fill 196 24 -13 188 24 -21 minecraft:iron_block replace
