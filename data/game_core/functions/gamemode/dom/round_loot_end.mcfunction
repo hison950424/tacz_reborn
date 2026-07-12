@@ -28,9 +28,22 @@ execute if score #Point_a dom_state matches 1 if score #Point_c dom_state matche
 execute if score #Point_b dom_state matches 1 if score #Point_c dom_state matches 1 run title @a subtitle {"text":"本回合據點：B 點 + C 點","color":"yellow","bold":true}
 title @a title ["",{"text":"第 ","color":"gold","bold":true},{"score":{"name":"#dom_round","objective":"dom_config"},"color":"white","bold":true},{"text":" 回合","color":"gold","bold":true}]
 
+# 決定本回合是否在 90 秒後開放第二個據點（50% 機率），於準備階段開始時廣播
+execute store result score #dom_second_open dom_config run random value 0..1
+execute if score #dom_second_open dom_config matches 1 run tellraw @a {"text":"[系統] 本回合將於 90 秒後隨機開放第二個據點","color":"yellow"}
+execute if score #dom_second_open dom_config matches 0 run tellraw @a {"text":"[系統] 本回合不會開放第二個據點","color":"gray"}
+
 # TODO: 傳送玩家至各自基地（需填入世界座標）
-# tp @a[team=red] <紅隊基地 X Y Z>
-# tp @a[team=blue] <藍隊基地 X Y Z>
+execute as @e[type=marker,tag=red_spawn] run tp @a[team=red] @s
+execute as @e[type=marker,tag=blue_spawn] run tp @a[team=blue] @s
 
 # TODO: 放置屏障方塊封住基地出口（需填入座標）
-# fill <x1 y1 z1> <x2 y2 z2> minecraft:barrier replace
+#紅右
+fill 191 14 -90 191 18 -86 minecraft:barrier replace
+#紅左
+fill 199 14 -78 203 18 -78 minecraft:barrier replace
+#藍右
+fill 131 14 -6 131 18 -10 minecraft:barrier replace
+#藍左
+fill 123 14 -18 119 18 -18 minecraft:barrier replace
+

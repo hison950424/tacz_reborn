@@ -26,7 +26,7 @@ execute as @s[scores={class_type=2}] run give @s lrtactical:throwable{ThrowableI
 
 # 4. 支援兵 (class_type=3) : 速補(吸收)、瞬爆、手榴彈、煙霧、閃光、燃燒
 # 速補以噴濺型吸收藥水示意
-execute as @s[scores={class_type=3}] run give @s minecraft:splash_potion{HideFlags:0,display:{Name:'[{"text":"","italic":false},{"text":"\\u901f\\u88dc","color":"red"}]',Lore:['[{"text":"","italic":false},{"text":"\\u5f37\\u5316\\u5f8c\\u7684\\u5927\\u88dc \\u53ef\\u4ee5\\u5feb\\u901f\\u88dc\\u8840 \\u4e26\\u7d66\\u4f60\\u984d\\u5916\\u751f\\u547d\\u503c (\\u9019\\u6703\\u8b93\\u4f60\\u767c\\u51491\\u79d2)","color":"red"}]']},CustomPotionEffects:[{Id:6b,Amplifier:118b,Duration:20,ShowParticles:0b,ShowIcon:0b},{Id:12b,Amplifier:0b,Duration:20,ShowParticles:0b,ShowIcon:0b},{Id:22b,Amplifier:1b,Duration:300,ShowParticles:0b,ShowIcon:0b}],CustomPotionColor:16711680} 1
+execute as @s[scores={class_type=3}] run give @s minecraft:splash_potion{HideFlags:0,display:{Name:'[{"text":"","italic":false},{"text":"\\u901f\\u88dc","color":"red"}]',Lore:['[{"text":"","italic":false},{"text":"\\u5f37\\u5316\\u5f8c\\u7684\\u5927\\u88dc \\u53ef\\u4ee5\\u5feb\\u901f\\u88dc\\u8840 \\u4e26\\u7d66\\u4f60\\u984d\\u5916\\u751f\\u547d\\u503c ","color":"red"}]']},CustomPotionEffects:[{Id:6b,Amplifier:118b,Duration:20,ShowParticles:0b,ShowIcon:0b},{Id:12b,Amplifier:0b,Duration:20,ShowParticles:0b,ShowIcon:0b},{Id:22b,Amplifier:1b,Duration:300,ShowParticles:0b,ShowIcon:0b}],CustomPotionColor:16711680} 1
 execute as @s[scores={class_type=3}] run give @s lrtactical:throwable{ThrowableId: "lrtactical:molotov"} 1
 execute as @s[scores={class_type=3}] run give @s lrtactical:throwable{ThrowableId: "lrtactical:m67"} 1
 execute as @s[scores={class_type=3}] run give @s lrtactical:throwable{ThrowableId: "lrtactical:rgn"} 1

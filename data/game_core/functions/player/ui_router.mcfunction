@@ -110,7 +110,7 @@ execute as @a[scores={switch_class=4}] run tellraw @s ["",{"text":"   效果: ",
 execute as @a[scores={switch_class=4}] run tellraw @s ["",{"text":" - ","color":"red"},{"text":"Debuff:「重裝步兵」","color":"red"}]
 execute as @a[scores={switch_class=4}] run tellraw @s ["",{"text":"   效果: ","color":"gray"},{"text":"移動速度 -40%。","color":"white"}]
 execute as @a[scores={switch_class=4}] run tellraw @s {"text":""}
-execute as @a[scores={switch_class=4}] run tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"可購買主武器: ","color":"yellow"},{"text":"步槍, 狙擊槍，衝鋒槍","color":"white"}]
+execute as @a[scores={switch_class=4}] run tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"可購買主武器: ","color":"yellow"},{"text":"狙擊槍, 衝鋒槍，機槍","color":"white"}]
 execute as @a[scores={switch_class=4}] run tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"固有投擲物: ","color":"yellow"},{"text":"煙霧彈,瞬爆手榴彈","color":"aqua"},{"text":"擊殺敵人後自動補充 ","color":"white"}]
 
 

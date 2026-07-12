@@ -16,9 +16,6 @@ execute if score #global dom_timer matches 20.. run function game_core:gamemode/
 execute as @a[team=red,gamemode=adventure] run function game_core:gamemode/dom/limit_potions
 execute as @a[team=blue,gamemode=adventure] run function game_core:gamemode/dom/limit_potions
 
-# 4. 死亡偵測（phase 1 存活玩家）
-execute if score #dom_phase dom_config matches 1 as @a[tag=dom_alive] if score @s vanilla_death > @s death_prev run function game_core:gamemode/dom/on_death
-
 # 4. 點位偵測與邏輯 (請將原本 arms_race_tick 裡面的 A, B, C 點偵測程式碼全數搬移到這裡)
 function game_core:gamemode/dom/point_router
 

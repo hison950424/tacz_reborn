@@ -156,11 +156,6 @@ execute if score #global arms_sub_mode matches 2 run scoreboard players set #Poi
 execute if score #global arms_sub_mode matches 2 run scoreboard players set #Point_b dom_state 0
 execute if score #global arms_sub_mode matches 2 run scoreboard players set #Point_c dom_state 0
 
-# 2. 強制賦予初始值 (防止 operation 運算時因 null 報錯)
-scoreboard players set #Point_a dom_truce_timer 0
-scoreboard players set #Point_b dom_truce_timer 0
-scoreboard players set #Point_c dom_truce_timer 0
-
 # [重置隨機開放次數與計時器]
 execute if score #global arms_sub_mode matches 2 run scoreboard players set #global dom_arms_timer 0
 execute if score #global arms_sub_mode matches 2 run scoreboard players set #100tick dom_timer 0

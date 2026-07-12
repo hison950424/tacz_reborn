@@ -114,27 +114,18 @@ execute as @a[scores={btn_score_dn=1..}] if score #global arms_sub_mode matches 
 execute if score #global arms_sub_mode matches 2 if score #target_score dom_config matches ..99 run scoreboard players set #target_score dom_config 100
 execute as @a[scores={btn_score_dn=1..}] if score #global arms_sub_mode matches 2 if score #target_score dom_config matches ..100 run playsound block.note_block.bass master @s ~ ~ ~ 1 0.5
 
-# --- [C] 時間增加與重置 --- 
-execute as @a[scores={btn_time_up=1..9998}] run playsound ui.button.click master @s ~ ~ ~ 1 1
-execute as @a[scores={btn_time_up=1..9998}] if score #global arms_sub_mode matches 1 run scoreboard players operation #time_limit_sec tdm_config += @s btn_time_up 
-execute as @a[scores={btn_time_up=1..9998}] if score #global arms_sub_mode matches 2 run scoreboard players operation #time_limit_sec dom_config += @s btn_time_up
+# --- [C] 時間增加與重置 (TDM only) ---
+execute as @a[scores={btn_time_up=1..9998}] if score #global arms_sub_mode matches 1 run playsound ui.button.click master @s ~ ~ ~ 1 1
+execute as @a[scores={btn_time_up=1..9998}] if score #global arms_sub_mode matches 1 run scoreboard players operation #time_limit_sec tdm_config += @s btn_time_up
 
-execute as @a[scores={btn_time_up=9999}] run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 1.2
-execute as @a[scores={btn_time_up=9999}] if score #global arms_sub_mode matches 1 run scoreboard players set #time_limit_sec tdm_config 600 
-execute as @a[scores={btn_time_up=9999}] if score #global arms_sub_mode matches 2 run scoreboard players set #time_limit_sec dom_config 600
+execute as @a[scores={btn_time_up=9999}] if score #global arms_sub_mode matches 1 run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 1.2
+execute as @a[scores={btn_time_up=9999}] if score #global arms_sub_mode matches 1 run scoreboard players set #time_limit_sec tdm_config 600
 
-# --- [D] 時間減少與防呆 (共用下限 60 秒) ---
-# TDM
+# --- [D] 時間減少與防呆 (TDM only, 下限 60 秒) ---
 execute as @a[scores={btn_time_dn=1..}] if score #global arms_sub_mode matches 1 if score #time_limit_sec tdm_config matches 61.. run playsound ui.button.click master @s ~ ~ ~ 1 1
 execute as @a[scores={btn_time_dn=1..}] if score #global arms_sub_mode matches 1 if score #time_limit_sec tdm_config matches 61.. run scoreboard players operation #time_limit_sec tdm_config -= @s btn_time_dn
 execute if score #global arms_sub_mode matches 1 if score #time_limit_sec tdm_config matches ..59 run scoreboard players set #time_limit_sec tdm_config 60
 execute as @a[scores={btn_time_dn=1..}] if score #global arms_sub_mode matches 1 if score #time_limit_sec tdm_config matches ..60 run playsound block.note_block.bass master @s ~ ~ ~ 1 0.5
-
-# DOM
-execute as @a[scores={btn_time_dn=1..}] if score #global arms_sub_mode matches 2 if score #time_limit_sec dom_config matches 61.. run playsound ui.button.click master @s ~ ~ ~ 1 1
-execute as @a[scores={btn_time_dn=1..}] if score #global arms_sub_mode matches 2 if score #time_limit_sec dom_config matches 61.. run scoreboard players operation #time_limit_sec dom_config -= @s btn_time_dn
-execute if score #global arms_sub_mode matches 2 if score #time_limit_sec dom_config matches ..59 run scoreboard players set #time_limit_sec dom_config 60
-execute as @a[scores={btn_time_dn=1..}] if score #global arms_sub_mode matches 2 if score #time_limit_sec dom_config matches ..60 run playsound block.note_block.bass master @s ~ ~ ~ 1 0.5
 
 
 # ==========================================
@@ -255,7 +246,7 @@ execute as @a[scores={select_class=4}] run tellraw @s ["",{"text":"   效果: ",
 execute as @a[scores={select_class=4}] run tellraw @s ["",{"text":" - ","color":"red"},{"text":"Debuff:「重裝步兵」","color":"red"}]
 execute as @a[scores={select_class=4}] run tellraw @s ["",{"text":"   效果: ","color":"gray"},{"text":"移動速度 -40%。","color":"white"}]
 execute as @a[scores={select_class=4}] run tellraw @s {"text":""}
-execute as @a[scores={select_class=4}] run tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"可購買主武器: ","color":"yellow"},{"text":"步槍, 狙擊槍，衝鋒槍","color":"white"}]
+execute as @a[scores={select_class=4}] run tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"可購買主武器: ","color":"yellow"},{"text":"狙擊槍, 衝鋒槍，機槍","color":"white"}]
 execute as @a[scores={select_class=4}] run tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"固有投擲物: ","color":"yellow"},{"text":"擊殺敵人後自動補充 ","color":"white"},{"text":"煙霧彈,瞬爆手榴彈","color":"aqua"}]
 
 # 職業選擇後呼叫系統資料夾中的渲染 UI

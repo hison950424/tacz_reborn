@@ -15,4 +15,3 @@ scoreboard players set #Point_c dom_prog_c 0
 fill 130 13 -79 115 13 -94 minecraft:iron_block replace
 
 scoreboard players set #dom_open_count dom_config 0
-scoreboard players set #dom_stalemate_sec dom_config 0
