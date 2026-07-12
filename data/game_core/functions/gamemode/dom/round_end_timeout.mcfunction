@@ -9,16 +9,21 @@ execute unless score #dom_phase dom_config matches 1 run return 0
 scoreboard players set #dom_phase dom_config 2
 scoreboard players set #dom_phase_timer dom_config 7
 
-# --- 計算各開放點的淨佔領進度（正 = 紅方領先，負 = 藍方領先）---
-scoreboard players set #dom_timeout_prog dom_config 0
-execute if score #Point_a dom_state matches 1 run scoreboard players operation #dom_timeout_prog dom_config += #Point_a dom_prog_a
-execute if score #Point_b dom_state matches 1 run scoreboard players operation #dom_timeout_prog dom_config += #Point_b dom_prog_b
-execute if score #Point_c dom_state matches 1 run scoreboard players operation #dom_timeout_prog dom_config += #Point_c dom_prog_c
+# --- 計算各開放點的領先方（按點數計：多數點獲勝，1-1 算平手）---
+scoreboard players set #red_lead_count dom_config 0
+scoreboard players set #blue_lead_count dom_config 0
 
-# 根據進度設定勝者
-execute if score #dom_timeout_prog dom_config matches 1.. run scoreboard players set #dom_round_winner dom_config 1
-execute if score #dom_timeout_prog dom_config matches ..-1 run scoreboard players set #dom_round_winner dom_config 2
-execute if score #dom_timeout_prog dom_config matches 0 run scoreboard players set #dom_round_winner dom_config 0
+execute if score #Point_a dom_state matches 1 if score #Point_a dom_prog_a matches 1.. run scoreboard players add #red_lead_count dom_config 1
+execute if score #Point_a dom_state matches 1 if score #Point_a dom_prog_a matches ..-1 run scoreboard players add #blue_lead_count dom_config 1
+execute if score #Point_b dom_state matches 1 if score #Point_b dom_prog_b matches 1.. run scoreboard players add #red_lead_count dom_config 1
+execute if score #Point_b dom_state matches 1 if score #Point_b dom_prog_b matches ..-1 run scoreboard players add #blue_lead_count dom_config 1
+execute if score #Point_c dom_state matches 1 if score #Point_c dom_prog_c matches 1.. run scoreboard players add #red_lead_count dom_config 1
+execute if score #Point_c dom_state matches 1 if score #Point_c dom_prog_c matches ..-1 run scoreboard players add #blue_lead_count dom_config 1
+
+# 紅方領先點數多 → 紅勝；藍方多 → 藍勝；相同（含 0-0、1-1）→ 平手
+execute if score #red_lead_count dom_config > #blue_lead_count dom_config run scoreboard players set #dom_round_winner dom_config 1
+execute if score #blue_lead_count dom_config > #red_lead_count dom_config run scoreboard players set #dom_round_winner dom_config 2
+execute if score #red_lead_count dom_config = #blue_lead_count dom_config run scoreboard players set #dom_round_winner dom_config 0
 
 # 關閉所有點位
 function game_core:gamemode/dom/close_all_points

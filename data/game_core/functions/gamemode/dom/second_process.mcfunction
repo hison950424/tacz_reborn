@@ -29,15 +29,10 @@ execute if score #dom_phase dom_config matches 3 if score #dom_phase_timer dom_c
 # ==========================================
 execute if score #dom_phase dom_config matches 1 run scoreboard players add #dom_round_timer dom_config 1
 
-# 僵持偵測：只有 1 個點開啟且點上有爭奪時累積
-execute if score #dom_phase dom_config matches 1 if score #dom_open_count dom_config matches 1 if score #a_contested temp_score matches 1.. run scoreboard players add #dom_stalemate_sec dom_config 1
-execute if score #dom_phase dom_config matches 1 if score #dom_open_count dom_config matches 1 if score #b_contested temp_score matches 1.. run scoreboard players add #dom_stalemate_sec dom_config 1
-execute if score #dom_phase dom_config matches 1 if score #dom_open_count dom_config matches 1 if score #c_contested temp_score matches 1.. run scoreboard players add #dom_stalemate_sec dom_config 1
-# 非爭奪中時重置僵持計時
-execute if score #dom_phase dom_config matches 1 if score #a_contested temp_score matches 0 if score #b_contested temp_score matches 0 if score #c_contested temp_score matches 0 run scoreboard players set #dom_stalemate_sec dom_config 0
+# 90 秒：若本回合預定開放第二個據點，且目前只有 1 個點開啟
+execute if score #dom_phase dom_config matches 1 if score #dom_round_timer dom_config matches 90 if score #dom_second_open dom_config matches 1 if score #dom_open_count dom_config matches 1 run function game_core:gamemode/dom/stalemate_open
+# 觸發後清除旗標（防止重複執行）
+execute if score #dom_phase dom_config matches 1 if score #dom_round_timer dom_config matches 90 run scoreboard players set #dom_second_open dom_config 0
 
-# 僵持 40 秒 → 開啟第二個點（最多同時 2 個點）
-execute if score #dom_phase dom_config matches 1 if score #dom_open_count dom_config matches 1 if score #dom_stalemate_sec dom_config matches 40.. run function game_core:gamemode/dom/stalemate_open
-
-# 回合計時 150 秒 → 超時平手
+# 回合計時 150 秒 → 超時結算
 execute if score #dom_phase dom_config matches 1 if score #dom_round_timer dom_config matches 150.. run function game_core:gamemode/dom/round_end_timeout

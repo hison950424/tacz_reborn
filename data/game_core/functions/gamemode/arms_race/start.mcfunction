@@ -213,7 +213,7 @@ scoreboard players set #global dom_timer 0
 
 # 全域廣播
 execute if score #global arms_sub_mode matches 1 run tellraw @a {"text":"[系統] 團隊死鬥正式開始！","color":"red","bold":true}
-execute if score #global arms_sub_mode matches 2 run tellraw @a {"text":"[系統] 佔點模式正式開始！30秒後搶奪地圖上的目標！","color":"gold","bold":true}
+execute if score #global arms_sub_mode matches 2 run tellraw @a {"text":"[系統] 佔點模式正式開始！15秒後搶奪地圖上的目標！","color":"gold","bold":true}
 execute at @a run playsound minecraft:entity.wither.spawn master @s ~ ~ ~ 0.5 0.5
 
 

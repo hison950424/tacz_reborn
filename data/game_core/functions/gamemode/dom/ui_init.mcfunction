@@ -13,14 +13,15 @@ scoreboard objectives add dom_display dummy {"text":"🚩 據點爭奪 🚩","co
 team join red 紅隊總分
 team join blue 藍隊總分
 team join yellow ⏳佔領倒數
+team join white 目標分數
 
 # 4. 初始化虛擬玩家的分數為 0
 scoreboard players set 紅隊總分 dom_display 0
 scoreboard players set 藍隊總分 dom_display 0
+scoreboard players operation 目標分數 dom_display = #target_score dom_config
 
-# 計算初始倒數計時並賦予顯示面板
-scoreboard players operation ⏳佔領倒數 dom_display = #time_limit_sec dom_config
-scoreboard players operation ⏳佔領倒數 dom_display -= #global dom_arms_timer
+# 回合計時初始值為 0
+scoreboard players set ⏳佔領倒數 dom_display 0
 
 # 6. 將此計分板推播至全體玩家的側邊欄
 scoreboard objectives setdisplay sidebar dom_display
