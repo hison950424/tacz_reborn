@@ -12,13 +12,16 @@ scoreboard players add #100tick dom_timer 1
 execute if score #global dom_timer matches 20.. run scoreboard players add #global dom_arms_timer 1
 execute if score #global dom_timer matches 20.. run function game_core:gamemode/dom/second_process
 
-# 3. 點位偵測與邏輯 (請將原本 arms_race_tick 裡面的 A, B, C 點偵測程式碼全數搬移到這裡)
+# 3. 死亡偵測（phase 1 存活玩家）
+execute if score #dom_phase dom_config matches 1 as @a[tag=dom_alive] if score @s vanilla_death > @s death_prev run function game_core:gamemode/dom/on_death
+
+# 4. 點位偵測與邏輯 (請將原本 arms_race_tick 裡面的 A, B, C 點偵測程式碼全數搬移到這裡)
 function game_core:gamemode/dom/point_router
 
-# 4. UI 更新
+# 5. UI 更新
 function game_core:gamemode/dom/ui_update
 
-# 5. 計時器歸零
+# 6. 計時器歸零
 execute if score #global dom_timer matches 20.. run scoreboard players set #global dom_timer 0
 execute if score #100tick dom_timer matches 100.. run scoreboard players set #100tick dom_timer 0
 
