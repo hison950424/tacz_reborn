@@ -11,4 +11,3 @@ scoreboard players set #dom_round_winner dom_config 0
 function game_core:gamemode/dom/close_all_points
 
 tellraw @a {"text":"[系統] 時間結束，本回合平手","color":"gray","bold":true}
-title @a title {"text":"回合平手","color":"gray","bold":true}
