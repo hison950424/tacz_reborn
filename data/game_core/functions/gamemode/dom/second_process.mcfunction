@@ -1,24 +1,17 @@
 # ==========================================
 # 檔案: gamemode/dom/second_process.mcfunction
 # 說明: 每秒執行一次的階段管理器
-# phase 0 = 開賽前等待（30s 後啟動第一回合）
 # phase 1 = 戰鬥中
 # phase 2 = 撿裝階段（loot，7s）
 # phase 3 = 戰前準備（prep，15s）
 # ==========================================
 
 # ==========================================
-# Phase 0：開賽等待 → 第一回合準備
-# ==========================================
-execute if score #dom_phase dom_config matches 0 run scoreboard players add #dom_phase_timer dom_config 1
-execute if score #dom_phase dom_config matches 0 if score #dom_phase_timer dom_config matches 30.. run function game_core:gamemode/dom/round_loot_end
-
-# ==========================================
 # Phase 2：撿裝倒數
 # ==========================================
 execute if score #dom_phase dom_config matches 2 run scoreboard players remove #dom_phase_timer dom_config 1
 
-execute if score #dom_phase dom_config matches 2 run title @a actionbar ["",{"text":"撿裝中，","color":"white"},{"score":{"name":"#dom_phase_timer","objective":"dom_config"},"color":"yellow","bold":true},{"text":" 秒後進入下一回合準備","color":"white"}]
+execute if score #dom_phase dom_config matches 2 run title @a actionbar ["",{"score":{"name":"#dom_phase_timer","objective":"dom_config"},"color":"yellow","bold":true},{"text":" 秒後進入下一回合準備","color":"white"}]
 
 execute if score #dom_phase dom_config matches 2 if score #dom_phase_timer dom_config matches ..0 run function game_core:gamemode/dom/round_loot_end
 

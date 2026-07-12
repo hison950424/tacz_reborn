@@ -199,6 +199,9 @@ execute if score #global arms_sub_mode matches 2 run bossbar set game_core:dom_h
 #啟動佔領模式的側邊欄 UI 與初始化
 execute if score #global arms_sub_mode matches 2 run function game_core:gamemode/dom/ui_init
 
+# 直接啟動第一回合準備（跳過 30 秒等待）
+execute if score #global arms_sub_mode matches 2 run function game_core:gamemode/dom/round_loot_end
+
 # ------------------------------------------
 # 4. 正式開啟遊戲 Tick 迴圈
 # ------------------------------------------

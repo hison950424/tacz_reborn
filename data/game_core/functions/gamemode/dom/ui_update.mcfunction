@@ -10,6 +10,11 @@
 scoreboard players operation 紅隊總分 dom_display = #Red dom_score
 scoreboard players operation 藍隊總分 dom_display = #Blue dom_score
 
+# 回合倒數（phase 1：150 - 已過秒數；其他階段顯示 0）
+execute unless score #dom_phase dom_config matches 1 run scoreboard players set ⏳佔領倒數 dom_display 0
+execute if score #dom_phase dom_config matches 1 run scoreboard players set ⏳佔領倒數 dom_display 150
+execute if score #dom_phase dom_config matches 1 run scoreboard players operation ⏳佔領倒數 dom_display -= #dom_round_timer dom_config
+
 # 強制重置 Bossbar 最大值為 20（進度條 ±20）
 bossbar set game_core:dom_hud_a max 20
 bossbar set game_core:dom_hud_b max 20
