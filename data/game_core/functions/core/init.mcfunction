@@ -6,6 +6,7 @@
 # --- 新增常數與時間變數 ---
 scoreboard objectives add dom_const dummy "常數"
 scoreboard players set #20 dom_const 20
+scoreboard players set #25 dom_const 25
 scoreboard players set #45 dom_const 45
 scoreboard players set #60 dom_const 60
 scoreboard players set #100 dom_const 100
@@ -354,6 +355,7 @@ scoreboard objectives add dom_state dummy "據點狀態"
 scoreboard objectives add dom_score dummy "佔領隊伍總分"
 scoreboard objectives add dom_timer dummy "佔領模式計時(Tick)"
 scoreboard objectives add dom_arms_timer dummy "佔領模式計時(s)"
+scoreboard objectives add dom_point_earn dummy "佔點收入累計"
 
 # --- 4. Bossbar 初始化 (全域狀態條) ---
 # --- 擴增 Bossbar ---

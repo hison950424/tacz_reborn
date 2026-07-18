@@ -11,9 +11,10 @@ scoreboard players operation @s death_prev = @s vanilla_death
 tag @s remove dom_alive
 gamemode spectator @s
 
-# 附身最近的存活隊友（有隊友存活才執行）
-execute if entity @s[team=red] if entity @a[team=red,tag=dom_alive,limit=1] run spectate @a[team=red,tag=dom_alive,sort=nearest,limit=1]
-execute if entity @s[team=blue] if entity @a[team=blue,tag=dom_alive,limit=1] run spectate @a[team=blue,tag=dom_alive,sort=nearest,limit=1]
+# 整隊所有死亡觀察者重附身最近存活隊員（含剛死亡的 @s）
+# 同時解決「被附身的隊友也死亡時視角漂移」的問題
+execute if entity @s[team=red] if entity @a[team=red,tag=dom_alive,limit=1] as @a[team=red,gamemode=spectator,tag=!dom_alive] run spectate @a[team=red,tag=dom_alive,sort=nearest,limit=1]
+execute if entity @s[team=blue] if entity @a[team=blue,tag=dom_alive,limit=1] as @a[team=blue,gamemode=spectator,tag=!dom_alive] run spectate @a[team=blue,tag=dom_alive,sort=nearest,limit=1]
 
 # 觸發全員死亡判定
 function game_core:gamemode/dom/death_check

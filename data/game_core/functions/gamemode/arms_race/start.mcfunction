@@ -264,6 +264,10 @@ execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus 
 execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit POTATO_AIM expression 20
 execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit SLAY_THE_LEADER expression 40
 
+# 模式專屬 debug 初始化（每局開始執行一次）
+execute if score #global arms_sub_mode matches 1 run function game_core:gamemode/tdm/debug1
+execute if score #global arms_sub_mode matches 2 run function game_core:gamemode/dom/debug1
+
 # #[死鬥]殺一個人20元 bug2
 # execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit ASSIST expression 0.2
 # execute if score #global arms_sub_mode matches 1 run gd656killicon server bonus edit BRAVE_RETURN expression 10

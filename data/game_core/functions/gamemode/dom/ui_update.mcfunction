@@ -12,13 +12,13 @@ scoreboard players operation 藍隊總分 dom_display = #Blue dom_score
 
 # 回合倒數（phase 1：150 - 已過秒數；其他階段顯示 0）
 execute unless score #dom_phase dom_config matches 1 run scoreboard players set ⏳佔領倒數 dom_display 0
-execute if score #dom_phase dom_config matches 1 run scoreboard players set ⏳佔領倒數 dom_display 150
+execute if score #dom_phase dom_config matches 1 run scoreboard players set ⏳佔領倒數 dom_display 180
 execute if score #dom_phase dom_config matches 1 run scoreboard players operation ⏳佔領倒數 dom_display -= #dom_round_timer dom_config
 
-# 強制重置 Bossbar 最大值為 20（進度條 ±20）
-bossbar set game_core:dom_hud_a max 20
-bossbar set game_core:dom_hud_b max 20
-bossbar set game_core:dom_hud_c max 20
+# 強制重置 Bossbar 最大值為 25（進度條 ±25）
+bossbar set game_core:dom_hud_a max 25
+bossbar set game_core:dom_hud_b max 25
+bossbar set game_core:dom_hud_c max 25
 
 # ==========================================
 # [第 1 階段] 數學運算：進度百分比
@@ -29,21 +29,21 @@ scoreboard players operation #a_prog_abs temp_score = #Point_a dom_prog_a
 execute if score #a_prog_abs temp_score matches ..-1 run scoreboard players operation #a_prog_abs temp_score *= #-1 dom_const
 scoreboard players operation #a_prog_pct temp_score = #a_prog_abs temp_score
 scoreboard players operation #a_prog_pct temp_score *= #100 dom_const
-scoreboard players operation #a_prog_pct temp_score /= #20 dom_const
+scoreboard players operation #a_prog_pct temp_score /= #25 dom_const
 
 # --- B 點計算 ---
 scoreboard players operation #b_prog_abs temp_score = #Point_b dom_prog_b
 execute if score #b_prog_abs temp_score matches ..-1 run scoreboard players operation #b_prog_abs temp_score *= #-1 dom_const
 scoreboard players operation #b_prog_pct temp_score = #b_prog_abs temp_score
 scoreboard players operation #b_prog_pct temp_score *= #100 dom_const
-scoreboard players operation #b_prog_pct temp_score /= #20 dom_const
+scoreboard players operation #b_prog_pct temp_score /= #25 dom_const
 
 # --- C 點計算 ---
 scoreboard players operation #c_prog_abs temp_score = #Point_c dom_prog_c
 execute if score #c_prog_abs temp_score matches ..-1 run scoreboard players operation #c_prog_abs temp_score *= #-1 dom_const
 scoreboard players operation #c_prog_pct temp_score = #c_prog_abs temp_score
 scoreboard players operation #c_prog_pct temp_score *= #100 dom_const
-scoreboard players operation #c_prog_pct temp_score /= #20 dom_const
+scoreboard players operation #c_prog_pct temp_score /= #25 dom_const
 
 # ==========================================
 # [第 2 階段] Bossbar 渲染
@@ -109,6 +109,11 @@ execute if score #Point_c dom_state matches 1 if score #c_contested temp_score m
 execute if score #Point_c dom_state matches 1 if score #c_contested temp_score matches 0 if score #Point_c dom_prog_c matches 1.. at @e[type=marker,tag=Point_c] positioned ~-8 ~-1 ~-8 as @a[dx=15,dy=3,dz=15] run title @s[team=blue] actionbar ["",{"text":"◆ C點 │ 佔領中 │ 敵方佔領進度: ","color":"white"},{"score":{"name":"#c_prog_pct","objective":"temp_score"},"color":"aqua"},{"text":"%","color":"aqua"}]
 execute if score #Point_c dom_state matches 1 if score #c_contested temp_score matches 0 if score #Point_c dom_prog_c matches ..-1 at @e[type=marker,tag=Point_c] positioned ~-8 ~-1 ~-8 as @a[dx=15,dy=3,dz=15] run title @s[team=red] actionbar ["",{"text":"◆ C點 │ 佔領中 │ 敵方佔領進度: ","color":"white"},{"score":{"name":"#c_prog_pct","objective":"temp_score"},"color":"aqua"},{"text":"%","color":"aqua"}]
 execute if score #Point_c dom_state matches 1 if score #c_contested temp_score matches 1.. at @e[type=marker,tag=Point_c] positioned ~-8 ~-1 ~-8 as @a[dx=15,dy=3,dz=15] run title @s actionbar {"text":"◆ C點 │ ⚠ 爭奪中","color":"gold","bold":true}
+
+# --- 前 30 秒佔領凍結倒數（覆蓋所有點區 actionbar）---
+execute if score #dom_phase dom_config matches 1 if score #dom_round_timer dom_config matches ..29 run scoreboard players set #freeze_remain temp_score 30
+execute if score #dom_phase dom_config matches 1 if score #dom_round_timer dom_config matches ..29 run scoreboard players operation #freeze_remain temp_score -= #dom_round_timer dom_config
+execute if score #dom_phase dom_config matches 1 if score #dom_round_timer dom_config matches ..29 run title @a actionbar ["",{"text":"⏳ 佔領凍結 │ ","color":"yellow"},{"score":{"name":"#freeze_remain","objective":"temp_score"},"color":"white","bold":true},{"text":" 秒後開放","color":"yellow"}]
 
 # ==========================================
 # 勝利判定（達到目標分數）

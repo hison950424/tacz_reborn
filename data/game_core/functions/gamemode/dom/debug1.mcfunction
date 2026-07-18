@@ -9,5 +9,3 @@ gd656killicon server bonus edit KILL_EXPLOSION expression 0.2
 gd656killicon server bonus edit KILL_HEADSHOT expression 0.2
 gd656killicon server bonus edit POTATO_AIM expression 10
 gd656killicon server bonus edit SLAY_THE_LEADER expression 20
-tag @s add debug
-tellraw @s[tag=debug] [{"text":"佔點模式 成功undebug","color":"red","bold":false}]

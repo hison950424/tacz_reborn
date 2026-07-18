@@ -4,8 +4,9 @@
 # ==========================================
 
 # --- [1. 全域環境處理] ---
-# 防丟棄機制
-tag @e[type=item,tag=!not_money] add not_money
+# 防丟棄機制（DOM 模式下武器可丟棄）
+execute unless score #global arms_sub_mode matches 2 run tag @e[type=item,tag=!not_money] add not_money
+execute if score #global arms_sub_mode matches 2 run tag @e[type=item,tag=!not_money,nbt=!{Item:{id:"tacz:modern_kinetic_gun"}}] add not_money
 execute as @e[type=item,tag=not_money] at @s run title @p[distance=..2] actionbar {"text":"[警告] 軍備競賽中嚴禁丟棄裝備！","color":"red"}
 execute as @e[type=item,tag=not_money] run data merge entity @s {PickupDelay:0s}
 

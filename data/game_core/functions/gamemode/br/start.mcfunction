@@ -38,6 +38,8 @@ scoreboard players reset @a team_id
 scoreboard players set @a vanilla_death 0
 scoreboard players set @a death_prev 0
 scoreboard players set @a revive_progress 0
+scoreboard players set @a spectate_idx 0
+scoreboard players set @a target_id 0
 scoreboard players set @a kill_prev 0
 
 scoreboard players set #game br_phase -1

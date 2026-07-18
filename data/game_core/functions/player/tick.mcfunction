@@ -20,8 +20,12 @@ execute if entity @s[team=red] at @e[type=marker,tag=red_spawn,limit=1] position
 execute if entity @s[team=red,tag=!in_base] if score @s in_base_score matches 1 run scoreboard players enable @s base_menu
 # 開啟轉帳選單權限
 execute if entity @s[team=red,tag=!in_base] if score @s in_base_score matches 1 run scoreboard players enable @s transfer_menu
-execute if entity @s[team=red,tag=!in_base] if score @s in_base_score matches 1 run give @s written_book{title:"主選單",author:"系統",pages:['{"text":"=== 紅隊行動基地 ===\\n\\n請選擇您的行動：\\n\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"[ 🔄 前往更換職業 ]\\n\\n","color":"dark_green","bold":false,"clickEvent":{"action":"run_command","value":"/trigger base_menu set 2"}},{"text":"[ 💸 開啟轉帳系統 ]\\n\\n\\n\\n\\n\\n","color":"gold","bold":false,"clickEvent":{"action":"run_command","value":"/trigger transfer_menu set 1"}},{"text":"[ ⚠︎ debug ]\\n\\n","color":"red","bold":false,"clickEvent":{"action":"run_command","value":"/function game_core:gamemode/arms_race/debug"}}]}']} 1
+execute if entity @s[team=red,tag=!in_base] if score @s in_base_score matches 1 run give @s written_book{title:"主選單",author:"系統",pages:['{"text":"=== 紅隊行動基地 ===\\n\\n請選擇您的行動：\\n\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"[ 🔄 前往更換職業 ]\\n\\n","color":"dark_green","bold":false,"clickEvent":{"action":"run_command","value":"/trigger base_menu set 2"}},{"text":"[ 💸 開啟轉帳系統 ]\\n\\n","color":"gold","bold":false,"clickEvent":{"action":"run_command","value":"/trigger transfer_menu set 1"}}]}']} 1
 execute if entity @s[team=red,tag=!in_base] if score @s in_base_score matches 1 at @s run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 0.8
+# 修正最高血量上限（防止復活後血量上限不正確）
+execute if entity @s[team=red,tag=!in_base] if score @s in_base_score matches 1 if score @s class_type matches 1 run attribute @s minecraft:generic.max_health base set 80
+execute if entity @s[team=red,tag=!in_base] if score @s in_base_score matches 1 if score @s class_type matches 2..4 run attribute @s minecraft:generic.max_health base set 100
+execute if entity @s[team=red,tag=!in_base] if score @s in_base_score matches 1 if score @s class_type matches 1.. run effect give @s minecraft:instant_health 3 50 true
 execute if entity @s[team=red,tag=!in_base] if score @s in_base_score matches 1 run tag @s add in_base
 execute if entity @s[team=red,tag=in_base] if score @s in_base_score matches 1 run effect give @s minecraft:instant_health 1 0
 execute if entity @s[team=red,tag=in_base] if score @s in_base_score matches 0 run clear @s written_book{title:"主選單"}
@@ -34,8 +38,12 @@ execute if entity @s[team=blue] at @e[type=marker,tag=blue_spawn,limit=1] positi
 execute if entity @s[team=blue,tag=!in_base] if score @s in_base_score matches 1 run scoreboard players enable @s base_menu
 # 開啟轉帳選單權限
 execute if entity @s[team=blue,tag=!in_base] if score @s in_base_score matches 1 run scoreboard players enable @s transfer_menu
-execute if entity @s[team=blue,tag=!in_base] if score @s in_base_score matches 1 run give @s written_book{title:"主選單",author:"系統",pages:['{"text":"=== 藍隊行動基地 ===\\n\\n請選擇您的行動：\\n\\n\\n","color":"dark_blue","bold":true,"extra":[{"text":"[ 🔄 前往更換職業 ]\\n\\n","color":"dark_green","bold":false,"clickEvent":{"action":"run_command","value":"/trigger base_menu set 2"}},{"text":"[ 💸 開啟轉帳系統 ]\\n\\n\\n\\n\\n\\n","color":"gold","bold":false,"clickEvent":{"action":"run_command","value":"/trigger transfer_menu set 1"}},{"text":"[ ⚠︎ debug ]\\n\\n","color":"red","bold":false,"clickEvent":{"action":"run_command","value":"/function game_core:gamemode/arms_race/debug"}}]}']} 1
+execute if entity @s[team=blue,tag=!in_base] if score @s in_base_score matches 1 run give @s written_book{title:"主選單",author:"系統",pages:['{"text":"=== 藍隊行動基地 ===\\n\\n請選擇您的行動：\\n\\n\\n","color":"dark_blue","bold":true,"extra":[{"text":"[ 🔄 前往更換職業 ]\\n\\n","color":"dark_green","bold":false,"clickEvent":{"action":"run_command","value":"/trigger base_menu set 2"}},{"text":"[ 💸 開啟轉帳系統 ]\\n\\n","color":"gold","bold":false,"clickEvent":{"action":"run_command","value":"/trigger transfer_menu set 1"}}]}']} 1
 execute if entity @s[team=blue,tag=!in_base] if score @s in_base_score matches 1 at @s run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 0.8
+# 修正最高血量上限（防止復活後血量上限不正確）
+execute if entity @s[team=blue,tag=!in_base] if score @s in_base_score matches 1 if score @s class_type matches 1 run attribute @s minecraft:generic.max_health base set 80
+execute if entity @s[team=blue,tag=!in_base] if score @s in_base_score matches 1 if score @s class_type matches 2..4 run attribute @s minecraft:generic.max_health base set 100
+execute if entity @s[team=blue,tag=!in_base] if score @s in_base_score matches 1 if score @s class_type matches 1.. run effect give @s minecraft:instant_health 3 50 true
 execute if entity @s[team=blue,tag=!in_base] if score @s in_base_score matches 1 run tag @s add in_base
 execute if entity @s[team=blue,tag=in_base] if score @s in_base_score matches 1 run effect give @s minecraft:instant_health 1 0
 execute if entity @s[team=blue,tag=in_base] if score @s in_base_score matches 0 run clear @s written_book{title:"主選單"}
@@ -76,6 +84,7 @@ execute if score @s class_type matches 4 run scoreboard players set @s sneak_tra
 execute if score @s gd656killicon.kill > @s kill_prev run function game_core:class/reset_throwables
 execute if score @s gd656killicon.kill > @s kill_prev run title @s actionbar {"text":"擊殺確認！投擲物已重置","color":"gold"}
 execute if score #global arms_sub_mode matches 1 if score @s gd656killicon.kill > @s kill_prev run function game_core:gamemode/tdm/score_update
+execute if score #global arms_sub_mode matches 2 if score #dom_phase dom_config matches 1 if score #dom_first_blood dom_config matches 0 if score @s gd656killicon.kill > @s kill_prev run function game_core:gamemode/dom/first_blood
 execute if score @s gd656killicon.kill > @s kill_prev run scoreboard players operation @s kill_prev = @s gd656killicon.kill
 
 execute if score @s gd656killicon.assist > @s assist_prev run function game_core:class/reset_throwables

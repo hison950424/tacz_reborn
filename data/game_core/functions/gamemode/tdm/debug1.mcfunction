@@ -9,5 +9,3 @@ gd656killicon server bonus edit KILL_EXPLOSION expression 0.4
 gd656killicon server bonus edit KILL_HEADSHOT expression 0.4
 gd656killicon server bonus edit POTATO_AIM expression 20
 gd656killicon server bonus edit SLAY_THE_LEADER expression 40
-tag @s add debug
-tellraw @s[tag=debug] [{"text":"團隊死鬥 成功undebug","color":"red","bold":false}]
