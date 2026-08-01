@@ -46,33 +46,46 @@ execute if score #dom_round_winner dom_config matches 2 run tellraw @a[team=blue
 execute if score #dom_round_winner dom_config matches 1 run tellraw @a[team=blue] {"text":"[系統] 雙方同時全滅！敵方佔領領先，本回合失敗","color":"red","bold":true}
 execute if score #dom_round_winner dom_config matches 2 run tellraw @a[team=red] {"text":"[系統] 雙方同時全滅！敵方佔領領先，本回合失敗","color":"red","bold":true}
 
-# 金錢獎勵：勝方 $700
-execute if score #dom_round_winner dom_config matches 1 as @a[team=red] run gd656killicon server statistics add score @s 700
-execute if score #dom_round_winner dom_config matches 2 as @a[team=blue] run gd656killicon server statistics add score @s 700
+# 金錢獎勵：勝方（連勝遞減）
+function game_core:gamemode/dom/round_win_money
 
-# 金錢補償：敗方 $450 起，連敗 +$50，上限 $600
+# 金錢補償：敗方（連敗遞增）
 function game_core:gamemode/dom/round_loss_money
 
-# --- 金錢通知 ---
-execute if score #dom_round_winner dom_config matches 1 run tellraw @a[team=red] ["",{"text":"[金錢] ","color":"green","bold":true},{"text":"本回合勝利 +$700  │  按 [Caps Lock] 查看金錢","color":"green"}]
-execute if score #dom_round_winner dom_config matches 2 run tellraw @a[team=blue] ["",{"text":"[金錢] ","color":"green","bold":true},{"text":"本回合勝利 +$700  │  按 [Caps Lock] 查看金錢","color":"green"}]
+# --- 金錢通知（在計數更新前執行，確保數值一致）---
+execute if score #dom_round_winner dom_config matches 1 if score #Red_win dom_config matches 0 run tellraw @a[team=red] ["",{"text":"[金錢] ","color":"green","bold":true},{"text":"本回合勝利 +$560  │  按 [Caps Lock] 查看金錢","color":"green"}]
+execute if score #dom_round_winner dom_config matches 1 if score #Red_win dom_config matches 1 run tellraw @a[team=red] ["",{"text":"[金錢] ","color":"green","bold":true},{"text":"本回合勝利 +$480（連勝遞減）│  按 [Caps Lock] 查看金錢","color":"green"}]
+execute if score #dom_round_winner dom_config matches 1 if score #Red_win dom_config matches 2 run tellraw @a[team=red] ["",{"text":"[金錢] ","color":"green","bold":true},{"text":"本回合勝利 +$400（連勝遞減）│  按 [Caps Lock] 查看金錢","color":"green"}]
+execute if score #dom_round_winner dom_config matches 1 if score #Red_win dom_config matches 3 run tellraw @a[team=red] ["",{"text":"[金錢] ","color":"green","bold":true},{"text":"本回合勝利 +$320（連勝遞減）│  按 [Caps Lock] 查看金錢","color":"green"}]
+execute if score #dom_round_winner dom_config matches 1 if score #Red_win dom_config matches 4.. run tellraw @a[team=red] ["",{"text":"[金錢] ","color":"green","bold":true},{"text":"本回合勝利 +$240（連勝滿減）│  按 [Caps Lock] 查看金錢","color":"green"}]
+execute if score #dom_round_winner dom_config matches 2 if score #Blue_win dom_config matches 0 run tellraw @a[team=blue] ["",{"text":"[金錢] ","color":"green","bold":true},{"text":"本回合勝利 +$560  │  按 [Caps Lock] 查看金錢","color":"green"}]
+execute if score #dom_round_winner dom_config matches 2 if score #Blue_win dom_config matches 1 run tellraw @a[team=blue] ["",{"text":"[金錢] ","color":"green","bold":true},{"text":"本回合勝利 +$480（連勝遞減）│  按 [Caps Lock] 查看金錢","color":"green"}]
+execute if score #dom_round_winner dom_config matches 2 if score #Blue_win dom_config matches 2 run tellraw @a[team=blue] ["",{"text":"[金錢] ","color":"green","bold":true},{"text":"本回合勝利 +$400（連勝遞減）│  按 [Caps Lock] 查看金錢","color":"green"}]
+execute if score #dom_round_winner dom_config matches 2 if score #Blue_win dom_config matches 3 run tellraw @a[team=blue] ["",{"text":"[金錢] ","color":"green","bold":true},{"text":"本回合勝利 +$320（連勝遞減）│  按 [Caps Lock] 查看金錢","color":"green"}]
+execute if score #dom_round_winner dom_config matches 2 if score #Blue_win dom_config matches 4.. run tellraw @a[team=blue] ["",{"text":"[金錢] ","color":"green","bold":true},{"text":"本回合勝利 +$240（連勝滿減）│  按 [Caps Lock] 查看金錢","color":"green"}]
 
-execute if score #dom_round_winner dom_config matches 1 if score #Blue_loss dom_config matches 0 run tellraw @a[team=blue] ["",{"text":"[金錢] ","color":"gray","bold":true},{"text":"本回合失敗 +$450  │  按 [Caps Lock] 查看金錢","color":"gray"}]
-execute if score #dom_round_winner dom_config matches 1 if score #Blue_loss dom_config matches 1 run tellraw @a[team=blue] ["",{"text":"[金錢] ","color":"gray","bold":true},{"text":"本回合失敗 +$550（連敗加成）│  按 [Caps Lock] 查看金錢","color":"gray"}]
-execute if score #dom_round_winner dom_config matches 1 if score #Blue_loss dom_config matches 2 run tellraw @a[team=blue] ["",{"text":"[金錢] ","color":"gray","bold":true},{"text":"本回合失敗 +$650（連敗加成）│  按 [Caps Lock] 查看金錢","color":"gray"}]
-execute if score #dom_round_winner dom_config matches 1 if score #Blue_loss dom_config matches 3 run tellraw @a[team=blue] ["",{"text":"[金錢] ","color":"gray","bold":true},{"text":"本回合失敗 +$750（連敗加成）│  按 [Caps Lock] 查看金錢","color":"gray"}]
-execute if score #dom_round_winner dom_config matches 1 if score #Blue_loss dom_config matches 4.. run tellraw @a[team=blue] ["",{"text":"[金錢] ","color":"gray","bold":true},{"text":"本回合失敗 +$850（連敗滿額）│  按 [Caps Lock] 查看金錢","color":"gray"}]
-execute if score #dom_round_winner dom_config matches 2 if score #Red_loss dom_config matches 0 run tellraw @a[team=red] ["",{"text":"[金錢] ","color":"gray","bold":true},{"text":"本回合失敗 +$450  │  按 [Caps Lock] 查看金錢","color":"gray"}]
-execute if score #dom_round_winner dom_config matches 2 if score #Red_loss dom_config matches 1 run tellraw @a[team=red] ["",{"text":"[金錢] ","color":"gray","bold":true},{"text":"本回合失敗 +$550（連敗加成）│  按 [Caps Lock] 查看金錢","color":"gray"}]
-execute if score #dom_round_winner dom_config matches 2 if score #Red_loss dom_config matches 2 run tellraw @a[team=red] ["",{"text":"[金錢] ","color":"gray","bold":true},{"text":"本回合失敗 +$650（連敗加成）│  按 [Caps Lock] 查看金錢","color":"gray"}]
-execute if score #dom_round_winner dom_config matches 2 if score #Red_loss dom_config matches 3 run tellraw @a[team=red] ["",{"text":"[金錢] ","color":"gray","bold":true},{"text":"本回合失敗 +$750（連敗加成）│  按 [Caps Lock] 查看金錢","color":"gray"}]
-execute if score #dom_round_winner dom_config matches 2 if score #Red_loss dom_config matches 4.. run tellraw @a[team=red] ["",{"text":"[金錢] ","color":"gray","bold":true},{"text":"本回合失敗 +$850（連敗滿額）│  按 [Caps Lock] 查看金錢","color":"gray"}]
+execute if score #dom_round_winner dom_config matches 1 if score #Blue_loss dom_config matches 0 run tellraw @a[team=blue] ["",{"text":"[金錢] ","color":"gray","bold":true},{"text":"本回合失敗 +$360  │  按 [Caps Lock] 查看金錢","color":"gray"}]
+execute if score #dom_round_winner dom_config matches 1 if score #Blue_loss dom_config matches 1 run tellraw @a[team=blue] ["",{"text":"[金錢] ","color":"gray","bold":true},{"text":"本回合失敗 +$520（連敗加成）│  按 [Caps Lock] 查看金錢","color":"gray"}]
+execute if score #dom_round_winner dom_config matches 1 if score #Blue_loss dom_config matches 2 run tellraw @a[team=blue] ["",{"text":"[金錢] ","color":"gray","bold":true},{"text":"本回合失敗 +$680（連敗加成）│  按 [Caps Lock] 查看金錢","color":"gray"}]
+execute if score #dom_round_winner dom_config matches 1 if score #Blue_loss dom_config matches 3 run tellraw @a[team=blue] ["",{"text":"[金錢] ","color":"gray","bold":true},{"text":"本回合失敗 +$840（連敗加成）│  按 [Caps Lock] 查看金錢","color":"gray"}]
+execute if score #dom_round_winner dom_config matches 1 if score #Blue_loss dom_config matches 4.. run tellraw @a[team=blue] ["",{"text":"[金錢] ","color":"gray","bold":true},{"text":"本回合失敗 +$1000（連敗滿額）│  按 [Caps Lock] 查看金錢","color":"gray"}]
+execute if score #dom_round_winner dom_config matches 2 if score #Red_loss dom_config matches 0 run tellraw @a[team=red] ["",{"text":"[金錢] ","color":"gray","bold":true},{"text":"本回合失敗 +$360  │  按 [Caps Lock] 查看金錢","color":"gray"}]
+execute if score #dom_round_winner dom_config matches 2 if score #Red_loss dom_config matches 1 run tellraw @a[team=red] ["",{"text":"[金錢] ","color":"gray","bold":true},{"text":"本回合失敗 +$520（連敗加成）│  按 [Caps Lock] 查看金錢","color":"gray"}]
+execute if score #dom_round_winner dom_config matches 2 if score #Red_loss dom_config matches 2 run tellraw @a[team=red] ["",{"text":"[金錢] ","color":"gray","bold":true},{"text":"本回合失敗 +$680（連敗加成）│  按 [Caps Lock] 查看金錢","color":"gray"}]
+execute if score #dom_round_winner dom_config matches 2 if score #Red_loss dom_config matches 3 run tellraw @a[team=red] ["",{"text":"[金錢] ","color":"gray","bold":true},{"text":"本回合失敗 +$840（連敗加成）│  按 [Caps Lock] 查看金錢","color":"gray"}]
+execute if score #dom_round_winner dom_config matches 2 if score #Red_loss dom_config matches 4.. run tellraw @a[team=red] ["",{"text":"[金錢] ","color":"gray","bold":true},{"text":"本回合失敗 +$1000（連敗滿額）│  按 [Caps Lock] 查看金錢","color":"gray"}]
 
 # 更新連敗計數
 execute if score #dom_round_winner dom_config matches 1 run scoreboard players set #Red_loss dom_config 0
 execute if score #dom_round_winner dom_config matches 1 run scoreboard players add #Blue_loss dom_config 1
 execute if score #dom_round_winner dom_config matches 2 run scoreboard players set #Blue_loss dom_config 0
 execute if score #dom_round_winner dom_config matches 2 run scoreboard players add #Red_loss dom_config 1
+
+# 更新連勝計數
+execute if score #dom_round_winner dom_config matches 1 run scoreboard players add #Red_win dom_config 1
+execute if score #dom_round_winner dom_config matches 1 run scoreboard players set #Blue_win dom_config 0
+execute if score #dom_round_winner dom_config matches 2 run scoreboard players add #Blue_win dom_config 1
+execute if score #dom_round_winner dom_config matches 2 run scoreboard players set #Red_win dom_config 0
 
 # 存活/陣亡個人調整（有勝者情況；雙方全滅故 dom_alive 均為 0，所有玩家得陣亡補償）
 function game_core:gamemode/dom/round_end_adjust

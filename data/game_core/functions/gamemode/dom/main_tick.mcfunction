@@ -32,6 +32,10 @@ function game_core:gamemode/dom/ui_update
 execute if score #global dom_timer matches 20.. run scoreboard players set #global dom_timer 0
 execute if score #100tick dom_timer matches 100.. run scoreboard players set #100tick dom_timer 0
 
+clear @a tacz:ammo
+data merge block 193 14 -85 {Items:[]}
+data merge block 129 14 -11 {Items:[]}
+
 #debug
 execute as @a[tag=debug] at @s run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 1.2
 tag @a[tag=debug] remove debug

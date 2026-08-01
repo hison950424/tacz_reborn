@@ -191,3 +191,5 @@ execute if score #br_airdrop_delay dummy matches 20.. if entity @e[type=minecraf
 # 每 20 tick（1 秒）對所有存活玩家（br_death_state=1）造成 2 HP 固定傷害
 # 此傷害不受距離影響，配合圈外遞增傷害共同逼迫玩家交戰
 execute if score #br_phase dummy matches 9 if score #br_tick20 dummy matches 0 as @a if score @s br_death_state matches 1 at @s run damage @s 5 minecraft:out_of_world
+
+clear @a tacz:ammo

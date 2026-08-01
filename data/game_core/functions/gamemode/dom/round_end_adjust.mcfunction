@@ -1,19 +1,19 @@
 # ==========================================
 # 檔案: gamemode/dom/round_end_adjust.mcfunction
 # 說明: 每回合結束後的個人存活/陣亡金錢調整
-#       存活玩家 -$100（本回合無死亡，財務較充裕）
-#       陣亡玩家 +$100（本回合死亡過，額外補償）
+#       存活玩家 -$320（本回合無死亡，財務較充裕）
+#       陣亡玩家 +$160（本回合死亡過，額外補償）
 # ==========================================
 
-execute as @a[team=red,tag=dom_alive] run gd656killicon server statistics remove score @s 400
-execute as @a[team=blue,tag=dom_alive] run gd656killicon server statistics remove score @s 400
-execute as @a[team=red,tag=!dom_alive] run gd656killicon server statistics add score @s 200
-execute as @a[team=blue,tag=!dom_alive] run gd656killicon server statistics add score @s 200
+execute as @a[team=red,tag=dom_alive] run gd656killicon server statistics remove score @s 320
+execute as @a[team=blue,tag=dom_alive] run gd656killicon server statistics remove score @s 320
+execute as @a[team=red,tag=!dom_alive] run gd656killicon server statistics add score @s 160
+execute as @a[team=blue,tag=!dom_alive] run gd656killicon server statistics add score @s 160
 
-execute as @a[team=red,tag=dom_alive] run tellraw @s ["",{"text":"[金錢] ","color":"gold","bold":true},{"text":"本回合存活 -$400  │  按 [Caps Lock] 查看金錢","color":"gray"}]
-execute as @a[team=blue,tag=dom_alive] run tellraw @s ["",{"text":"[金錢] ","color":"gold","bold":true},{"text":"本回合存活 -$400  │  按 [Caps Lock] 查看金錢","color":"gray"}]
-execute as @a[team=red,tag=!dom_alive] run tellraw @s ["",{"text":"[金錢] ","color":"green","bold":true},{"text":"本回合陣亡補償 +$200  │  按 [Caps Lock] 查看金錢","color":"green"}]
-execute as @a[team=blue,tag=!dom_alive] run tellraw @s ["",{"text":"[金錢] ","color":"green","bold":true},{"text":"本回合陣亡補償 +$200  │  按 [Caps Lock] 查看金錢","color":"green"}]
+execute as @a[team=red,tag=dom_alive] run tellraw @s ["",{"text":"[金錢] ","color":"gold","bold":true},{"text":"本回合存活 -$320  │  按 [Caps Lock] 查看金錢","color":"gray"}]
+execute as @a[team=blue,tag=dom_alive] run tellraw @s ["",{"text":"[金錢] ","color":"gold","bold":true},{"text":"本回合存活 -$320  │  按 [Caps Lock] 查看金錢","color":"gray"}]
+execute as @a[team=red,tag=!dom_alive] run tellraw @s ["",{"text":"[金錢] ","color":"green","bold":true},{"text":"本回合陣亡補償 +$160  │  按 [Caps Lock] 查看金錢","color":"green"}]
+execute as @a[team=blue,tag=!dom_alive] run tellraw @s ["",{"text":"[金錢] ","color":"green","bold":true},{"text":"本回合陣亡補償 +$160  │  按 [Caps Lock] 查看金錢","color":"green"}]
 
 # 佔點收入本回合結算通知（有收入才顯示）
 execute as @a[team=red] if score @s dom_point_earn matches 1.. run tellraw @s ["",{"text":"[金錢] ","color":"gold","bold":true},{"text":"本回合佔點收入 +$","color":"green"},{"score":{"name":"@s","objective":"dom_point_earn"},"color":"green"},{"text":"  │  按 [Caps Lock] 查看金錢","color":"green"}]

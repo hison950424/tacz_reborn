@@ -7,6 +7,9 @@
 scoreboard objectives add dom_const dummy "常數"
 scoreboard players set #20 dom_const 20
 scoreboard players set #25 dom_const 25
+scoreboard players set #15 dom_const 15
+scoreboard players set #Red_win dom_config 0
+scoreboard players set #Blue_win dom_config 0
 scoreboard players set #45 dom_const 45
 scoreboard players set #60 dom_const 60
 scoreboard players set #100 dom_const 100

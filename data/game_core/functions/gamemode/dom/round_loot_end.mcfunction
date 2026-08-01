@@ -12,7 +12,9 @@ function game_core:gamemode/dom/unlock_random
 
 # 進入準備階段
 scoreboard players set #dom_phase dom_config 3
-scoreboard players set #dom_phase_timer dom_config 25
+# 第一回合準備 10 秒，後續回合 25 秒
+execute if score #dom_round dom_config matches 0 run scoreboard players set #dom_phase_timer dom_config 10
+execute if score #dom_round dom_config matches 1.. run scoreboard players set #dom_phase_timer dom_config 25
 
 # 回合數 +1
 scoreboard players add #dom_round dom_config 1
@@ -58,9 +60,7 @@ fill 127 13 -14 130 13 -17 minecraft:barrier replace
 
 # 清空基地補給箱（紅隊、藍隊各兩格）
 data merge block 193 14 -84 {Items:[]}
-data merge block 193 14 -85 {Items:[]}
 data merge block 129 14 -12 {Items:[]}
-data merge block 129 14 -11 {Items:[]}
 
 # 每回合準備階段：補充固有投擲物與彈藥箱（武器僅第一回合由開局給予，不再補發）
 execute as @a[team=red] run function game_core:class/reset_throwables

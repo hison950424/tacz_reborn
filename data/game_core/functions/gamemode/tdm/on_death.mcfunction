@@ -3,11 +3,31 @@
 # 觸發: 當玩家死亡時 (death_trigger >= 1)
 # ==========================================
 
-# 發放 5 元陣亡補貼 (調用插件指令)
-execute as @s run gd656killicon server statistics add score @s 15
+# 陣亡補貼（依當前階段，落後隊 +25%）
 
-# 聊天欄微弱提示 (不要用大標題，以免干擾視線)
-execute as @s run tellraw @s {"text":"[系統] 陣亡補貼：+15 元","color":"gray","italic":true}
+# --- 早期（stage 0）：$15，落後隊 +$5 ---
+execute if score #tdm_stage tdm_config matches 0 run gd656killicon server statistics add score @s 15
+execute if score #tdm_stage tdm_config matches 0 run tellraw @s {"text":"[系統] 陣亡補貼：+15 元","color":"gray","italic":true}
+execute if score #tdm_stage tdm_config matches 0 if score #tdm_losing_team tdm_config matches 1 if entity @s[team=red] run gd656killicon server statistics add score @s 5
+execute if score #tdm_stage tdm_config matches 0 if score #tdm_losing_team tdm_config matches 2 if entity @s[team=blue] run gd656killicon server statistics add score @s 5
+execute if score #tdm_stage tdm_config matches 0 if score #tdm_losing_team tdm_config matches 1 if entity @s[team=red] run tellraw @s {"text":"[系統] 落後補償：+5 元","color":"yellow","italic":true}
+execute if score #tdm_stage tdm_config matches 0 if score #tdm_losing_team tdm_config matches 2 if entity @s[team=blue] run tellraw @s {"text":"[系統] 落後補償：+5 元","color":"yellow","italic":true}
+
+# --- 中期（stage 1）：$60，落後隊 +$15 ---
+execute if score #tdm_stage tdm_config matches 1 run gd656killicon server statistics add score @s 60
+execute if score #tdm_stage tdm_config matches 1 run tellraw @s {"text":"[系統] 陣亡補貼：+60 元","color":"gray","italic":true}
+execute if score #tdm_stage tdm_config matches 1 if score #tdm_losing_team tdm_config matches 1 if entity @s[team=red] run gd656killicon server statistics add score @s 15
+execute if score #tdm_stage tdm_config matches 1 if score #tdm_losing_team tdm_config matches 2 if entity @s[team=blue] run gd656killicon server statistics add score @s 15
+execute if score #tdm_stage tdm_config matches 1 if score #tdm_losing_team tdm_config matches 1 if entity @s[team=red] run tellraw @s {"text":"[系統] 落後補償：+15 元","color":"yellow","italic":true}
+execute if score #tdm_stage tdm_config matches 1 if score #tdm_losing_team tdm_config matches 2 if entity @s[team=blue] run tellraw @s {"text":"[系統] 落後補償：+15 元","color":"yellow","italic":true}
+
+# --- 後期（stage 2）：$140，落後隊 +$35 ---
+execute if score #tdm_stage tdm_config matches 2 run gd656killicon server statistics add score @s 140
+execute if score #tdm_stage tdm_config matches 2 run tellraw @s {"text":"[系統] 陣亡補貼：+140 元","color":"gray","italic":true}
+execute if score #tdm_stage tdm_config matches 2 if score #tdm_losing_team tdm_config matches 1 if entity @s[team=red] run gd656killicon server statistics add score @s 35
+execute if score #tdm_stage tdm_config matches 2 if score #tdm_losing_team tdm_config matches 2 if entity @s[team=blue] run gd656killicon server statistics add score @s 35
+execute if score #tdm_stage tdm_config matches 2 if score #tdm_losing_team tdm_config matches 1 if entity @s[team=red] run tellraw @s {"text":"[系統] 落後補償：+35 元","color":"yellow","italic":true}
+execute if score #tdm_stage tdm_config matches 2 if score #tdm_losing_team tdm_config matches 2 if entity @s[team=blue] run tellraw @s {"text":"[系統] 落後補償：+35 元","color":"yellow","italic":true}
 
 # --- 全局常駐 BUFF (恢復 I 與 飽食) ---
 # 恢復 I (amplifier 0)，隱藏粒子

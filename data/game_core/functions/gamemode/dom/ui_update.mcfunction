@@ -16,9 +16,9 @@ execute if score #dom_phase dom_config matches 1 run scoreboard players set ⏳�
 execute if score #dom_phase dom_config matches 1 run scoreboard players operation ⏳佔領倒數 dom_display -= #dom_round_timer dom_config
 
 # 強制重置 Bossbar 最大值為 25（進度條 ±25）
-bossbar set game_core:dom_hud_a max 25
-bossbar set game_core:dom_hud_b max 25
-bossbar set game_core:dom_hud_c max 25
+bossbar set game_core:dom_hud_a max 15
+bossbar set game_core:dom_hud_b max 15
+bossbar set game_core:dom_hud_c max 15
 
 # ==========================================
 # [第 1 階段] 數學運算：進度百分比
@@ -29,21 +29,21 @@ scoreboard players operation #a_prog_abs temp_score = #Point_a dom_prog_a
 execute if score #a_prog_abs temp_score matches ..-1 run scoreboard players operation #a_prog_abs temp_score *= #-1 dom_const
 scoreboard players operation #a_prog_pct temp_score = #a_prog_abs temp_score
 scoreboard players operation #a_prog_pct temp_score *= #100 dom_const
-scoreboard players operation #a_prog_pct temp_score /= #25 dom_const
+scoreboard players operation #a_prog_pct temp_score /= #15 dom_const
 
 # --- B 點計算 ---
 scoreboard players operation #b_prog_abs temp_score = #Point_b dom_prog_b
 execute if score #b_prog_abs temp_score matches ..-1 run scoreboard players operation #b_prog_abs temp_score *= #-1 dom_const
 scoreboard players operation #b_prog_pct temp_score = #b_prog_abs temp_score
 scoreboard players operation #b_prog_pct temp_score *= #100 dom_const
-scoreboard players operation #b_prog_pct temp_score /= #25 dom_const
+scoreboard players operation #b_prog_pct temp_score /= #15 dom_const
 
 # --- C 點計算 ---
 scoreboard players operation #c_prog_abs temp_score = #Point_c dom_prog_c
 execute if score #c_prog_abs temp_score matches ..-1 run scoreboard players operation #c_prog_abs temp_score *= #-1 dom_const
 scoreboard players operation #c_prog_pct temp_score = #c_prog_abs temp_score
 scoreboard players operation #c_prog_pct temp_score *= #100 dom_const
-scoreboard players operation #c_prog_pct temp_score /= #25 dom_const
+scoreboard players operation #c_prog_pct temp_score /= #15 dom_const
 
 # ==========================================
 # [第 2 階段] Bossbar 渲染

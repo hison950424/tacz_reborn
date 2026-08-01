@@ -9,7 +9,7 @@
 # ------------------------------------------
 # 說明: 確保只有在「大廳狀態 (0)」時才能執行，防止遊戲中途被誤觸重啟。
 # 同時向全伺服器廣播遊戲即將開始的訊息。
-execute if score #global game_state matches 0 run tellraw @a {"text":"[系統] 啟動軍備競賽，進行資料初始化與裝備發放...","color":"yellow"}
+execute if score #global game_state matches 0 unless score #global arms_sub_mode matches 2 run tellraw @a {"text":"[系統] 啟動軍備競賽，進行資料初始化與裝備發放...","color":"yellow"}
 
 #把所有人改成冒險模式
 gamemode adventure @a
@@ -136,6 +136,18 @@ execute if score #global arms_sub_mode matches 1 run scoreboard players operatio
 execute if score #global arms_sub_mode matches 1 run scoreboard players set #red_team team_score 0
 execute if score #global arms_sub_mode matches 1 run scoreboard players set #blue_team team_score 0
 
+# TDM 階段系統初始化
+execute if score #global arms_sub_mode matches 1 run scoreboard players set #tdm_stage tdm_config 0
+execute if score #global arms_sub_mode matches 1 run scoreboard players set #tdm_elapsed tdm_config 0
+execute if score #global arms_sub_mode matches 1 run scoreboard players set #tdm_losing_team tdm_config 0
+# 計算階段切換閾值（秒）：stage1_at = total/3，stage2_at = stage1_at*2
+execute if score #global arms_sub_mode matches 1 run scoreboard players set #const_3 tdm_config 3
+execute if score #global arms_sub_mode matches 1 run scoreboard players operation #tdm_stage1_at tdm_config = #time_limit_sec tdm_config
+execute if score #global arms_sub_mode matches 1 run scoreboard players operation #tdm_stage1_at tdm_config /= #const_3 tdm_config
+execute if score #global arms_sub_mode matches 1 run scoreboard players set #const_2 tdm_config 2
+execute if score #global arms_sub_mode matches 1 run scoreboard players operation #tdm_stage2_at tdm_config = #tdm_stage1_at tdm_config
+execute if score #global arms_sub_mode matches 1 run scoreboard players operation #tdm_stage2_at tdm_config *= #const_2 tdm_config
+
 
 # ------------------------------------------
 # 2. 據點佔領模式 (Domination) 專屬初始化
@@ -195,6 +207,7 @@ execute if score #global arms_sub_mode matches 2 run bossbar set game_core:dom_h
 execute if score #global arms_sub_mode matches 2 run function game_core:gamemode/dom/ui_init
 
 # 直接啟動第一回合準備（跳過 30 秒等待）
+execute if score #global arms_sub_mode matches 2 run tellraw @a {"text":"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"}
 execute if score #global arms_sub_mode matches 2 run function game_core:gamemode/dom/round_loot_end
 
 # ------------------------------------------
@@ -208,7 +221,6 @@ scoreboard players set #global dom_timer 0
 
 # 全域廣播
 execute if score #global arms_sub_mode matches 1 run tellraw @a {"text":"[系統] 團隊死鬥正式開始！","color":"red","bold":true}
-execute if score #global arms_sub_mode matches 2 run tellraw @a {"text":"[系統] 佔點模式正式開始！15秒後搶奪地圖上的目標！","color":"gold","bold":true}
 execute at @a run playsound minecraft:entity.wither.spawn master @s ~ ~ ~ 0.5 0.5
 
 
@@ -228,17 +240,17 @@ execute at @a run playsound minecraft:entity.wither.spawn master @s ~ ~ ~ 0.5 0.
 # #使用軍備競賽專用擊殺旗幟(廢棄，無法使用mcfunction呼叫)
 # gd656killicon client preset choose 00001
 
-#[佔點]殺一個人15元 bug1
-execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit ASSIST expression 0.2
-execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit BRAVE_RETURN expression 10
-execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit DESPERATE_COUNTERATTACK expression 10
-execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit INTERRUPTED_STREAK expression 10
-execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit KILL expression 0.2
-execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit KILL_COMBO expression 2
-execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit KILL_EXPLOSION expression 0.2
-execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit KILL_HEADSHOT expression 0.2
-execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit POTATO_AIM expression 10
-execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit SLAY_THE_LEADER expression 20
+#[佔點]殺一個人12元 bug1 (原15元降低20%)
+execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit ASSIST expression 0.16
+execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit BRAVE_RETURN expression 8
+execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit DESPERATE_COUNTERATTACK expression 8
+execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit INTERRUPTED_STREAK expression 8
+execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit KILL expression 0.16
+execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit KILL_COMBO expression 1.6
+execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit KILL_EXPLOSION expression 0.16
+execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit KILL_HEADSHOT expression 0.16
+execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit POTATO_AIM expression 8
+execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit SLAY_THE_LEADER expression 16
 
 # #[佔點]殺一個人15元 bug2
 # execute if score #global arms_sub_mode matches 2 run gd656killicon server bonus edit ASSIST expression 0.15

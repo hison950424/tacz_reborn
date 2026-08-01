@@ -191,7 +191,7 @@ execute as @a[scores={select_mode=8}] run scoreboard players set @a class_type 0
 execute as @a[scores={select_mode=8}] run tellraw @a {"text":"[系統] 管理員已取消遊戲啟動，請等待重新設定。","color":"yellow"}
 
 # 給予初始的「模式選擇書」重新開始
-execute as @a[scores={select_mode=8}] run give @s written_book{title:"模式選擇書",author:"系統",pages:['{"text":" ==== 模式選擇 ====\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"[▶ 大逃殺模式]\\n\\n","color":"dark_gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 1"}},{"text":"[▶ 軍備競賽模式]\\n","color":"dark_green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 2"}}]}']} 1
+execute as @a[scores={select_mode=8}] run give @s written_book{title:"模式選擇書",author:"系統",pages:['{"text":" ==== 模式選擇 ====\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"[▶ 大逃殺模式]\\n\\n","color":"dark_gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 1"}},{"text":"[▶ 軍備競賽模式]\\n\\n","color":"dark_green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 2"}},{"text":"[ ◄ 上一頁 ]\\n","color":"gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger lobby_terminal set 9"}}]}']} 1
 
 
 # ------------------------------------------

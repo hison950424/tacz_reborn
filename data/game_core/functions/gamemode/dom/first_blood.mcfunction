@@ -8,7 +8,7 @@
 scoreboard players set #dom_first_blood dom_config 1
 
 # 首殺獎金
-gd656killicon server statistics add score @s 200
+gd656killicon server statistics add score @s 160
 
 # 全場通知
-tellraw @a ["",{"selector":"@s","color":"yellow","bold":true},{"text":" 拿下本回合首殺！","color":"gold","bold":true},{"text":" +$200","color":"green","bold":true}]
+tellraw @a ["",{"selector":"@s","color":"yellow","bold":true},{"text":" 拿下本回合首殺！","color":"gold","bold":true},{"text":" +$160","color":"green","bold":true}]

@@ -293,6 +293,9 @@ team modify solo14 nametagVisibility never
 team modify solo15 nametagVisibility never
 team modify solo16 nametagVisibility never
 
+#防噴
+gamerule keepInventory true
+
 # 標記大廳狀態
 tag @a add in_lobby
 tag @a remove on_parkour

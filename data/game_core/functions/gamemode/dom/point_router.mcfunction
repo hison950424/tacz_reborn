@@ -9,11 +9,11 @@ execute if score #global arms_sub_mode matches 2 at @e[type=marker,tag=Point_a] 
 
 execute if score #global arms_sub_mode matches 2 if score #a_red_count temp_score matches 1.. if score #a_blue_count temp_score matches 1.. run scoreboard players set #a_contested temp_score 1
 
-# 推進速度：人數即速度，上限 2（2 人 = 10 秒，1 人 = 20 秒）
+# 推進速度：固定 1（多人不加速，上限 1）
 execute if score #global arms_sub_mode matches 2 run scoreboard players operation #a_red_speed temp_score = #a_red_count temp_score
-execute if score #global arms_sub_mode matches 2 if score #a_red_speed temp_score matches 3.. run scoreboard players set #a_red_speed temp_score 2
+execute if score #global arms_sub_mode matches 2 if score #a_red_speed temp_score matches 2.. run scoreboard players set #a_red_speed temp_score 1
 execute if score #global arms_sub_mode matches 2 run scoreboard players operation #a_blue_speed temp_score = #a_blue_count temp_score
-execute if score #global arms_sub_mode matches 2 if score #a_blue_speed temp_score matches 3.. run scoreboard players set #a_blue_speed temp_score 2
+execute if score #global arms_sub_mode matches 2 if score #a_blue_speed temp_score matches 2.. run scoreboard players set #a_blue_speed temp_score 1
 
 execute if score #global arms_sub_mode matches 2 if score #global dom_timer matches 20 run function game_core:gamemode/dom/logic_a
 
@@ -29,9 +29,9 @@ execute if score #global arms_sub_mode matches 2 at @e[type=marker,tag=Point_b] 
 execute if score #global arms_sub_mode matches 2 if score #b_red_count temp_score matches 1.. if score #b_blue_count temp_score matches 1.. run scoreboard players set #b_contested temp_score 1
 
 execute if score #global arms_sub_mode matches 2 run scoreboard players operation #b_red_speed temp_score = #b_red_count temp_score
-execute if score #global arms_sub_mode matches 2 if score #b_red_speed temp_score matches 3.. run scoreboard players set #b_red_speed temp_score 2
+execute if score #global arms_sub_mode matches 2 if score #b_red_speed temp_score matches 2.. run scoreboard players set #b_red_speed temp_score 1
 execute if score #global arms_sub_mode matches 2 run scoreboard players operation #b_blue_speed temp_score = #b_blue_count temp_score
-execute if score #global arms_sub_mode matches 2 if score #b_blue_speed temp_score matches 3.. run scoreboard players set #b_blue_speed temp_score 2
+execute if score #global arms_sub_mode matches 2 if score #b_blue_speed temp_score matches 2.. run scoreboard players set #b_blue_speed temp_score 1
 
 execute if score #global arms_sub_mode matches 2 if score #global dom_timer matches 20 run function game_core:gamemode/dom/logic_b
 
@@ -47,8 +47,8 @@ execute if score #global arms_sub_mode matches 2 at @e[type=marker,tag=Point_c] 
 execute if score #global arms_sub_mode matches 2 if score #c_red_count temp_score matches 1.. if score #c_blue_count temp_score matches 1.. run scoreboard players set #c_contested temp_score 1
 
 execute if score #global arms_sub_mode matches 2 run scoreboard players operation #c_red_speed temp_score = #c_red_count temp_score
-execute if score #global arms_sub_mode matches 2 if score #c_red_speed temp_score matches 3.. run scoreboard players set #c_red_speed temp_score 2
+execute if score #global arms_sub_mode matches 2 if score #c_red_speed temp_score matches 2.. run scoreboard players set #c_red_speed temp_score 1
 execute if score #global arms_sub_mode matches 2 run scoreboard players operation #c_blue_speed temp_score = #c_blue_count temp_score
-execute if score #global arms_sub_mode matches 2 if score #c_blue_speed temp_score matches 3.. run scoreboard players set #c_blue_speed temp_score 2
+execute if score #global arms_sub_mode matches 2 if score #c_blue_speed temp_score matches 2.. run scoreboard players set #c_blue_speed temp_score 1
 
 execute if score #global arms_sub_mode matches 2 if score #global dom_timer matches 20 run function game_core:gamemode/dom/logic_c
