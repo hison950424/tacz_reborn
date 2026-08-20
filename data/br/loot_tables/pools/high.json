@@ -2,7 +2,7 @@
   "type": "minecraft:chest",
   "pools": [
     {
-      "rolls": 1,
+      "rolls": {"min": 4, "max": 8},
       "entries": [
         {
           "type": "minecraft:item",
@@ -407,7 +407,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{GunId:\"suffuse:qbu951b\",GunFireMode:\"AUTO\"}"
+              "tag": "{GunId:\"suffuse:qbz951b\",GunFireMode:\"AUTO\"}"
             }
           ]
         },

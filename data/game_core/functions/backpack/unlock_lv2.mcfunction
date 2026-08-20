@@ -2,6 +2,7 @@ execute if data entity @s {Inventory:[{Slot:18b,tag:{tag:{locked_backpack:1b}}}]
 execute if data entity @s {Inventory:[{Slot:19b,tag:{tag:{locked_backpack:1b}}}]} at @s run item replace entity @s inventory.10 with air
 execute if data entity @s {Inventory:[{Slot:20b,tag:{tag:{locked_backpack:1b}}}]} at @s run item replace entity @s inventory.11 with air
 execute if data entity @s {Inventory:[{Slot:21b,tag:{tag:{locked_backpack:1b}}}]} at @s run item replace entity @s inventory.12 with air
+execute if data entity @s {Inventory:[{Slot:22b,tag:{tag:{locked_backpack:1b}}}]} at @s run item replace entity @s inventory.13 with air
 
 execute if score @s backpack_level matches 0..1 if data entity @s {Inventory:[{tag:{tag:{backpack_2:1b}}}]} at @s run tag @s add backpack_2
 execute if score @s backpack_level matches 0..1 if data entity @s {Inventory:[{tag:{tag:{backpack_2:1b}}}]} at @s run scoreboard players set @s backpack_level 2
