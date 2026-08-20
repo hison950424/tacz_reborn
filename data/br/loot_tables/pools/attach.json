@@ -198,28 +198,6 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{AttachmentId:\"tacz:scope_vudu\"}"
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "tacz:attachment",
-          "weight": 60,
-          "functions": [
-            {
-              "function": "minecraft:set_nbt",
-              "tag": "{AttachmentId:\"tacz:scope_lpvo_1_6\"}"
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "tacz:attachment",
-          "weight": 60,
-          "functions": [
-            {
-              "function": "minecraft:set_nbt",
               "tag": "{AttachmentId:\"tacz:scope_qmk152\"}"
             }
           ]
@@ -227,77 +205,121 @@
         {
           "type": "minecraft:item",
           "name": "tacz:attachment",
-          "weight": 60,
+          "weight": 110,
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{AttachmentId:\"suffuse:scope_sig_tango_msr_1_6\"}"
+              "tag": "{AttachmentId:\"tacz:sight_rmr_dot\"}"
             }
           ]
         },
         {
           "type": "minecraft:item",
           "name": "tacz:attachment",
-          "weight": 40,
+          "weight": 100,
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{AttachmentId:\"suffuse:scope_qlu11s\"}"
+              "tag": "{AttachmentId:\"tacz:sight_pk06_rifle\"}"
             }
           ]
         },
         {
           "type": "minecraft:item",
           "name": "tacz:attachment",
-          "weight": 40,
+          "weight": 100,
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{AttachmentId:\"tacz:scope_elcan_4x\"}"
+              "tag": "{AttachmentId:\"tacz:sight_fastfire_rifle\"}"
             }
           ]
         },
         {
           "type": "minecraft:item",
           "name": "tacz:attachment",
-          "weight": 40,
+          "weight": 100,
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{AttachmentId:\"tacz:scope_contender\"}"
+              "tag": "{AttachmentId:\"tacz:sight_deltapoint_rifle\"}"
             }
           ]
         },
         {
           "type": "minecraft:item",
           "name": "tacz:attachment",
-          "weight": 25,
+          "weight": 85,
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{AttachmentId:\"tacz:scope_standard_8x\"}"
+              "tag": "{AttachmentId:\"tacz:sight_okp7\"}"
             }
           ]
         },
         {
           "type": "minecraft:item",
           "name": "tacz:attachment",
-          "weight": 15,
+          "weight": 100,
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{AttachmentId:\"tacz:scope_mk5hd\"}"
+              "tag": "{AttachmentId:\"tacz:sight_acro_rifle\"}"
             }
           ]
         },
         {
           "type": "minecraft:item",
           "name": "tacz:attachment",
-          "weight": 20,
+          "weight": 90,
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{AttachmentId:\"tacz:scope_1873_6x\"}"
+              "tag": "{AttachmentId:\"suffuse:scope_romeo4t\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 90,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"suffuse:scope_vzor3\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 85,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"suffuse:sight_cobra_ekp_818\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 90,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"suffuse:sight_rmr\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 70,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"suffuse:scope_ks23m\"}"
             }
           ]
         },
@@ -408,17 +430,6 @@
             {
               "function": "minecraft:set_nbt",
               "tag": "{AttachmentId:\"tacz:muzzle_silencer_ursus\"}"
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "tacz:attachment",
-          "weight": 40,
-          "functions": [
-            {
-              "function": "minecraft:set_nbt",
-              "tag": "{AttachmentId:\"tacz:muzzle_silencer_vulture\"}"
             }
           ]
         },
@@ -689,6 +700,72 @@
         {
           "type": "minecraft:item",
           "name": "tacz:attachment",
+          "weight": 80,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"suffuse:grip_td_td\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 80,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"suffuse:grip_td_blue_grey\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 75,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"suffuse:grip_usgi_m249\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 80,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"suffuse:grip_td_black\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 70,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"suffuse:grip_bt10vbatlas\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 80,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"suffuse:grip_rvg\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
           "weight": 90,
           "functions": [
             {
@@ -931,6 +1008,116 @@
         {
           "type": "minecraft:item",
           "name": "tacz:attachment",
+          "weight": 70,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"suffuse:stock_pip_m249\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 70,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"suffuse:stock_comb_redsight\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 70,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"suffuse:stock_sig_blue_desert\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 65,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"suffuse:stock_minimi_mk1\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 65,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"suffuse:stock_mk46\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 60,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"suffuse:stock_vltor_emod_desert\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 65,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"suffuse:stock_m249\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 60,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"suffuse:stock_vltor_emod_black\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 70,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"suffuse:stock_comb_3dg\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 65,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"suffuse:stock_comb_jiazhou\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
           "weight": 90,
           "functions": [
             {
@@ -991,6 +1178,28 @@
             {
               "function": "minecraft:set_nbt",
               "tag": "{AttachmentId:\"suffuse:laser_dbala2\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 75,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"tacz:laser_peq6\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 60,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"suffuse:laser_zenitcoperst3\"}"
             }
           ]
         },
@@ -1079,6 +1288,116 @@
             {
               "function": "minecraft:set_nbt",
               "tag": "{AttachmentId:\"tacz:sniper_extended_mag_2\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "lrtactical:throwable",
+          "weight": 60,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{ThrowableId:\"lrtactical:smoke_grenade\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "lrtactical:throwable",
+          "weight": 50,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{ThrowableId:\"lrtactical:flash_grenade\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "lrtactical:throwable",
+          "weight": 30,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{ThrowableId:\"lrtactical:molotov\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "lrtactical:throwable",
+          "weight": 25,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{ThrowableId:\"lrtactical:m67\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "lrtactical:throwable",
+          "weight": 20,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{ThrowableId:\"suffuse:m24\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "lrtactical:throwable",
+          "weight": 20,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{ThrowableId:\"lrtactical:rgn\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "lrtactical:throwable",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{ThrowableId:\"lrtactical:c4\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "lrtactical:throwable",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{ThrowableId:\"suffuse:m24_cluster\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 90,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"tacz:ammo_mod_slug\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tacz:attachment",
+          "weight": 75,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AttachmentId:\"tacz:ammo_mod_hp\"}"
             }
           ]
         }
