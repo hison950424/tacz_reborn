@@ -2,12 +2,12 @@
   "type": "minecraft:chest",
   "pools": [
     {
-      "rolls": {"min": 5, "max": 10},
+      "rolls": {"min": 1, "max": 1},
       "entries": [
         {
           "type": "minecraft:item",
           "name": "lrtactical:consumable",
-          "weight": 480,
+          "weight": 720,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -18,7 +18,7 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:consumable",
-          "weight": 390,
+          "weight": 585,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -29,7 +29,7 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:consumable",
-          "weight": 330,
+          "weight": 495,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -40,7 +40,7 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:consumable",
-          "weight": 340,
+          "weight": 510,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -51,7 +51,7 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:consumable",
-          "weight": 260,
+          "weight": 390,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -62,7 +62,7 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:consumable",
-          "weight": 190,
+          "weight": 285,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -73,7 +73,7 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:consumable",
-          "weight": 80,
+          "weight": 120,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -84,7 +84,7 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:consumable",
-          "weight": 60,
+          "weight": 90,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -95,7 +95,7 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:consumable",
-          "weight": 30,
+          "weight": 45,
           "functions": [
             {
               "function": "minecraft:set_nbt",
