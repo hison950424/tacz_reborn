@@ -364,18 +364,18 @@ execute as @a[scores={join_team=2}] run tellraw @a ["",{"selector":"@s","color":
 
 # 先清除舊的 solo tag，避免重複選擇時標記殘留
 execute as @a[scores={join_team=3}] run tag @s remove solo
-execute as @a[scores={join_team=3}] run team join white @s
-execute as @a[scores={join_team=3}] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"白隊！","color":"white"}]
+execute as @a[scores={join_team=3}] run team join green @s
+execute as @a[scores={join_team=3}] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"綠隊！","color":"green"}]
 
 # 先清除舊的 solo tag，避免重複選擇時標記殘留
 execute as @a[scores={join_team=4}] run tag @s remove solo
-execute as @a[scores={join_team=4}] run team join green @s
-execute as @a[scores={join_team=4}] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"綠隊！","color":"green"}]
+execute as @a[scores={join_team=4}] run team join white @s
+execute as @a[scores={join_team=4}] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"白隊！","color":"white"}]
 
 # 先清除舊的 solo tag，避免重複選擇時標記殘留
-execute as @a[scores={join_team=17}] run tag @s remove solo
-execute as @a[scores={join_team=17}] run team join yellow @s
-execute as @a[scores={join_team=17}] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"黃隊！","color":"yellow"}]
+execute as @a[scores={join_team=5}] run tag @s remove solo
+execute as @a[scores={join_team=5}] run team join yellow @s
+execute as @a[scores={join_team=5}] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"黃隊！","color":"yellow"}]
 
 execute as @a[scores={join_team=6}] run tag @s remove solo
 execute as @a[scores={join_team=6}] run team join aqua @s
