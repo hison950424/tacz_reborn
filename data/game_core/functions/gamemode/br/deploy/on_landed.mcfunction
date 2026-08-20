@@ -16,7 +16,7 @@ effect clear @s jump_boost
 effect clear @s slowness
 clear @s
 execute as @s[tag=br_used_altar] run give @s tacz:modern_kinetic_gun{GunId:"tacz:p320",GunFireMode:"SEMI"} 1
-give @s minecraft:potion{HideFlags:0,display:{Name:'[{"text":"","italic":false},{"text":"大補","color":"red"}]',Lore:['[{"text":"","italic":false},{"text":"一次補滿的補包","color":"red"}]']},CustomPotionEffects:[{Id:6b,Amplifier:120b,Duration:20,ShowParticles:0b,ShowIcon:0b}],CustomPotionColor:16711680} 1
+give @s lrtactical:consumable{ConsumableId:"lrtactical:ai2"} 2
 give @s tacz:ammo_box{AllTypeCreative:1b} 1
 
 

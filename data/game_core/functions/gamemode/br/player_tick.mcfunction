@@ -2,8 +2,6 @@
 # 檔案: gamemode/br_player_tick.mcfunction
 # 執行者: @s (大逃殺玩家本人)
 # ==========================================
-#刪除自己身上的空瓶
-clear @s minecraft:glass_bottle
 
 #debug
 execute if score @s gd656killicon.kill matches 6 if score @s kill_prev matches 0 run function game_core:gamemode/arms_race/score_debug
@@ -190,6 +188,7 @@ execute if score @s altar_progress matches 200.. run function game_core:gamemode
 
 # --- [13] 負重系統 ---
 execute store result score @s gun_count run clear @s tacz:modern_kinetic_gun 0
-execute if score @s gun_count matches 3.. run effect give @s slowness 1 3 true
+execute if score @s br_death_state matches 1 if score @s gun_count matches 3.. run effect give @s slowness 2 2 true
+execute if score @s br_death_state matches 1 unless score @s gun_count matches 3.. run effect give @s slowness 2 0 true
 execute if score @s gun_count matches 3.. run effect give @s jump_boost 1 200 true
 execute if score @s gun_count matches 3.. run title @s actionbar {"text":"⚠️ 負重過高！請丟棄多餘的槍枝！","color":"red","bold":true}

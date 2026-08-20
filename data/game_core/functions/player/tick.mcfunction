@@ -69,6 +69,7 @@ execute if score @s respawn_timer matches 1.. run scoreboard players remove @s r
 execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. run function game_core:class/apply
 execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. run effect give @s minecraft:instant_health 3 50 true
 execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. run function game_core:class/reset_throwables
+execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. if score #global arms_sub_mode matches 2 run function game_core:class/give_gear
 execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. run function game_core:gamemode/tdm/on_death
 execute if score @s respawn_timer matches 0 run scoreboard players set @s respawn_timer -1
 

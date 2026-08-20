@@ -76,9 +76,7 @@ scoreboard players set #br_countdown br_sys 200
 gamemode adventure @a
 execute as @a run attribute @s minecraft:generic.max_health base set 100
 effect give @a minecraft:instant_health 3 50 true
-# --- 全局常駐 BUFF (恢復 I 與 飽食) ---
-# 恢復 I (amplifier 0)，隱藏粒子
-effect give @a minecraft:regeneration infinite 1 true
+# --- 全局常駐 BUFF (飽食) ---
 # 飽食 (amplifier 0)，隱藏粒子，確保飢餓值不掉
 effect give @a minecraft:saturation infinite 1 true
 # 重置所有人為 0 級背包

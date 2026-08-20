@@ -23,8 +23,7 @@ title @s subtitle {"text":"你已重返戰場！","color":"yellow"}
 clear @s
 item replace entity @s armor.chest with elytra{Damage:428,Enchantments:[{id:"minecraft:binding_curse",lvl:1s}]} 1
 
-# 4. 給予無限期恢復狀態
-effect give @s minecraft:regeneration infinite 1 true
+# 4. 給予飽食狀態（不恢復血量）
 effect give @s minecraft:saturation infinite 1 true
 
 tag @s add br_jumped
