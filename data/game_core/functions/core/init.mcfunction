@@ -72,6 +72,18 @@ team add red "紅隊"
 team add blue "藍隊"
 team add green "綠隊"
 team add white "白隊"
+team add yellow "黃隊"
+team add aqua "水藍隊"
+team add gold "金隊"
+team add light_purple "淡紫隊"
+team add dark_red "深紅隊"
+team add dark_blue "深藍隊"
+team add dark_green "深綠隊"
+team add dark_aqua "深水藍隊"
+team add dark_purple "深紫隊"
+team add dark_gray "深灰隊"
+team add gray "灰隊"
+team add black "黑隊"
 team add solo1 "孤狼"
 team add solo2 "孤狼"
 team add solo3 "孤狼"
@@ -93,6 +105,18 @@ team modify red color red
 team modify blue color blue
 team modify green color green
 team modify white color white
+team modify yellow color yellow
+team modify aqua color aqua
+team modify gold color gold
+team modify light_purple color light_purple
+team modify dark_red color dark_red
+team modify dark_blue color dark_blue
+team modify dark_green color dark_green
+team modify dark_aqua color dark_aqua
+team modify dark_purple color dark_purple
+team modify dark_gray color dark_gray
+team modify gray color gray
+team modify black color black
 team modify solo1 color dark_gray
 team modify solo2 color dark_gray
 team modify solo3 color dark_gray
@@ -114,6 +138,18 @@ team modify red friendlyFire false
 team modify blue friendlyFire false
 team modify green friendlyFire false
 team modify white friendlyFire false
+team modify yellow friendlyFire false
+team modify aqua friendlyFire false
+team modify gold friendlyFire false
+team modify light_purple friendlyFire false
+team modify dark_red friendlyFire false
+team modify dark_blue friendlyFire false
+team modify dark_green friendlyFire false
+team modify dark_aqua friendlyFire false
+team modify dark_purple friendlyFire false
+team modify dark_gray friendlyFire false
+team modify gray friendlyFire false
+team modify black friendlyFire false
 team modify solo1 friendlyFire false
 team modify solo2 friendlyFire false
 team modify solo3 friendlyFire false
@@ -135,6 +171,18 @@ team modify red seeFriendlyInvisibles true
 team modify blue seeFriendlyInvisibles true
 team modify green seeFriendlyInvisibles true
 team modify white seeFriendlyInvisibles true
+team modify yellow seeFriendlyInvisibles true
+team modify aqua seeFriendlyInvisibles true
+team modify gold seeFriendlyInvisibles true
+team modify light_purple seeFriendlyInvisibles true
+team modify dark_red seeFriendlyInvisibles true
+team modify dark_blue seeFriendlyInvisibles true
+team modify dark_green seeFriendlyInvisibles true
+team modify dark_aqua seeFriendlyInvisibles true
+team modify dark_purple seeFriendlyInvisibles true
+team modify dark_gray seeFriendlyInvisibles true
+team modify gray seeFriendlyInvisibles true
+team modify black seeFriendlyInvisibles true
 team modify solo1 seeFriendlyInvisibles true
 team modify solo2 seeFriendlyInvisibles true
 team modify solo3 seeFriendlyInvisibles true
@@ -156,6 +204,18 @@ team modify red nametagVisibility hideForOtherTeams
 team modify blue nametagVisibility hideForOtherTeams
 team modify green nametagVisibility hideForOtherTeams
 team modify white nametagVisibility hideForOtherTeams
+team modify yellow nametagVisibility hideForOtherTeams
+team modify aqua nametagVisibility hideForOtherTeams
+team modify gold nametagVisibility hideForOtherTeams
+team modify light_purple nametagVisibility hideForOtherTeams
+team modify dark_red nametagVisibility hideForOtherTeams
+team modify dark_blue nametagVisibility hideForOtherTeams
+team modify dark_green nametagVisibility hideForOtherTeams
+team modify dark_aqua nametagVisibility hideForOtherTeams
+team modify dark_purple nametagVisibility hideForOtherTeams
+team modify dark_gray nametagVisibility hideForOtherTeams
+team modify gray nametagVisibility hideForOtherTeams
+team modify black nametagVisibility hideForOtherTeams
 team modify solo1 nametagVisibility hideForOtherTeams
 team modify solo2 nametagVisibility hideForOtherTeams
 team modify solo3 nametagVisibility hideForOtherTeams

@@ -68,12 +68,36 @@ execute if entity @s[team=red,scores={br_death_state=1..3}] run scoreboard playe
 execute if entity @s[team=blue,scores={br_death_state=1..3}] run scoreboard players add #br_alive_blue br_sys 1
 execute if entity @s[team=green,scores={br_death_state=1..3}] run scoreboard players add #br_alive_green br_sys 1
 execute if entity @s[team=white,scores={br_death_state=1..3}] run scoreboard players add #br_alive_white br_sys 1
+execute if entity @s[team=yellow,scores={br_death_state=1..3}] run scoreboard players add #br_alive_yellow br_sys 1
+execute if entity @s[team=aqua,scores={br_death_state=1..3}] run scoreboard players add #br_alive_aqua br_sys 1
+execute if entity @s[team=gold,scores={br_death_state=1..3}] run scoreboard players add #br_alive_gold br_sys 1
+execute if entity @s[team=light_purple,scores={br_death_state=1..3}] run scoreboard players add #br_alive_light_purple br_sys 1
+execute if entity @s[team=dark_red,scores={br_death_state=1..3}] run scoreboard players add #br_alive_dark_red br_sys 1
+execute if entity @s[team=dark_blue,scores={br_death_state=1..3}] run scoreboard players add #br_alive_dark_blue br_sys 1
+execute if entity @s[team=dark_green,scores={br_death_state=1..3}] run scoreboard players add #br_alive_dark_green br_sys 1
+execute if entity @s[team=dark_aqua,scores={br_death_state=1..3}] run scoreboard players add #br_alive_dark_aqua br_sys 1
+execute if entity @s[team=dark_purple,scores={br_death_state=1..3}] run scoreboard players add #br_alive_dark_purple br_sys 1
+execute if entity @s[team=dark_gray,scores={br_death_state=1..3}] run scoreboard players add #br_alive_dark_gray br_sys 1
+execute if entity @s[team=gray,scores={br_death_state=1..3}] run scoreboard players add #br_alive_gray br_sys 1
+execute if entity @s[team=black,scores={br_death_state=1..3}] run scoreboard players add #br_alive_black br_sys 1
 execute if entity @s[tag=solo,scores={br_death_state=1..3}] run scoreboard players add #br_alive_solo br_sys 1
 
 execute if entity @s[team=red,scores={br_death_state=1}] run scoreboard players add #br_stand_red br_sys 1
 execute if entity @s[team=blue,scores={br_death_state=1}] run scoreboard players add #br_stand_blue br_sys 1
 execute if entity @s[team=green,scores={br_death_state=1}] run scoreboard players add #br_stand_green br_sys 1
 execute if entity @s[team=white,scores={br_death_state=1}] run scoreboard players add #br_stand_white br_sys 1
+execute if entity @s[team=yellow,scores={br_death_state=1}] run scoreboard players add #br_stand_yellow br_sys 1
+execute if entity @s[team=aqua,scores={br_death_state=1}] run scoreboard players add #br_stand_aqua br_sys 1
+execute if entity @s[team=gold,scores={br_death_state=1}] run scoreboard players add #br_stand_gold br_sys 1
+execute if entity @s[team=light_purple,scores={br_death_state=1}] run scoreboard players add #br_stand_light_purple br_sys 1
+execute if entity @s[team=dark_red,scores={br_death_state=1}] run scoreboard players add #br_stand_dark_red br_sys 1
+execute if entity @s[team=dark_blue,scores={br_death_state=1}] run scoreboard players add #br_stand_dark_blue br_sys 1
+execute if entity @s[team=dark_green,scores={br_death_state=1}] run scoreboard players add #br_stand_dark_green br_sys 1
+execute if entity @s[team=dark_aqua,scores={br_death_state=1}] run scoreboard players add #br_stand_dark_aqua br_sys 1
+execute if entity @s[team=dark_purple,scores={br_death_state=1}] run scoreboard players add #br_stand_dark_purple br_sys 1
+execute if entity @s[team=dark_gray,scores={br_death_state=1}] run scoreboard players add #br_stand_dark_gray br_sys 1
+execute if entity @s[team=gray,scores={br_death_state=1}] run scoreboard players add #br_stand_gray br_sys 1
+execute if entity @s[team=black,scores={br_death_state=1}] run scoreboard players add #br_stand_black br_sys 1
 
 
 # --- [7] 旁觀者循環切換與防脫逃系統 ---

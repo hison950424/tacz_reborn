@@ -22,7 +22,19 @@ execute as @s[team=red] run scoreboard players set @s team_id 1
 execute as @s[team=blue] run scoreboard players set @s team_id 2
 execute as @s[team=green] run scoreboard players set @s team_id 3
 execute as @s[team=white] run scoreboard players set @s team_id 4
-execute as @s[tag=solo] run scoreboard players set @s team_id 5
+execute as @s[team=yellow] run scoreboard players set @s team_id 5
+execute as @s[team=aqua] run scoreboard players set @s team_id 6
+execute as @s[team=gold] run scoreboard players set @s team_id 7
+execute as @s[team=light_purple] run scoreboard players set @s team_id 8
+execute as @s[team=dark_red] run scoreboard players set @s team_id 9
+execute as @s[team=dark_blue] run scoreboard players set @s team_id 10
+execute as @s[team=dark_green] run scoreboard players set @s team_id 11
+execute as @s[team=dark_aqua] run scoreboard players set @s team_id 12
+execute as @s[team=dark_purple] run scoreboard players set @s team_id 13
+execute as @s[team=dark_gray] run scoreboard players set @s team_id 14
+execute as @s[team=gray] run scoreboard players set @s team_id 15
+execute as @s[team=black] run scoreboard players set @s team_id 16
+execute as @s[tag=solo] run scoreboard players set @s team_id 17
 
 execute as @s run attribute @s minecraft:generic.max_health base set 100
 effect give @s minecraft:instant_health 3 50

@@ -19,12 +19,36 @@ scoreboard players set #br_alive_blue br_sys 0
 scoreboard players set #br_alive_green br_sys 0
 scoreboard players set #br_alive_white br_sys 0
 scoreboard players set #br_alive_solo br_sys 0
+scoreboard players set #br_alive_yellow br_sys 0
+scoreboard players set #br_alive_aqua br_sys 0
+scoreboard players set #br_alive_gold br_sys 0
+scoreboard players set #br_alive_light_purple br_sys 0
+scoreboard players set #br_alive_dark_red br_sys 0
+scoreboard players set #br_alive_dark_blue br_sys 0
+scoreboard players set #br_alive_dark_green br_sys 0
+scoreboard players set #br_alive_dark_aqua br_sys 0
+scoreboard players set #br_alive_dark_purple br_sys 0
+scoreboard players set #br_alive_dark_gray br_sys 0
+scoreboard players set #br_alive_gray br_sys 0
+scoreboard players set #br_alive_black br_sys 0
 
 # 站立戰力計數器 (排除倒地者)
 scoreboard players set #br_stand_red br_sys 0
 scoreboard players set #br_stand_blue br_sys 0
 scoreboard players set #br_stand_green br_sys 0
 scoreboard players set #br_stand_white br_sys 0
+scoreboard players set #br_stand_yellow br_sys 0
+scoreboard players set #br_stand_aqua br_sys 0
+scoreboard players set #br_stand_gold br_sys 0
+scoreboard players set #br_stand_light_purple br_sys 0
+scoreboard players set #br_stand_dark_red br_sys 0
+scoreboard players set #br_stand_dark_blue br_sys 0
+scoreboard players set #br_stand_dark_green br_sys 0
+scoreboard players set #br_stand_dark_aqua br_sys 0
+scoreboard players set #br_stand_dark_purple br_sys 0
+scoreboard players set #br_stand_dark_gray br_sys 0
+scoreboard players set #br_stand_gray br_sys 0
+scoreboard players set #br_stand_black br_sys 0
 
 
 
@@ -97,12 +121,36 @@ execute if score #global br_phase matches 1..2 if score #br_stand_red br_sys mat
 execute if score #global br_phase matches 1..2 if score #br_stand_blue br_sys matches 0 as @a[team=blue,scores={br_death_state=2..3}] run function game_core:gamemode/br/force_dead
 execute if score #global br_phase matches 1..2 if score #br_stand_green br_sys matches 0 as @a[team=green,scores={br_death_state=2..3}] run function game_core:gamemode/br/force_dead
 execute if score #global br_phase matches 1..2 if score #br_stand_white br_sys matches 0 as @a[team=white,scores={br_death_state=2..3}] run function game_core:gamemode/br/force_dead
+execute if score #global br_phase matches 1..2 if score #br_stand_yellow br_sys matches 0 as @a[team=yellow,scores={br_death_state=2..3}] run function game_core:gamemode/br/force_dead
+execute if score #global br_phase matches 1..2 if score #br_stand_aqua br_sys matches 0 as @a[team=aqua,scores={br_death_state=2..3}] run function game_core:gamemode/br/force_dead
+execute if score #global br_phase matches 1..2 if score #br_stand_gold br_sys matches 0 as @a[team=gold,scores={br_death_state=2..3}] run function game_core:gamemode/br/force_dead
+execute if score #global br_phase matches 1..2 if score #br_stand_light_purple br_sys matches 0 as @a[team=light_purple,scores={br_death_state=2..3}] run function game_core:gamemode/br/force_dead
+execute if score #global br_phase matches 1..2 if score #br_stand_dark_red br_sys matches 0 as @a[team=dark_red,scores={br_death_state=2..3}] run function game_core:gamemode/br/force_dead
+execute if score #global br_phase matches 1..2 if score #br_stand_dark_blue br_sys matches 0 as @a[team=dark_blue,scores={br_death_state=2..3}] run function game_core:gamemode/br/force_dead
+execute if score #global br_phase matches 1..2 if score #br_stand_dark_green br_sys matches 0 as @a[team=dark_green,scores={br_death_state=2..3}] run function game_core:gamemode/br/force_dead
+execute if score #global br_phase matches 1..2 if score #br_stand_dark_aqua br_sys matches 0 as @a[team=dark_aqua,scores={br_death_state=2..3}] run function game_core:gamemode/br/force_dead
+execute if score #global br_phase matches 1..2 if score #br_stand_dark_purple br_sys matches 0 as @a[team=dark_purple,scores={br_death_state=2..3}] run function game_core:gamemode/br/force_dead
+execute if score #global br_phase matches 1..2 if score #br_stand_dark_gray br_sys matches 0 as @a[team=dark_gray,scores={br_death_state=2..3}] run function game_core:gamemode/br/force_dead
+execute if score #global br_phase matches 1..2 if score #br_stand_gray br_sys matches 0 as @a[team=gray,scores={br_death_state=2..3}] run function game_core:gamemode/br/force_dead
+execute if score #global br_phase matches 1..2 if score #br_stand_black br_sys matches 0 as @a[team=black,scores={br_death_state=2..3}] run function game_core:gamemode/br/force_dead
 
 # 2. 【靈魂大掃除】(防呆機制)
 execute if score #global br_phase matches 1..2 if score #br_alive_red br_sys matches 0 run kill @e[type=marker,tag=br_soul_marker,scores={team_id=1}]
 execute if score #global br_phase matches 1..2 if score #br_alive_blue br_sys matches 0 run kill @e[type=marker,tag=br_soul_marker,scores={team_id=2}]
 execute if score #global br_phase matches 1..2 if score #br_alive_green br_sys matches 0 run kill @e[type=marker,tag=br_soul_marker,scores={team_id=3}]
 execute if score #global br_phase matches 1..2 if score #br_alive_white br_sys matches 0 run kill @e[type=marker,tag=br_soul_marker,scores={team_id=4}]
+execute if score #global br_phase matches 1..2 if score #br_alive_yellow br_sys matches 0 run kill @e[type=marker,tag=br_soul_marker,scores={team_id=5}]
+execute if score #global br_phase matches 1..2 if score #br_alive_aqua br_sys matches 0 run kill @e[type=marker,tag=br_soul_marker,scores={team_id=6}]
+execute if score #global br_phase matches 1..2 if score #br_alive_gold br_sys matches 0 run kill @e[type=marker,tag=br_soul_marker,scores={team_id=7}]
+execute if score #global br_phase matches 1..2 if score #br_alive_light_purple br_sys matches 0 run kill @e[type=marker,tag=br_soul_marker,scores={team_id=8}]
+execute if score #global br_phase matches 1..2 if score #br_alive_dark_red br_sys matches 0 run kill @e[type=marker,tag=br_soul_marker,scores={team_id=9}]
+execute if score #global br_phase matches 1..2 if score #br_alive_dark_blue br_sys matches 0 run kill @e[type=marker,tag=br_soul_marker,scores={team_id=10}]
+execute if score #global br_phase matches 1..2 if score #br_alive_dark_green br_sys matches 0 run kill @e[type=marker,tag=br_soul_marker,scores={team_id=11}]
+execute if score #global br_phase matches 1..2 if score #br_alive_dark_aqua br_sys matches 0 run kill @e[type=marker,tag=br_soul_marker,scores={team_id=12}]
+execute if score #global br_phase matches 1..2 if score #br_alive_dark_purple br_sys matches 0 run kill @e[type=marker,tag=br_soul_marker,scores={team_id=13}]
+execute if score #global br_phase matches 1..2 if score #br_alive_dark_gray br_sys matches 0 run kill @e[type=marker,tag=br_soul_marker,scores={team_id=14}]
+execute if score #global br_phase matches 1..2 if score #br_alive_gray br_sys matches 0 run kill @e[type=marker,tag=br_soul_marker,scores={team_id=15}]
+execute if score #global br_phase matches 1..2 if score #br_alive_black br_sys matches 0 run kill @e[type=marker,tag=br_soul_marker,scores={team_id=16}]
 
 
 

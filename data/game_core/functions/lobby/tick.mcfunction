@@ -372,81 +372,130 @@ execute as @a[scores={join_team=4}] run tag @s remove solo
 execute as @a[scores={join_team=4}] run team join green @s
 execute as @a[scores={join_team=4}] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"綠隊！","color":"green"}]
 
+# 先清除舊的 solo tag，避免重複選擇時標記殘留
+execute as @a[scores={join_team=17}] run tag @s remove solo
+execute as @a[scores={join_team=17}] run team join yellow @s
+execute as @a[scores={join_team=17}] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"黃隊！","color":"yellow"}]
+
+execute as @a[scores={join_team=6}] run tag @s remove solo
+execute as @a[scores={join_team=6}] run team join aqua @s
+execute as @a[scores={join_team=6}] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"水藍隊！","color":"aqua"}]
+
+execute as @a[scores={join_team=7}] run tag @s remove solo
+execute as @a[scores={join_team=7}] run team join gold @s
+execute as @a[scores={join_team=7}] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"金隊！","color":"gold"}]
+
+execute as @a[scores={join_team=8}] run tag @s remove solo
+execute as @a[scores={join_team=8}] run team join light_purple @s
+execute as @a[scores={join_team=8}] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"淡紫隊！","color":"light_purple"}]
+
+execute as @a[scores={join_team=9}] run tag @s remove solo
+execute as @a[scores={join_team=9}] run team join dark_red @s
+execute as @a[scores={join_team=9}] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"深紅隊！","color":"dark_red"}]
+
+execute as @a[scores={join_team=10}] run tag @s remove solo
+execute as @a[scores={join_team=10}] run team join dark_blue @s
+execute as @a[scores={join_team=10}] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"深藍隊！","color":"dark_blue"}]
+
+execute as @a[scores={join_team=11}] run tag @s remove solo
+execute as @a[scores={join_team=11}] run team join dark_green @s
+execute as @a[scores={join_team=11}] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"深綠隊！","color":"dark_green"}]
+
+execute as @a[scores={join_team=12}] run tag @s remove solo
+execute as @a[scores={join_team=12}] run team join dark_aqua @s
+execute as @a[scores={join_team=12}] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"深水藍隊！","color":"dark_aqua"}]
+
+execute as @a[scores={join_team=13}] run tag @s remove solo
+execute as @a[scores={join_team=13}] run team join dark_purple @s
+execute as @a[scores={join_team=13}] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"深紫隊！","color":"dark_purple"}]
+
+execute as @a[scores={join_team=14}] run tag @s remove solo
+execute as @a[scores={join_team=14}] run team join dark_gray @s
+execute as @a[scores={join_team=14}] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"深灰隊！","color":"dark_gray"}]
+
+execute as @a[scores={join_team=15}] run tag @s remove solo
+execute as @a[scores={join_team=15}] run team join gray @s
+execute as @a[scores={join_team=15}] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"灰隊！","color":"gray"}]
+
+execute as @a[scores={join_team=16}] run tag @s remove solo
+execute as @a[scores={join_team=16}] run team join black @s
+execute as @a[scores={join_team=16}] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"黑隊！","color":"dark_gray"}]
+
 #加入孤狼
 # 先清除舊的 solo tag，避免重複選擇時標記殘留
-execute as @a[scores={join_team=5}] run tag @s remove solo
+execute as @a[scores={join_team=17}] run tag @s remove solo
 
 # ── slot 1 ──
-execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo1,gamemode=!spectator] run team join solo1 @s
-execute as @a[scores={join_team=5}] if entity @s[team=solo1] run tag @s add solo
+execute as @a[scores={join_team=17},tag=!solo] unless entity @a[team=solo1,gamemode=!spectator] run team join solo1 @s
+execute as @a[scores={join_team=17}] if entity @s[team=solo1] run tag @s add solo
 
 # ── slot 2 ──
-execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo2,gamemode=!spectator] run team join solo2 @s
-execute as @a[scores={join_team=5}] if entity @s[team=solo2] run tag @s add solo
+execute as @a[scores={join_team=17},tag=!solo] unless entity @a[team=solo2,gamemode=!spectator] run team join solo2 @s
+execute as @a[scores={join_team=17}] if entity @s[team=solo2] run tag @s add solo
 
 # ── slot 3 ──
-execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo3,gamemode=!spectator] run team join solo3 @s
-execute as @a[scores={join_team=5}] if entity @s[team=solo3] run tag @s add solo
+execute as @a[scores={join_team=17},tag=!solo] unless entity @a[team=solo3,gamemode=!spectator] run team join solo3 @s
+execute as @a[scores={join_team=17}] if entity @s[team=solo3] run tag @s add solo
 
 # ── slot 4 ──
-execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo4,gamemode=!spectator] run team join solo4 @s
-execute as @a[scores={join_team=5}] if entity @s[team=solo4] run tag @s add solo
+execute as @a[scores={join_team=17},tag=!solo] unless entity @a[team=solo4,gamemode=!spectator] run team join solo4 @s
+execute as @a[scores={join_team=17}] if entity @s[team=solo4] run tag @s add solo
 
 # ── slot 5 ──
-execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo5,gamemode=!spectator] run team join solo5 @s
-execute as @a[scores={join_team=5}] if entity @s[team=solo5] run tag @s add solo
+execute as @a[scores={join_team=17},tag=!solo] unless entity @a[team=solo5,gamemode=!spectator] run team join solo5 @s
+execute as @a[scores={join_team=17}] if entity @s[team=solo5] run tag @s add solo
 
 # ── slot 6 ──
-execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo6,gamemode=!spectator] run team join solo6 @s
-execute as @a[scores={join_team=5}] if entity @s[team=solo6] run tag @s add solo
+execute as @a[scores={join_team=17},tag=!solo] unless entity @a[team=solo6,gamemode=!spectator] run team join solo6 @s
+execute as @a[scores={join_team=17}] if entity @s[team=solo6] run tag @s add solo
 
 # ── slot 7 ──
-execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo7,gamemode=!spectator] run team join solo7 @s
-execute as @a[scores={join_team=5}] if entity @s[team=solo7] run tag @s add solo
+execute as @a[scores={join_team=17},tag=!solo] unless entity @a[team=solo7,gamemode=!spectator] run team join solo7 @s
+execute as @a[scores={join_team=17}] if entity @s[team=solo7] run tag @s add solo
 
 # ── slot 8 ──
-execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo8,gamemode=!spectator] run team join solo8 @s
-execute as @a[scores={join_team=5}] if entity @s[team=solo8] run tag @s add solo
+execute as @a[scores={join_team=17},tag=!solo] unless entity @a[team=solo8,gamemode=!spectator] run team join solo8 @s
+execute as @a[scores={join_team=17}] if entity @s[team=solo8] run tag @s add solo
 
 # ── slot 9 ──
-execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo9,gamemode=!spectator] run team join solo9 @s
-execute as @a[scores={join_team=5}] if entity @s[team=solo9] run tag @s add solo
+execute as @a[scores={join_team=17},tag=!solo] unless entity @a[team=solo9,gamemode=!spectator] run team join solo9 @s
+execute as @a[scores={join_team=17}] if entity @s[team=solo9] run tag @s add solo
 
 # ── slot 10 ──
-execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo10,gamemode=!spectator] run team join solo10 @s
-execute as @a[scores={join_team=5}] if entity @s[team=solo10] run tag @s add solo
+execute as @a[scores={join_team=17},tag=!solo] unless entity @a[team=solo10,gamemode=!spectator] run team join solo10 @s
+execute as @a[scores={join_team=17}] if entity @s[team=solo10] run tag @s add solo
 
 # ── slot 11 ──
-execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo11,gamemode=!spectator] run team join solo11 @s
-execute as @a[scores={join_team=5}] if entity @s[team=solo11] run tag @s add solo
+execute as @a[scores={join_team=17},tag=!solo] unless entity @a[team=solo11,gamemode=!spectator] run team join solo11 @s
+execute as @a[scores={join_team=17}] if entity @s[team=solo11] run tag @s add solo
 
 # ── slot 12 ──
-execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo12,gamemode=!spectator] run team join solo12 @s
-execute as @a[scores={join_team=5}] if entity @s[team=solo12] run tag @s add solo
+execute as @a[scores={join_team=17},tag=!solo] unless entity @a[team=solo12,gamemode=!spectator] run team join solo12 @s
+execute as @a[scores={join_team=17}] if entity @s[team=solo12] run tag @s add solo
 
 # ── slot 13 ──
-execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo13,gamemode=!spectator] run team join solo13 @s
-execute as @a[scores={join_team=5}] if entity @s[team=solo13] run tag @s add solo
+execute as @a[scores={join_team=17},tag=!solo] unless entity @a[team=solo13,gamemode=!spectator] run team join solo13 @s
+execute as @a[scores={join_team=17}] if entity @s[team=solo13] run tag @s add solo
 
 # ── slot 14 ──
-execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo14,gamemode=!spectator] run team join solo14 @s
-execute as @a[scores={join_team=5}] if entity @s[team=solo14] run tag @s add solo
+execute as @a[scores={join_team=17},tag=!solo] unless entity @a[team=solo14,gamemode=!spectator] run team join solo14 @s
+execute as @a[scores={join_team=17}] if entity @s[team=solo14] run tag @s add solo
 
 # ── slot 15 ──
-execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo15,gamemode=!spectator] run team join solo15 @s
-execute as @a[scores={join_team=5}] if entity @s[team=solo15] run tag @s add solo
+execute as @a[scores={join_team=17},tag=!solo] unless entity @a[team=solo15,gamemode=!spectator] run team join solo15 @s
+execute as @a[scores={join_team=17}] if entity @s[team=solo15] run tag @s add solo
 
 # ── slot 16 ──
-execute as @a[scores={join_team=5},tag=!solo] unless entity @a[team=solo16,gamemode=!spectator] run team join solo16 @s
-execute as @a[scores={join_team=5}] if entity @s[team=solo16] run tag @s add solo
+execute as @a[scores={join_team=17},tag=!solo] unless entity @a[team=solo16,gamemode=!spectator] run team join solo16 @s
+execute as @a[scores={join_team=17}] if entity @s[team=solo16] run tag @s add solo
 
 
 
 # ── 溢出：16 格全滿，循環分配至四色隊（不給 tag=solo）──
-execute as @a[scores={join_team=5},tag=!solo] run title @s actionbar {"text":"孤狼名額已滿，已自動分配至組隊模式","color":"yellow"}
-execute as @a[scores={join_team=5},tag=!solo] run function game_core:team/random_2
+execute as @a[scores={join_team=17},tag=!solo] run title @s actionbar {"text":"孤狼名額已滿，已自動分配至組隊模式","color":"yellow"}
+execute as @a[scores={join_team=17},tag=!solo] run function game_core:team/random_2
 
-execute as @a[scores={join_team=5},tag=solo] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"孤狼！","color":"gray"}]
+execute as @a[scores={join_team=17},tag=solo] run tellraw @a ["",{"selector":"@s","color":"gold"},{"text":" 加入了 ","color":"yellow"},{"text":"孤狼！","color":"gray"}]
 
 #防止solo玩家退出遊戲再進遊戲後與其他玩家在同一個solo隊伍
 scoreboard players set #solo_team dummy 0
@@ -502,6 +551,90 @@ execute as @a[scores={admin_team_ctrl=3}] run execute as @a[sort=random] run fun
 execute as @a[scores={admin_team_ctrl=4}] run function game_core:lobby/clear_all_lobby_books
 execute as @a[scores={admin_team_ctrl=4}] run function game_core:lobby/give_all_books
 execute as @a[scores={admin_team_ctrl=4}] run tellraw @a {"text":"[系統] 管理員已收回隊伍選擇書。","color":"yellow"}
+
+execute as @a[scores={admin_team_ctrl=6}] run tellraw @a {"text":"[系統] 管理員已將所有人隨機分為 五隊！","color":"yellow"}
+execute as @a[scores={admin_team_ctrl=6}] run tag @a remove solo
+execute as @a[scores={admin_team_ctrl=6}] run execute store result score #team_turn temp_score run random value 1..5
+execute as @a[scores={admin_team_ctrl=6}] run execute as @a[sort=random] run function game_core:team/random_5
+execute as @a[scores={admin_team_ctrl=6}] run execute as @a[sort=random] run function game_core:lobby/rp_leaderboard_update
+execute as @a[scores={admin_team_ctrl=6}] run execute as @a[sort=random] run function game_core:lobby/event_leaderboard_update
+
+execute as @a[scores={admin_team_ctrl=7}] run tellraw @a {"text":"[系統] 管理員已將所有人隨機分為 六隊！","color":"yellow"}
+execute as @a[scores={admin_team_ctrl=7}] run tag @a remove solo
+execute as @a[scores={admin_team_ctrl=7}] run execute store result score #team_turn temp_score run random value 1..6
+execute as @a[scores={admin_team_ctrl=7}] run execute as @a[sort=random] run function game_core:team/random_6
+execute as @a[scores={admin_team_ctrl=7}] run execute as @a[sort=random] run function game_core:lobby/rp_leaderboard_update
+execute as @a[scores={admin_team_ctrl=7}] run execute as @a[sort=random] run function game_core:lobby/event_leaderboard_update
+
+execute as @a[scores={admin_team_ctrl=8}] run tellraw @a {"text":"[系統] 管理員已將所有人隨機分為 七隊！","color":"yellow"}
+execute as @a[scores={admin_team_ctrl=8}] run tag @a remove solo
+execute as @a[scores={admin_team_ctrl=8}] run execute store result score #team_turn temp_score run random value 1..7
+execute as @a[scores={admin_team_ctrl=8}] run execute as @a[sort=random] run function game_core:team/random_7
+execute as @a[scores={admin_team_ctrl=8}] run execute as @a[sort=random] run function game_core:lobby/rp_leaderboard_update
+execute as @a[scores={admin_team_ctrl=8}] run execute as @a[sort=random] run function game_core:lobby/event_leaderboard_update
+
+execute as @a[scores={admin_team_ctrl=9}] run tellraw @a {"text":"[系統] 管理員已將所有人隨機分為 八隊！","color":"yellow"}
+execute as @a[scores={admin_team_ctrl=9}] run tag @a remove solo
+execute as @a[scores={admin_team_ctrl=9}] run execute store result score #team_turn temp_score run random value 1..8
+execute as @a[scores={admin_team_ctrl=9}] run execute as @a[sort=random] run function game_core:team/random_8
+execute as @a[scores={admin_team_ctrl=9}] run execute as @a[sort=random] run function game_core:lobby/rp_leaderboard_update
+execute as @a[scores={admin_team_ctrl=9}] run execute as @a[sort=random] run function game_core:lobby/event_leaderboard_update
+
+execute as @a[scores={admin_team_ctrl=10}] run tellraw @a {"text":"[系統] 管理員已將所有人隨機分為 九隊！","color":"yellow"}
+execute as @a[scores={admin_team_ctrl=10}] run tag @a remove solo
+execute as @a[scores={admin_team_ctrl=10}] run execute store result score #team_turn temp_score run random value 1..9
+execute as @a[scores={admin_team_ctrl=10}] run execute as @a[sort=random] run function game_core:team/random_9
+execute as @a[scores={admin_team_ctrl=10}] run execute as @a[sort=random] run function game_core:lobby/rp_leaderboard_update
+execute as @a[scores={admin_team_ctrl=10}] run execute as @a[sort=random] run function game_core:lobby/event_leaderboard_update
+
+execute as @a[scores={admin_team_ctrl=11}] run tellraw @a {"text":"[系統] 管理員已將所有人隨機分為 十隊！","color":"yellow"}
+execute as @a[scores={admin_team_ctrl=11}] run tag @a remove solo
+execute as @a[scores={admin_team_ctrl=11}] run execute store result score #team_turn temp_score run random value 1..10
+execute as @a[scores={admin_team_ctrl=11}] run execute as @a[sort=random] run function game_core:team/random_10
+execute as @a[scores={admin_team_ctrl=11}] run execute as @a[sort=random] run function game_core:lobby/rp_leaderboard_update
+execute as @a[scores={admin_team_ctrl=11}] run execute as @a[sort=random] run function game_core:lobby/event_leaderboard_update
+
+execute as @a[scores={admin_team_ctrl=12}] run tellraw @a {"text":"[系統] 管理員已將所有人隨機分為 十一隊！","color":"yellow"}
+execute as @a[scores={admin_team_ctrl=12}] run tag @a remove solo
+execute as @a[scores={admin_team_ctrl=12}] run execute store result score #team_turn temp_score run random value 1..11
+execute as @a[scores={admin_team_ctrl=12}] run execute as @a[sort=random] run function game_core:team/random_11
+execute as @a[scores={admin_team_ctrl=12}] run execute as @a[sort=random] run function game_core:lobby/rp_leaderboard_update
+execute as @a[scores={admin_team_ctrl=12}] run execute as @a[sort=random] run function game_core:lobby/event_leaderboard_update
+
+execute as @a[scores={admin_team_ctrl=13}] run tellraw @a {"text":"[系統] 管理員已將所有人隨機分為 十二隊！","color":"yellow"}
+execute as @a[scores={admin_team_ctrl=13}] run tag @a remove solo
+execute as @a[scores={admin_team_ctrl=13}] run execute store result score #team_turn temp_score run random value 1..12
+execute as @a[scores={admin_team_ctrl=13}] run execute as @a[sort=random] run function game_core:team/random_12
+execute as @a[scores={admin_team_ctrl=13}] run execute as @a[sort=random] run function game_core:lobby/rp_leaderboard_update
+execute as @a[scores={admin_team_ctrl=13}] run execute as @a[sort=random] run function game_core:lobby/event_leaderboard_update
+
+execute as @a[scores={admin_team_ctrl=14}] run tellraw @a {"text":"[系統] 管理員已將所有人隨機分為 十三隊！","color":"yellow"}
+execute as @a[scores={admin_team_ctrl=14}] run tag @a remove solo
+execute as @a[scores={admin_team_ctrl=14}] run execute store result score #team_turn temp_score run random value 1..13
+execute as @a[scores={admin_team_ctrl=14}] run execute as @a[sort=random] run function game_core:team/random_13
+execute as @a[scores={admin_team_ctrl=14}] run execute as @a[sort=random] run function game_core:lobby/rp_leaderboard_update
+execute as @a[scores={admin_team_ctrl=14}] run execute as @a[sort=random] run function game_core:lobby/event_leaderboard_update
+
+execute as @a[scores={admin_team_ctrl=15}] run tellraw @a {"text":"[系統] 管理員已將所有人隨機分為 十四隊！","color":"yellow"}
+execute as @a[scores={admin_team_ctrl=15}] run tag @a remove solo
+execute as @a[scores={admin_team_ctrl=15}] run execute store result score #team_turn temp_score run random value 1..14
+execute as @a[scores={admin_team_ctrl=15}] run execute as @a[sort=random] run function game_core:team/random_14
+execute as @a[scores={admin_team_ctrl=15}] run execute as @a[sort=random] run function game_core:lobby/rp_leaderboard_update
+execute as @a[scores={admin_team_ctrl=15}] run execute as @a[sort=random] run function game_core:lobby/event_leaderboard_update
+
+execute as @a[scores={admin_team_ctrl=16}] run tellraw @a {"text":"[系統] 管理員已將所有人隨機分為 十五隊！","color":"yellow"}
+execute as @a[scores={admin_team_ctrl=16}] run tag @a remove solo
+execute as @a[scores={admin_team_ctrl=16}] run execute store result score #team_turn temp_score run random value 1..15
+execute as @a[scores={admin_team_ctrl=16}] run execute as @a[sort=random] run function game_core:team/random_15
+execute as @a[scores={admin_team_ctrl=16}] run execute as @a[sort=random] run function game_core:lobby/rp_leaderboard_update
+execute as @a[scores={admin_team_ctrl=16}] run execute as @a[sort=random] run function game_core:lobby/event_leaderboard_update
+
+execute as @a[scores={admin_team_ctrl=17}] run tellraw @a {"text":"[系統] 管理員已將所有人隨機分為 十六隊！","color":"yellow"}
+execute as @a[scores={admin_team_ctrl=17}] run tag @a remove solo
+execute as @a[scores={admin_team_ctrl=17}] run execute store result score #team_turn temp_score run random value 1..16
+execute as @a[scores={admin_team_ctrl=17}] run execute as @a[sort=random] run function game_core:team/random_16
+execute as @a[scores={admin_team_ctrl=17}] run execute as @a[sort=random] run function game_core:lobby/rp_leaderboard_update
+execute as @a[scores={admin_team_ctrl=17}] run execute as @a[sort=random] run function game_core:lobby/event_leaderboard_update
 
 # 全員加入孤狼（清空所有隊伍，依序分配至孤狼槽位）
 execute as @a[scores={admin_team_ctrl=5}] run tag @a remove solo
