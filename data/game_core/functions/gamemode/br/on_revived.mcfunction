@@ -19,8 +19,9 @@ execute as @e[type=villager,tag=revive_success] if score @s br_id = #current_pla
 # 3. 安全控血 (維持在 6 HP 虛弱狀態)
 attribute @s minecraft:generic.max_health base set 100
 
-# 4. 給予飽食狀態（不恢復血量）
+# 4. 給予飽食與抗性（不恢復血量，不給 regeneration）
 effect give @s minecraft:saturation infinite 1 true
+effect give @s minecraft:resistance infinite 0 true
 
 # 5. 【極度重要】將狀態機分數恢復為 1 (存活)！
 scoreboard players set @s br_death_state 1

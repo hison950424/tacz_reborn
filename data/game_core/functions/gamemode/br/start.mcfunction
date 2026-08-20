@@ -75,10 +75,13 @@ scoreboard players set #br_countdown br_sys 200
 # === [2] 玩家基礎初始化 ===
 gamemode adventure @a
 execute as @a run attribute @s minecraft:generic.max_health base set 100
+# --- 清除所有舊效果（含 regeneration），再重新給定 BR 專屬 BUFF ---
+effect clear @a
 effect give @a minecraft:instant_health 3 50 true
-# --- 全局常駐 BUFF (飽食) ---
 # 飽食 (amplifier 0)，隱藏粒子，確保飢餓值不掉
 effect give @a minecraft:saturation infinite 1 true
+# 抗性 I (amplifier 0)，隱藏粒子
+effect give @a minecraft:resistance infinite 0 true
 # 重置所有人為 0 級背包
 scoreboard players set @a backpack_level 0
 # 大逃殺從零開始，強制清空背包

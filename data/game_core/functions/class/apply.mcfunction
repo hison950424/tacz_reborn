@@ -11,8 +11,8 @@ execute as @s[scores={class_type=1}] run attribute @s minecraft:generic.max_heal
 execute as @s[scores={class_type=2..4}] run attribute @s minecraft:generic.max_health base set 100
 
 # --- 全局常駐 BUFF (恢復 I 與 飽食) ---
-# 恢復 I (amplifier 0)，隱藏粒子
-effect give @a minecraft:regeneration infinite 1 true
+# 恢復 I (amplifier 0)，隱藏粒子（BR 模式 game_state=1 時不給，由 BR 自行管理效果）
+execute unless score #global game_state matches 1 run effect give @a minecraft:regeneration infinite 1 true
 # 飽食 (amplifier 0)，隱藏粒子，確保飢餓值不掉
 effect give @a minecraft:saturation infinite 1 true
 
