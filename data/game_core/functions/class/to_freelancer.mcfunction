@@ -13,12 +13,12 @@ function game_core:class/apply
 tellraw @s ["",{"text":"\n\n\n\n\n\n\n\n\n\n"}]
 tellraw @s ["",{"text":"[系統] ","color":"gold"},{"text":"已成為 ","color":"white"},{"text":"自由人！","color":"aqua"}]
 tellraw @s {"text":""}
-tellraw @s ["",{"text":" + ","color":"green"},{"text":"Buff:「武器大師」","color":"green"}]
-tellraw @s ["",{"text":"    效果: ","color":"gray"},{"text":"可購買和使用所有武器、配件與道具。","color":"white"}]
+tellraw @s ["",{"text":" + ","color":"green"},{"text":"Buff:「折扣特權」","color":"green"}]
+tellraw @s ["",{"text":"    效果: ","color":"gray"},{"text":"商店所有物品購買價格降低 20%。","color":"white"}]
 tellraw @s ["",{"text":" - ","color":"red"},{"text":"Debuff:「孤狼代價」","color":"red"}]
 tellraw @s ["",{"text":"    效果: ","color":"gray"},{"text":"最大生命值上限為 80 HP (-20%)。","color":"white"}]
 tellraw @s {"text":""}
-tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"可購買裝備: ","color":"yellow"},{"text":"無任何限制。","color":"white"}]
+tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"初始武器: ","color":"yellow"},{"text":"CZ75 手槍","color":"white"}]
 tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"關於投擲物: ","color":"yellow"},{"text":"你是唯一需要自己花錢購買的職業。","color":"white"}]
 
 # --- 全局常駐 BUFF (恢復 I 與 飽食) ---

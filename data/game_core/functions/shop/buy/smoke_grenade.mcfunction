@@ -1,5 +1,5 @@
 # ==========================================
-# 檔案: shop/buy_smoke_grenade.mcfunction
+# 檔案: shop/buy/smoke_grenade.mcfunction
 # ==========================================
 clear @s lrtactical:throwable{ShopItem:"smoke_grenade"}
 
@@ -8,15 +8,16 @@ execute if score @s in_base_score matches 0 run tellraw @s {"text":"[商店警�
 execute if score @s in_base_score matches 0 run return 0
 
 execute unless score @s class_type matches 1 at @s run playsound entity.villager.no master @s ~ ~ ~ 1 1
-execute unless score @s class_type matches 1 run tellraw @s {"text":"[商店] 權限拒絕：只有【自由人】可以購買戰術投擲物！","color":"red"}
+execute unless score @s class_type matches 1 run tellraw @s {"text":"[商店] 權限拒絕：投擲物僅限 自由人 購買！","color":"red"}
 execute unless score @s class_type matches 1 run return 0
 
-scoreboard players set @s shop_price 50
+scoreboard players set @s shop_price 48
+
 execute if score @s gd656killicon.score < @s shop_price at @s run playsound entity.villager.no master @s ~ ~ ~ 1 1
 execute if score @s gd656killicon.score < @s shop_price run tellraw @s ["",{"text":"[商店] 餘額不足！需要 ","color":"red"},{"score":{"name":"@s","objective":"shop_price"},"color":"yellow"},{"text":" 元。","color":"red"}]
 execute if score @s gd656killicon.score < @s shop_price run return 0
 
 give @s lrtactical:throwable{ThrowableId:"lrtactical:smoke_grenade"} 1
 execute at @s run playsound block.anvil.use master @s ~ ~ ~ 1 1.2
-gd656killicon server statistics add score @s -50
+gd656killicon server statistics add score @s -48
 tellraw @s ["",{"text":"[商店] 成功購買 M18 煙霧彈 ！剩餘餘額：","color":"green"},{"score":{"name":"@s","objective":"gd656killicon.score"},"color":"yellow"},{"text":" 元。","color":"green"}]

@@ -8,7 +8,6 @@ execute if score @s in_base_score matches 0 run tellraw @s {"text":"[商店警�
 execute if score @s in_base_score matches 0 run return 0
 
 scoreboard players set @s shop_price 120
-execute if score @s class_type matches 3 run scoreboard players set @s shop_price 150
 
 execute if score @s gd656killicon.score < @s shop_price at @s run playsound entity.villager.no master @s ~ ~ ~ 1 1
 execute if score @s gd656killicon.score < @s shop_price run tellraw @s ["",{"text":"[商店] 餘額不足！需要 ","color":"red"},{"score":{"name":"@s","objective":"shop_price"},"color":"yellow"},{"text":" 元。","color":"red"}]
@@ -16,6 +15,5 @@ execute if score @s gd656killicon.score < @s shop_price run return 0
 
 give @s tacz:attachment{AttachmentId:"suffuse:stock_colt_plus"} 1
 execute at @s run playsound block.anvil.use master @s ~ ~ ~ 1 1.2
-execute unless score @s class_type matches 3 run gd656killicon server statistics add score @s -120
-execute if score @s class_type matches 3 run gd656killicon server statistics add score @s -150
+gd656killicon server statistics add score @s -120
 tellraw @s ["",{"text":"[商店] 成功購買 Colt M4 增厚槍托 ！剩餘餘額：","color":"green"},{"score":{"name":"@s","objective":"gd656killicon.score"},"color":"yellow"},{"text":" 元。","color":"green"}]

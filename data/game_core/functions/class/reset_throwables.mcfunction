@@ -19,10 +19,14 @@ execute as @s[scores={class_type=2}] if score #pot_check temp_score matches 2.. 
 execute as @s[scores={class_type=2}] if score #pot_check temp_score matches 2.. run clear @s minecraft:splash_potion
 execute as @s[scores={class_type=2}] if score #pot_check temp_score matches 2.. run give @s minecraft:potion{HideFlags:0,display:{Name:'[{"text":"","italic":false},{"text":"\\u5927\\u88dc","color":"red"}]',Lore:['[{"text":"","italic":false},{"text":"\\u4e00\\u6b21\\u88dc\\u6eff\\u7684\\u88dc\\u5305 (\\u9019\\u6703\\u8b93\\u4f60\\u767c\\u5149\\u4e00\\u79d2)","color":"red"}]']},CustomPotionEffects:[{Id:6b,Amplifier:120b,Duration:20,ShowParticles:0b,ShowIcon:0b},{Id:24b,Amplifier:0b,Duration:20,ShowParticles:0b,ShowIcon:0b}],CustomPotionColor:16711680} 1
 
-# 支援兵 (class_type=3)
+# 支援兵 (class_type=3) — 正常持有量為 1 速補（splash_potion），超過 2 才算異常
 execute as @s[scores={class_type=3}] if score #pot_check temp_score matches 2.. run clear @s minecraft:potion
 execute as @s[scores={class_type=3}] if score #pot_check temp_score matches 2.. run clear @s minecraft:splash_potion
 execute as @s[scores={class_type=3}] if score #pot_check temp_score matches 2.. run give @s minecraft:splash_potion{HideFlags:0,display:{Name:'[{"text":"","italic":false},{"text":"\\u901f\\u88dc","color":"red"}]',Lore:['[{"text":"","italic":false},{"text":"\\u5f37\\u5316\\u5f8c\\u7684\\u5927\\u88dc \\u53ef\\u4ee5\\u5feb\\u901f\\u88dc\\u8840 \\u4e26\\u7d66\\u4f60\\u984d\\u5916\\u751f\\u547d\\u503c ","color":"red"}]']},CustomPotionEffects:[{Id:6b,Amplifier:118b,Duration:20,ShowParticles:0b,ShowIcon:0b},{Id:12b,Amplifier:0b,Duration:20,ShowParticles:0b,ShowIcon:0b},{Id:22b,Amplifier:1b,Duration:300,ShowParticles:0b,ShowIcon:0b}],CustomPotionColor:16711680} 1
+# 一般補包 (consumable ai2) 超量偵測：持有 2 個以上時清除並重補
+execute as @s[scores={class_type=3}] store result score #item_check temp_score run clear @s lrtactical:consumable{ConsumableId: "lrtactical:ai2"} 0
+execute as @s[scores={class_type=3}] if score #item_check temp_score matches 2.. run clear @s lrtactical:consumable{ConsumableId: "lrtactical:ai2"}
+execute as @s[scores={class_type=3}] if score #item_check temp_score matches 2.. run give @s lrtactical:consumable{ConsumableId: "lrtactical:ai2"} 1
 
 # 哨兵 (class_type=4)
 execute as @s[scores={class_type=4}] if score #pot_check temp_score matches 2.. run clear @s minecraft:potion
@@ -77,8 +81,9 @@ execute as @s[scores={class_type=2}] unless entity @s[nbt={Inventory:[{id:"minec
 execute as @s[scores={class_type=2}] unless entity @s[nbt={Inventory:[{id:"lrtactical:throwable",tag:{ThrowableId:"lrtactical:rgn"}}]}] run give @s lrtactical:throwable{ThrowableId: "lrtactical:rgn"} 1
 execute as @s[scores={class_type=2}] unless entity @s[nbt={Inventory:[{id:"lrtactical:throwable",tag:{ThrowableId:"lrtactical:flash_grenade"}}]}] run give @s lrtactical:throwable{ThrowableId: "lrtactical:flash_grenade"} 1
 
-# 3. 支援兵 (class_type=3) : 速補、燃燒、手榴彈、瞬爆、煙霧、閃光
+# 3. 支援兵 (class_type=3) : 速補、大補、燃燒、手榴彈、瞬爆、煙霧、閃光
 execute as @s[scores={class_type=3}] unless entity @s[nbt={Inventory:[{id:"minecraft:splash_potion"}]}] run give @s minecraft:splash_potion{HideFlags:0,display:{Name:'[{"text":"","italic":false},{"text":"\\u901f\\u88dc","color":"red"}]',Lore:['[{"text":"","italic":false},{"text":"\\u5f37\\u5316\\u5f8c\\u7684\\u5927\\u88dc \\u53ef\\u4ee5\\u5feb\\u901f\\u88dc\\u8840 \\u4e26\\u7d66\\u4f60\\u984d\\u5916\\u751f\\u547d\\u503c ","color":"red"}]']},CustomPotionEffects:[{Id:6b,Amplifier:118b,Duration:20,ShowParticles:0b,ShowIcon:0b},{Id:12b,Amplifier:0b,Duration:20,ShowParticles:0b,ShowIcon:0b},{Id:22b,Amplifier:1b,Duration:300,ShowParticles:0b,ShowIcon:0b}],CustomPotionColor:16711680} 1
+execute as @s[scores={class_type=3}] unless entity @s[nbt={Inventory:[{id:"lrtactical:consumable",tag:{ConsumableId:"lrtactical:ai2"}}]}] run give @s lrtactical:consumable{ConsumableId: "lrtactical:ai2"} 1
 execute as @s[scores={class_type=3}] unless entity @s[nbt={Inventory:[{id:"lrtactical:throwable",tag:{ThrowableId:"lrtactical:molotov"}}]}] run give @s lrtactical:throwable{ThrowableId: "lrtactical:molotov"} 1
 execute as @s[scores={class_type=3}] unless entity @s[nbt={Inventory:[{id:"lrtactical:throwable",tag:{ThrowableId:"lrtactical:m67"}}]}] run give @s lrtactical:throwable{ThrowableId: "lrtactical:m67"} 1
 execute as @s[scores={class_type=3}] unless entity @s[nbt={Inventory:[{id:"lrtactical:throwable",tag:{ThrowableId:"lrtactical:rgn"}}]}] run give @s lrtactical:throwable{ThrowableId: "lrtactical:rgn"} 1

@@ -295,6 +295,13 @@ scoreboard objectives add shop_price dummy "商店計算用價格"
 # 用於偵測哨兵蹲下的時間
 scoreboard objectives add sneak_tracker minecraft.custom:minecraft.sneak_time
 
+# 哨兵蹲伏靜止收入 - 位置追蹤與計時器
+scoreboard objectives add sentinel_pos_x dummy "哨兵X座標暫存"
+scoreboard objectives add sentinel_pos_z dummy "哨兵Z座標暫存"
+scoreboard objectives add sentinel_prev_x dummy "哨兵前一tick X"
+scoreboard objectives add sentinel_prev_z dummy "哨兵前一tick Z"
+scoreboard objectives add sentinel_idle_timer dummy "哨兵靜止計時(tick)"
+
 #計算槍枝數量
 scoreboard objectives add gun_count dummy "玩家身上槍枝數量"
 

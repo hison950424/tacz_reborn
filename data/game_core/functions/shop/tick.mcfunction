@@ -8,20 +8,17 @@
 clear @s minecraft:light_gray_stained_glass_pane{shop:1b, ShopItem:"filler"}
 
 # == 手槍 ==
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"cz75"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/cz75
-
 execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"tec9"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/tec9
-
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"viper2011"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/viper2011
 
 execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"b93r"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/b93r
 
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"usp45"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/usp45
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"m1911"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/m1911
+
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"qsz92g"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/qsz92g
 
 execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"tti2011"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/tti2011
@@ -29,94 +26,82 @@ execute if score @s temp matches 1 run function game_core:shop/buy/tti2011
 execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"p320"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/p320
 
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"deagle"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/deagle
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"rhino357"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/rhino357
 
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"python"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/python
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"deagle_golden"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/deagle_golden
+
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"desert"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/desert
+
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"lonetrail"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/lonetrail
+
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"taurus500"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/taurus500
 
 # == 狙擊槍 ==
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"svd"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/svd
-
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"springfield1873"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/springfield1873
-
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"dvl10"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/dvl10
-
 execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"m700"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/m700
+
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"kar98"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/kar98
 
 execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"m107"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/m107
 
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"ai_awp"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/ai_awp
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"dvl10"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/dvl10
 
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"m95"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/m95
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"axsr"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/axsr
 
 execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"aw50"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/aw50
 
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"gm6"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/gm6
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"m200"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/m200
 
-# == 步槍 (Assault Rifles) ==
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"ptrd41"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/ptrd41
+
+# == 步槍 ==
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"ak47"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/ak47
+
 execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"hk416d"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/hk416d
 
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"aks74u"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/aks74u
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"scar_l"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/scar_l
+
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"famas"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/famas
+
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"m16a1"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/m16a1
+
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"qbz_191"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/qbz_191
 
 execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"g36k"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/g36k
 
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"aug"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/aug
-
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"qbz951"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/qbz951
-
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"qbz191"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/qbz191
-
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"mpdr"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/mpdr
-
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"qbz_95"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/qbz_95
-
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"m16a4"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/m16a4
-
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"an94"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/an94
-
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"ak47"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/ak47
-
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"qbu191"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/qbu191
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"scar_h"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/scar_h
 
 execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"fn_fal"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/fn_fal
 
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"sks_tactical"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/sks_tactical
-
 execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"mk14"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/mk14
 
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"rm277"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/rm277
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"n4"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/n4
 
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"scar_h"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/scar_h
-
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"m1895"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/m1895
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"ash12"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/ash12
 
 # == 散彈槍 ==
 execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"db_short"} 0
@@ -128,36 +113,21 @@ execute if score @s temp matches 1 run function game_core:shop/buy/db_long
 execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"m870"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/m870
 
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"m1014"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/m1014
+
 execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"ks23m"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/ks23m
-
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"spas_12_tacz"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/spas_12_tacz
 
 execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"aa12"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/aa12
 
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"spas12_suffuse"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/spas12_suffuse
-
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"m1014"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/m1014
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"spas_12_tacz"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/spas_12_tacz
 
 # == 衝鋒槍 ==
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"mas38"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/mas38
-
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"gepardpdw"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/gepardpdw
-
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"p90"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/p90
-
 execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"hk_mp5a5"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/hk_mp5a5
-
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"uzi"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/uzi
 
 execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"vector45"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/vector45
@@ -165,18 +135,21 @@ execute if score @s temp matches 1 run function game_core:shop/buy/vector45
 execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"pp19"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/pp19
 
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"ar57"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/ar57
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"gepardpdw"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/gepardpdw
+
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"qcq171"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/qcq171
 
 execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"ump45"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/ump45
 
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"ar57"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/ar57
+
 # == 機槍 ==
 execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"m249"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/m249
-
-execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"minigun"} 0
-execute if score @s temp matches 1 run function game_core:shop/buy/minigun
 
 execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"rpk"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/rpk
@@ -186,6 +159,12 @@ execute if score @s temp matches 1 run function game_core:shop/buy/pkp
 
 execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"fn_evolys"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/fn_evolys
+
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"minigun"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/minigun
+
+execute store success score @s temp run clear @s tacz:modern_kinetic_gun{shop:1b, ShopItem:"qjz171"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/qjz171
 
 # == 彈匣 ==
 execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"extended_mag_1"} 0
@@ -263,6 +242,12 @@ execute if score @s temp matches 1 run function game_core:shop/buy/sight_fastfir
 
 execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"sight_deltapoint_pistol"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/sight_deltapoint_pistol
+
+execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"sight_rmr_dot"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/sight_rmr_dot
+
+execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"sight_cobra_eekp_818"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/sight_cobra_eekp_818
 
 execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"sight_t1"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/sight_t1
@@ -349,6 +334,9 @@ execute if score @s temp matches 1 run function game_core:shop/buy/deagle_golden
 execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"muzzle_choke_sg"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/muzzle_choke_sg
 
+execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"cslr4_flash_hider"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/cslr4_flash_hider
+
 execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"muzzle_silencer_ursus"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/muzzle_silencer_ursus
 
@@ -375,6 +363,12 @@ execute if score @s temp matches 1 run function game_core:shop/buy/m7_silencer
 
 execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"rm277_silencer"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/rm277_silencer
+
+execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"muzzle_silencer_wraith"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/muzzle_silencer_wraith
+
+execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"mg338_silencer"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/mg338_silencer
 
 execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"bayonet_6h3"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/bayonet_6h3
@@ -406,6 +400,12 @@ execute if score @s temp matches 1 run function game_core:shop/buy/stock_vltor_e
 
 execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"stock_sig_black"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/stock_sig_black
+
+execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"stock_m249"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/stock_m249
+
+execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"stock_comb_jiazhou"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/stock_comb_jiazhou
 
 execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"stock_elf_ultralight"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/stock_elf_ultralight
@@ -448,6 +448,9 @@ execute if score @s temp matches 1 run function game_core:shop/buy/stock_heavy_s
 
 execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"stock_tactical_spas_12"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/stock_tactical_spas_12
+
+execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"stock_vltor_emod_black"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/stock_vltor_emod_black
 
 # == 握把 (Grips) ==
 execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"grip_td_green"} 0
@@ -495,9 +498,24 @@ execute if score @s temp matches 1 run function game_core:shop/buy/grip_rk1_b25u
 execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"grip_td"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/grip_td
 
+execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"grip_td_black"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/grip_td_black
+
+execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"grip_rvg"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/grip_rvg
+
+execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"grip_usgi_m249"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/grip_usgi_m249
+
+execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"grip_bt10vbatlas"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/grip_bt10vbatlas
+
 # == 雷射指示器 (Lasers) ==
 execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"laser_compact"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/laser_compact
+
+execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"laser_peq6"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/laser_peq6
 
 execute store success score @s temp run clear @s tacz:attachment{shop:1b, ShopItem:"laser_nightstick"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/laser_nightstick
@@ -529,6 +547,15 @@ execute if score @s temp matches 1 run function game_core:shop/buy/flash_grenade
 
 execute store success score @s temp run clear @s lrtactical:throwable{shop:1b, ShopItem:"molotov"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/molotov
+
+execute store success score @s temp run clear @s lrtactical:throwable{shop:1b, ShopItem:"c4"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/c4
+
+execute store success score @s temp run clear @s lrtactical:throwable{shop:1b, ShopItem:"m24"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/m24
+
+execute store success score @s temp run clear @s lrtactical:throwable{shop:1b, ShopItem:"m24_cluster"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/m24_cluster
 
 # == 防具 (Armor) ==
 # 皮革
@@ -626,3 +653,16 @@ execute if score @s temp matches 1 run function game_core:shop/buy/push
 # == 戰術護盾 (Shield) ==
 execute store success score @s temp run clear @s lrtactical:flash_shield{shop:1b, ShopItem:"flash_shield"} 0
 execute if score @s temp matches 1 run function game_core:shop/buy/flash_shield
+
+execute store success score @s temp run clear @s lrtactical:melee{shop:1b, ShopItem:"knife_rambo"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/knife_rambo
+
+execute store success score @s temp run clear @s lrtactical:melee{shop:1b, ShopItem:"dadao"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/dadao
+
+execute store success score @s temp run clear @s lrtactical:melee{shop:1b, ShopItem:"fire_axe"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/fire_axe
+
+execute store success score @s temp run clear @s lrtactical:melee{shop:1b, ShopItem:"crowbar_classic"} 0
+execute if score @s temp matches 1 run function game_core:shop/buy/crowbar_classic
+

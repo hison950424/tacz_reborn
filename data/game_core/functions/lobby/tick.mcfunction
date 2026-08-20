@@ -202,12 +202,12 @@ execute as @a[scores={select_class=1}] run scoreboard players set @s class_type 
 execute as @a[scores={select_class=1}] run tellraw @s ["",{"text":"\n\n\n\n\n\n\n\n\n\n"}]
 execute as @a[scores={select_class=1}] run tellraw @s ["",{"text":"[系統] ","color":"gold"},{"text":"已選擇職業: ","color":"white"},{"text":"自由人！","color":"aqua"}]
 execute as @a[scores={select_class=1}] run tellraw @s {"text":""}
-execute as @a[scores={select_class=1}] run tellraw @s ["",{"text":" + ","color":"green"},{"text":"Buff:「武器大師」","color":"green"}]
-execute as @a[scores={select_class=1}] run tellraw @s ["",{"text":"   效果: ","color":"gray"},{"text":"可購買和使用所有武器、配件與道具。","color":"white"}]
+execute as @a[scores={select_class=1}] run tellraw @s ["",{"text":" + ","color":"green"},{"text":"Buff:「折扣特權」","color":"green"}]
+execute as @a[scores={select_class=1}] run tellraw @s ["",{"text":"   效果: ","color":"gray"},{"text":"商店所有物品購買價格降低 20%。","color":"white"}]
 execute as @a[scores={select_class=1}] run tellraw @s ["",{"text":" - ","color":"red"},{"text":"Debuff:「孤狼代價」","color":"red"}]
 execute as @a[scores={select_class=1}] run tellraw @s ["",{"text":"   效果: ","color":"gray"},{"text":"最大生命值上限為 80 HP (-20%)。","color":"white"}]
 execute as @a[scores={select_class=1}] run tellraw @s {"text":""}
-execute as @a[scores={select_class=1}] run tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"可購買裝備: ","color":"yellow"},{"text":"無任何限制。","color":"white"}]
+execute as @a[scores={select_class=1}] run tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"初始武器: ","color":"yellow"},{"text":"CZ75 手槍","color":"white"}]
 execute as @a[scores={select_class=1}] run tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"關於投擲物: ","color":"yellow"},{"text":"你是唯一需要自己花錢購買的職業。","color":"white"}]
 
 # ==== 突擊兵 (2) ====
@@ -217,11 +217,9 @@ execute as @a[scores={select_class=2}] run tellraw @s ["",{"text":"[系統] ","c
 execute as @a[scores={select_class=2}] run tellraw @s {"text":""}
 execute as @a[scores={select_class=2}] run tellraw @s ["",{"text":" + ","color":"green"},{"text":"Buff:「輕裝上陣」","color":"green"}]
 execute as @a[scores={select_class=2}] run tellraw @s ["",{"text":"   效果: ","color":"gray"},{"text":"移動速度 +40%。","color":"white"}]
-execute as @a[scores={select_class=2}] run tellraw @s ["",{"text":" - ","color":"red"},{"text":"Debuff:「輕裝協議」","color":"red"}]
-execute as @a[scores={select_class=2}] run tellraw @s ["",{"text":"   效果: ","color":"gray"},{"text":"無法購買或穿戴鐵等級以上(不含)的防具、無法購買高倍鏡。","color":"white"}]
 execute as @a[scores={select_class=2}] run tellraw @s {"text":""}
-execute as @a[scores={select_class=2}] run tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"可購買主武器: ","color":"yellow"},{"text":"散彈槍, 衝鋒槍，步槍","color":"white"}]
-execute as @a[scores={select_class=2}] run tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"固有投擲物: ","color":"yellow"},{"text":"擊殺敵人後自動補充 ","color":"white"},{"text":"閃光彈,破片手榴彈","color":"aqua"}]
+execute as @a[scores={select_class=2}] run tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"行為獎勵: ","color":"yellow"},{"text":"擊殺敵人 +$10","color":"aqua"}]
+execute as @a[scores={select_class=2}] run tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"固有投擲物: ","color":"yellow"},{"text":"擊殺後自動補充 ","color":"white"},{"text":"閃光彈/破片手榴彈","color":"aqua"}]
 
 # ==== 支援兵 (3) ====
 execute as @a[scores={select_class=3}] run scoreboard players set @s class_type 3
@@ -229,12 +227,11 @@ execute as @a[scores={select_class=3}] run tellraw @s ["",{"text":"\n\n\n\n\n\n\
 execute as @a[scores={select_class=3}] run tellraw @s ["",{"text":"[系統] ","color":"gold"},{"text":"已選擇職業: ","color":"white"},{"text":"支援兵！","color":"aqua"}]
 execute as @a[scores={select_class=3}] run tellraw @s {"text":""}
 execute as @a[scores={select_class=3}] run tellraw @s ["",{"text":" + ","color":"green"},{"text":"Buff:「戰術補給」","color":"green"}]
-execute as @a[scores={select_class=3}] run tellraw @s ["",{"text":"   效果: ","color":"gray"},{"text":"補包增強為強化補包。","color":"white"}]
-execute as @a[scores={select_class=3}] run tellraw @s ["",{"text":" - ","color":"red"},{"text":"Debuff:「後勤負擔」","color":"red"}]
-execute as @a[scores={select_class=3}] run tellraw @s ["",{"text":"   效果: ","color":"gray"},{"text":"所有物品的購買價格 +25%。","color":"white"}]
+execute as @a[scores={select_class=3}] run tellraw @s ["",{"text":"   效果: ","color":"gray"},{"text":"攜帶兩瓶補包：強化補包 + 一般補包。","color":"white"}]
 execute as @a[scores={select_class=3}] run tellraw @s {"text":""}
-execute as @a[scores={select_class=3}] run tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"可購買主武器: ","color":"yellow"},{"text":"霰彈槍, 步槍，機槍","color":"white"}]
-execute as @a[scores={select_class=3}] run tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"固有投擲物: ","color":"yellow"},{"text":"所有投擲物。","color":"white"}]
+execute as @a[scores={select_class=3}] run tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"行為獎勵: ","color":"yellow"},{"text":"助攻 +$20","color":"aqua"}]
+execute as @a[scores={select_class=3}] run tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"初始武器: ","color":"yellow"},{"text":"MAS-38 衝鋒槍","color":"white"}]
+execute as @a[scores={select_class=3}] run tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"固有投擲物: ","color":"yellow"},{"text":"所有投擲物","color":"aqua"}]
 
 # ==== 哨兵 (4) ====
 execute as @a[scores={select_class=4}] run scoreboard players set @s class_type 4
@@ -243,11 +240,10 @@ execute as @a[scores={select_class=4}] run tellraw @s ["",{"text":"[系統] ","c
 execute as @a[scores={select_class=4}] run tellraw @s {"text":""}
 execute as @a[scores={select_class=4}] run tellraw @s ["",{"text":" + ","color":"green"},{"text":"Buff:「陣地固守」","color":"green"}]
 execute as @a[scores={select_class=4}] run tellraw @s ["",{"text":"   效果: ","color":"gray"},{"text":"蹲下後，獲得 20% 傷害減免。","color":"white"}]
-execute as @a[scores={select_class=4}] run tellraw @s ["",{"text":" - ","color":"red"},{"text":"Debuff:「重裝步兵」","color":"red"}]
-execute as @a[scores={select_class=4}] run tellraw @s ["",{"text":"   效果: ","color":"gray"},{"text":"移動速度 -40%。","color":"white"}]
 execute as @a[scores={select_class=4}] run tellraw @s {"text":""}
-execute as @a[scores={select_class=4}] run tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"可購買主武器: ","color":"yellow"},{"text":"狙擊槍, 衝鋒槍，機槍","color":"white"}]
-execute as @a[scores={select_class=4}] run tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"固有投擲物: ","color":"yellow"},{"text":"擊殺敵人後自動補充 ","color":"white"},{"text":"煙霧彈,瞬爆手榴彈","color":"aqua"}]
+execute as @a[scores={select_class=4}] run tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"行為獎勵: ","color":"yellow"},{"text":"蹲下且靜止不動，每秒 +$1","color":"aqua"}]
+execute as @a[scores={select_class=4}] run tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"初始武器: ","color":"yellow"},{"text":"M1895 左輪手槍","color":"white"}]
+execute as @a[scores={select_class=4}] run tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"固有投擲物: ","color":"yellow"},{"text":"擊殺後自動補充 ","color":"white"},{"text":"煙霧彈/手榴彈/燃燒彈","color":"aqua"}]
 
 # 職業選擇後呼叫系統資料夾中的渲染 UI
 execute as @a[scores={select_mode=3}] run function game_core:gamemode/dom/config_render

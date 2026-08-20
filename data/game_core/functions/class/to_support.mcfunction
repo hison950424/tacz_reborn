@@ -14,11 +14,10 @@ tellraw @s ["",{"text":"\n\n\n\n\n\n\n\n\n\n"}]
 tellraw @s ["",{"text":"[系統] ","color":"gold"},{"text":"已成為 ","color":"white"},{"text":"支援兵！","color":"aqua"}]
 tellraw @s {"text":""}
 tellraw @s ["",{"text":" + ","color":"green"},{"text":"Buff:「戰術補給」","color":"green"}]
-tellraw @s ["",{"text":"    效果: ","color":"gray"},{"text":"補包增強為強化補包。","color":"white"}]
-tellraw @s ["",{"text":" - ","color":"red"},{"text":"Debuff:「後勤負擔」","color":"red"}]
-tellraw @s ["",{"text":"    效果: ","color":"gray"},{"text":"所有物品的購買價格 +25%。","color":"white"}]
+tellraw @s ["",{"text":"    效果: ","color":"gray"},{"text":"攜帶兩瓶補包：強化補包 + 一般補包。","color":"white"}]
 tellraw @s {"text":""}
-tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"可購買主武器: ","color":"yellow"},{"text":"霰彈槍, 步槍","color":"white"}]
+tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"行為獎勵: ","color":"yellow"},{"text":"助攻敵人 +$20","color":"white"}]
+tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"初始武器: ","color":"yellow"},{"text":"MAS-38 衝鋒槍","color":"white"}]
 tellraw @s ["",{"text":" ▸ ","color":"gold"},{"text":"固有投擲物: ","color":"yellow"},{"text":"所有投擲物。","color":"white"}]
 
 # --- 全局常駐 BUFF (恢復 I 與 飽食) ---

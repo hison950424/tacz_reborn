@@ -15,7 +15,6 @@ execute if score @s in_base_score matches 0 run return 0
 
 # 3. 動態價格設定 (支援兵價格加收 25%)
 scoreboard players set @s shop_price 50
-execute if score @s class_type matches 3 run scoreboard players set @s shop_price 63
 
 # 4. 餘額檢測 (錢不夠直接中斷)
 execute if score @s gd656killicon.score < @s shop_price at @s run playsound entity.villager.no master @s ~ ~ ~ 1 1
@@ -25,6 +24,5 @@ execute if score @s gd656killicon.score < @s shop_price run return 0
 # 5. 發放真正的配件、音效、扣款
 give @s tacz:attachment{AttachmentId:"tacz:sight_acro_pistol"} 1
 execute at @s run playsound block.anvil.use master @s ~ ~ ~ 1 1.2
-execute unless score @s class_type matches 3 run gd656killicon server statistics add score @s -50
-execute if score @s class_type matches 3 run gd656killicon server statistics add score @s -63
+gd656killicon server statistics add score @s -50
 tellraw @s ["",{"text":"[商店] 成功購買 Acro P-1 瞄具 ！剩餘餘額：","color":"green"},{"score":{"name":"@s","objective":"gd656killicon.score"},"color":"yellow"},{"text":" 元。","color":"green"}]

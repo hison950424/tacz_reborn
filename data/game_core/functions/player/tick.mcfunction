@@ -27,7 +27,7 @@ execute if entity @s[team=red,tag=!in_base] if score @s in_base_score matches 1 
 execute if entity @s[team=red,tag=!in_base] if score @s in_base_score matches 1 if score @s class_type matches 2..4 run attribute @s minecraft:generic.max_health base set 100
 execute if entity @s[team=red,tag=!in_base] if score @s in_base_score matches 1 if score @s class_type matches 1.. run effect give @s minecraft:instant_health 3 50 true
 execute if entity @s[team=red,tag=!in_base] if score @s in_base_score matches 1 run tag @s add in_base
-execute if entity @s[team=red,tag=in_base] if score @s in_base_score matches 1 run effect give @s minecraft:instant_health 1 0
+execute if entity @s[team=red,tag=in_base] if score @s in_base_score matches 1 run effect give @s minecraft:instant_health 1 0 true
 execute if entity @s[team=red,tag=in_base] if score @s in_base_score matches 0 run clear @s written_book{title:"主選單"}
 execute if entity @s[team=red,tag=in_base] if score @s in_base_score matches 0 run tag @s remove in_base
 
@@ -45,7 +45,7 @@ execute if entity @s[team=blue,tag=!in_base] if score @s in_base_score matches 1
 execute if entity @s[team=blue,tag=!in_base] if score @s in_base_score matches 1 if score @s class_type matches 2..4 run attribute @s minecraft:generic.max_health base set 100
 execute if entity @s[team=blue,tag=!in_base] if score @s in_base_score matches 1 if score @s class_type matches 1.. run effect give @s minecraft:instant_health 3 50 true
 execute if entity @s[team=blue,tag=!in_base] if score @s in_base_score matches 1 run tag @s add in_base
-execute if entity @s[team=blue,tag=in_base] if score @s in_base_score matches 1 run effect give @s minecraft:instant_health 1 0
+execute if entity @s[team=blue,tag=in_base] if score @s in_base_score matches 1 run effect give @s minecraft:instant_health 1 0 true
 execute if entity @s[team=blue,tag=in_base] if score @s in_base_score matches 0 run clear @s written_book{title:"主選單"}
 execute if entity @s[team=blue,tag=in_base] if score @s in_base_score matches 0 run tag @s remove in_base
 
@@ -75,8 +75,20 @@ execute if score @s respawn_timer matches 0 run scoreboard players set @s respaw
 
 # --- 4. 兵種被動與狀態維持 ---
 execute if score @s class_type matches 2 run effect give @s minecraft:speed 2 1 true
-execute if score @s class_type matches 4 run effect give @s minecraft:slowness 2 1 true
 execute if score @s class_type matches 4 if score @s sneak_tracker matches 1.. run effect give @s minecraft:resistance 1 0 true
+
+# 哨兵蹲伏靜止收入（蹲下且無移動，每秒 +$1）
+execute if score @s class_type matches 4 store result score @s sentinel_pos_x run data get entity @s Pos[0] 10
+execute if score @s class_type matches 4 store result score @s sentinel_pos_z run data get entity @s Pos[2] 10
+execute if score @s class_type matches 4 if score @s sneak_tracker matches 1.. if score @s sentinel_pos_x = @s sentinel_prev_x if score @s sentinel_pos_z = @s sentinel_prev_z run scoreboard players add @s sentinel_idle_timer 1
+execute if score @s class_type matches 4 if score @s sneak_tracker matches ..0 run scoreboard players set @s sentinel_idle_timer 0
+execute if score @s class_type matches 4 if score @s sneak_tracker matches 1.. unless score @s sentinel_pos_x = @s sentinel_prev_x run scoreboard players set @s sentinel_idle_timer 0
+execute if score @s class_type matches 4 if score @s sneak_tracker matches 1.. unless score @s sentinel_pos_z = @s sentinel_prev_z run scoreboard players set @s sentinel_idle_timer 0
+execute if score @s class_type matches 4 if score #global arms_sub_mode matches 1..2 if score @s sentinel_idle_timer matches 20.. run gd656killicon server statistics add score @s 1
+execute if score @s class_type matches 4 if score @s sentinel_idle_timer matches 20.. run scoreboard players set @s sentinel_idle_timer 0
+execute if score @s class_type matches 4 run scoreboard players operation @s sentinel_prev_x = @s sentinel_pos_x
+execute if score @s class_type matches 4 run scoreboard players operation @s sentinel_prev_z = @s sentinel_pos_z
+
 execute if score @s class_type matches 4 run scoreboard players set @s sneak_tracker 0
 
 
@@ -85,10 +97,12 @@ execute if score @s gd656killicon.kill > @s kill_prev run function game_core:cla
 execute if score @s gd656killicon.kill > @s kill_prev run title @s actionbar {"text":"擊殺確認！投擲物已重置","color":"gold"}
 execute if score #global arms_sub_mode matches 1 if score @s gd656killicon.kill > @s kill_prev run function game_core:gamemode/tdm/score_update
 execute if score #global arms_sub_mode matches 2 if score #dom_phase dom_config matches 1 if score #dom_first_blood dom_config matches 0 if score @s gd656killicon.kill > @s kill_prev run function game_core:gamemode/dom/first_blood
+execute if score #global arms_sub_mode matches 1..2 if score @s gd656killicon.kill > @s kill_prev if score @s class_type matches 2 run gd656killicon server statistics add score @s 10
 execute if score @s gd656killicon.kill > @s kill_prev run scoreboard players operation @s kill_prev = @s gd656killicon.kill
 
 execute if score @s gd656killicon.assist > @s assist_prev run function game_core:class/reset_throwables
 execute if score @s gd656killicon.assist > @s assist_prev run title @s actionbar {"text":"助攻確認！投擲物已重置","color":"yellow"}
+execute if score #global arms_sub_mode matches 1..2 if score @s gd656killicon.assist > @s assist_prev if score @s class_type matches 3 run gd656killicon server statistics add score @s 20
 execute if score @s gd656killicon.assist > @s assist_prev run scoreboard players operation @s assist_prev = @s gd656killicon.assist
 
 
