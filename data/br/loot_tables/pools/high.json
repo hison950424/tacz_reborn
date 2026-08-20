@@ -1010,8 +1010,30 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:light_gray_shulker_box",
+          "weight": 200,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{tag:{backpack_1:1b},display:{Name:'{\"text\":\"一級背包\",\"color\":\"#AAAAAA\",\"italic\":false}'}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:blue_shulker_box",
+          "weight": 300,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{tag:{backpack_2:1b},display:{Name:'{\"text\":\"二級背包\",\"color\":\"#55FFFF\",\"italic\":false}'}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:purple_shulker_box",
-          "weight": 20,
+          "weight": 150,
           "functions": [
             {
               "function": "minecraft:set_nbt",

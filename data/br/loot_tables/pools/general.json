@@ -352,7 +352,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{GunId:\"suffuse:asddam_golden_ak\",GunFireMode:\"AUTO\"}"
+              "tag": "{GunId:\"suffuse:saddam_golden_ak\",GunFireMode:\"AUTO\"}"
             }
           ]
         },
@@ -822,6 +822,28 @@
           "type": "minecraft:item",
           "name": "lrtactical:flash_shield",
           "weight": 80
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:light_gray_shulker_box",
+          "weight": 400,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{tag:{backpack_1:1b},display:{Name:'{\"text\":\"一級背包\",\"color\":\"#AAAAAA\",\"italic\":false}'}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:blue_shulker_box",
+          "weight": 150,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{tag:{backpack_2:1b},display:{Name:'{\"text\":\"二級背包\",\"color\":\"#55FFFF\",\"italic\":false}'}}"
+            }
+          ]
         }
       ]
     }

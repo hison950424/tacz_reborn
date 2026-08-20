@@ -704,17 +704,6 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{AttachmentId:\"suffuse:grip_td_td\"}"
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "tacz:attachment",
-          "weight": 80,
-          "functions": [
-            {
-              "function": "minecraft:set_nbt",
               "tag": "{AttachmentId:\"suffuse:grip_td_blue_grey\"}"
             }
           ]
@@ -1024,17 +1013,6 @@
             {
               "function": "minecraft:set_nbt",
               "tag": "{AttachmentId:\"suffuse:stock_comb_redsight\"}"
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "tacz:attachment",
-          "weight": 70,
-          "functions": [
-            {
-              "function": "minecraft:set_nbt",
-              "tag": "{AttachmentId:\"suffuse:stock_sig_blue_desert\"}"
             }
           ]
         },
@@ -1398,6 +1376,39 @@
             {
               "function": "minecraft:set_nbt",
               "tag": "{AttachmentId:\"tacz:ammo_mod_hp\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:light_gray_shulker_box",
+          "weight": 300,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{tag:{backpack_1:1b},display:{Name:'{\"text\":\"一級背包\",\"color\":\"#AAAAAA\",\"italic\":false}'}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:blue_shulker_box",
+          "weight": 200,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{tag:{backpack_2:1b},display:{Name:'{\"text\":\"二級背包\",\"color\":\"#55FFFF\",\"italic\":false}'}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:purple_shulker_box",
+          "weight": 80,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{tag:{backpack_3:1b},display:{Name:'{\"text\":\"三級背包\",\"color\":\"#AA00AA\",\"italic\":false}'}}"
             }
           ]
         }
