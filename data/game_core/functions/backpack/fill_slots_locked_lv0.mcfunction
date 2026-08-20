@@ -53,6 +53,19 @@ execute as @a at @s if data entity @s {Inventory:[{Slot:30b,id:"minecraft:gray_s
 execute as @s[tag=needs_fill_0] run item replace entity @s inventory.21 with minecraft:gray_stained_glass_pane{display:{Name:'{"text":""}',Lore:[]},HideFlags:63,tag:{locked_backpack:1b}} 1
 tag @s add needs_fill_0
 
+# --- col5（inventory.4, 13, 22）：lv0 額外鎖定 ---
+execute as @a at @s if data entity @s {Inventory:[{Slot:13b,id:"minecraft:gray_stained_glass_pane",tag:{tag:{locked_backpack:1b}}}]} run tag @s remove needs_fill_0
+execute as @s[tag=needs_fill_0] run item replace entity @s inventory.4 with minecraft:gray_stained_glass_pane{display:{Name:'{"text":""}',Lore:[]},HideFlags:63,tag:{locked_backpack:1b}} 1
+tag @s add needs_fill_0
+
+execute as @a at @s if data entity @s {Inventory:[{Slot:22b,id:"minecraft:gray_stained_glass_pane",tag:{tag:{locked_backpack:1b}}}]} run tag @s remove needs_fill_0
+execute as @s[tag=needs_fill_0] run item replace entity @s inventory.13 with minecraft:gray_stained_glass_pane{display:{Name:'{"text":""}',Lore:[]},HideFlags:63,tag:{locked_backpack:1b}} 1
+tag @s add needs_fill_0
+
+execute as @a at @s if data entity @s {Inventory:[{Slot:31b,id:"minecraft:gray_stained_glass_pane",tag:{tag:{locked_backpack:1b}}}]} run tag @s remove needs_fill_0
+execute as @s[tag=needs_fill_0] run item replace entity @s inventory.22 with minecraft:gray_stained_glass_pane{display:{Name:'{"text":""}',Lore:[]},HideFlags:63,tag:{locked_backpack:1b}} 1
+tag @s add needs_fill_0
+
 # 清理臨時標籤
 tag @s remove needs_fill_0
 

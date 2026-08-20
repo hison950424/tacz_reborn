@@ -1,3 +1,8 @@
+# col5（slot 4, 13, 22）：隨等級解鎖
+execute as @a at @s if score @s backpack_level matches ..2 run function game_core:backpack/check_slot_4
+execute as @a at @s if score @s backpack_level matches ..1 run function game_core:backpack/check_slot_13
+execute as @a at @s if score @s backpack_level matches 0 run function game_core:backpack/check_slot_22
+
 # LV3 未解鎖 0~3
 execute as @a at @s if score @s backpack_level matches ..2 run function game_core:backpack/check_slot_0
 execute as @a at @s if score @s backpack_level matches ..2 run function game_core:backpack/check_slot_1

@@ -16,5 +16,10 @@ execute as @a at @s if data entity @s {Inventory:[{Slot:12b,id:"minecraft:gray_s
 execute as @s[tag=needs_fill_2] run item replace entity @s inventory.3 with minecraft:gray_stained_glass_pane{display:{Name:'{"text":""}',Lore:[]},HideFlags:63,tag:{locked_backpack:1b}} 1
 tag @s add needs_fill_2
 
+# --- col5（inventory.4）：lv2 額外鎖定 ---
+execute as @a at @s if data entity @s {Inventory:[{Slot:13b,id:"minecraft:gray_stained_glass_pane",tag:{tag:{locked_backpack:1b}}}]} run tag @s remove needs_fill_2
+execute as @s[tag=needs_fill_2] run item replace entity @s inventory.4 with minecraft:gray_stained_glass_pane{display:{Name:'{"text":""}',Lore:[]},HideFlags:63,tag:{locked_backpack:1b}} 1
+tag @s add needs_fill_2
+
 # 清理臨時標籤
 tag @s remove needs_fill_2
