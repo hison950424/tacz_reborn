@@ -12,13 +12,27 @@ clear @a
 effect give @a minecraft:resistance 10 100 true
 
 # 3. RP 積分結算（BR=arms_sub_mode 0，TDM=1，DOM=2）
+#    呼叫 rank/calc → rank/calc_player（as @a），計算每人的 rp_delta 並寫入 rp_score
 execute if score #global arms_sub_mode matches 0..2 run function game_core:rank/calc
 
-# 3b. 比賽積分累計（當 event_mode 開啟時，將本場 rp_delta 累加至 event_score）
+# 3b. 比賽積分累計（event_score）
+#
+#    設計原則：比賽積分與一般 RP 使用完全相同的 rp_delta（公式與數值一致）。
+#    只在比賽模式開啟（event_mode=1）時才累加，關閉時 event_score 保持不動。
+#
+#    ⚠️ 注意：rp_delta 已在上方 rank/calc_player 中計算完畢並寫入各玩家分數板，
+#    此處直接讀取 rp_delta 累加至 event_score，不重新計算，確保數值與 rp_score 一致。
+#
+#    ⚠️ 歷史 Bug（已修復）：
+#    舊版 rank/calc_player 第 66 行有一行無條件的 event_score += rp_delta，
+#    導致 event_mode=1 時 match_end 又加一次，event_score 成為 RP 的兩倍；
+#    event_mode=0 時也會錯誤累加。已移除該行，此處為唯一更新點。
 execute if score #global event_mode matches 1 as @a run scoreboard players operation @s event_score += @s rp_delta
 execute if score #global event_mode matches 1 as @a if score @s event_score matches ..-1 run scoreboard players set @s event_score 0
 
-# 3c. 更新 RP 排行榜與比賽積分排行榜
+# 3c. 更新排行榜顯示
+#    rp_leaderboard_update：每場結束後刷新大廳 RP 排行榜計分板
+#    event_leaderboard_update：僅 event_mode=1 時刷新比賽積分排行榜
 function game_core:lobby/rp_leaderboard_update
 execute if score #global event_mode matches 1 run function game_core:lobby/event_leaderboard_update
 
