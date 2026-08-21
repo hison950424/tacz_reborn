@@ -1,0 +1,17 @@
+execute if score #gg_give_gun gg_config matches 1 run give @s lrtactical:melee{MeleeWeaponId:"cs2_wt:butterfly"} 1
+execute if score #gg_give_gun gg_config matches 2 run give @s lrtactical:melee{MeleeWeaponId:"lrtactical:dagger"} 1
+execute if score #gg_give_gun gg_config matches 3 run give @s lrtactical:melee{MeleeWeaponId:"cs2_wt:talon"} 1
+execute if score #gg_give_gun gg_config matches 4 run give @s lrtactical:melee{MeleeWeaponId:"suffuse:dadao"} 1
+execute if score #gg_give_gun gg_config matches 5 run give @s lrtactical:melee{MeleeWeaponId:"cs2_wt:m9"} 1
+execute if score #gg_give_gun gg_config matches 6 run give @s lrtactical:melee{MeleeWeaponId:"cs2_wt:skeleton"} 1
+execute if score #gg_give_gun gg_config matches 7 run give @s lrtactical:melee{MeleeWeaponId:"suffuse:crowbar_classic"} 1
+execute if score #gg_give_gun gg_config matches 8 run give @s lrtactical:melee{MeleeWeaponId:"lrtactical:baseball_bat"} 1
+execute if score #gg_give_gun gg_config matches 9 run give @s lrtactical:melee{MeleeWeaponId:"cs2_wt:push"} 1
+execute if score #gg_give_gun gg_config matches 10 run give @s lrtactical:melee{MeleeWeaponId:"cs2_wt:stiletto"} 1
+execute if score #gg_give_gun gg_config matches 11 run give @s lrtactical:melee{MeleeWeaponId:"cs2_wt:karambit"} 1
+execute if score #gg_give_gun gg_config matches 12 run give @s lrtactical:melee{MeleeWeaponId:"suffuse:fire_axe"} 1
+execute if score #gg_give_gun gg_config matches 13 run give @s lrtactical:melee{MeleeWeaponId:"cs2_wt:tactical"} 1
+execute if score #gg_give_gun gg_config matches 14 run give @s lrtactical:melee{MeleeWeaponId:"cs2_wt:bayonet"} 1
+execute if score #gg_give_gun gg_config matches 15 run give @s lrtactical:melee{MeleeWeaponId:"suffuse:knife_rambo"} 1
+execute if score #gg_give_gun gg_config matches 16 run give @s lrtactical:melee{MeleeWeaponId:"cs2_wt:css"} 1
+execute if score #gg_give_gun gg_config matches 17 run give @s lrtactical:melee{MeleeWeaponId:"lrtactical:karambit"} 1
