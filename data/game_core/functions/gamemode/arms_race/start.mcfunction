@@ -148,6 +148,14 @@ execute if score #global arms_sub_mode matches 1 run scoreboard players set #con
 execute if score #global arms_sub_mode matches 1 run scoreboard players operation #tdm_stage2_at tdm_config = #tdm_stage1_at tdm_config
 execute if score #global arms_sub_mode matches 1 run scoreboard players operation #tdm_stage2_at tdm_config *= #const_2 tdm_config
 
+# 移除屏障方塊，開啟紅藍基地出口
+execute if score #global arms_sub_mode matches 1 run fill 191 14 -90 191 18 -86 minecraft:air replace
+execute if score #global arms_sub_mode matches 1 run fill 199 14 -78 203 18 -78 minecraft:air replace
+execute if score #global arms_sub_mode matches 1 run fill 192 13 -79 195 13 -82 minecraft:air replace
+execute if score #global arms_sub_mode matches 1 run fill 131 14 -6 131 18 -10 minecraft:air replace
+execute if score #global arms_sub_mode matches 1 run fill 123 14 -18 119 18 -18 minecraft:air replace
+execute if score #global arms_sub_mode matches 1 run fill 127 13 -14 130 13 -17 minecraft:air replace
+
 
 # ------------------------------------------
 # 2. 據點佔領模式 (Domination) 專屬初始化
