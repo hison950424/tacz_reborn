@@ -43,11 +43,14 @@ execute as @a[scores={lobby_terminal=8}] run function game_core:lobby/give_playe
 execute as @a[scores={lobby_terminal=9},tag=!admin] run function game_core:lobby/give_lobby_terminal
 execute as @a[scores={lobby_terminal=9},tag=admin] run function game_core:lobby/give_admin_terminal
 
-# 路由 11: 模式與隊伍書（管理員）
-execute as @a[scores={lobby_terminal=11},tag=admin] run function game_core:lobby/give_mode_team_book
+# 路由 11: 開始遊戲書（管理員）
+execute as @a[scores={lobby_terminal=11},tag=admin] run function game_core:lobby/give_start_game_book
 
-# 路由 12: 上一頁（從隊伍選擇書回模式與隊伍書，管理員）
-execute as @a[scores={lobby_terminal=12},tag=admin] run function game_core:lobby/give_mode_team_book
+# 路由 12: 上一頁（從隊伍選擇書回隊伍管理書，管理員）
+execute as @a[scores={lobby_terminal=12},tag=admin] run function game_core:lobby/give_team_manage_book
+
+# 路由 13: 隊伍管理書（管理員）
+execute as @a[scores={lobby_terminal=13},tag=admin] run function game_core:lobby/give_team_manage_book
 
 # ===========================================
 # Admin Terminal（僅 tag=admin）

@@ -24,6 +24,7 @@ function game_core:lobby/terminal_tick
 # 選擇 1: 大逃殺 -> 清除模式選擇書，發放地圖選擇書
 execute as @a[scores={select_mode=1}] run scoreboard players set #global arms_sub_mode 0
 execute as @a[scores={select_mode=1}] run clear @s written_book{title:"模式選擇書"}
+execute as @a[scores={select_mode=1}] run clear @s written_book{title:"開始遊戲"}
 execute as @a[scores={select_mode=1}] run clear @s written_book{title:"大逃殺參數設定"}
 execute as @a[scores={select_mode=1}] run give @s written_book{title:"大逃殺地圖選擇",author:"系統",pages:['{"text":" <<< 地圖選擇 >>>\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"[ ▶ 地圖一: 經典 ]\\n\\n","color":"dark_green","clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 1"}},{"text":"[ ▶ 地圖二: 腐蝕之地 ]\\n\\n","color":"dark_green","clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 2"}},{"text":"[ ▶ 地圖三: 櫻峰之城 ]\\n\\n","color":"dark_green","clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 3"}},{"text":"[ ▶ 地圖四: 山吹城 ]\\n\\n","color":"dark_green","clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 4"}},{"text":"[ ▶ 地圖五 ]\\n","color":"dark_green","clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 5"}},{"text":"   普羅米修斯禁區\\n\\n","color":"gray"},{"text":"[ ◄ 上一頁 ]","color":"gray","clickEvent":{"action":"run_command","value":"/trigger select_mode set 9"}}]}']} 1
 
@@ -47,6 +48,7 @@ execute as @a[scores={select_mode=9}] run give @s written_book{title:"模式選�
 # 路由 B: 軍備競賽 -> 佔點模式設定 (select_mode = 3)
 # ------------------------------------------
 execute as @a[scores={select_mode=3}] run clear @s written_book{title:"軍備競賽模式選擇書"}
+execute as @a[scores={select_mode=3}] run clear @s written_book{title:"開始遊戲"}
 execute as @a[scores={select_mode=3}] run scoreboard players set #global arms_sub_mode 2
 
 # 避免重複發放，先清除手上的設定書
@@ -64,6 +66,7 @@ execute as @a[scores={select_mode=3}] run tellraw @s {"text":"[系統] 已選擇
 # 選擇 4: 團隊死鬥模式 -> 給予【團隊死鬥設定】
 # ------------------------------------------
 execute as @a[scores={select_mode=4}] run clear @s written_book{title:"軍備競賽模式選擇書"}
+execute as @a[scores={select_mode=4}] run clear @s written_book{title:"開始遊戲"}
 execute as @a[scores={select_mode=4}] run scoreboard players set #global arms_sub_mode 1
 
 # 避免重複發放，先清除手上的設定書
@@ -639,7 +642,7 @@ execute as @a[scores={admin_team_ctrl=17}] run execute as @a[sort=random] run fu
 # 全員加入孤狼（清空所有隊伍，依序分配至孤狼槽位）
 execute as @a[scores={admin_team_ctrl=5}] run tag @a remove solo
 execute as @a[scores={admin_team_ctrl=5}] run team leave @a
-# execute as @a[scores={admin_team_ctrl=5}] run execute as @a run function game_core:gamemode/br/deploy/assign_solo
+execute as @a[scores={admin_team_ctrl=5}] run execute as @a[sort=random] run function game_core:gamemode/br/deploy/assign_solo
 execute as @a[scores={admin_team_ctrl=5}] run tellraw @a {"text":"[系統] 管理員已將所有玩家設為孤狼！","color":"yellow"}
 
 # ------------------------------------------
