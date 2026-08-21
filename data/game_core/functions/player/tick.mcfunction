@@ -70,6 +70,7 @@ execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. ru
 execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. run effect give @s minecraft:instant_health 3 50 true
 execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. run function game_core:class/reset_throwables
 execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. if score #global arms_sub_mode matches 2 run function game_core:class/give_gear
+execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. if score #global arms_sub_mode matches 3 run function game_core:gamemode/gg/give_weapon
 execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. run function game_core:gamemode/tdm/on_death
 execute if score @s respawn_timer matches 0 run scoreboard players set @s respawn_timer -1
 
@@ -98,6 +99,7 @@ execute if score @s gd656killicon.kill > @s kill_prev run function game_core:cla
 execute if score @s gd656killicon.kill > @s kill_prev run title @s actionbar {"text":"擊殺確認！投擲物已重置","color":"gold"}
 execute if score #global arms_sub_mode matches 1 if score @s gd656killicon.kill > @s kill_prev run function game_core:gamemode/tdm/score_update
 execute if score #global arms_sub_mode matches 2 if score #dom_phase dom_config matches 1 if score #dom_first_blood dom_config matches 0 if score @s gd656killicon.kill > @s kill_prev run function game_core:gamemode/dom/first_blood
+execute if score #global arms_sub_mode matches 3 if score @s gd656killicon.kill > @s kill_prev run function game_core:gamemode/gg/on_kill
 execute if score #global arms_sub_mode matches 1..2 if score @s gd656killicon.kill > @s kill_prev if score @s class_type matches 2 run gd656killicon server statistics add score @s 10
 execute if score @s gd656killicon.kill > @s kill_prev run scoreboard players operation @s kill_prev = @s gd656killicon.kill
 

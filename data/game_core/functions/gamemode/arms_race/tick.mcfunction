@@ -21,6 +21,7 @@ execute as @a run function game_core:player/tick
 # 根據子模式切換邏輯，徹底分離 TDM 與 DOM
 execute if score #global arms_sub_mode matches 1 run function game_core:gamemode/tdm/main_tick
 execute if score #global arms_sub_mode matches 2 run function game_core:gamemode/dom/main_tick
+execute if score #global arms_sub_mode matches 3 run function game_core:gamemode/gg/main_tick
 
 #指令書偵測
 function game_core:player/ui_router

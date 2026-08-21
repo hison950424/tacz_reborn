@@ -333,3 +333,13 @@ execute if score #global arms_sub_mode matches 2 run bossbar set game_core:dom_h
 worldborder set 9999999
 
 scoreboard players set @a death_prev 0
+
+# [槍王之王] 清理殘留 marker 與重置全域變數
+kill @e[tag=gg_cat_pool]
+scoreboard players set #gg_stage_red gg_config 0
+scoreboard players set #gg_stage_blue gg_config 0
+scoreboard players set #gg_kills_red gg_config 0
+scoreboard players set #gg_kills_blue gg_config 0
+scoreboard players set #gg_kills_needed_red gg_config 0
+scoreboard players set #gg_kills_needed_blue gg_config 0
+scoreboard players set #gg_hud_timer gg_config 0

@@ -81,6 +81,18 @@ execute as @a[scores={select_mode=4}] run tellraw @s {"text":"[系統] 已選擇
 # execute as @a[scores={select_mode=4}] run function game_core:gamemode/tdm/config_render
 
 # ------------------------------------------
+# 選擇 11: 槍王之王 -> 直接發放職業選擇書與啟動確認書
+# ------------------------------------------
+execute as @a[scores={select_mode=11}] run clear @s written_book{title:"開始遊戲"}
+execute as @a[scores={select_mode=11}] run scoreboard players set #global arms_sub_mode 3
+execute as @a[scores={select_mode=11}] run tellraw @a {"text":"[系統] 管理員已設定完畢！槍王之王模式即將開始，請選擇你的職業。","color":"gold","bold":true}
+execute as @a[scores={select_mode=11}] run tellraw @s {"text":"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"}
+execute as @a[scores={select_mode=11}] run clear @a written_book{title:"職業選擇"}
+execute as @a[scores={select_mode=11}] run clear @s written_book{title:"系統啟動確認"}
+execute as @a[scores={select_mode=11}] at @s run give @a written_book{title:"職業選擇",author:"系統",pages:['{"text":" ==== 選擇職業 ====\\n\\n","color":"dark_aqua","bold":true,"extra":[{"text":"[ 自由人 (80 HP) ]\\n\\n","color":"gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_class set 1"}},{"text":"[ 突擊兵 (100 HP) ]\\n\\n","color":"red","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_class set 2"}},{"text":"[ 支援兵 (100 HP) ]\\n\\n","color":"green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_class set 3"}},{"text":"[ 哨兵 (100 HP) ]\\n","color":"blue","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_class set 4"}}]}']} 1
+execute as @a[scores={select_mode=11},tag=admin] run give @s written_book{title:"系統啟動確認",author:"系統",pages:['{"text":" ==== 啟動確認 ====\\n\\n請等待所有玩家選擇完畢後，點擊下方按鈕正式開始遊戲。\\n\\n\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"[▶ 開始遊戲 ]\\n\\n","color":"dark_green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 5"}},{"text":"[ 返回重選模式 ]\\n","color":"gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 8"}}]}']} 1
+
+# ------------------------------------------
 # 從【參數設定代理書】返回【軍備競賽模式選擇書】 (select_mode = 7)
 # ------------------------------------------
 execute as @a[scores={select_mode=7}] run clear @s written_book{title:"團隊死鬥設定"}

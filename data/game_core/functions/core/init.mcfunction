@@ -534,6 +534,9 @@ scoreboard objectives add drop_barrier minecraft.dropped:minecraft.barrier
 scoreboard objectives add potion_count dummy "大補藥水數量暫存"
 scoreboard objectives add show_stat trigger "展示個人戰績"
 
+# ========== 槍王之王 ==========
+scoreboard objectives add gg_config dummy "槍王之王設定值"
+
 # ========== 比賽系統 ==========
 scoreboard objectives add event_mode dummy "比賽模式開關"
 scoreboard objectives add event_score dummy "比賽積分"
