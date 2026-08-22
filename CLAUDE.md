@@ -53,6 +53,36 @@ else { Write-Host "全部檔案無 BOM" }
 
 ---
 
+## 書本頁面換行符規則（CRITICAL）
+
+在 `give` 指令的書本頁面 JSON 中，**換行必須寫 `\\n`（兩個反斜線 + n），絕對不能寫 `\n`**。
+
+**原因**：Minecraft SNBT 單引號字串會把 `\n` 直接解析成真正的換行符（0x0A），導致頁面 JSON 字串中出現裸換行 → JSON 解析失敗 → `give` 指令靜默失敗（書不發出、音效不播、無任何報錯）。`\\n` 才會被 SNBT 轉成 `\n` 兩字元，再由 JSON 解析器正確解讀為換行。
+
+**正確寫法：**
+```
+pages:['{"text":"第一行\\n第二行"}']
+```
+
+**錯誤寫法（書不會發出）：**
+```
+pages:['{"text":"第一行\n第二行"}']
+```
+
+此行為已在 Minecraft 1.20.1 確認，修改書本頁面時請勿改回單反斜線。
+
+### 確認文件中換行符是否正確（PowerShell）：
+
+```powershell
+$content = [System.IO.File]::ReadAllText("完整路徑\give_rules_book.mcfunction", [System.Text.Encoding]::UTF8)
+# 抓出 give 指令那行，確認有 \\n 而非裸 \n
+$giveLine = ($content -split "`n" | Where-Object { $_ -match '^give ' })[0]
+if ($giveLine -match '(?<!\\)\\n') { Write-Host "WARNING: 發現裸 \n！" -ForegroundColor Red }
+else { Write-Host "OK: 換行符正確" -ForegroundColor Green }
+```
+
+---
+
 ## 架構速查
 
 ### Scoreboard 關鍵變數
