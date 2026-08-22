@@ -19,35 +19,27 @@ function game_core:player/combat_tag_tick
 function game_core:lobby/terminal_tick
 
 # ------------------------------------------
-# 路由 A: 從 [模式選擇書] 進行選擇
+# 路由 A: 從 [開始遊戲書] 進行選擇
 # ------------------------------------------
-# 選擇 1: 大逃殺 -> 清除模式選擇書，發放地圖選擇書
+# 選擇 1: 大逃殺 -> 清除開始遊戲書，發放地圖選擇書
 execute as @a[scores={select_mode=1}] run scoreboard players set #global arms_sub_mode 0
-execute as @a[scores={select_mode=1}] run clear @s written_book{title:"模式選擇書"}
 execute as @a[scores={select_mode=1}] run clear @s written_book{title:"開始遊戲"}
 execute as @a[scores={select_mode=1}] run clear @s written_book{title:"大逃殺參數設定"}
 execute as @a[scores={select_mode=1}] run give @s written_book{title:"大逃殺地圖選擇",author:"系統",pages:['{"text":" <<< 地圖選擇 >>>\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"[ ▶ 地圖一: 經典 ]\\n\\n","color":"dark_green","clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 1"}},{"text":"[ ▶ 地圖二: 腐蝕之地 ]\\n\\n","color":"dark_green","clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 2"}},{"text":"[ ▶ 地圖三: 櫻峰之城 ]\\n\\n","color":"dark_green","clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 3"}},{"text":"[ ▶ 地圖四: 山吹城 ]\\n\\n","color":"dark_green","clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 4"}},{"text":"[ ▶ 地圖五 ]\\n","color":"dark_green","clickEvent":{"action":"run_command","value":"/trigger br_map_pick set 5"}},{"text":"   普羅米修斯禁區\\n\\n","color":"gray"},{"text":"[ ◄ 上一頁 ]","color":"gray","clickEvent":{"action":"run_command","value":"/trigger select_mode set 9"}}]}']} 1
 
-# 選擇 2: 軍備競賽 -> 給予【軍備競賽模式選擇書】
-execute as @a[scores={select_mode=2}] run clear @s written_book{title:"模式選擇書"}
-execute as @a[scores={select_mode=2}] run give @s written_book{title:"軍備競賽模式選擇書",author:"系統",pages:['{"text":" ==== 軍備競賽 ====\\n\\n","color":"gold","bold":true,"extra":[{"text":"[▶ 佔點模式]\\n\\n","color":"dark_aqua","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 3"}},{"text":"[▶ 團隊死鬥模式]\\n\\n\\n","color":"dark_green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 4"}},{"text":"[ ◄ 上一頁 ]\\n","color":"gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 9"}}]}']} 1
-execute as @a[scores={select_mode=2}] run tellraw @s {"text":"[系統] 已開啟軍備競賽選單。","color":"yellow"}
-
 # ------------------------------------------
-# 從【軍備競賽模式選擇書】返回【模式選擇書】
+# 返回【開始遊戲書】(select_mode = 9)
 # ------------------------------------------
 execute as @a[scores={select_mode=9}] run clear @s written_book{title:"軍備競賽模式選擇書"}
 execute as @a[scores={select_mode=9}] run clear @s written_book{title:"大逃殺地圖選擇"}
 execute as @a[scores={select_mode=9}] run clear @s written_book{title:"大逃殺參數設定"}
 execute as @a[scores={select_mode=9}] run scoreboard players set #global br_fast_mode 0
-execute as @a[scores={select_mode=9}] run clear @s written_book{title:"模式選擇書"}
 execute as @a[scores={select_mode=9}] run clear @s written_book{title:"模式與隊伍"}
-execute as @a[scores={select_mode=9}] run give @s written_book{title:"模式選擇書",author:"系統",pages:['{"text":" ==== 模式選擇 ====\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"[▶ 大逃殺模式]\\n\\n","color":"dark_gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 1"}},{"text":"[▶ 軍備競賽模式]\\n\\n","color":"dark_green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 2"}},{"text":"[ ◄ 上一頁 ]\\n","color":"gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger lobby_terminal set 9"}}]}']} 1
+execute as @a[scores={select_mode=9}] run function game_core:lobby/give_start_game_book
 
 # ------------------------------------------
 # 路由 B: 軍備競賽 -> 佔點模式設定 (select_mode = 3)
 # ------------------------------------------
-execute as @a[scores={select_mode=3}] run clear @s written_book{title:"軍備競賽模式選擇書"}
 execute as @a[scores={select_mode=3}] run clear @s written_book{title:"開始遊戲"}
 execute as @a[scores={select_mode=3}] run scoreboard players set #global arms_sub_mode 2
 
@@ -65,7 +57,6 @@ execute as @a[scores={select_mode=3}] run tellraw @s {"text":"[系統] 已選擇
 # ------------------------------------------
 # 選擇 4: 團隊死鬥模式 -> 給予【團隊死鬥設定】
 # ------------------------------------------
-execute as @a[scores={select_mode=4}] run clear @s written_book{title:"軍備競賽模式選擇書"}
 execute as @a[scores={select_mode=4}] run clear @s written_book{title:"開始遊戲"}
 execute as @a[scores={select_mode=4}] run scoreboard players set #global arms_sub_mode 1
 
@@ -81,23 +72,21 @@ execute as @a[scores={select_mode=4}] run tellraw @s {"text":"[系統] 已選擇
 # execute as @a[scores={select_mode=4}] run function game_core:gamemode/tdm/config_render
 
 # ------------------------------------------
-# 選擇 11: 槍王之王 -> 直接發放職業選擇書與啟動確認書
+# 選擇 11: 槍王之王 -> 進入擊殺倍率設定（聊天欄介面）
 # ------------------------------------------
-execute as @a[scores={select_mode=11}] run clear @s written_book{title:"開始遊戲"}
-execute as @a[scores={select_mode=11}] run scoreboard players set #global arms_sub_mode 3
-execute as @a[scores={select_mode=11}] run tellraw @a {"text":"[系統] 管理員已設定完畢！槍王之王模式即將開始，請選擇你的職業。","color":"gold","bold":true}
-execute as @a[scores={select_mode=11}] run tellraw @s {"text":"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"}
-execute as @a[scores={select_mode=11}] run clear @a written_book{title:"職業選擇"}
-execute as @a[scores={select_mode=11}] run clear @s written_book{title:"系統啟動確認"}
-execute as @a[scores={select_mode=11}] at @s run give @a written_book{title:"職業選擇",author:"系統",pages:['{"text":" ==== 選擇職業 ====\\n\\n","color":"dark_aqua","bold":true,"extra":[{"text":"[ 自由人 (80 HP) ]\\n\\n","color":"gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_class set 1"}},{"text":"[ 突擊兵 (100 HP) ]\\n\\n","color":"red","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_class set 2"}},{"text":"[ 支援兵 (100 HP) ]\\n\\n","color":"green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_class set 3"}},{"text":"[ 哨兵 (100 HP) ]\\n","color":"blue","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_class set 4"}}]}']} 1
-execute as @a[scores={select_mode=11},tag=admin] run give @s written_book{title:"系統啟動確認",author:"系統",pages:['{"text":" ==== 啟動確認 ====\\n\\n請等待所有玩家選擇完畢後，點擊下方按鈕正式開始遊戲。\\n\\n\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"[▶ 開始遊戲 ]\\n\\n","color":"dark_green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 5"}},{"text":"[ 返回重選模式 ]\\n","color":"gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 8"}}]}']} 1
+execute as @a[scores={select_mode=11},tag=admin] run clear @s written_book{title:"開始遊戲"}
+execute as @a[scores={select_mode=11},tag=admin] run clear @s written_book{title:"槍王之王設定"}
+execute as @a[scores={select_mode=11},tag=admin] run scoreboard players set #global arms_sub_mode 3
+execute as @a[scores={select_mode=11},tag=admin] if score #gk_kills_multiplier gk_config matches ..0 run scoreboard players set #gk_kills_multiplier gk_config 1
+execute as @a[scores={select_mode=11},tag=admin] run function game_core:lobby/give_gk_settings_book
+execute as @a[scores={select_mode=11},tag=admin] run tellraw @s {"text":"[系統] 已選擇槍王之王，請設定擊殺倍率（1-20）。","color":"yellow"}
 
 # ------------------------------------------
 # 從【參數設定代理書】返回【軍備競賽模式選擇書】 (select_mode = 7)
 # ------------------------------------------
 execute as @a[scores={select_mode=7}] run clear @s written_book{title:"團隊死鬥設定"}
 execute as @a[scores={select_mode=7}] run clear @s written_book{title:"佔點模式設定"}
-execute as @a[scores={select_mode=7}] run give @s written_book{title:"軍備競賽模式選擇書",author:"系統",pages:['{"text":" ==== 軍備競賽 ====\\n\\n","color":"gold","bold":true,"extra":[{"text":"[▶ 佔點模式]\\n\\n","color":"dark_aqua","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 3"}},{"text":"[▶ 團隊死鬥模式]\\n\\n\\n","color":"dark_green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 4"}},{"text":"[ ◄ 上一頁 ]\\n","color":"gray","bold":true,"bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 9"}}]}']} 1
+execute as @a[scores={select_mode=7}] run function game_core:lobby/give_start_game_book
 
 # 開啟觸發權限 (每 Tick 執行)
 scoreboard players enable @a btn_score_up
@@ -110,11 +99,16 @@ execute as @a[scores={btn_score_up=1..9998}] run playsound ui.button.click maste
 # 根據子模式修改對應變數
 execute as @a[scores={btn_score_up=1..9998}] if score #global arms_sub_mode matches 1 run scoreboard players operation #target_score tdm_config += @s btn_score_up
 execute as @a[scores={btn_score_up=1..9998}] if score #global arms_sub_mode matches 2 run scoreboard players operation #target_score dom_config += @s btn_score_up
+execute as @a[scores={btn_score_up=1..9998}] if score #global arms_sub_mode matches 3 run scoreboard players operation #gk_kills_multiplier gk_config += @s btn_score_up
 
 # 重置邏輯 (9999)
 execute as @a[scores={btn_score_up=9999}] run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 1.2
-execute as @a[scores={btn_score_up=9999}] if score #global arms_sub_mode matches 1 run scoreboard players set #target_score tdm_config 100 
+execute as @a[scores={btn_score_up=9999}] if score #global arms_sub_mode matches 1 run scoreboard players set #target_score tdm_config 100
 execute as @a[scores={btn_score_up=9999}] if score #global arms_sub_mode matches 2 run scoreboard players set #target_score dom_config 100
+execute as @a[scores={btn_score_up=9999}] if score #global arms_sub_mode matches 3 run scoreboard players set #gk_kills_multiplier gk_config 1
+
+# GK 上限防呆 (max=20)
+execute if score #global arms_sub_mode matches 3 if score #gk_kills_multiplier gk_config matches 21.. run scoreboard players set #gk_kills_multiplier gk_config 20
 
 # --- [B] 分數減少與防呆 ---
 # TDM 減少與防呆 (下限 10)
@@ -128,6 +122,12 @@ execute as @a[scores={btn_score_dn=1..}] if score #global arms_sub_mode matches 
 execute as @a[scores={btn_score_dn=1..}] if score #global arms_sub_mode matches 2 if score #target_score dom_config matches 101.. run scoreboard players operation #target_score dom_config -= @s btn_score_dn
 execute if score #global arms_sub_mode matches 2 if score #target_score dom_config matches ..99 run scoreboard players set #target_score dom_config 100
 execute as @a[scores={btn_score_dn=1..}] if score #global arms_sub_mode matches 2 if score #target_score dom_config matches ..100 run playsound block.note_block.bass master @s ~ ~ ~ 1 0.5
+
+# GK 減少與防呆 (下限 1)
+execute as @a[scores={btn_score_dn=1..}] if score #global arms_sub_mode matches 3 if score #gk_kills_multiplier gk_config matches 2.. run playsound ui.button.click master @s ~ ~ ~ 1 1
+execute as @a[scores={btn_score_dn=1..}] if score #global arms_sub_mode matches 3 if score #gk_kills_multiplier gk_config matches 2.. run scoreboard players operation #gk_kills_multiplier gk_config -= @s btn_score_dn
+execute if score #global arms_sub_mode matches 3 if score #gk_kills_multiplier gk_config matches ..0 run scoreboard players set #gk_kills_multiplier gk_config 1
+execute as @a[scores={btn_score_dn=1..}] if score #global arms_sub_mode matches 3 if score #gk_kills_multiplier gk_config matches ..1 run playsound block.note_block.bass master @s ~ ~ ~ 1 0.5
 
 # --- [C] 時間增加與重置 (TDM only) ---
 execute as @a[scores={btn_time_up=1..9998}] if score #global arms_sub_mode matches 1 run playsound ui.button.click master @s ~ ~ ~ 1 1
@@ -150,6 +150,7 @@ execute as @a[scores={btn_time_dn=1..}] if score #global arms_sub_mode matches 1
 # 1. 初始點擊書本時的呼叫路徑
 execute as @a[scores={select_mode=3}] run function game_core:gamemode/dom/config_render
 execute as @a[scores={select_mode=4}] run function game_core:gamemode/tdm/config_render
+execute as @a[scores={select_mode=11},tag=admin] run function game_core:gamemode/gk/config_render
 
 # 2. 觸發按鈕連點後的「原地刷新」呼叫路徑
 execute as @a[scores={btn_score_up=1..}] if score #global arms_sub_mode matches 1 run function game_core:gamemode/tdm/config_render
@@ -161,6 +162,9 @@ execute as @a[scores={btn_score_up=1..}] if score #global arms_sub_mode matches 
 execute as @a[scores={btn_score_dn=1..}] if score #global arms_sub_mode matches 2 run function game_core:gamemode/dom/config_render
 execute as @a[scores={btn_time_up=1..}] if score #global arms_sub_mode matches 2 run function game_core:gamemode/dom/config_render
 execute as @a[scores={btn_time_dn=1..}] if score #global arms_sub_mode matches 2 run function game_core:gamemode/dom/config_render
+
+execute as @a[scores={btn_score_up=1..}] if score #global arms_sub_mode matches 3 run function game_core:gamemode/gk/config_render
+execute as @a[scores={btn_score_dn=1..}] if score #global arms_sub_mode matches 3 run function game_core:gamemode/gk/config_render
 
 # 清空所有觸發器狀態 (取代原本的 reset，避免權限遺失)
 scoreboard players set @a btn_score_up 0
@@ -201,12 +205,13 @@ execute as @a[scores={select_mode=8}] run clear @a written_book{title:"職業選
 # 清除可能殘留的設定代理書
 execute as @a[scores={select_mode=8}] run clear @s written_book{title:"佔點模式設定"}
 execute as @a[scores={select_mode=8}] run clear @s written_book{title:"團隊死鬥設定"}
+execute as @a[scores={select_mode=8}] run clear @s written_book{title:"槍王之王設定"}
 
 execute as @a[scores={select_mode=8}] run scoreboard players set @a class_type 0
 execute as @a[scores={select_mode=8}] run tellraw @a {"text":"[系統] 管理員已取消遊戲啟動，請等待重新設定。","color":"yellow"}
 
-# 給予初始的「模式選擇書」重新開始
-execute as @a[scores={select_mode=8}] run give @s written_book{title:"模式選擇書",author:"系統",pages:['{"text":" ==== 模式選擇 ====\\n\\n","color":"dark_red","bold":true,"extra":[{"text":"[▶ 大逃殺模式]\\n\\n","color":"dark_gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 1"}},{"text":"[▶ 軍備競賽模式]\\n\\n","color":"dark_green","bold":true,"clickEvent":{"action":"run_command","value":"/trigger select_mode set 2"}},{"text":"[ ◄ 上一頁 ]\\n","color":"gray","bold":true,"clickEvent":{"action":"run_command","value":"/trigger lobby_terminal set 9"}}]}']} 1
+# 給予「開始遊戲書」重新開始
+execute as @a[scores={select_mode=8}] run function game_core:lobby/give_start_game_book
 
 
 # ------------------------------------------
@@ -267,10 +272,16 @@ execute as @a[scores={select_mode=4}] run function game_core:gamemode/tdm/config
 
 
 # ------------------------------------------
-# 路由 E: 管理員按下【強制開始遊戲】(軍備競賽)
+# 路由 E: 管理員按下【強制開始遊戲】(TDM / DOM)
 # ------------------------------------------
 execute as @a[scores={select_mode=5},tag=admin] run clear @s written_book{title:"系統啟動確認"}
 execute as @a[scores={select_mode=5},tag=admin] run function game_core:gamemode/arms_race/start
+
+# ------------------------------------------
+# 路由 E2: 管理員確認開始【槍王之王】(select_mode = 12)
+# ------------------------------------------
+execute as @a[scores={select_mode=12},tag=admin] run clear @s written_book{title:"槍王之王設定"}
+execute as @a[scores={select_mode=12},tag=admin] run function game_core:gamemode/gk/start
 
 # ------------------------------------------
 # 路由 BR: 地圖選擇 (br_map_pick trigger)

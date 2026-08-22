@@ -66,11 +66,17 @@ execute if score @s vanilla_death > @s death_prev run scoreboard players set @s 
 execute if score @s vanilla_death > @s death_prev run scoreboard players operation @s death_prev = @s vanilla_death
 execute if score @s respawn_timer matches 1.. run scoreboard players remove @s respawn_timer 1
 
-execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. run function game_core:class/apply
+execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. unless score #global arms_sub_mode matches 3 run function game_core:class/apply
 execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. run effect give @s minecraft:instant_health 3 50 true
-execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. run function game_core:class/reset_throwables
+execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. unless score #global arms_sub_mode matches 3 run function game_core:class/reset_throwables
 execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. if score #global arms_sub_mode matches 2 run function game_core:class/give_gear
-execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. if score #global arms_sub_mode matches 3 run function game_core:gamemode/gg/give_weapon
+# [GK 重生] keepInventory=true 已保留武器與已安裝配件，不需清除重發
+# 若玩家在死亡等待期間隊伍完成階段推進，advance_stage_* 已對所有隊員（含死亡中玩家）執行清除並給予新階段武器
+# 因此重生時僅須恢復血量並傳送到重生點，不額外呼叫 give_weapon / give_attach_inventory
+execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. if score #global arms_sub_mode matches 3 run attribute @s minecraft:generic.max_health base set 100
+execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. if score #global arms_sub_mode matches 3 run effect give @s minecraft:instant_health 1 100 true
+execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. if score #global arms_sub_mode matches 3 as @s at @e[type=marker,tag=gk_spawn,sort=random,limit=1] run tp @s ~ ~ ~
+execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. if score #global arms_sub_mode matches 3 at @s run spawnpoint @s ~ ~ ~
 execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. run function game_core:gamemode/tdm/on_death
 execute if score @s respawn_timer matches 0 run scoreboard players set @s respawn_timer -1
 
@@ -99,7 +105,7 @@ execute if score @s gd656killicon.kill > @s kill_prev run function game_core:cla
 execute if score @s gd656killicon.kill > @s kill_prev run title @s actionbar {"text":"擊殺確認！投擲物已重置","color":"gold"}
 execute if score #global arms_sub_mode matches 1 if score @s gd656killicon.kill > @s kill_prev run function game_core:gamemode/tdm/score_update
 execute if score #global arms_sub_mode matches 2 if score #dom_phase dom_config matches 1 if score #dom_first_blood dom_config matches 0 if score @s gd656killicon.kill > @s kill_prev run function game_core:gamemode/dom/first_blood
-execute if score #global arms_sub_mode matches 3 if score @s gd656killicon.kill > @s kill_prev run function game_core:gamemode/gg/on_kill
+execute if score #global arms_sub_mode matches 3 if score @s gd656killicon.kill > @s kill_prev run function game_core:gamemode/gk/on_kill
 execute if score #global arms_sub_mode matches 1..2 if score @s gd656killicon.kill > @s kill_prev if score @s class_type matches 2 run gd656killicon server statistics add score @s 10
 execute if score @s gd656killicon.kill > @s kill_prev run scoreboard players operation @s kill_prev = @s gd656killicon.kill
 

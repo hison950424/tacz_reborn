@@ -1,0 +1,12 @@
+execute if score #gk_give_attach_idx gk_config matches 1 run give @s tacz:attachment{AttachmentId:"tacz:sight_t2"} 1
+execute if score #gk_give_attach_idx gk_config matches 2 run give @s tacz:attachment{AttachmentId:"tacz:sight_uh1"} 1
+execute if score #gk_give_attach_idx gk_config matches 3 run give @s tacz:attachment{AttachmentId:"tacz:sight_coyote"} 1
+execute if score #gk_give_attach_idx gk_config matches 4 run give @s tacz:attachment{AttachmentId:"tacz:sight_552"} 1
+execute if score #gk_give_attach_idx gk_config matches 5 run give @s tacz:attachment{AttachmentId:"tacz:scope_hamr"} 1
+execute if score #gk_give_attach_idx gk_config matches 6 run give @s tacz:attachment{AttachmentId:"tacz:scope_acog_ta31"} 1
+execute if score #gk_give_attach_idx gk_config matches 7 run give @s tacz:attachment{AttachmentId:"tacz:muzzle_silencer_mirage"} 1
+execute if score #gk_give_attach_idx gk_config matches 8 run give @s tacz:attachment{AttachmentId:"tacz:muzzle_silencer_knight_qd"} 1
+execute if score #gk_give_attach_idx gk_config matches 9 run give @s tacz:attachment{AttachmentId:"tacz:grip_vertical_military"} 1
+execute if score #gk_give_attach_idx gk_config matches 10 run give @s tacz:attachment{AttachmentId:"tacz:grip_se_5"} 1
+execute if score #gk_give_attach_idx gk_config matches 11 run give @s tacz:attachment{AttachmentId:"tacz:muzzle_brake_pioneer"} 1
+execute if score #gk_give_attach_idx gk_config matches 12 run give @s tacz:attachment{AttachmentId:"tacz:muzzle_compensator_trident"} 1

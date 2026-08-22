@@ -1,0 +1,9 @@
+execute if score #gk_give_cat gk_config matches 1 run function game_core:gamemode/gk/give_cat1
+execute if score #gk_give_cat gk_config matches 2 run function game_core:gamemode/gk/give_cat2
+execute if score #gk_give_cat gk_config matches 3 run function game_core:gamemode/gk/give_cat3
+execute if score #gk_give_cat gk_config matches 4 run function game_core:gamemode/gk/give_cat4
+execute if score #gk_give_cat gk_config matches 5 run function game_core:gamemode/gk/give_cat5
+execute if score #gk_give_cat gk_config matches 6 run function game_core:gamemode/gk/give_cat6
+execute if score #gk_give_cat gk_config matches 7 run function game_core:gamemode/gk/give_cat7
+execute if score #gk_give_cat gk_config matches 8 run function game_core:gamemode/gk/give_cat8
+execute if score #gk_give_cat gk_config matches 9 run function game_core:gamemode/gk/give_cat9

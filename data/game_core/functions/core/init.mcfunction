@@ -8,8 +8,6 @@ scoreboard objectives add dom_const dummy "常數"
 scoreboard players set #20 dom_const 20
 scoreboard players set #25 dom_const 25
 scoreboard players set #15 dom_const 15
-scoreboard players set #Red_win dom_config 0
-scoreboard players set #Blue_win dom_config 0
 scoreboard players set #45 dom_const 45
 scoreboard players set #60 dom_const 60
 scoreboard players set #100 dom_const 100
@@ -277,7 +275,6 @@ scoreboard objectives add stat_dom_def_match dummy "本局守點次數"
 scoreboard players set #rp_dom_cap rank_const 3
 scoreboard players set #rp_dom_flip rank_const 15
 scoreboard players set #rp_dom_def rank_const 2
-scoreboard objectives add dummy dummy "運算用"
 scoreboard players set #winner_team dummy 0
 
 # ========== 大廳指令書 ==========
@@ -310,8 +307,6 @@ scoreboard players set #lobby_env_timer lobby_env_timer 0
 
 
 # 6. 職業與觸發器變數
-scoreboard objectives add class_type dummy "Class"
-scoreboard objectives add select_mode trigger "Mode Selection"
 # select_class: 給所有玩家點擊職業書本用的觸發器
 scoreboard objectives add select_class trigger "Class Selection"
 
@@ -339,7 +334,7 @@ scoreboard objectives add team_score dummy "Team Score"
 
 # --- 兵種設定 ---
 # 1=自由人, 2=突擊兵, 3=支援兵, 4=哨兵
-scoreboard objectives add class_type dummy "Class"
+# (class_type 已在上方定義)
 
 
 
@@ -402,6 +397,8 @@ scoreboard objectives add btn_time_dn trigger
 scoreboard objectives add dom_config dummy "DOM 設定值"
 # execute unless score #target_score dom_config matches 1.. run scoreboard players set #dom_target_score dom_config 1000
 # execute unless score #time_limit dom_config matches 1.. run scoreboard players set #dom_time_limit dom_config 600
+scoreboard players set #Red_win dom_config 0
+scoreboard players set #Blue_win dom_config 0
 
 # --- 1. 據點進度計分板 ---
 # 用來記錄 +120 (紅方) 到 -120 (藍方) 的推動進度
@@ -535,7 +532,9 @@ scoreboard objectives add potion_count dummy "大補藥水數量暫存"
 scoreboard objectives add show_stat trigger "展示個人戰績"
 
 # ========== 槍王之王 ==========
-scoreboard objectives add gg_config dummy "槍王之王設定值"
+scoreboard objectives add gk_config dummy "槍王之王設定值"
+scoreboard objectives add gk_tmp dummy "GK暫存(per-player)"
+scoreboard objectives add gk_hud dummy "槍王之王"
 
 # ========== 比賽系統 ==========
 scoreboard objectives add event_mode dummy "比賽模式開關"

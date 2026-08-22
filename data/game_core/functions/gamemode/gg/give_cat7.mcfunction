@@ -1,9 +1,0 @@
-execute if score #gg_give_gun gg_config matches 1 run give @s tacz:modern_kinetic_gun{GunId:"tacz:rpg7",GunFireMode:"SEMI"} 1
-execute if score #gg_give_gun gg_config matches 2 run give @s tacz:modern_kinetic_gun{GunId:"tacz:m320",GunFireMode:"SEMI"} 1
-execute if score #gg_give_gun gg_config matches 3 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:qlz87",GunFireMode:"AUTO"} 1
-execute if score #gg_give_gun gg_config matches 4 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:m32a1",GunFireMode:"SEMI"} 1
-execute if score #gg_give_gun gg_config matches 5 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:aiyasinrpg",GunFireMode:"SEMI"} 1
-execute if score #gg_give_gun gg_config matches 6 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:m79",GunFireMode:"SEMI"} 1
-execute if score #gg_give_gun gg_config matches 7 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:m203",GunFireMode:"SEMI"} 1
-execute if score #gg_give_gun gg_config matches 8 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:pf98a",GunFireMode:"SEMI"} 1
-execute if score #gg_give_gun gg_config matches 9 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:qlu11",GunFireMode:"SEMI"} 1

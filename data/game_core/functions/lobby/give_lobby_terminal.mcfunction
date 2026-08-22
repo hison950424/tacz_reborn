@@ -6,6 +6,6 @@
 
 function game_core:lobby/clear_all_lobby_books
 
-give @s written_book{title:"大廳終端",author:"系統",pages:['{"text":" <<< 大廳終端 >>>\\n","color":"dark_purple","bold":true,"extra":[{"text":"\\n"},{"text":"[ ▶ 場景選擇 ]\\n\\n","color":"dark_green","clickEvent":{"action":"run_command","value":"/trigger lobby_terminal set 7"}},{"text":"[ ▶ 玩家功能 ]\\n","color":"gold","clickEvent":{"action":"run_command","value":"/trigger lobby_terminal set 8"}}]}']} 1
+give @s written_book{title:"大廳終端",author:"系統",pages:['{"text":" <<< 大廳終端 >>>\\n","color":"dark_purple","bold":true,"extra":[{"text":"\\n"},{"text":"[ ▶ 場景選擇 ]\\n\\n","color":"dark_green","clickEvent":{"action":"run_command","value":"/trigger lobby_terminal set 7"},"hoverEvent":{"action":"show_text","contents":{"text":"前往訓練場、迷你死鬥或跑酷塔"}}},{"text":"[ ▶ 玩家功能 ]\\n","color":"gold","clickEvent":{"action":"run_command","value":"/trigger lobby_terminal set 8"},"hoverEvent":{"action":"show_text","contents":{"text":"查看個人戰績與軍階"}}}]}']} 1
 
 scoreboard players enable @s lobby_terminal

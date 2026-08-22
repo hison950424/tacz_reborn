@@ -4,13 +4,13 @@
     {
       "rolls": {
         "min": 5,
-        "max": 10
+        "max": 12
       },
       "entries": [
         {
           "type": "minecraft:loot_table",
           "name": "br:pools/medical",
-          "weight": 8500
+          "weight": 9000
         },
         {
           "type": "minecraft:loot_table",
@@ -20,7 +20,7 @@
         {
           "type": "minecraft:loot_table",
           "name": "br:pools/attach",
-          "weight": 1000
+          "weight": 500
         },
         {
           "type": "minecraft:loot_table",

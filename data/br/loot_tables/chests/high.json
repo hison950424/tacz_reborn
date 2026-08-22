@@ -4,18 +4,18 @@
     {
       "rolls": {
         "min": 4,
-        "max": 8
+        "max": 10
       },
       "entries": [
         {
           "type": "minecraft:loot_table",
           "name": "br:pools/high",
-          "weight": 7000
+          "weight": 7500
         },
         {
           "type": "minecraft:loot_table",
           "name": "br:pools/general",
-          "weight": 2000
+          "weight": 1500
         },
         {
           "type": "minecraft:loot_table",

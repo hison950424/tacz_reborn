@@ -1,0 +1,17 @@
+execute if score #gk_give_attach_idx gk_config matches 1 run give @s tacz:attachment{AttachmentId:"tacz:extended_mag_1"} 1
+execute if score #gk_give_attach_idx gk_config matches 2 run give @s tacz:attachment{AttachmentId:"tacz:extended_mag_2"} 1
+execute if score #gk_give_attach_idx gk_config matches 3 run give @s tacz:attachment{AttachmentId:"tacz:extended_mag_3"} 1
+execute if score #gk_give_attach_idx gk_config matches 4 run give @s tacz:attachment{AttachmentId:"tacz:light_extended_mag_1"} 1
+execute if score #gk_give_attach_idx gk_config matches 5 run give @s tacz:attachment{AttachmentId:"tacz:light_extended_mag_2"} 1
+execute if score #gk_give_attach_idx gk_config matches 6 run give @s tacz:attachment{AttachmentId:"tacz:light_extended_mag_3"} 1
+execute if score #gk_give_attach_idx gk_config matches 7 run give @s tacz:attachment{AttachmentId:"tacz:shotgun_extended_mag_1"} 1
+execute if score #gk_give_attach_idx gk_config matches 8 run give @s tacz:attachment{AttachmentId:"tacz:shotgun_extended_mag_2"} 1
+execute if score #gk_give_attach_idx gk_config matches 9 run give @s tacz:attachment{AttachmentId:"tacz:shotgun_extended_mag_3"} 1
+execute if score #gk_give_attach_idx gk_config matches 10 run give @s tacz:attachment{AttachmentId:"tacz:sniper_extended_mag_1"} 1
+execute if score #gk_give_attach_idx gk_config matches 11 run give @s tacz:attachment{AttachmentId:"tacz:sniper_extended_mag_2"} 1
+execute if score #gk_give_attach_idx gk_config matches 12 run give @s tacz:attachment{AttachmentId:"tacz:sniper_extended_mag_3"} 1
+execute if score #gk_give_attach_idx gk_config matches 13 run give @s tacz:attachment{AttachmentId:"tacz:ammo_mod_i"} 1
+execute if score #gk_give_attach_idx gk_config matches 14 run give @s tacz:attachment{AttachmentId:"tacz:ammo_mod_hp"} 1
+execute if score #gk_give_attach_idx gk_config matches 15 run give @s tacz:attachment{AttachmentId:"tacz:ammo_mod_he"} 1
+execute if score #gk_give_attach_idx gk_config matches 16 run give @s tacz:attachment{AttachmentId:"tacz:ammo_mod_slug"} 1
+execute if score #gk_give_attach_idx gk_config matches 17 run give @s tacz:attachment{AttachmentId:"tacz:ammo_mod_fmj"} 1

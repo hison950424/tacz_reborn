@@ -13,4 +13,10 @@ clear @s written_book{title:"模式選擇書"}
 clear @s written_book{title:"規則書"}
 clear @s written_book{title:"個人戰績"}
 clear @s written_book{title:"大逃殺參數設定"}
-
+clear @s written_book{title:"大逃殺地圖選擇"}
+clear @s written_book{title:"隊伍管理"}
+clear @s written_book{title:"開始遊戲"}
+clear @s written_book{title:"佔點模式設定"}
+clear @s written_book{title:"團隊死鬥設定"}
+clear @s written_book{title:"職業選擇"}
+clear @s written_book{title:"槍王之王設定"}

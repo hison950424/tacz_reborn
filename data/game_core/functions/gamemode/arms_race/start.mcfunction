@@ -109,15 +109,14 @@ execute if score #global game_state matches 0 as @a run function game_core:class
 execute if score #global game_state matches 0 as @a run function game_core:class/give_ammo
 
 # --- 同步 TDM 與 DOM 的隊伍 ID (Team ID) ---
-# 說明: BR 以外的模式原生缺乏 team_id，在此處強制同步，以利後續轉帳等同隊判定。
 execute if score #global game_state matches 0 as @a[team=red] run scoreboard players set @s team_id 1
 execute if score #global game_state matches 0 as @a[team=blue] run scoreboard players set @s team_id 2
 
-# 1. 動態綁定死亡重生點 (讓玩家死亡後在 Marker 處復活)
+# 1. 動態綁定死亡重生點
 execute if score #global game_state matches 0 at @e[type=marker,tag=red_spawn,limit=1] run spawnpoint @a[team=red] ~ ~ ~
 execute if score #global game_state matches 0 at @e[type=marker,tag=blue_spawn,limit=1] run spawnpoint @a[team=blue] ~ ~ ~
 
-# 2. 開局第一次傳送 (將玩家從大廳拉進戰場 Marker)
+# 2. 開局第一次傳送
 execute if score #global game_state matches 0 run tp @a[team=red] @e[type=marker,tag=red_spawn,limit=1]
 execute if score #global game_state matches 0 run tp @a[team=blue] @e[type=marker,tag=blue_spawn,limit=1]
 # 說明: 將全局狀態改為 2 (軍備競賽進行中)，正式啟動助攻監控與被動技能維持迴圈。
@@ -218,44 +217,9 @@ execute if score #global arms_sub_mode matches 2 run function game_core:gamemode
 execute if score #global arms_sub_mode matches 2 run tellraw @a {"text":"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"}
 execute if score #global arms_sub_mode matches 2 run function game_core:gamemode/dom/round_loot_end
 
-# ------------------------------------------
-# 3. 槍王之王 (Gun King) 專屬初始化
-#    條件: 當 #global arms_sub_mode 為 3 時執行
-# ------------------------------------------
+# 槍王之王由 gamemode/gk/start.mcfunction 獨立處理，不在此執行。
 
-# 重置進度變數
-execute if score #global arms_sub_mode matches 3 run scoreboard players set #gg_stage_red gg_config 1
-execute if score #global arms_sub_mode matches 3 run scoreboard players set #gg_stage_blue gg_config 1
-execute if score #global arms_sub_mode matches 3 run scoreboard players set #gg_kills_red gg_config 0
-execute if score #global arms_sub_mode matches 3 run scoreboard players set #gg_kills_blue gg_config 0
-execute if score #global arms_sub_mode matches 3 run scoreboard players set #gg_hud_timer gg_config 0
 
-# 計算各隊擊殺需求（= 各隊人數）
-execute if score #global arms_sub_mode matches 3 run scoreboard players set #gg_kills_needed_red gg_config 0
-execute if score #global arms_sub_mode matches 3 run scoreboard players set #gg_kills_needed_blue gg_config 0
-execute if score #global arms_sub_mode matches 3 as @a[team=red] run scoreboard players add #gg_kills_needed_red gg_config 1
-execute if score #global arms_sub_mode matches 3 as @a[team=blue] run scoreboard players add #gg_kills_needed_blue gg_config 1
-# 防止 0 人隊伍造成除以零或永遠不推進
-execute if score #global arms_sub_mode matches 3 if score #gg_kills_needed_red gg_config matches ..0 run scoreboard players set #gg_kills_needed_red gg_config 1
-execute if score #global arms_sub_mode matches 3 if score #gg_kills_needed_blue gg_config matches ..0 run scoreboard players set #gg_kills_needed_blue gg_config 1
-
-# 隨機決定類別順序與各類別槍款
-execute if score #global arms_sub_mode matches 3 run function game_core:gamemode/gg/shuffle
-
-# 依初始階段解析各隊當前類別與槍款
-execute if score #global arms_sub_mode matches 3 run function game_core:gamemode/gg/resolve_stage_red
-execute if score #global arms_sub_mode matches 3 run function game_core:gamemode/gg/resolve_stage_blue
-
-# 覆蓋傳送：將所有玩家送至迷你死鬥區域並設定重生點
-execute if score #global arms_sub_mode matches 3 as @a run tp @s @e[type=marker,tag=minidm_spawn_point,sort=random,limit=1]
-execute if score #global arms_sub_mode matches 3 at @e[type=marker,tag=minidm_spawn_point,limit=1] run spawnpoint @a ~ ~ ~
-
-# 發放第一把武器給所有玩家
-execute if score #global arms_sub_mode matches 3 as @a run function game_core:gamemode/gg/give_weapon
-
-# 廣播開始訊息
-execute if score #global arms_sub_mode matches 3 run tellraw @a {"text":"[槍王之王] 遊戲開始！雙隊使用相同武器序列，率先完成全部 6 類的隊伍獲勝！","color":"gold","bold":true}
-execute if score #global arms_sub_mode matches 3 run tellraw @a [{"text":"[槍王之王] 每隊需擊殺 ","color":"gold"},{"score":{"name":"#gg_kills_needed_red","objective":"gg_config"},"color":"yellow"},{"text":" 名敵人（紅隊人數）／ ","color":"gold"},{"score":{"name":"#gg_kills_needed_blue","objective":"gg_config"},"color":"yellow"},{"text":" 名敵人（藍隊人數）方可推進。","color":"gold"}]
 
 # ------------------------------------------
 # 4. 正式開啟遊戲 Tick 迴圈
