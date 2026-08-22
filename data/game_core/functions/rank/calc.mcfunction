@@ -4,99 +4,92 @@
 # 孤狼BR獲勝時，br_win_check 需預先對獲勝玩家 tag br_winner
 # ==========================================
 
-# --- 依模式切換 RP 常數（×30 全面提效：原始×3 再×10） ---
+# --- 依模式切換 RP 常數（累計倍率：原始 ×3 × ×10 × ×(2/3) = ×20） ---
 # BR（arms_sub_mode=0）：生存型對戰，高勝利獎勵 + 拉起/祭壇，鼓勵存活與協作
 # 勝利獎勵依場上人數動態調整（人少時擊殺機會少，用更高固定獎勵補償）
-# 典型勝者 RP：~12000（約 480 RP/min × 25 min）
 #擊殺+(倍率)
-execute if score #global arms_sub_mode matches 0 run scoreboard players set #rp_k5 rank_const 360
+execute if score #global arms_sub_mode matches 0 run scoreboard players set #rp_k5 rank_const 240
 #助攻+(倍率)
-execute if score #global arms_sub_mode matches 0 run scoreboard players set #rp_a2 rank_const 120
+execute if score #global arms_sub_mode matches 0 run scoreboard players set #rp_a2 rank_const 80
 #死亡-(倍率)
-execute if score #global arms_sub_mode matches 0 run scoreboard players set #rp_d3 rank_const 60
+execute if score #global arms_sub_mode matches 0 run scoreboard players set #rp_d3 rank_const 40
 #連勝+(倍率)
-execute if score #global arms_sub_mode matches 0 run scoreboard players set #rp_s20 rank_const 1500
+execute if score #global arms_sub_mode matches 0 run scoreboard players set #rp_s20 rank_const 1000
 #勝利+(常數) 先設預設值，後面依人數覆蓋
-execute if score #global arms_sub_mode matches 0 run scoreboard players set #rp_w50 rank_const 6000
+execute if score #global arms_sub_mode matches 0 run scoreboard players set #rp_w50 rank_const 4000
 #敗場-(常數)
-execute if score #global arms_sub_mode matches 0 run scoreboard players set #rp_l15 rank_const 300
+execute if score #global arms_sub_mode matches 0 run scoreboard players set #rp_l15 rank_const 200
 #拉起+(倍率)
-execute if score #global arms_sub_mode matches 0 run scoreboard players set #rp_rev rank_const 600
+execute if score #global arms_sub_mode matches 0 run scoreboard players set #rp_rev rank_const 400
 #靈魂祭壇復活+(倍率)
-execute if score #global arms_sub_mode matches 0 run scoreboard players set #rp_alt rank_const 1200
+execute if score #global arms_sub_mode matches 0 run scoreboard players set #rp_alt rank_const 800
 
 # BR 勝利獎勵依場上人數動態覆蓋
-# 統計本場參與人數（所有在線玩家）
 execute if score #global arms_sub_mode matches 0 run scoreboard players set #br_match_size br_sys 0
 execute if score #global arms_sub_mode matches 0 as @a run scoreboard players add #br_match_size br_sys 1
-# 2-4 人：擊殺機會極少，補償最高
-execute if score #global arms_sub_mode matches 0 if score #br_match_size br_sys matches 1..4 run scoreboard players set #rp_w50 rank_const 11400
-# 5-8 人：中小場，適度補償
-execute if score #global arms_sub_mode matches 0 if score #br_match_size br_sys matches 5..8 run scoreboard players set #rp_w50 rank_const 9000
-# 9-12 人：標準場，小幅補償
-execute if score #global arms_sub_mode matches 0 if score #br_match_size br_sys matches 9..12 run scoreboard players set #rp_w50 rank_const 7200
-# 13+ 人：大場，擊殺機會充足，沿用基礎值 6000（已設置，無需覆蓋）
+# 2-4 人
+execute if score #global arms_sub_mode matches 0 if score #br_match_size br_sys matches 1..4 run scoreboard players set #rp_w50 rank_const 7600
+# 5-8 人
+execute if score #global arms_sub_mode matches 0 if score #br_match_size br_sys matches 5..8 run scoreboard players set #rp_w50 rank_const 6000
+# 9-12 人
+execute if score #global arms_sub_mode matches 0 if score #br_match_size br_sys matches 9..12 run scoreboard players set #rp_w50 rank_const 4800
+# 13+ 人：沿用基礎值 4000
 
 # 隊伍死鬥（TDM，arms_sub_mode=1）：快節奏擊殺對戰（約 10 分鐘）
-# 額外：時間加成 +30 RP/30 秒（calc_player 讀取 #tdm_elapsed），鼓勵打滿全場
-# 典型勝者 RP：~4890（約 489 RP/min × 10 min）
+# 額外：時間加成 +20 RP/30 秒（calc_player 讀取 #tdm_elapsed）
 #擊殺+(倍率)
-execute if score #global arms_sub_mode matches 1 run scoreboard players set #rp_k5 rank_const 120
+execute if score #global arms_sub_mode matches 1 run scoreboard players set #rp_k5 rank_const 80
 #助攻+(倍率)
-execute if score #global arms_sub_mode matches 1 run scoreboard players set #rp_a2 rank_const 60
+execute if score #global arms_sub_mode matches 1 run scoreboard players set #rp_a2 rank_const 40
 #死亡-(倍率)
-execute if score #global arms_sub_mode matches 1 run scoreboard players set #rp_d3 rank_const 60
+execute if score #global arms_sub_mode matches 1 run scoreboard players set #rp_d3 rank_const 40
 #連勝+(倍率)
-execute if score #global arms_sub_mode matches 1 run scoreboard players set #rp_s20 rank_const 750
+execute if score #global arms_sub_mode matches 1 run scoreboard players set #rp_s20 rank_const 500
 #勝利+(常數)
-execute if score #global arms_sub_mode matches 1 run scoreboard players set #rp_w50 rank_const 2700
+execute if score #global arms_sub_mode matches 1 run scoreboard players set #rp_w50 rank_const 1800
 #敗場-(常數)
-execute if score #global arms_sub_mode matches 1 run scoreboard players set #rp_l15 rank_const 300
+execute if score #global arms_sub_mode matches 1 run scoreboard players set #rp_l15 rank_const 200
 
-# 佔點模式（DOM，arms_sub_mode=2）：重點在佔點，擊殺倍率壓低，佔點/守點為主要 RP 來源
-# 額外：時間加成 +30 RP/30 秒（calc_player 讀取 #global dom_arms_timer）
-# 額外：勝利基礎高於 TDM（+3000 vs +2700），補償 DOM 通常較長（~15 分鐘）
-# 目標：純佔點型玩家的 RP 應高於純獵殺型玩家
-# 典型勝者 RP：~6690（約 446 RP/min × 15 min）
+# 佔點模式（DOM，arms_sub_mode=2）：重點在佔點，擊殺倍率壓低
+# 額外：時間加成 +20 RP/30 秒（calc_player 讀取 #global dom_arms_timer）
 #擊殺+(倍率)
-execute if score #global arms_sub_mode matches 2 run scoreboard players set #rp_k5 rank_const 60
+execute if score #global arms_sub_mode matches 2 run scoreboard players set #rp_k5 rank_const 40
 #助攻+(倍率)
-execute if score #global arms_sub_mode matches 2 run scoreboard players set #rp_a2 rank_const 30
+execute if score #global arms_sub_mode matches 2 run scoreboard players set #rp_a2 rank_const 20
 #死亡-(倍率)
-execute if score #global arms_sub_mode matches 2 run scoreboard players set #rp_d3 rank_const 30
+execute if score #global arms_sub_mode matches 2 run scoreboard players set #rp_d3 rank_const 20
 #連勝+(倍率)
-execute if score #global arms_sub_mode matches 2 run scoreboard players set #rp_s20 rank_const 750
+execute if score #global arms_sub_mode matches 2 run scoreboard players set #rp_s20 rank_const 500
 #勝利+(常數)
-execute if score #global arms_sub_mode matches 2 run scoreboard players set #rp_w50 rank_const 3000
+execute if score #global arms_sub_mode matches 2 run scoreboard players set #rp_w50 rank_const 2000
 #敗場-(常數)
-execute if score #global arms_sub_mode matches 2 run scoreboard players set #rp_l15 rank_const 300
+execute if score #global arms_sub_mode matches 2 run scoreboard players set #rp_l15 rank_const 200
 #佔點過程+(倍率)
-execute if score #global arms_sub_mode matches 2 run scoreboard players set #rp_dom_cap rank_const 90
+execute if score #global arms_sub_mode matches 2 run scoreboard players set #rp_dom_cap rank_const 60
 #佔點成功+(常數)
-execute if score #global arms_sub_mode matches 2 run scoreboard players set #rp_dom_flip rank_const 450
+execute if score #global arms_sub_mode matches 2 run scoreboard players set #rp_dom_flip rank_const 300
 #守點+(倍率)
-execute if score #global arms_sub_mode matches 2 run scoreboard players set #rp_dom_def rank_const 90
+execute if score #global arms_sub_mode matches 2 run scoreboard players set #rp_dom_def rank_const 60
 
 # 槍王之王（GK，arms_sub_mode=3）：武器輪換淘汰賽（約 15 分鐘）
-# 額外：階段加成 (stage-1)×180，勝者 stage=10 → 9×180=1620 RP；敗者依完成階段遞減
-# 典型勝者 RP：~5910（約 394 RP/min × 15 min）
+# 額外：階段加成 (stage-1)×120，勝者 stage=10 → 9×120=1080 RP
 #擊殺+(倍率)
-execute if score #global arms_sub_mode matches 3 run scoreboard players set #rp_k5 rank_const 120
+execute if score #global arms_sub_mode matches 3 run scoreboard players set #rp_k5 rank_const 80
 #助攻+(倍率)
-execute if score #global arms_sub_mode matches 3 run scoreboard players set #rp_a2 rank_const 60
+execute if score #global arms_sub_mode matches 3 run scoreboard players set #rp_a2 rank_const 40
 #死亡-(倍率)
-execute if score #global arms_sub_mode matches 3 run scoreboard players set #rp_d3 rank_const 60
+execute if score #global arms_sub_mode matches 3 run scoreboard players set #rp_d3 rank_const 40
 #連勝+(倍率)
-execute if score #global arms_sub_mode matches 3 run scoreboard players set #rp_s20 rank_const 750
+execute if score #global arms_sub_mode matches 3 run scoreboard players set #rp_s20 rank_const 500
 #勝利+(常數)
-execute if score #global arms_sub_mode matches 3 run scoreboard players set #rp_w50 rank_const 2700
+execute if score #global arms_sub_mode matches 3 run scoreboard players set #rp_w50 rank_const 1800
 #敗場-(常數)
-execute if score #global arms_sub_mode matches 3 run scoreboard players set #rp_l15 rank_const 300
-#階段加成倍率（(stage-1) × 180 per stage，calc_player 中計算）
-execute if score #global arms_sub_mode matches 3 run scoreboard players set #rp_gk_stage rank_const 180
-# 時間加成共用常數（TDM/DOM 使用，每 30 秒 +30 RP）
+execute if score #global arms_sub_mode matches 3 run scoreboard players set #rp_l15 rank_const 200
+#階段加成倍率（(stage-1) × 120，calc_player 中計算）
+execute if score #global arms_sub_mode matches 3 run scoreboard players set #rp_gk_stage rank_const 120
+# 時間加成共用常數（TDM/DOM 使用，每 30 秒 +20 RP）
 scoreboard players set #rp_time_div rank_const 30
-scoreboard players set #rp_time_bonus rank_const 30
+scoreboard players set #rp_time_bonus rank_const 20
 
 tag @a remove rp_winner
 tag @a remove rp_loser
