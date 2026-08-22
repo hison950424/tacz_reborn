@@ -10,16 +10,12 @@
 
 # [動作 2: 前往中轉軍械庫]
 execute as @a[scores={base_menu=2}] run clear @s written_book{title:"主選單"}
-# 紅隊分流
-execute as @a[team=red,scores={base_menu=2,class_type=1}] run tp @s @e[type=marker,tag=red_transit_1,limit=1]
-execute as @a[team=red,scores={base_menu=2,class_type=2}] run tp @s @e[type=marker,tag=red_transit_2,limit=1]
-execute as @a[team=red,scores={base_menu=2,class_type=3}] run tp @s @e[type=marker,tag=red_transit_3,limit=1]
-execute as @a[team=red,scores={base_menu=2,class_type=4}] run tp @s @e[type=marker,tag=red_transit_4,limit=1]
-# 藍隊分流
-execute as @a[team=blue,scores={base_menu=2,class_type=1}] run tp @s @e[type=marker,tag=blue_transit_1,limit=1]
-execute as @a[team=blue,scores={base_menu=2,class_type=2}] run tp @s @e[type=marker,tag=blue_transit_2,limit=1]
-execute as @a[team=blue,scores={base_menu=2,class_type=3}] run tp @s @e[type=marker,tag=blue_transit_3,limit=1]
-execute as @a[team=blue,scores={base_menu=2,class_type=4}] run tp @s @e[type=marker,tag=blue_transit_4,limit=1]
+# 紅隊分流（自由人獨立站，其餘職業共用站）
+execute as @a[team=red,scores={base_menu=2,class_type=1}] run tp @s @e[type=marker,tag=red_transit_free,limit=1]
+execute as @a[team=red,scores={base_menu=2,class_type=2..4}] run tp @s @e[type=marker,tag=red_transit_others,limit=1]
+# 藍隊分流（同上）
+execute as @a[team=blue,scores={base_menu=2,class_type=1}] run tp @s @e[type=marker,tag=blue_transit_free,limit=1]
+execute as @a[team=blue,scores={base_menu=2,class_type=2..4}] run tp @s @e[type=marker,tag=blue_transit_others,limit=1]
 # 發放中轉軍械庫指令書 (包含三重視覺警告)
 execute as @a[scores={base_menu=2}] run give @s written_book{title:"中轉軍械庫",author:"系統",pages:['{"text":"= 中轉軍械庫(返回書) =\\n\\n請將想留給隊友的武器放入前方的共享箱中。\\n\\n⚠️ ","color":"dark_aqua","bold":true,"extra":[{"text":"【嚴格警告】","color":"dark_red"},{"text":" ⚠️\\n進入選角區將會","color":"dark_aqua"},{"text":"永久刪除","color":"red"},{"text":"您身上殘留的槍械與投擲物！\\n\\n","color":"dark_aqua"},{"text":"[ 🔙 取消並返回基地 ]\\n\\n","color":"gray","bold":false,"clickEvent":{"action":"run_command","value":"/trigger transit_action set 1"}}]}']} 1
 execute as @a[scores={base_menu=2}] run give @s written_book{title:"中轉軍械庫",author:"系統",pages:['{"text":"= 中轉軍械庫(轉職書) =\\n\\n請將想留給隊友的武器放入前方的共享箱中。\\n\\n⚠️ ","color":"dark_aqua","bold":true,"extra":[{"text":"【嚴格警告】","color":"dark_red"},{"text":" ⚠️\\n進入選角區將會","color":"dark_aqua"},{"text":"永久刪除","color":"red"},{"text":"您身上殘留的槍械與投擲物！\\n\\n","color":"dark_aqua"},{"text":"[ 🚪 已放好，進入選角 ]\\n","color":"dark_green","bold":false,"clickEvent":{"action":"run_command","value":"/trigger transit_action set 2"}}]}']} 1
