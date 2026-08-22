@@ -11,8 +11,8 @@ gamemode adventure @a
 clear @a
 effect give @a minecraft:resistance 10 100 true
 
-# 3. RP 積分結算（BR=arms_sub_mode 0，TDM=1，DOM=2）
-execute if score #global arms_sub_mode matches 0..2 run function game_core:rank/calc
+# 3. RP 積分結算（BR=arms_sub_mode 0，TDM=1，DOM=2，GK=3）
+execute if score #global arms_sub_mode matches 0..3 run function game_core:rank/calc
 
 # 3b. 比賽積分累計（當 event_mode 開啟時，將本場 rp_delta 累加至 event_score）
 execute if score #global event_mode matches 1 as @a run scoreboard players operation @s event_score += @s rp_delta

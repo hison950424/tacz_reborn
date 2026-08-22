@@ -4,4 +4,5 @@ tag @a add rp_loser
 tag @a[team=black] remove rp_loser
 tag @a[team=black] add rp_winner
 scoreboard players set #winner_team dummy 16
+function game_core:gamemode/gk/calc_stage_score
 function game_core:core/match_end

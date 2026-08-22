@@ -535,6 +535,10 @@ scoreboard objectives add show_stat trigger "展示個人戰績"
 scoreboard objectives add gk_config dummy "槍王之王設定值"
 scoreboard objectives add gk_tmp dummy "GK暫存(per-player)"
 scoreboard objectives add gk_hud dummy "槍王之王"
+scoreboard objectives add gk_stage_score dummy "GK階段分數暫存(RP計算用)"
+scoreboard objectives add stat_wins_gk dummy "GK勝場"
+scoreboard objectives add stat_losses_gk dummy "GK敗場"
+scoreboard objectives add stat_streak_gk dummy "GK連勝"
 
 # ========== 比賽系統 ==========
 scoreboard objectives add event_mode dummy "比賽模式開關"

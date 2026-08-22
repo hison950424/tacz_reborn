@@ -35,6 +35,7 @@ execute if entity @s[tag=rp_winner] run scoreboard players set #rp_temp rank_tem
 execute if entity @s[tag=rp_winner] if score #global arms_sub_mode matches 0 run scoreboard players operation #rp_temp rank_temp = @s stat_streak_br
 execute if entity @s[tag=rp_winner] if score #global arms_sub_mode matches 1 run scoreboard players operation #rp_temp rank_temp = @s stat_streak_tdm
 execute if entity @s[tag=rp_winner] if score #global arms_sub_mode matches 2 run scoreboard players operation #rp_temp rank_temp = @s stat_streak_dom
+execute if entity @s[tag=rp_winner] if score #global arms_sub_mode matches 3 run scoreboard players operation #rp_temp rank_temp = @s stat_streak_gk
 execute if entity @s[tag=rp_winner] run scoreboard players operation #rp_temp rank_temp *= #rp_s20 rank_const
 execute if entity @s[tag=rp_winner] run scoreboard players operation @s rp_delta += #rp_temp rank_temp
 
@@ -58,6 +59,23 @@ execute if score #global arms_sub_mode matches 2 run scoreboard players operatio
 execute if score #global arms_sub_mode matches 2 run scoreboard players operation #rp_temp rank_temp = @s stat_dom_def_match
 execute if score #global arms_sub_mode matches 2 run scoreboard players operation #rp_temp rank_temp *= #rp_dom_def rank_const
 execute if score #global arms_sub_mode matches 2 run scoreboard players operation @s rp_delta += #rp_temp rank_temp
+
+# 時間加成（TDM：讀 #tdm_elapsed tdm_config；DOM：讀 #global dom_arms_timer）
+# 公式：floor(elapsed_seconds / 30) × 3，每 30 秒加 3 RP
+execute if score #global arms_sub_mode matches 1 run scoreboard players operation #rp_temp rank_temp = #tdm_elapsed tdm_config
+execute if score #global arms_sub_mode matches 1 run scoreboard players operation #rp_temp rank_temp /= #rp_time_div rank_const
+execute if score #global arms_sub_mode matches 1 run scoreboard players operation #rp_temp rank_temp *= #rp_time_bonus rank_const
+execute if score #global arms_sub_mode matches 1 run scoreboard players operation @s rp_delta += #rp_temp rank_temp
+execute if score #global arms_sub_mode matches 2 run scoreboard players operation #rp_temp rank_temp = #global dom_arms_timer
+execute if score #global arms_sub_mode matches 2 run scoreboard players operation #rp_temp rank_temp /= #rp_time_div rank_const
+execute if score #global arms_sub_mode matches 2 run scoreboard players operation #rp_temp rank_temp *= #rp_time_bonus rank_const
+execute if score #global arms_sub_mode matches 2 run scoreboard players operation @s rp_delta += #rp_temp rank_temp
+
+# GK 階段加成（gk_stage_score 已由 calc_stage_score.mcfunction 計算好）
+# 公式：gk_stage_score × 18（勝者 stage=10 → score=9 → +162；完成 5 階段 → score=4 → +72）
+execute if score #global arms_sub_mode matches 3 run scoreboard players operation #rp_temp rank_temp = @s gk_stage_score
+execute if score #global arms_sub_mode matches 3 run scoreboard players operation #rp_temp rank_temp *= #rp_gk_stage rank_const
+execute if score #global arms_sub_mode matches 3 run scoreboard players operation @s rp_delta += #rp_temp rank_temp
 
 # 套用 delta，下限 0
 # 【修復】移除多餘的 execute as @a run，此函式本身已由 rank_calculate 以 as @a 呼叫
@@ -93,3 +111,10 @@ execute if entity @s[tag=rp_winner] if score #global arms_sub_mode matches 2 run
 execute if entity @s[tag=rp_loser] if score #global arms_sub_mode matches 2 run scoreboard players set @s stat_streak_dom 0
 execute if entity @s[tag=rp_loser] if score #global arms_sub_mode matches 2 run scoreboard players add @s stat_losses_dom 1
 execute if entity @s[tag=rp_loser] if score #global arms_sub_mode matches 2 run scoreboard players add @s stat_losses 1
+# GK（arms_sub_mode=3）
+execute if entity @s[tag=rp_winner] if score #global arms_sub_mode matches 3 run scoreboard players add @s stat_streak_gk 1
+execute if entity @s[tag=rp_winner] if score #global arms_sub_mode matches 3 run scoreboard players add @s stat_wins_gk 1
+execute if entity @s[tag=rp_winner] if score #global arms_sub_mode matches 3 run scoreboard players add @s stat_wins 1
+execute if entity @s[tag=rp_loser] if score #global arms_sub_mode matches 3 run scoreboard players set @s stat_streak_gk 0
+execute if entity @s[tag=rp_loser] if score #global arms_sub_mode matches 3 run scoreboard players add @s stat_losses_gk 1
+execute if entity @s[tag=rp_loser] if score #global arms_sub_mode matches 3 run scoreboard players add @s stat_losses 1
