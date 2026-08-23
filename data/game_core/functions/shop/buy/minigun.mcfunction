@@ -14,7 +14,7 @@ execute if score @s gd656killicon.score < @s shop_price at @s run playsound enti
 execute if score @s gd656killicon.score < @s shop_price run tellraw @s ["",{"text":"[商店] 餘額不足！需要 ","color":"red"},{"score":{"name":"@s","objective":"shop_price"},"color":"yellow"},{"text":" 元。","color":"red"}]
 execute if score @s gd656killicon.score < @s shop_price run return 0
 
-give @s tacz:modern_kinetic_gun{GunId:"tacz:minigun",GunFireMode:"AUTO"} 1
+give @s tacz:modern_kinetic_gun{GunId:"tacz:minigun",GunFireMode:"AUTO",HasBulletInBarrel:1b,HeatAmount:0.0f,GunCurrentAmmoCount:9999} 1
 execute at @s run playsound block.anvil.use master @s ~ ~ ~ 1 1.2
 execute if score @s class_type matches 1 run gd656killicon server statistics add score @s -880
 execute unless score @s class_type matches 1 run gd656killicon server statistics add score @s -1100

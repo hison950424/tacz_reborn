@@ -74,12 +74,12 @@ tag @e[tag=gk_sel] remove gk_sel
 kill @e[tag=gk_cat_pool]
 
 # 各類別隨機選一把槍（索引從 1 開始）
-execute store result score #gk_gun_idx_1 gk_config run random value 1..27
+execute store result score #gk_gun_idx_1 gk_config run random value 1..23
 execute store result score #gk_gun_idx_2 gk_config run random value 1..11
 execute store result score #gk_gun_idx_3 gk_config run random value 1..10
-execute store result score #gk_gun_idx_4 gk_config run random value 1..36
+execute store result score #gk_gun_idx_4 gk_config run random value 1..35
 execute store result score #gk_gun_idx_5 gk_config run random value 1..11
-execute store result score #gk_gun_idx_6 gk_config run random value 1..17
+execute store result score #gk_gun_idx_6 gk_config run random value 1..16
 execute store result score #gk_gun_idx_7 gk_config run random value 1..9
 execute store result score #gk_gun_idx_8 gk_config run random value 1..5
 execute store result score #gk_gun_idx_9 gk_config run random value 1..17

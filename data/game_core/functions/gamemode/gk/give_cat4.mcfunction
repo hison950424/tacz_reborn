@@ -1,5 +1,6 @@
-# 步槍 (36 把)
+# 步槍 (35 把)
 # 執行者: @s | GunCurrentAmmoCount = 彈夾容量 - 1，HasBulletInBarrel:1b
+# 已移除：m1895（Nagant 左輪，6 發換彈，不適合步槍類別）
 execute if score #gk_give_gun gk_config matches 1 run give @s tacz:modern_kinetic_gun{GunId:"tacz:ak47",GunFireMode:"AUTO",GunCurrentAmmoCount:30,HasBulletInBarrel:1b} 1
 execute if score #gk_give_gun gk_config matches 2 run give @s tacz:modern_kinetic_gun{GunId:"tacz:m4a1",GunFireMode:"AUTO",GunCurrentAmmoCount:30,HasBulletInBarrel:1b} 1
 execute if score #gk_give_gun gk_config matches 3 run give @s tacz:modern_kinetic_gun{GunId:"tacz:hk_g3",GunFireMode:"AUTO",GunCurrentAmmoCount:20,HasBulletInBarrel:1b} 1
@@ -20,19 +21,18 @@ execute if score #gk_give_gun gk_config matches 17 run give @s tacz:modern_kinet
 execute if score #gk_give_gun gk_config matches 18 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:mk47",GunFireMode:"AUTO",GunCurrentAmmoCount:30,HasBulletInBarrel:1b} 1
 execute if score #gk_give_gun gk_config matches 19 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:famas",GunFireMode:"AUTO",GunCurrentAmmoCount:25,HasBulletInBarrel:1b} 1
 execute if score #gk_give_gun gk_config matches 20 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:mpdr",GunFireMode:"AUTO",GunCurrentAmmoCount:20,HasBulletInBarrel:1b} 1
-execute if score #gk_give_gun gk_config matches 21 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:m1895",GunFireMode:"SEMI",GunCurrentAmmoCount:5,HasBulletInBarrel:1b} 1
-execute if score #gk_give_gun gk_config matches 22 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:kacpdw",GunFireMode:"AUTO",GunCurrentAmmoCount:30,HasBulletInBarrel:1b} 1
-execute if score #gk_give_gun gk_config matches 23 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:qbz191",GunFireMode:"AUTO",GunCurrentAmmoCount:20,HasBulletInBarrel:1b} 1
-execute if score #gk_give_gun gk_config matches 24 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:qbz951s",GunFireMode:"AUTO",GunCurrentAmmoCount:30,HasBulletInBarrel:1b} 1
-execute if score #gk_give_gun gk_config matches 25 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:qbz192",GunFireMode:"AUTO",GunCurrentAmmoCount:30,HasBulletInBarrel:1b} 1
-execute if score #gk_give_gun gk_config matches 26 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:an94",GunFireMode:"AUTO",GunCurrentAmmoCount:30,HasBulletInBarrel:1b} 1
-execute if score #gk_give_gun gk_config matches 27 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:asddam_golden_ak",GunFireMode:"AUTO",GunCurrentAmmoCount:30,HasBulletInBarrel:1b} 1
-execute if score #gk_give_gun gk_config matches 28 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:l119a2",GunFireMode:"AUTO",GunCurrentAmmoCount:30,HasBulletInBarrel:1b} 1
-execute if score #gk_give_gun gk_config matches 29 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:xm7",GunFireMode:"AUTO",GunCurrentAmmoCount:20,HasBulletInBarrel:1b} 1
-execute if score #gk_give_gun gk_config matches 30 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:qbu951b",GunFireMode:"AUTO",GunCurrentAmmoCount:30,HasBulletInBarrel:1b} 1
-execute if score #gk_give_gun gk_config matches 31 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:qbu191",GunFireMode:"AUTO",GunCurrentAmmoCount:30,HasBulletInBarrel:1b} 1
-execute if score #gk_give_gun gk_config matches 32 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:n4",GunFireMode:"AUTO",GunCurrentAmmoCount:30,HasBulletInBarrel:1b} 1
-execute if score #gk_give_gun gk_config matches 33 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:rm277",GunFireMode:"AUTO",GunCurrentAmmoCount:20,HasBulletInBarrel:1b} 1
-execute if score #gk_give_gun gk_config matches 34 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:qbz951",GunFireMode:"AUTO",GunCurrentAmmoCount:30,HasBulletInBarrel:1b} 1
-execute if score #gk_give_gun gk_config matches 35 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:ash12",GunFireMode:"AUTO",GunCurrentAmmoCount:10,HasBulletInBarrel:1b} 1
-execute if score #gk_give_gun gk_config matches 36 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:aks74u",GunFireMode:"AUTO",GunCurrentAmmoCount:30,HasBulletInBarrel:1b} 1
+execute if score #gk_give_gun gk_config matches 21 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:kacpdw",GunFireMode:"AUTO",GunCurrentAmmoCount:30,HasBulletInBarrel:1b} 1
+execute if score #gk_give_gun gk_config matches 22 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:qbz191",GunFireMode:"AUTO",GunCurrentAmmoCount:20,HasBulletInBarrel:1b} 1
+execute if score #gk_give_gun gk_config matches 23 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:qbz951s",GunFireMode:"AUTO",GunCurrentAmmoCount:30,HasBulletInBarrel:1b} 1
+execute if score #gk_give_gun gk_config matches 24 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:qbz192",GunFireMode:"AUTO",GunCurrentAmmoCount:30,HasBulletInBarrel:1b} 1
+execute if score #gk_give_gun gk_config matches 25 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:an94",GunFireMode:"AUTO",GunCurrentAmmoCount:30,HasBulletInBarrel:1b} 1
+execute if score #gk_give_gun gk_config matches 26 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:asddam_golden_ak",GunFireMode:"AUTO",GunCurrentAmmoCount:30,HasBulletInBarrel:1b} 1
+execute if score #gk_give_gun gk_config matches 27 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:l119a2",GunFireMode:"AUTO",GunCurrentAmmoCount:30,HasBulletInBarrel:1b} 1
+execute if score #gk_give_gun gk_config matches 28 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:xm7",GunFireMode:"AUTO",GunCurrentAmmoCount:20,HasBulletInBarrel:1b} 1
+execute if score #gk_give_gun gk_config matches 29 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:qbu951b",GunFireMode:"AUTO",GunCurrentAmmoCount:30,HasBulletInBarrel:1b} 1
+execute if score #gk_give_gun gk_config matches 30 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:qbu191",GunFireMode:"AUTO",GunCurrentAmmoCount:30,HasBulletInBarrel:1b} 1
+execute if score #gk_give_gun gk_config matches 31 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:n4",GunFireMode:"AUTO",GunCurrentAmmoCount:30,HasBulletInBarrel:1b} 1
+execute if score #gk_give_gun gk_config matches 32 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:rm277",GunFireMode:"AUTO",GunCurrentAmmoCount:20,HasBulletInBarrel:1b} 1
+execute if score #gk_give_gun gk_config matches 33 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:qbz951",GunFireMode:"AUTO",GunCurrentAmmoCount:30,HasBulletInBarrel:1b} 1
+execute if score #gk_give_gun gk_config matches 34 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:ash12",GunFireMode:"AUTO",GunCurrentAmmoCount:10,HasBulletInBarrel:1b} 1
+execute if score #gk_give_gun gk_config matches 35 run give @s tacz:modern_kinetic_gun{GunId:"suffuse:aks74u",GunFireMode:"AUTO",GunCurrentAmmoCount:30,HasBulletInBarrel:1b} 1
