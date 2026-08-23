@@ -77,7 +77,7 @@ execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. if
 execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. if score #global arms_sub_mode matches 3 run effect give @s minecraft:instant_health 1 100 true
 execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. if score #global arms_sub_mode matches 3 as @s at @e[type=marker,tag=gk_spawn,sort=random,limit=1] run tp @s ~ ~ ~
 execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. if score #global arms_sub_mode matches 3 at @s run spawnpoint @s ~ ~ ~
-execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. run function game_core:gamemode/tdm/on_death
+execute if score @s respawn_timer matches 0 if score @s p_health matches 20.. if score #global arms_sub_mode matches 1 run function game_core:gamemode/tdm/on_death
 execute if score @s respawn_timer matches 0 run scoreboard players set @s respawn_timer -1
 
 
