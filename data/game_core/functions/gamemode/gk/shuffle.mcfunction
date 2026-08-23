@@ -81,7 +81,7 @@ execute store result score #gk_gun_idx_4 gk_config run random value 1..36
 execute store result score #gk_gun_idx_5 gk_config run random value 1..11
 execute store result score #gk_gun_idx_6 gk_config run random value 1..17
 execute store result score #gk_gun_idx_7 gk_config run random value 1..9
-execute store result score #gk_gun_idx_8 gk_config run random value 1..6
+execute store result score #gk_gun_idx_8 gk_config run random value 1..5
 execute store result score #gk_gun_idx_9 gk_config run random value 1..17
 
 # 各階段 6 類配件隨機預先決定（cat 1..7 適用；各類各 2 個）

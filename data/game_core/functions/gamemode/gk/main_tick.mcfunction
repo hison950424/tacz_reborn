@@ -81,10 +81,6 @@ execute as @a if score @s gk_tmp matches 2.. run give @s tacz:ammo_box{AllTypeCr
 execute as @a store result score @s gk_tmp run clear @s lrtactical:consumable{ConsumableId:"lrtactical:carfak"} 0
 execute as @a if score @s gk_tmp matches 0 run give @s lrtactical:consumable{ConsumableId:"lrtactical:carfak"} 1
 
-# 雷管管理：身上有 2 個以上就刪除全部並補 1 個
-execute as @a store result score @s gk_tmp run clear @s lrtactical:consumable{ConsumableId:"lrtactical:detonator"} 0
-execute as @a if score @s gk_tmp matches 2.. run clear @s lrtactical:consumable{ConsumableId:"lrtactical:detonator"}
-execute as @a if score @s gk_tmp matches 2.. run give @s lrtactical:consumable{ConsumableId:"lrtactical:detonator"} 1
 
 # cat 8（傷害型投擲物）階段補充：身上沒有當前投擲物就補 1 個
 execute as @a[team=red] if score #gk_cur_cat_red gk_config matches 8 run function game_core:gamemode/gk/replenish_throwable
