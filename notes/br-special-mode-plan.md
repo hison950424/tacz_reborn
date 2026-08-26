@@ -149,7 +149,7 @@ Adventure 模式**可以**投擲雞蛋與雪球，無需額外處理。
 |------|------|---------|------|
 | 瞬移彈 | 終界珍珠 | `{special:"teleport_pearl"}` | 原版珍珠傳送，落地免傷 |
 | 偵測器 | 紅石中繼器 | `{special:"detector"}` | 丟到地上，顯示最近敵人座標（一次性） |
-| 誘餌信號彈 | 雪球 | `{special:"decoy_flare"}` | 投出落地，對全體廣播假座標 |
+| 誘餌信號彈 | 雪球 | `{special:"decoy_flare"}` | 投出落地，對全體廣播假空投訊息（格式與真實空投相同，但座標為假） |
 | 隱形斗篷 | 鞘翅 | `{special:"invis_cloak"}` | 裝備到胸甲欄，銷毀並給 Invisibility 200（10 秒） |
 | 護盾 | 盾牌 | `{special:"barrier_shield"}` | 右鍵使用時銷毀，給 Resistance 255 + Slowness 255，持續 3 秒（60 ticks） |
 | 急速補包 | 投擲藥水 | `{special:"rapid_medpack"}` | 落地後 5 格內所有玩家瞬間回滿血 |
