@@ -24,44 +24,90 @@ BR（大逃殺）模式在原有核心機制（縮圈、空投、倒地/救援�
 
 **原機制**：依 Phase 固定觸發空投。
 
-**新機制**：Phase 1 縮圈結束後，每 30 秒（600 ticks）執行一次抽獎，抽中才召喚空投，**一場最多兩次**。
+**新機制**：依**存活人數門檻**觸發抽獎，抽中後延遲 5~15 秒才實際召喚，混淆觸發規律。
+
+### 觸發條件
+
+| 門檻 | 觸發時機 | 抽獎機率 |
+|------|---------|---------|
+| 第一次 | 存活玩家降至起始人數的 **60%** | 40% |
+| 第二次 | 存活玩家降至起始人數的 **30%** | 40% |
+
+- 兩次各自只觸發一次（觸發後設旗標防重複）
+- 不保證一定有空投，視機率而定（一場 0~2 次）
+- 無次數上限（機率本身限制頻率）
 
 ### 實作細節
 
 新增 scoreboard：
-- `#br_airdrop_timer`（倒數，600→0，歸零即抽獎）
-- `#br_airdrop_count`（已召喚次數，上限 2）
+- `#br_airdrop_flag1`（0=未觸發, 1=已判定）
+- `#br_airdrop_flag2`（0=未觸發, 1=已判定）
+- `#br_airdrop_delay`（延遲倒數，0=無待發，>0=倒數中）
+- `#br_player_start`（開局時記錄總人數）
 
-在 `main_tick.mcfunction` Phase 2 之後（第一次縮圈結束後）：
+在 `main_tick.mcfunction` 每秒週期中：
 
 ```mcfunction
-# 每 tick 遞減計時器
-scoreboard players remove #br_airdrop_timer br_sys 1
+# 計算當前存活人數 → #br_alive
+execute store result score #br_alive br_sys if entity @a[scores={br_death_state=1}]
 
-# 計時器歸零 && 空投次數 < 2
-execute if score #br_airdrop_timer br_sys matches ..0 if score #br_airdrop_count br_sys matches ..1 run function br/airdrop/lottery
+# 60% 門檻（= start × 6 / 10）
+scoreboard players operation #br_threshold br_sys = #br_player_start br_sys
+scoreboard players operation #br_threshold br_sys *= #br_c6 br_sys   # c6=6
+scoreboard players operation #br_threshold br_sys /= #br_c10 br_sys  # c10=10
+execute if score #br_airdrop_flag1 br_sys matches 0 if score #br_alive br_sys <= #br_threshold br_sys run function br/airdrop/check_trigger1
 
-# 重設計時器（不論是否抽中）
-execute if score #br_airdrop_timer br_sys matches ..0 run scoreboard players set #br_airdrop_timer br_sys 600
+# 30% 門檻
+scoreboard players operation #br_threshold br_sys = #br_player_start br_sys
+scoreboard players operation #br_threshold br_sys *= #br_c3 br_sys   # c3=3
+scoreboard players operation #br_threshold br_sys /= #br_c10 br_sys
+execute if score #br_airdrop_flag2 br_sys matches 0 if score #br_alive br_sys <= #br_threshold br_sys run function br/airdrop/check_trigger2
+
+# 延遲倒數（若有待發空投）
+execute if score #br_airdrop_delay br_sys matches 1.. run scoreboard players remove #br_airdrop_delay br_sys 1
+execute if score #br_airdrop_delay br_sys matches 0 if score #br_airdrop_flag1 br_sys matches 2 run function br/airdrop/spawn
+execute if score #br_airdrop_delay br_sys matches 0 if score #br_airdrop_flag1 br_sys matches 2 run scoreboard players set #br_airdrop_flag1 br_sys 3
+execute if score #br_airdrop_delay br_sys matches 0 if score #br_airdrop_flag2 br_sys matches 2 run function br/airdrop/spawn
+execute if score #br_airdrop_delay br_sys matches 0 if score #br_airdrop_flag2 br_sys matches 2 run scoreboard players set #br_airdrop_flag2 br_sys 3
 ```
 
-`br/airdrop/lottery.mcfunction`：
+`br/airdrop/check_trigger1.mcfunction`：
 ```mcfunction
-# 例：抽獎 - 50% 機率召喚（用 random 或 loot table marker 偽隨機）
-# 方法：spreadplayers 一個 marker，根據其落點 X 奇偶判斷
+# 標記已判定，防止重複觸發
+scoreboard players set #br_airdrop_flag1 br_sys 1
+
+# 40% 機率：spreadplayers 偽隨機，取 X mod 10 < 4 判定
 summon minecraft:marker ~ 64 ~ {Tags:["br_lottery"]}
-spreadplayers ~ ~ 0 50 false @e[type=marker,tag=br_lottery,limit=1]
+spreadplayers ~ ~ 0 100 false @e[type=marker,tag=br_lottery,limit=1]
 execute store result score #lottery_x br_sys run data get entity @e[type=marker,tag=br_lottery,limit=1] Pos[0]
 kill @e[type=marker,tag=br_lottery]
-scoreboard players operation #lottery_x br_sys %= #br_c2 br_sys   # #br_c2 = 2
-execute if score #lottery_x br_sys matches 0 run function br/airdrop/spawn
-execute if score #lottery_x br_sys matches 0 run scoreboard players add #br_airdrop_count br_sys 1
+scoreboard players operation #lottery_x br_sys %= #br_c10 br_sys
+# < 4 = 抽中（40%）
+execute if score #lottery_x br_sys matches ..3 run function br/airdrop/set_delay1
 ```
 
-**Phase 1 結束時**初始化：
+`br/airdrop/set_delay1.mcfunction`：
 ```mcfunction
-scoreboard players set #br_airdrop_timer br_sys 600
-scoreboard players set #br_airdrop_count br_sys 0
+# 隨機延遲 100~300 ticks（5~15 秒）
+# 用 spreadplayers X mod 201 + 100 近似
+summon minecraft:marker ~ 64 ~ {Tags:["br_delay_roll"]}
+spreadplayers ~ ~ 0 200 false @e[type=marker,tag=br_delay_roll,limit=1]
+execute store result score #br_airdrop_delay br_sys run data get entity @e[type=marker,tag=br_delay_roll,limit=1] Pos[0]
+kill @e[type=marker,tag=br_delay_roll]
+scoreboard players operation #br_airdrop_delay br_sys %= #br_c201 br_sys  # c201=201
+scoreboard players add #br_airdrop_delay br_sys 100
+# 標記為「待發」
+scoreboard players set #br_airdrop_flag1 br_sys 2
+```
+
+（`check_trigger2` / `set_delay2` 邏輯相同，操作 `flag2`）
+
+**開局時**初始化（`start.mcfunction`）：
+```mcfunction
+execute store result score #br_player_start br_sys if entity @a
+scoreboard players set #br_airdrop_flag1 br_sys 0
+scoreboard players set #br_airdrop_flag2 br_sys 0
+scoreboard players set #br_airdrop_delay br_sys 0
 ```
 
 ---
