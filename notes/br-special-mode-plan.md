@@ -1,5 +1,75 @@
 # BR 模式：三模組特殊玩法系統 設計規劃
 
+---
+
+## 可行性評估（2026-08-23 同步）
+
+### 分支現況
+
+- GK 模式已完整實作（commit `0c9a7ed`，155+ 檔案）
+- 近期 commit：移除弱勢槍械、修正 minigun NBT（`757ecef`）、修正 TDM 死亡補貼誤觸 GK（`ec7faad`）
+- BR 核心機制（縮圈、空投、倒地/救援、祭壇復活）維持原狀，尚未啟動三模組開發
+
+### 已知未解問題（需優先處理）
+
+| 問題 | 嚴重度 | 根因 | 解決方向 |
+|------|--------|------|----------|
+| 擊殺任何生物 → 客戶端 `StringIndexOutOfBoundsException` 斷線 | 🔴 嚴重 | `gd656killicon` mod 發送封包時字串長度異常（可能與 `suffuse:knife` GUN_INDEX 無資料檔有關） | 確認客戶端/伺服器 `gd656killicon` 版本一致；測試移除後是否正常 |
+| `suffuse:knife` GUN_INDEX 解析失敗 | 🟡 中 | Suffuse 槍包有 index 但無對應資料檔 | 確認是否為自行加入的條目；若是，移除或補資料檔 |
+| Aug-22 `FireMode.auto` crash（開背包 tooltip） | 🟡 中 | 舊槍 NBT 殘留小寫 `"auto"`；新版 give 指令已修正為大寫 `AUTO` | 清除玩家背包的舊 TACZ 槍械後自動解決 |
+
+> ⚠️ **斷線問題尚未解決**，需在開始三模組開發前確認修復，否則 BR 特殊道具的投擲物功能無法正常測試。
+
+### 各模組可行性
+
+#### 〇、空投機制修改 — 可行度 ✅ 高
+
+- `random value` 指令（1.20.1 原生支援）可取代 `spreadplayers` 偽隨機，更精確：
+  ```mcfunction
+  execute store result score #lottery br_sys run random value 1..10
+  execute if score #lottery br_sys matches 1..4 run function br/airdrop/set_delay1
+  ```
+- 延遲倒數機制設計合理，整合至現有 `main_tick` 無難度
+- 需確認現有 Phase 觸發空投的邏輯如何與新機制並存（擇一或並行）
+
+#### 模組 A：限定武器 — 可行度 ✅ 高（工作量大）
+
+- Loot table 分層引用架構正確，MC 1.20.1 支援 `"type": "minecraft:loot_table"` pool entry
+- 需確認現有 BR 箱子是否已使用 loot table；若是自定義 give 指令則需整體改寫
+- 約 67 個 JSON 檔，量大但結構重複，適合腳本批量生成
+- `start.mcfunction` 根據開關組合切換 loot table 的邏輯清晰可行
+
+#### 模組 B：特殊事件 — 可行度 ✅ 高（部分細節待確認）
+
+- 30 秒計時器 + 隨機觸發邏輯直觀
+- 全場發光、速度異常：簡單，直接用 effect 指令
+- **空投炸彈落地偵測**：建議改用 marker + `execute positioned` 追蹤，而非「最後位置記錄法」（後者有 1-tick 誤差風險）
+
+#### 模組 C：特殊道具 — 可行度 🟡 中（部分技術難點）
+
+| 道具 | 可行度 | 備註 |
+|------|--------|------|
+| 瞬移彈（終界珍珠） | ⚠️ 待確認 | Adventure 模式能否投擲終界珍珠需實測；若不行須改用其他物品 |
+| 偵測器（中繼器） | ✅ | 地面物品實體偵測可行 |
+| 誘餌信號彈（雪球） | ✅ | Adventure 可投雪球；落地廣播假訊息可行 |
+| 隱形斗篷（鞘翅） | ✅ | Slot 102 偵測可行 |
+| 護盾（盾牌） | ⚠️ 困難 | datapack 無法乾淨偵測「盾牌右鍵格擋開始」事件；建議改為右鍵計時（`use_item` advancement）或觸發型 scoreboard |
+| 急速補包（投擲藥水） | ✅ | 藥水落地範圍回血邏輯標準 |
+| 失重彈（雞蛋） | ✅ | Adventure 可投雞蛋；Levitation 效果直接 |
+| 磁力三叉戟（三叉戟） | ⚠️ 待確認 | Adventure 模式三叉戟投擲限制需實測；落地 TP 邏輯本身可行 |
+
+**投擲物落地偵測通用問題**：計劃中的「最後位置追蹤法」在高延遲或高負載下可能漏偵。建議改用 **advancement 觸發**（`projectile_landed_on_block`）或在投擲物上加 tag 後用 `execute unless entity` 配合 marker 記錄。
+
+### 建議開發順序
+
+1. **先解決 `gd656killicon` 斷線問題**（前置阻塞）
+2. 空投機制改寫（獨立、低風險、高收益）
+3. 模組 A 限定武器（量大但邏輯直線，可批量生成）
+4. 模組 B 特殊事件（快速實作，效果明顯）
+5. 模組 C 特殊道具（最複雜，放最後）
+
+---
+
 ## 背景
 BR（大逃殺）模式在原有核心機制（縮圈、空投、倒地/救援、祭壇復活）不變的前提下，
 新增三個可獨立開關的模組，玩家開局前自由搭配。
