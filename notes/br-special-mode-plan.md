@@ -10,15 +10,15 @@
 - 近期 commit：移除弱勢槍械、修正 minigun NBT（`757ecef`）、修正 TDM 死亡補貼誤觸 GK（`ec7faad`）
 - BR 核心機制（縮圈、空投、倒地/救援、祭壇復活）維持原狀，尚未啟動三模組開發
 
-### 已知未解問題（需優先處理）
+### 已知問題狀態
 
-| 問題 | 嚴重度 | 根因 | 解決方向 |
-|------|--------|------|----------|
-| 擊殺任何生物 → 客戶端 `StringIndexOutOfBoundsException` 斷線 | 🔴 嚴重 | `gd656killicon` mod 發送封包時字串長度異常（可能與 `suffuse:knife` GUN_INDEX 無資料檔有關） | 確認客戶端/伺服器 `gd656killicon` 版本一致；測試移除後是否正常 |
-| `suffuse:knife` GUN_INDEX 解析失敗 | 🟡 中 | Suffuse 槍包有 index 但無對應資料檔 | 確認是否為自行加入的條目；若是，移除或補資料檔 |
-| Aug-22 `FireMode.auto` crash（開背包 tooltip） | 🟡 中 | 舊槍 NBT 殘留小寫 `"auto"`；新版 give 指令已修正為大寫 `AUTO` | 清除玩家背包的舊 TACZ 槍械後自動解決 |
-
-> ⚠️ **斷線問題尚未解決**，需在開始三模組開發前確認修復，否則 BR 特殊道具的投擲物功能無法正常測試。
+| 問題 | 狀態 |
+|------|------|
+| 擊殺任何生物 → 客戶端 `StringIndexOutOfBoundsException` 斷線 | ✅ 已解決 |
+| `suffuse:knife` GUN_INDEX 解析失敗 | ✅ 已解決 |
+| Aug-22 `FireMode.auto` crash（開背包 tooltip） | ✅ 已解決（清除舊 NBT） |
+| Adventure 模式投擲物限制 | ✅ 確認：所有物品皆可投擲 |
+| BR 箱子生成方式 | ✅ 確認：完全使用 loot table，已是分層架構 |
 
 ### 各模組可行性
 
@@ -49,14 +49,14 @@
 
 | 道具 | 可行度 | 備註 |
 |------|--------|------|
-| 瞬移彈（終界珍珠） | ⚠️ 待確認 | Adventure 模式能否投擲終界珍珠需實測；若不行須改用其他物品 |
+| 瞬移彈（終界珍珠） | ✅ | Adventure 模式可投擲，確認可行 |
 | 偵測器（中繼器） | ✅ | 地面物品實體偵測可行 |
 | 誘餌信號彈（雪球） | ✅ | Adventure 可投雪球；落地廣播假訊息可行 |
 | 隱形斗篷（鞘翅） | ✅ | Slot 102 偵測可行 |
 | 護盾（盾牌） | ⚠️ 困難 | datapack 無法乾淨偵測「盾牌右鍵格擋開始」事件；建議改為右鍵計時（`use_item` advancement）或觸發型 scoreboard |
 | 急速補包（投擲藥水） | ✅ | 藥水落地範圍回血邏輯標準 |
 | 失重彈（雞蛋） | ✅ | Adventure 可投雞蛋；Levitation 效果直接 |
-| 磁力三叉戟（三叉戟） | ⚠️ 待確認 | Adventure 模式三叉戟投擲限制需實測；落地 TP 邏輯本身可行 |
+| 磁力三叉戟（三叉戟） | ✅ | Adventure 模式可投擲，確認可行 |
 
 **投擲物落地偵測通用問題**：計劃中的「最後位置追蹤法」在高延遲或高負載下可能漏偵。建議改用 **advancement 觸發**（`projectile_landed_on_block`）或在投擲物上加 tag 後用 `execute unless entity` 配合 marker 記錄。
 
@@ -190,96 +190,101 @@ scoreboard players set #br_airdrop_delay br_sys 0
 
 ### 實作方案：分層 Loot Table（共用 Pool）
 
-棄用 post-filter，改為開局時切換箱子 loot table。
-採用**分層引用**架構，武器清單只寫一次，避免重複維護。
+**已確認**：現有 BR 箱子完全使用 loot table，且已是分層架構：
+- `chests/*.json` 引用 `pools/*.json`，透過 `"type": "minecraft:loot_table"` 組合
+- 箱子由 `loot_spawn.mcfunction` 用 `setblock` + `LootTable:` NBT 生成
 
-#### 第一層：武器 Pool（9 個）
-
-每個 cat 一份，只定義該類別的所有槍枝及其 weight：
-
+現有 pool 結構：
 ```
-data/br/loot_tables/pools/weapons_cat1.json   ← 手槍清單
-data/br/loot_tables/pools/weapons_cat2.json   ← 步槍清單
-...
-data/br/loot_tables/pools/weapons_cat9.json   ← 近戰清單
-data/br/loot_tables/pools/special_items.json  ← 特殊道具清單（1 個）
+pools/general.json     ← 手槍為主（已含各 cat 武器混合）
+pools/high.json        ← 高階武器為主
+pools/airdrop_mapN.json← 各地圖空投專屬（5 個）
+pools/medical.json     ← 醫療物資
+pools/attach.json      ← 配件
 ```
 
-#### 第二層：箱型 Wrapper（引用第一層）
-
-三種箱型（general / high / airdrop）各自的 wrapper，用 `"type": "minecraft:loot_table"` 引用武器 pool，自行定義該箱型的配件與消耗品比例：
-
+現有 chest 結構（已是分層）：
 ```
-data/br/loot_tables/chests/general_cat1.json  ← 引用 pools/weapons_cat1 + 普通配件
-data/br/loot_tables/chests/high_cat1.json     ← 引用 pools/weapons_cat1 + 高階配件
-data/br/loot_tables/chests/airdrop_cat1.json  ← 引用 pools/weapons_cat1 + 空投配件
-...（cat2~cat9 同結構）
+chests/general.json    → 引用 pools/general(75%) + medical(7.5%) + attach(7.5%) + high(10%)
+chests/high.json       → 引用 pools/high(75%) + general(15%) + medical(5%) + attach(5%)
+chests/airdrop_mapN.json→ 引用 pools/airdrop_mapN(99%) + 其他極低權重
 ```
 
-範例（`high_cat1.json`）：
+#### 需新增的 Pool 檔案（10 個）
+
+將現有 `pools/general.json` 和 `pools/high.json` 中的武器依 cat 拆分：
+
+```
+data/br/loot_tables/pools/weapons_cat1.json   ← 手槍（從 general/high 拆出）
+data/br/loot_tables/pools/weapons_cat2.json   ← 步槍
+data/br/loot_tables/pools/weapons_cat3.json   ← 散彈槍
+data/br/loot_tables/pools/weapons_cat4.json   ← 衝鋒槍
+data/br/loot_tables/pools/weapons_cat5.json   ← 輕機槍
+data/br/loot_tables/pools/weapons_cat6.json   ← 狙擊槍
+data/br/loot_tables/pools/weapons_cat7.json   ← 榴彈/特殊
+data/br/loot_tables/pools/weapons_cat8.json   ← 其他
+data/br/loot_tables/pools/weapons_cat9.json   ← 近戰
+data/br/loot_tables/pools/special_items.json  ← 特殊道具
+```
+
+#### 需新增的 Chest Wrapper（27 個 + 27 個特殊版 + 3 個純特殊）
+
+每個 catN wrapper 引用 `pools/weapons_catN` 取代原本的武器 pool，配件/醫療比例維持不變：
+
+`chests/general_cat1.json` 範例：
 ```json
 {
-  "pools": [
-    {
-      "rolls": 1,
-      "entries": [
-        {"type": "minecraft:loot_table", "name": "br:pools/weapons_cat1"}
-      ]
-    },
-    {
-      "rolls": {"min": 2, "max": 4},
-      "entries": [ ...高級箱配件、彈藥... ]
-    }
-  ]
+  "type": "minecraft:chest",
+  "pools": [{
+    "rolls": {"min": 6, "max": 14},
+    "entries": [
+      {"type": "minecraft:loot_table", "name": "br:pools/weapons_cat1", "weight": 7500},
+      {"type": "minecraft:loot_table", "name": "br:pools/medical",      "weight": 750},
+      {"type": "minecraft:loot_table", "name": "br:pools/attach",       "weight": 750}
+    ]
+  }]
 }
 ```
 
-特殊道具版（`high_cat1_special.json`）只需多加一個 pool：
+特殊道具版（`chests/general_cat1_special.json`）末尾多一個 pool：
 ```json
-{
-  "pools": [
-    {"entries": [{"type": "minecraft:loot_table", "name": "br:pools/weapons_cat1"}]},
-    {"entries": [ ...高階配件... ]},
-    {"rolls": {"min": 0, "max": 1}, "entries": [{"type": "minecraft:loot_table", "name": "br:pools/special_items"}]}
-  ]
-}
+{"rolls": {"min": 0, "max": 1}, "entries": [
+  {"type": "minecraft:loot_table", "name": "br:pools/special_items", "weight": 1}
+]}
 ```
 
-#### 檔案數量總計（約 64 個）
+#### 檔案數量總計（約 67 個）
 
 | 類型 | 數量 |
 |------|------|
-| 武器 pool（cat1~9） | 9 |
-| 特殊道具 pool | 1 |
+| 武器 pool（cat1~9）＋特殊道具 pool | 10 |
 | 箱型 wrapper（3 箱型 × 9 cat） | 27 |
 | 特殊道具版 wrapper（3 × 9） | 27 |
-| 純特殊道具箱（3 箱型，限定武器關時用） | 3 |
+| 純特殊道具箱（general / high / airdrop） | 3 |
 | **合計** | **67** |
 
-修改某 cat 武器清單只需改 1 個 pool 檔案，三種箱型自動更新。
+#### 開局切換邏輯（`loot_spawn.mcfunction` 修改）
 
-#### 開局切換邏輯（`start.mcfunction`）
+在現有 `setblock` 指令前加入條件判斷，根據開關組合選擇對應 chest 表：
 
 ```mcfunction
-# 限定武器=關，特殊道具=關 → 原始 loot table（不做任何更改）
+# 限定武器=關，特殊道具=關 → 原有邏輯不動
 
-# 限定武器=關，特殊道具=開
-execute if score #br_limit_weapon dummy matches 0 \
-  if score #br_special_item dummy matches 1 \
-  run function br/loot/apply_special_only
+# 限定武器=關，特殊道具=開 → 純特殊道具版
+execute if score #br_limit_weapon dummy matches 0 if score #br_special_item dummy matches 1 \
+  as @e[tag=active_loot,tag=crate_general,...] at @s \
+  run setblock ~ ~ ~ minecraft:barrel[...]{LootTable:"br:chests/general_special"} replace
 
-# 限定武器=1~9，特殊道具=關
-execute if score #br_limit_weapon dummy matches 1..9 \
-  if score #br_special_item dummy matches 0 \
+# 限定武器=1~9，特殊道具=關 → 對應 catN wrapper
+execute if score #br_limit_weapon dummy matches 1..9 if score #br_special_item dummy matches 0 \
   run function br/loot/apply_limit_weapon
 
-# 限定武器=1~9，特殊道具=開
-execute if score #br_limit_weapon dummy matches 1..9 \
-  if score #br_special_item dummy matches 1 \
+# 限定武器=1~9，特殊道具=開 → 對應 catN_special wrapper
+execute if score #br_limit_weapon dummy matches 1..9 if score #br_special_item dummy matches 1 \
   run function br/loot/apply_limit_weapon_special
 ```
 
-`br/loot/apply_limit_weapon.mcfunction` 用 `execute if score #br_limit_weapon dummy matches N` 為三種箱型各自套用對應的 `catN` wrapper。
+`br/loot/apply_limit_weapon.mcfunction` 用 `execute if score #br_limit_weapon dummy matches N` 逐一判斷，為各箱型套用 `catN` chest 表。
 
 **設定書 UI**：9 個類別循環切換按鈕（選一），`0=關` 作為初始值。
 
