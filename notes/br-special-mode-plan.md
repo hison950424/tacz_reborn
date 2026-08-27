@@ -118,36 +118,98 @@ scoreboard players set #br_airdrop_delay br_sys 0
 管理員選定**一種武器類別（cat1~cat9）**作為本局唯一允許的槍械來源。
 `#br_limit_weapon = 0` 表示關閉（使用原始 loot table）；`= N` 表示只允許 catN。
 
-### 實作方案：專屬 Loot Table
+### 實作方案：分層 Loot Table（共用 Pool）
 
-棄用 post-filter，改為在開局時根據設定切換箱子 loot table。
-需建立以下 loot table 文件（共 19 個）：
+棄用 post-filter，改為開局時切換箱子 loot table。
+採用**分層引用**架構，武器清單只寫一次，避免重複維護。
 
-| 條件 | Loot Table | 數量 |
-|------|-----------|------|
-| 僅限定武器（特殊道具關） | `br/chests/limit_cat1.json` ~ `limit_cat9.json` | 9 個 |
-| 限定武器＋特殊道具（兩者皆開） | `br/chests/limit_cat1_special.json` ~ `limit_cat9_special.json` | 9 個 |
-| 僅特殊道具（限定武器關） | `br/chests/special_only.json` | 1 個 |
+#### 第一層：武器 Pool（9 個）
 
-每個 `limit_catN.json` 只包含該 cat 的槍枝 pool；`special_only.json` 只含特殊道具 pool。
+每個 cat 一份，只定義該類別的所有槍枝及其 weight：
 
-### 開局切換邏輯（`start.mcfunction`）
+```
+data/br/loot_tables/pools/weapons_cat1.json   ← 手槍清單
+data/br/loot_tables/pools/weapons_cat2.json   ← 步槍清單
+...
+data/br/loot_tables/pools/weapons_cat9.json   ← 近戰清單
+data/br/loot_tables/pools/special_items.json  ← 特殊道具清單（1 個）
+```
+
+#### 第二層：箱型 Wrapper（引用第一層）
+
+三種箱型（general / high / airdrop）各自的 wrapper，用 `"type": "minecraft:loot_table"` 引用武器 pool，自行定義該箱型的配件與消耗品比例：
+
+```
+data/br/loot_tables/chests/general_cat1.json  ← 引用 pools/weapons_cat1 + 普通配件
+data/br/loot_tables/chests/high_cat1.json     ← 引用 pools/weapons_cat1 + 高階配件
+data/br/loot_tables/chests/airdrop_cat1.json  ← 引用 pools/weapons_cat1 + 空投配件
+...（cat2~cat9 同結構）
+```
+
+範例（`high_cat1.json`）：
+```json
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {"type": "minecraft:loot_table", "name": "br:pools/weapons_cat1"}
+      ]
+    },
+    {
+      "rolls": {"min": 2, "max": 4},
+      "entries": [ ...高級箱配件、彈藥... ]
+    }
+  ]
+}
+```
+
+特殊道具版（`high_cat1_special.json`）只需多加一個 pool：
+```json
+{
+  "pools": [
+    {"entries": [{"type": "minecraft:loot_table", "name": "br:pools/weapons_cat1"}]},
+    {"entries": [ ...高階配件... ]},
+    {"rolls": {"min": 0, "max": 1}, "entries": [{"type": "minecraft:loot_table", "name": "br:pools/special_items"}]}
+  ]
+}
+```
+
+#### 檔案數量總計（約 64 個）
+
+| 類型 | 數量 |
+|------|------|
+| 武器 pool（cat1~9） | 9 |
+| 特殊道具 pool | 1 |
+| 箱型 wrapper（3 箱型 × 9 cat） | 27 |
+| 特殊道具版 wrapper（3 × 9） | 27 |
+| 純特殊道具箱（3 箱型，限定武器關時用） | 3 |
+| **合計** | **67** |
+
+修改某 cat 武器清單只需改 1 個 pool 檔案，三種箱型自動更新。
+
+#### 開局切換邏輯（`start.mcfunction`）
 
 ```mcfunction
 # 限定武器=關，特殊道具=關 → 原始 loot table（不做任何更改）
 
 # 限定武器=關，特殊道具=開
-execute if score #br_limit_weapon dummy matches 0 if score #br_special_item dummy matches 1 run ...
-# → 使用 special_only.json（補充至現有箱子 pool 或替換特定箱型）
+execute if score #br_limit_weapon dummy matches 0 \
+  if score #br_special_item dummy matches 1 \
+  run function br/loot/apply_special_only
 
 # 限定武器=1~9，特殊道具=關
-execute if score #br_limit_weapon dummy matches 1..9 if score #br_special_item dummy matches 0 run function br/loot/apply_limit_weapon
+execute if score #br_limit_weapon dummy matches 1..9 \
+  if score #br_special_item dummy matches 0 \
+  run function br/loot/apply_limit_weapon
 
 # 限定武器=1~9，特殊道具=開
-execute if score #br_limit_weapon dummy matches 1..9 if score #br_special_item dummy matches 1 run function br/loot/apply_limit_weapon_special
+execute if score #br_limit_weapon dummy matches 1..9 \
+  if score #br_special_item dummy matches 1 \
+  run function br/loot/apply_limit_weapon_special
 ```
 
-`br/loot/apply_limit_weapon.mcfunction` 用 `execute if score ... matches N` 選擇對應的 `limit_catN.json`。
+`br/loot/apply_limit_weapon.mcfunction` 用 `execute if score #br_limit_weapon dummy matches N` 為三種箱型各自套用對應的 `catN` wrapper。
 
 **設定書 UI**：9 個類別循環切換按鈕（選一），`0=關` 作為初始值。
 
