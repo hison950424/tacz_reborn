@@ -482,6 +482,10 @@ scoreboard objectives add revive_pct dummy "救援進度(%)"
 
 # 設定常數 2，用於把 200 Ticks 換算成 100%
 scoreboard players set #2 br_sys 2
+# 空投抽獎百分比計算常數
+scoreboard players set #br_c3 br_sys 3
+scoreboard players set #br_c6 br_sys 6
+scoreboard players set #br_c10 br_sys 10
 scoreboard objectives add team_id dummy "隊伍數字ID"
 scoreboard objectives add br_health health "玩家即時血量"
 scoreboard objectives add br_slime_hp dummy "史萊姆血量暫存"

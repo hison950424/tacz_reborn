@@ -13,19 +13,13 @@ kill @e[type=minecraft:villager,tag=airdrop_bird]
 #         持續維護的正確圓心 Marker，位置可靠。
 summon minecraft:marker 0 64 0 {Tags:["br_calc","airdrop_calc"]}
 
-# Phase 2：在縮圈圓心（br_center）周圍隨機散布
-execute at @e[type=minecraft:marker,tag=br_center,limit=1] if score #global br_map matches 1 if score #br_phase dummy matches 2 run spreadplayers ~ ~ 0 138 false @e[type=minecraft:marker,tag=airdrop_calc]
-execute at @e[type=minecraft:marker,tag=br_center,limit=1] if score #global br_map matches 2 if score #br_phase dummy matches 2 run spreadplayers ~ ~ 0 105 false @e[type=minecraft:marker,tag=airdrop_calc]
-execute at @e[type=minecraft:marker,tag=br_center,limit=1] if score #global br_map matches 3 if score #br_phase dummy matches 2 run spreadplayers ~ ~ 0 156 false @e[type=minecraft:marker,tag=airdrop_calc]
-execute at @e[type=minecraft:marker,tag=br_center,limit=1] if score #global br_map matches 4 if score #br_phase dummy matches 2 run spreadplayers ~ ~ 0 105 false @e[type=minecraft:marker,tag=airdrop_calc]
-execute at @e[type=minecraft:marker,tag=br_center,limit=1] if score #global br_map matches 5 if score #br_phase dummy matches 2 run spreadplayers ~ ~ 0 105 false @e[type=minecraft:marker,tag=airdrop_calc]
-
-# Phase 4：第二靜止期（縮圈更小）
-execute at @e[type=minecraft:marker,tag=br_center,limit=1] if score #global br_map matches 1 if score #br_phase dummy matches 4 run spreadplayers ~ ~ 0 72 false @e[type=minecraft:marker,tag=airdrop_calc]
-execute at @e[type=minecraft:marker,tag=br_center,limit=1] if score #global br_map matches 2 if score #br_phase dummy matches 4 run spreadplayers ~ ~ 0 54 false @e[type=minecraft:marker,tag=airdrop_calc]
-execute at @e[type=minecraft:marker,tag=br_center,limit=1] if score #global br_map matches 3 if score #br_phase dummy matches 4 run spreadplayers ~ ~ 0 81 false @e[type=minecraft:marker,tag=airdrop_calc]
-execute at @e[type=minecraft:marker,tag=br_center,limit=1] if score #global br_map matches 4 if score #br_phase dummy matches 4 run spreadplayers ~ ~ 0 54 false @e[type=minecraft:marker,tag=airdrop_calc]
-execute at @e[type=minecraft:marker,tag=br_center,limit=1] if score #global br_map matches 5 if score #br_phase dummy matches 4 run spreadplayers ~ ~ 0 54 false @e[type=minecraft:marker,tag=airdrop_calc]
+# 以縮圈圓心（br_center）為基準，依地圖大小散布
+# 使用各地圖最大安全半徑（原 Phase 2 數值），無論觸發時的縮圈階段皆適用
+execute at @e[type=minecraft:marker,tag=br_center,limit=1] if score #global br_map matches 1 run spreadplayers ~ ~ 0 138 false @e[type=minecraft:marker,tag=airdrop_calc]
+execute at @e[type=minecraft:marker,tag=br_center,limit=1] if score #global br_map matches 2 run spreadplayers ~ ~ 0 105 false @e[type=minecraft:marker,tag=airdrop_calc]
+execute at @e[type=minecraft:marker,tag=br_center,limit=1] if score #global br_map matches 3 run spreadplayers ~ ~ 0 156 false @e[type=minecraft:marker,tag=airdrop_calc]
+execute at @e[type=minecraft:marker,tag=br_center,limit=1] if score #global br_map matches 4 run spreadplayers ~ ~ 0 105 false @e[type=minecraft:marker,tag=airdrop_calc]
+execute at @e[type=minecraft:marker,tag=br_center,limit=1] if score #global br_map matches 5 run spreadplayers ~ ~ 0 105 false @e[type=minecraft:marker,tag=airdrop_calc]
 
 execute as @e[type=minecraft:marker,tag=airdrop_calc,limit=1] store result score #air_x dummy run data get entity @s Pos[0] 1
 execute as @e[type=minecraft:marker,tag=airdrop_calc,limit=1] store result score #air_z dummy run data get entity @s Pos[2] 1

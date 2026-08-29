@@ -29,9 +29,7 @@ summon minecraft:marker 0 64 0 {Tags:["br_next"]}
 execute store result entity @e[type=minecraft:marker,tag=br_next,limit=1] Pos[0] double 1.0 run scoreboard players get #br_p4cx dummy
 execute store result entity @e[type=minecraft:marker,tag=br_next,limit=1] Pos[2] double 1.0 run scoreboard players get #br_p4cz dummy
 
-# 空頭投放（快速模式跳過：時機與圈大小不適合，且快速模式設計上不含空頭）
-execute store result score airdrop dummy run random value 1..100
-execute if score #global br_fast_mode matches 0 if score airdrop dummy matches 1..50 run function game_core:gamemode/br/airdrop/spawn
+# 空頭投放改由存活人數門檻觸發（check_lottery.mcfunction），此處不再直接觸發
 
 # ── 公告 ──
 execute if score #global br_map matches 2 run tellraw @a ["",{"text":"[縮圈] ","color":"aqua"},{"text":"第一次縮圈完畢，2 分鐘後第二次縮圈。","color":"white"}]

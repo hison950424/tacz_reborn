@@ -116,5 +116,21 @@ execute if score #global br_map matches 5 run spawnpoint @a 65 245 -5177
 # 三模組計時器重置（開關值由管理員設定書控制，此處不清除）
 scoreboard players set #br_event_timer dummy 0
 
+# ========== 空投抽獎系統初始化 ==========
+# 記錄開局存活人數，用於計算 60% / 30% 門檻
+execute store result score #br_player_start br_sys if entity @a
+# 計算並儲存兩個門檻值（開局固定，局中不變）
+scoreboard players operation #br_threshold_60 br_sys = #br_player_start br_sys
+scoreboard players operation #br_threshold_60 br_sys *= #br_c6 br_sys
+scoreboard players operation #br_threshold_60 br_sys /= #br_c10 br_sys
+scoreboard players operation #br_threshold_30 br_sys = #br_player_start br_sys
+scoreboard players operation #br_threshold_30 br_sys *= #br_c3 br_sys
+scoreboard players operation #br_threshold_30 br_sys /= #br_c10 br_sys
+# 重置旗標與延遲倒數
+scoreboard players set #br_airdrop_flag1 br_sys 0
+scoreboard players set #br_airdrop_flag2 br_sys 0
+scoreboard players set #br_airdrop_delay1 br_sys 0
+scoreboard players set #br_airdrop_delay2 br_sys 0
+
 # === [7] 廣播開局訊息 ===
 tellraw @a {"text":"[大逃殺] 準備就緒！空投機將在 10 秒後起飛！","color":"gold","bold":true}
