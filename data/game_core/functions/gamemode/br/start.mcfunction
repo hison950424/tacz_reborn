@@ -113,5 +113,8 @@ execute if score #global br_map matches 3 run spawnpoint @a 5 1 5037
 execute if score #global br_map matches 4 run spawnpoint @a 5001 112 5
 execute if score #global br_map matches 5 run spawnpoint @a 65 245 -5177
 
+# 三模組計時器重置（開關值由管理員設定書控制，此處不清除）
+scoreboard players set #br_event_timer dummy 0
+
 # === [7] 廣播開局訊息 ===
 tellraw @a {"text":"[大逃殺] 準備就緒！空投機將在 10 秒後起飛！","color":"gold","bold":true}

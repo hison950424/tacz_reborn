@@ -553,6 +553,12 @@ scoreboard objectives add evt_leaderboard dummy "比賽積分排行榜暫存"
 function game_core:lobby/rp_leaderboard_update
 function game_core:lobby/event_leaderboard_update
 
+# ========== BR 三模組開關 ==========
+scoreboard players set #br_special_event dummy 0
+scoreboard players set #br_special_item dummy 0
+scoreboard players set #br_limit_weapon dummy 0
+scoreboard players set #br_event_timer dummy 0
+
 #=============================================
 #=========         縮圈系統         ===========
 #=============================================
