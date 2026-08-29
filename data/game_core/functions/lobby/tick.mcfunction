@@ -351,6 +351,18 @@ execute as @a[scores={br_fast_mode_pick=1..}] at @s run playsound ui.button.clic
 scoreboard players set @a[scores={br_fast_mode_pick=1..}] br_fast_mode_pick 0
 
 # ------------------------------------------
+# 路由 BR-EVENT: 特殊事件開關 (br_event_pick trigger)
+# set 1 = 開啟，set 2 = 關閉
+# ------------------------------------------
+scoreboard players enable @a br_event_pick
+execute as @a[scores={br_event_pick=1}] run scoreboard players set #br_special_event dummy 1
+execute as @a[scores={br_event_pick=1}] run tellraw @s {"text":"[系統] 🎲 特殊事件：已開啟","color":"green","bold":true}
+execute as @a[scores={br_event_pick=2}] run scoreboard players set #br_special_event dummy 0
+execute as @a[scores={br_event_pick=2}] run tellraw @s {"text":"[系統] 🎲 特殊事件：已關閉","color":"gray"}
+execute as @a[scores={br_event_pick=1..}] at @s run playsound ui.button.click master @s ~ ~ ~ 1 1
+scoreboard players set @a[scores={br_event_pick=1..}] br_event_pick 0
+
+# ------------------------------------------
 # 路由 BR-INFO: 查看目前 BR 遊戲配置 (select_mode = 13)
 # ------------------------------------------
 execute as @a[scores={select_mode=13}] run tellraw @s ["",{"text":"━━━ BR 目前配置 ━━━","color":"gold","bold":true}]
@@ -367,6 +379,8 @@ execute as @a[scores={select_mode=13}] if score #global br_weather matches 2 run
 execute as @a[scores={select_mode=13}] if score #global br_weather matches 3 run tellraw @s {"text":"  ⛈ 天氣：雷雨","color":"dark_aqua"}
 execute as @a[scores={select_mode=13}] if score #global br_fast_mode matches 1 run tellraw @s {"text":"  ⚡ 快速模式：開啟","color":"red","bold":true}
 execute as @a[scores={select_mode=13}] if score #global br_fast_mode matches 0 run tellraw @s {"text":"  ⚡ 快速模式：關閉","color":"gray"}
+execute as @a[scores={select_mode=13}] if score #br_special_event dummy matches 1 run tellraw @s {"text":"  🎲 特殊事件：開啟","color":"green","bold":true}
+execute as @a[scores={select_mode=13}] if score #br_special_event dummy matches 0 run tellraw @s {"text":"  🎲 特殊事件：關閉","color":"gray"}
 
 # ------------------------------------------
 # 路由 E2: 管理員按下【開始大逃殺】(select_mode = 10)
