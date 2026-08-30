@@ -501,12 +501,14 @@ scoreboard objectives add br_time_pick trigger "BR 時間選擇觸發器"
 scoreboard objectives add br_weather_pick trigger "BR 天氣選擇觸發器"
 scoreboard objectives add br_fast_mode dummy "BR 快速模式 (0=一般 1=快速)"
 scoreboard objectives add br_fast_mode_pick trigger "BR 快速模式切換觸發器"
+scoreboard objectives add br_weapon_mode_pick trigger "BR 武器限定模式觸發器"
 scoreboard objectives add br_event_pick trigger "BR 特殊事件開關觸發器"
 scoreboard players set #global br_map 1
 scoreboard players set #global br_phase 0
 scoreboard players set #global br_time 1
 scoreboard players set #global br_weather 1
 scoreboard players set #global br_fast_mode 0
+scoreboard players set #br_weapon_mode br_sys 0
 scoreboard objectives add slime_alive dummy "史萊姆存活確認"
 scoreboard objectives add is_reviving dummy "是否正在被救援"
 scoreboard objectives add target_id dummy "正在救援的目標ID"

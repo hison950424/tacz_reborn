@@ -68,6 +68,8 @@ scoreboard players set #air_z dummy 0
 
 # 重置快速模式（下一局預設為一般模式）
 scoreboard players set #global br_fast_mode 0
+# 重置武器限定模式（下一局預設為無限定）
+scoreboard players set #br_weapon_mode br_sys 0
 
 scoreboard players set #global br_phase 0
 #強制將全伺服器玩家的生死狀態洗白為 1 (存活)

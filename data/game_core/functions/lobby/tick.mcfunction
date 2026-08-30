@@ -351,6 +351,29 @@ execute as @a[scores={br_fast_mode_pick=1..}] at @s run playsound ui.button.clic
 scoreboard players set @a[scores={br_fast_mode_pick=1..}] br_fast_mode_pick 0
 
 # ------------------------------------------
+# 路由 BR-WEAPON-MODE: 限定武器模式 (br_weapon_mode_pick trigger)
+# 0=無限定 1=手槍 2=衝鋒槍 3=散彈槍 4=步槍 5=機槍 6=狙擊
+# ------------------------------------------
+scoreboard players enable @a br_weapon_mode_pick
+# 按鈕值 1-7 對應模式 0-6（避免 set 0 與預設未觸發衝突）
+execute as @a[scores={br_weapon_mode_pick=1}] run scoreboard players set #br_weapon_mode br_sys 0
+execute as @a[scores={br_weapon_mode_pick=1}] run tellraw @s {"text":"[系統] 武器模式：無限定","color":"gray"}
+execute as @a[scores={br_weapon_mode_pick=2}] run scoreboard players set #br_weapon_mode br_sys 1
+execute as @a[scores={br_weapon_mode_pick=2}] run tellraw @s {"text":"[系統] 武器模式：手槍限定","color":"yellow"}
+execute as @a[scores={br_weapon_mode_pick=3}] run scoreboard players set #br_weapon_mode br_sys 2
+execute as @a[scores={br_weapon_mode_pick=3}] run tellraw @s {"text":"[系統] 武器模式：衝鋒槍限定","color":"green"}
+execute as @a[scores={br_weapon_mode_pick=4}] run scoreboard players set #br_weapon_mode br_sys 3
+execute as @a[scores={br_weapon_mode_pick=4}] run tellraw @s {"text":"[系統] 武器模式：散彈槍限定","color":"red"}
+execute as @a[scores={br_weapon_mode_pick=5}] run scoreboard players set #br_weapon_mode br_sys 4
+execute as @a[scores={br_weapon_mode_pick=5}] run tellraw @s {"text":"[系統] 武器模式：步槍限定","color":"aqua"}
+execute as @a[scores={br_weapon_mode_pick=6}] run scoreboard players set #br_weapon_mode br_sys 5
+execute as @a[scores={br_weapon_mode_pick=6}] run tellraw @s {"text":"[系統] 武器模式：機槍限定","color":"dark_red"}
+execute as @a[scores={br_weapon_mode_pick=7}] run scoreboard players set #br_weapon_mode br_sys 6
+execute as @a[scores={br_weapon_mode_pick=7}] run tellraw @s {"text":"[系統] 武器模式：狙擊限定","color":"dark_purple"}
+execute as @a[scores={br_weapon_mode_pick=1..}] at @s run playsound ui.button.click master @s ~ ~ ~ 1 1
+scoreboard players set @a[scores={br_weapon_mode_pick=1..}] br_weapon_mode_pick 0
+
+# ------------------------------------------
 # 路由 BR-EVENT: 特殊事件開關（開發暫停，事件數量不足＋缺冷卻機制）
 # ------------------------------------------
 # scoreboard players enable @a br_event_pick
