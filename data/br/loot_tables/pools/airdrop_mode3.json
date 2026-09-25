@@ -5,8 +5,7 @@
     "entries": [
     {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":55,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"tacz:spas_12\",GunFireMode:\"SEMI\"}"}]},
     {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":50,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"tacz:aa12\",GunFireMode:\"AUTO\"}"}]},
-    {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":45,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"suffuse:gen12\",GunFireMode:\"AUTO\"}"}]},
-    {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":35,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"tacz:m1014\",GunFireMode:\"SEMI\"}"}]},    {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":100,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"tacz:rpg7\",GunFireMode:\"SEMI\"}"}]},
+    {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":100,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"tacz:rpg7\",GunFireMode:\"SEMI\"}"}]},
     {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":100,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"tacz:m320\",GunFireMode:\"SEMI\"}"}]},
     {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":80,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"suffuse:m79\",GunFireMode:\"SEMI\"}"}]},
     {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":80,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"suffuse:m203\",GunFireMode:\"SEMI\"}"}]},
