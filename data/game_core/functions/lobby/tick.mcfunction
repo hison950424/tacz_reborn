@@ -401,6 +401,13 @@ execute as @a[scores={select_mode=13}] if score #global br_weather matches 2 run
 execute as @a[scores={select_mode=13}] if score #global br_weather matches 3 run tellraw @s {"text":"  ⛈ 天氣：雷雨","color":"dark_aqua"}
 execute as @a[scores={select_mode=13}] if score #global br_fast_mode matches 1 run tellraw @s {"text":"  ⚡ 快速模式：開啟","color":"red","bold":true}
 execute as @a[scores={select_mode=13}] if score #global br_fast_mode matches 0 run tellraw @s {"text":"  ⚡ 快速模式：關閉","color":"gray"}
+execute as @a[scores={select_mode=13}] if score #br_weapon_mode br_sys matches 0 run tellraw @s {"text":"  🔫 武器限定：無限定","color":"gray"}
+execute as @a[scores={select_mode=13}] if score #br_weapon_mode br_sys matches 1 run tellraw @s {"text":"  🔫 武器限定：手槍限定","color":"white"}
+execute as @a[scores={select_mode=13}] if score #br_weapon_mode br_sys matches 2 run tellraw @s {"text":"  🔫 武器限定：衝鋒槍限定","color":"green"}
+execute as @a[scores={select_mode=13}] if score #br_weapon_mode br_sys matches 3 run tellraw @s {"text":"  🔫 武器限定：散彈槍限定","color":"red"}
+execute as @a[scores={select_mode=13}] if score #br_weapon_mode br_sys matches 4 run tellraw @s {"text":"  🔫 武器限定：步槍限定","color":"aqua"}
+execute as @a[scores={select_mode=13}] if score #br_weapon_mode br_sys matches 5 run tellraw @s {"text":"  🔫 武器限定：機槍限定","color":"dark_red"}
+execute as @a[scores={select_mode=13}] if score #br_weapon_mode br_sys matches 6 run tellraw @s {"text":"  🔫 武器限定：狙擊限定","color":"dark_purple"}
 # execute as @a[scores={select_mode=13}] if score #br_special_event dummy matches 1 run tellraw @s {"text":"  🎲 特殊事件：開啟","color":"green","bold":true}
 # execute as @a[scores={select_mode=13}] if score #br_special_event dummy matches 0 run tellraw @s {"text":"  🎲 特殊事件：關閉","color":"gray"}
 
