@@ -62,7 +62,6 @@
     {"type":"minecraft:item","name":"lrtactical:throwable","weight":50,"functions":[{"function":"minecraft:set_nbt","tag":"{ThrowableId:\"lrtactical:m67\"}"}]},
     {"type":"minecraft:item","name":"lrtactical:throwable","weight":45,"functions":[{"function":"minecraft:set_nbt","tag":"{ThrowableId:\"suffuse:m24\"}"}]},
     {"type":"minecraft:item","name":"lrtactical:throwable","weight":45,"functions":[{"function":"minecraft:set_nbt","tag":"{ThrowableId:\"lrtactical:rgn\"}"}]},
-    {"type":"minecraft:item","name":"lrtactical:throwable","weight":35,"functions":[{"function":"minecraft:set_nbt","tag":"{ThrowableId:\"lrtactical:c4\"}"}]},
     {"type":"minecraft:item","name":"lrtactical:throwable","weight":15,"functions":[{"function":"minecraft:set_nbt","tag":"{ThrowableId:\"suffuse:m24_cluster\"}"}]},
     {"type":"minecraft:item","name":"lrtactical:consumable","weight":40,"functions":[{"function":"minecraft:set_nbt","tag":"{ConsumableId:\"lrtactical:carfak\"}"}]},
     {"type":"minecraft:item","name":"lrtactical:consumable","weight":30,"functions":[{"function":"minecraft:set_nbt","tag":"{ConsumableId:\"lrtactical:surv12\"}"}]},

@@ -43,7 +43,6 @@
         {"type":"minecraft:item","name":"lrtactical:throwable","weight":80,"functions":[{"function":"minecraft:set_nbt","tag":"{ThrowableId:\"lrtactical:m67\"}"}]},
         {"type":"minecraft:item","name":"lrtactical:throwable","weight":70,"functions":[{"function":"minecraft:set_nbt","tag":"{ThrowableId:\"suffuse:m24\"}"}]},
         {"type":"minecraft:item","name":"lrtactical:throwable","weight":60,"functions":[{"function":"minecraft:set_nbt","tag":"{ThrowableId:\"lrtactical:rgn\"}"}]},
-        {"type":"minecraft:item","name":"lrtactical:throwable","weight":25,"functions":[{"function":"minecraft:set_nbt","tag":"{ThrowableId:\"lrtactical:c4\"}"}]},
         {"type":"minecraft:item","name":"lrtactical:throwable","weight":10,"functions":[{"function":"minecraft:set_nbt","tag":"{ThrowableId:\"suffuse:m24_cluster\"}"}]},
         {"type":"minecraft:item","name":"lrtactical:flash_shield","weight":80},
         {"type":"minecraft:item","name":"minecraft:light_gray_shulker_box","weight":400,"functions":[{"function":"minecraft:set_nbt","tag":"{tag:{backpack_1:1b},display:{Name:'{\"text\":\"一級背包\",\"color\":\"#AAAAAA\",\"italic\":false}'}}"}]},
