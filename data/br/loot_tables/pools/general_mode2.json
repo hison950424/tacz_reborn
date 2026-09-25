@@ -1,9 +1,6 @@
 {
   "type": "minecraft:chest",
   "pools": [{"rolls": {"min": 1, "max": 1}, "entries": [
-    {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":340,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"suffuse:mpdr\",GunFireMode:\"AUTO\"}"}]},
-    {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":340,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"suffuse:kacpdw\",GunFireMode:\"AUTO\"}"}]},
-    {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":320,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"suffuse:aks74u\",GunFireMode:\"AUTO\"}"}]},
     {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":306,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"tacz:uzi\",GunFireMode:\"AUTO\"}"}]},
     {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":245,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"tacz:hk_mp5a5\",GunFireMode:\"AUTO\"}"}]},
     {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":245,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"suffuse:mas38\",GunFireMode:\"AUTO\"}"}]},

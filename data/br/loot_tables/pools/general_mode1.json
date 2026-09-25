@@ -19,7 +19,6 @@
         {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":280,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"tacz:taurus943\",GunFireMode:\"SEMI\"}"}]},
         {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":200,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"tacz:hk_mk23\",GunFireMode:\"SEMI\"}"}]},
         {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":180,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"suffuse:lifecard\",GunFireMode:\"SEMI\"}"}]},
-        {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":160,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"suffuse:m1895\",GunFireMode:\"SEMI\"}"}]},
         {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":120,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"suffuse:trapper50cal\",GunFireMode:\"SEMI\"}"}]},
         {"type":"minecraft:item","name":"lrtactical:melee","weight":183,"functions":[{"function":"minecraft:set_nbt","tag":"{MeleeWeaponId:\"lrtactical:dagger\"}"}]},
         {"type":"minecraft:item","name":"lrtactical:melee","weight":153,"functions":[{"function":"minecraft:set_nbt","tag":"{MeleeWeaponId:\"lrtactical:karambit\"}"}]},
