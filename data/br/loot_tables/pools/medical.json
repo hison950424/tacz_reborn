@@ -7,7 +7,7 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:consumable",
-          "weight": 700,
+          "weight": 650,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -18,7 +18,7 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:consumable",
-          "weight": 300,
+          "weight": 250,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -29,7 +29,7 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:consumable",
-          "weight": 120,
+          "weight": 110,
           "functions": [
             {
               "function": "minecraft:set_nbt",
@@ -45,6 +45,17 @@
             {
               "function": "minecraft:set_nbt",
               "tag": "{ConsumableId:\"lrtactical:cms\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "lrtactical:consumable",
+          "weight": 400,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{ConsumableId:\"lrtactical:ai2\"}"
             }
           ]
         },
