@@ -23,7 +23,6 @@
     {"type":"minecraft:item","name":"minecraft:netherite_leggings","weight":20},
     {"type":"minecraft:item","name":"minecraft:netherite_boots","weight":20},
     {"type":"minecraft:item","name":"tacz:attachment","weight":50,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"suffuse:scope_qlu11s\"}"}]},
-    {"type":"minecraft:item","name":"tacz:attachment","weight":50,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"suffuse:scope_pf98a\"}"}]},
     {"type":"minecraft:item","name":"tacz:attachment","weight":50,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:sight_uh1\"}"}]},
     {"type":"minecraft:item","name":"tacz:attachment","weight":45,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:sight_t2\"}"}]},
     {"type":"minecraft:item","name":"tacz:attachment","weight":45,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"suffuse:sight_dbala2\"}"}]},

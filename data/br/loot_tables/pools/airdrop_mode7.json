@@ -21,7 +21,6 @@
     {"type":"minecraft:item","name":"minecraft:diamond_boots","weight":80},
     {"type":"minecraft:loot_table","name":"br:custom/netherite_set","weight":240},
     {"type":"minecraft:item","name":"tacz:attachment","weight":60,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"suffuse:scope_qlu11s\"}"}]},
-    {"type":"minecraft:item","name":"tacz:attachment","weight":55,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"suffuse:scope_pf98a\"}"}]},
     {"type":"minecraft:item","name":"tacz:attachment","weight":55,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:sight_uh1\"}"}]},
     {"type":"minecraft:item","name":"tacz:attachment","weight":50,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:sight_t2\"}"}]},
     {"type":"minecraft:item","name":"minecraft:light_gray_shulker_box","weight":100,"functions":[{"function":"minecraft:set_nbt","tag":"{tag:{backpack_1:1b},display:{Name:'{\"text\":\"一級背包\",\"color\":\"#AAAAAA\",\"italic\":false}'}}"}]},
