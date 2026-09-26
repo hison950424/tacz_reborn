@@ -34,11 +34,25 @@ execute if score #br_weapon_mode br_sys matches 5 as @e[type=marker,tag=active_l
 execute if score #br_weapon_mode br_sys matches 6 as @e[type=marker,tag=active_loot,tag=crate_general,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ minecraft:barrel[facing=up]{LootTable:"br:chests/general_mode6"} replace
 execute if score #br_weapon_mode br_sys matches 7 as @e[type=marker,tag=active_loot,tag=crate_general,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ minecraft:barrel[facing=up]{LootTable:"br:chests/general_mode7"} replace
 
-# 醫療箱與視覺模型
-execute as @e[type=marker,tag=active_loot,tag=crate_medical,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ variantbarrels:cherry_barrel[facing=up]{LootTable:"br:chests/medical"} replace
+# 醫療箱與視覺模型（依武器限定模式選擇 loot table，避免交叉引用全類別槍池洩漏）
+execute if score #br_weapon_mode br_sys matches 0 as @e[type=marker,tag=active_loot,tag=crate_medical,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ variantbarrels:cherry_barrel[facing=up]{LootTable:"br:chests/medical"} replace
+execute if score #br_weapon_mode br_sys matches 1 as @e[type=marker,tag=active_loot,tag=crate_medical,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ variantbarrels:cherry_barrel[facing=up]{LootTable:"br:chests/medical_mode1"} replace
+execute if score #br_weapon_mode br_sys matches 2 as @e[type=marker,tag=active_loot,tag=crate_medical,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ variantbarrels:cherry_barrel[facing=up]{LootTable:"br:chests/medical_mode2"} replace
+execute if score #br_weapon_mode br_sys matches 3 as @e[type=marker,tag=active_loot,tag=crate_medical,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ variantbarrels:cherry_barrel[facing=up]{LootTable:"br:chests/medical_mode3"} replace
+execute if score #br_weapon_mode br_sys matches 4 as @e[type=marker,tag=active_loot,tag=crate_medical,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ variantbarrels:cherry_barrel[facing=up]{LootTable:"br:chests/medical_mode4"} replace
+execute if score #br_weapon_mode br_sys matches 5 as @e[type=marker,tag=active_loot,tag=crate_medical,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ variantbarrels:cherry_barrel[facing=up]{LootTable:"br:chests/medical_mode5"} replace
+execute if score #br_weapon_mode br_sys matches 6 as @e[type=marker,tag=active_loot,tag=crate_medical,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ variantbarrels:cherry_barrel[facing=up]{LootTable:"br:chests/medical_mode6"} replace
+execute if score #br_weapon_mode br_sys matches 7 as @e[type=marker,tag=active_loot,tag=crate_medical,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ variantbarrels:cherry_barrel[facing=up]{LootTable:"br:chests/medical_mode7"} replace
 
-# 配件箱與視覺模型
-execute as @e[type=marker,tag=active_loot,tag=crate_attach,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ variantbarrels:warped_barrel[facing=up]{LootTable:"br:chests/attach"} replace
+# 配件箱與視覺模型（依武器限定模式選擇 loot table）
+execute if score #br_weapon_mode br_sys matches 0 as @e[type=marker,tag=active_loot,tag=crate_attach,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ variantbarrels:warped_barrel[facing=up]{LootTable:"br:chests/attach"} replace
+execute if score #br_weapon_mode br_sys matches 1 as @e[type=marker,tag=active_loot,tag=crate_attach,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ variantbarrels:warped_barrel[facing=up]{LootTable:"br:chests/attach_mode1"} replace
+execute if score #br_weapon_mode br_sys matches 2 as @e[type=marker,tag=active_loot,tag=crate_attach,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ variantbarrels:warped_barrel[facing=up]{LootTable:"br:chests/attach_mode2"} replace
+execute if score #br_weapon_mode br_sys matches 3 as @e[type=marker,tag=active_loot,tag=crate_attach,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ variantbarrels:warped_barrel[facing=up]{LootTable:"br:chests/attach_mode3"} replace
+execute if score #br_weapon_mode br_sys matches 4 as @e[type=marker,tag=active_loot,tag=crate_attach,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ variantbarrels:warped_barrel[facing=up]{LootTable:"br:chests/attach_mode4"} replace
+execute if score #br_weapon_mode br_sys matches 5 as @e[type=marker,tag=active_loot,tag=crate_attach,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ variantbarrels:warped_barrel[facing=up]{LootTable:"br:chests/attach_mode5"} replace
+execute if score #br_weapon_mode br_sys matches 6 as @e[type=marker,tag=active_loot,tag=crate_attach,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ variantbarrels:warped_barrel[facing=up]{LootTable:"br:chests/attach_mode6"} replace
+execute if score #br_weapon_mode br_sys matches 7 as @e[type=marker,tag=active_loot,tag=crate_attach,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ variantbarrels:warped_barrel[facing=up]{LootTable:"br:chests/attach_mode7"} replace
 
 # 高階箱（依武器限定模式選擇 loot table）
 execute if score #br_weapon_mode br_sys matches 0 as @e[type=marker,tag=active_loot,tag=crate_high,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ variantbarrels:bamboo_barrel[facing=up]{LootTable:"br:chests/high"} replace
