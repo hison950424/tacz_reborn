@@ -315,13 +315,6 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:throwable",
-          "weight": 35,
-          "functions": [
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "lrtactical:throwable",
           "weight": 30,
           "functions": [
             {
