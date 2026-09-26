@@ -26,7 +26,7 @@
     {"type":"minecraft:item","name":"minecraft:netherite_leggings","weight":20},
     {"type":"minecraft:item","name":"minecraft:netherite_boots","weight":20},
     {"type":"minecraft:item","name":"tacz:attachment","weight":60,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:light_extended_mag_3\"}"}]},
-    {"type":"minecraft:item","name":"tacz:attachment","weight":55,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:sight_t1\"}"}]},
+    {"type":"minecraft:item","name":"tacz:attachment","weight":55,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:sight_t2\"}"}]},
     {"type":"minecraft:item","name":"tacz:attachment","weight":55,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:sight_uh1\"}"}]},
     {"type":"minecraft:item","name":"tacz:attachment","weight":50,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:scope_acog_ta31\"}"}]},
     {"type":"minecraft:item","name":"tacz:attachment","weight":50,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:muzzle_silencer_wraith\"}"}]},

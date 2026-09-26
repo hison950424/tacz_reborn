@@ -31,7 +31,7 @@
     {"type":"minecraft:item","name":"tacz:attachment","weight":50,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:scope_lpvo_1_6\"}"}]},
     {"type":"minecraft:item","name":"tacz:attachment","weight":50,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:sight_uh1\"}"}]},
     {"type":"minecraft:item","name":"tacz:attachment","weight":50,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"suffuse:mg338_silencer\"}"}]},
-    {"type":"minecraft:item","name":"tacz:attachment","weight":45,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"suffuse:cslr4_muzzle_brake\"}"}]},
+    {"type":"minecraft:item","name":"tacz:attachment","weight":45,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:muzzle_compensator_trident\"}"}]},
     {"type":"minecraft:item","name":"tacz:attachment","weight":45,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:ammo_mod_fmj\"}"}]},
     {"type":"minecraft:item","name":"tacz:attachment","weight":40,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:ammo_mod_i\"}"}]},
     {"type":"minecraft:item","name":"lrtactical:throwable","weight":30,"functions":[{"function":"minecraft:set_nbt","tag":"{ThrowableId:\"lrtactical:smoke_grenade\"}"}]},

@@ -34,7 +34,6 @@
     {"type":"minecraft:item","name":"tacz:attachment","weight":50,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:scope_standard_8x\"}"}]},
     {"type":"minecraft:item","name":"tacz:attachment","weight":50,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:scope_98k\"}"}]},
     {"type":"minecraft:item","name":"tacz:attachment","weight":45,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:scope_contender\"}"}]},
-    {"type":"minecraft:item","name":"tacz:attachment","weight":45,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"suffuse:scope_qlu11s\"}"}]},
     {"type":"minecraft:item","name":"tacz:attachment","weight":45,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:muzzle_silencer_vulture\"}"}]},
     {"type":"minecraft:item","name":"tacz:attachment","weight":45,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:ammo_mod_fmj\"}"}]},
     {"type":"minecraft:item","name":"lrtactical:throwable","weight":30,"functions":[{"function":"minecraft:set_nbt","tag":"{ThrowableId:\"lrtactical:smoke_grenade\"}"}]},
