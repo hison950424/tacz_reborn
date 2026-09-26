@@ -20,6 +20,7 @@ execute as @e[type=minecraft:marker,tag=crate_airdrop] at @s if score #br_weapon
 execute as @e[type=minecraft:marker,tag=crate_airdrop] at @s if score #br_weapon_mode br_sys matches 4 run setblock ~ ~ ~ variantbarrels:mangrove_barrel[facing=up]{LootTable:"br:chests/airdrop_mode4"}
 execute as @e[type=minecraft:marker,tag=crate_airdrop] at @s if score #br_weapon_mode br_sys matches 5 run setblock ~ ~ ~ variantbarrels:mangrove_barrel[facing=up]{LootTable:"br:chests/airdrop_mode5"}
 execute as @e[type=minecraft:marker,tag=crate_airdrop] at @s if score #br_weapon_mode br_sys matches 6 run setblock ~ ~ ~ variantbarrels:mangrove_barrel[facing=up]{LootTable:"br:chests/airdrop_mode6"}
+execute as @e[type=minecraft:marker,tag=crate_airdrop] at @s if score #br_weapon_mode br_sys matches 7 run setblock ~ ~ ~ variantbarrels:mangrove_barrel[facing=up]{LootTable:"br:chests/airdrop_mode7"}
 
 # 步驟 3：落地特效與音效
 execute as @e[type=minecraft:villager,tag=airdrop_bird,limit=1] at @s run particle minecraft:explosion_emitter ~ ~ ~ 0 0 0 0 1

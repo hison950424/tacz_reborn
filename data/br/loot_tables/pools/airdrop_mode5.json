@@ -6,15 +6,15 @@
     {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":40,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"tacz:fn_evolys\",GunFireMode:\"AUTO\"}"}]},
     {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":40,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"suffuse:pkp\",GunFireMode:\"AUTO\"}"}]},
     {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":30,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"tacz:minigun\",GunFireMode:\"AUTO\"}"}]},
-    {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":15,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"suffuse:qjz171\",GunFireMode:\"AUTO\"}"}]},    {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":100,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"tacz:rpg7\",GunFireMode:\"SEMI\"}"}]},
-    {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":100,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"tacz:m320\",GunFireMode:\"SEMI\"}"}]},
-    {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":80,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"suffuse:m79\",GunFireMode:\"SEMI\"}"}]},
-    {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":80,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"suffuse:m203\",GunFireMode:\"SEMI\"}"}]},
-    {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":75,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"suffuse:m32a1\",GunFireMode:\"SEMI\"}"}]},
-    {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":70,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"suffuse:qlu11\",GunFireMode:\"SEMI\"}"}]},
-    {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":65,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"suffuse:qlz87\",GunFireMode:\"AUTO\"}"}]},
-    {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":60,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"suffuse:aiyasinrpg\",GunFireMode:\"SEMI\"}"}]},
-    {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":40,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"suffuse:pf98a\",GunFireMode:\"SEMI\"}"}]},
+    {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":15,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"suffuse:qjz171\",GunFireMode:\"AUTO\"}"}]},    
+    
+    
+    
+    
+    
+    
+    
+    
     {"type":"minecraft:item","name":"lrtactical:throwable","weight":15,"functions":[{"function":"minecraft:set_nbt","tag":"{ThrowableId:\"lrtactical:smoke_grenade\"}"}]},
     {"type":"minecraft:item","name":"lrtactical:throwable","weight":15,"functions":[{"function":"minecraft:set_nbt","tag":"{ThrowableId:\"lrtactical:flash_grenade\"}"}]},
     {"type":"minecraft:item","name":"lrtactical:throwable","weight":20,"functions":[{"function":"minecraft:set_nbt","tag":"{ThrowableId:\"lrtactical:molotov\"}"}]},
@@ -30,16 +30,14 @@
     {"type":"minecraft:item","name":"minecraft:diamond_leggings","weight":80},
     {"type":"minecraft:item","name":"minecraft:diamond_boots","weight":80},
     {"type":"minecraft:loot_table","name":"br:custom/netherite_set","weight":240},
-    {"type":"minecraft:item","name":"tacz:attachment","weight":20,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:scope_mk5hd\"}"}]},
-    {"type":"minecraft:item","name":"tacz:attachment","weight":80,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:ammo_mod_he\"}"}]},
-    {"type":"minecraft:item","name":"tacz:attachment","weight":60,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:ammo_mod_hp\"}"}]},
-    {"type":"minecraft:item","name":"tacz:attachment","weight":60,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:ammo_mod_fmj\"}"}]},
-    {"type":"minecraft:item","name":"tacz:attachment","weight":50,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:ammo_mod_slug\"}"}]},
-    {"type":"minecraft:item","name":"tacz:attachment","weight":60,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:ammo_mod_i\"}"}]},
-    {"type":"minecraft:item","name":"tacz:attachment","weight":80,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:light_extended_mag_3\"}"}]},
-    {"type":"minecraft:item","name":"tacz:attachment","weight":80,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:extended_mag_3\"}"}]},
-    {"type":"minecraft:item","name":"tacz:attachment","weight":60,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:shotgun_extended_mag_3\"}"}]},
-    {"type":"minecraft:item","name":"tacz:attachment","weight":70,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:sniper_extended_mag_3\"}"}]},
+    {"type":"minecraft:item","name":"tacz:attachment","weight":60,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:extended_mag_3\"}"}]},
+    {"type":"minecraft:item","name":"tacz:attachment","weight":55,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:scope_vudu\"}"}]},
+    {"type":"minecraft:item","name":"tacz:attachment","weight":50,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:scope_lpvo_1_6\"}"}]},
+    {"type":"minecraft:item","name":"tacz:attachment","weight":50,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:sight_uh1\"}"}]},
+    {"type":"minecraft:item","name":"tacz:attachment","weight":50,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"suffuse:mg338_silencer\"}"}]},
+    {"type":"minecraft:item","name":"tacz:attachment","weight":45,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"suffuse:cslr4_muzzle_brake\"}"}]},
+    {"type":"minecraft:item","name":"tacz:attachment","weight":45,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:ammo_mod_fmj\"}"}]},
+    {"type":"minecraft:item","name":"tacz:attachment","weight":40,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:ammo_mod_i\"}"}]},
     {"type":"minecraft:item","name":"minecraft:light_gray_shulker_box","weight":100,"functions":[{"function":"minecraft:set_nbt","tag":"{tag:{backpack_1:1b},display:{Name:'{\"text\":\"一級背包\",\"color\":\"#AAAAAA\",\"italic\":false}'}}"}]},
     {"type":"minecraft:item","name":"minecraft:blue_shulker_box","weight":150,"functions":[{"function":"minecraft:set_nbt","tag":"{tag:{backpack_2:1b},display:{Name:'{\"text\":\"二級背包\",\"color\":\"#55FFFF\",\"italic\":false}'}}"}]},
     {"type":"minecraft:item","name":"minecraft:purple_shulker_box","weight":80,"functions":[{"function":"minecraft:set_nbt","tag":"{tag:{backpack_3:1b},display:{Name:'{\"text\":\"三級背包\",\"color\":\"#AA00AA\",\"italic\":false}'}}"}]},

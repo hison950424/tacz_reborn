@@ -370,6 +370,8 @@ execute as @a[scores={br_weapon_mode_pick=6}] run scoreboard players set #br_wea
 execute as @a[scores={br_weapon_mode_pick=6}] run tellraw @s {"text":"[系統] 武器模式：機槍限定","color":"dark_red"}
 execute as @a[scores={br_weapon_mode_pick=7}] run scoreboard players set #br_weapon_mode br_sys 6
 execute as @a[scores={br_weapon_mode_pick=7}] run tellraw @s {"text":"[系統] 武器模式：狙擊限定","color":"dark_purple"}
+execute as @a[scores={br_weapon_mode_pick=8}] run scoreboard players set #br_weapon_mode br_sys 7
+execute as @a[scores={br_weapon_mode_pick=8}] run tellraw @s {"text":"[系統] 武器模式：重型武器限定","color":"gold"}
 execute as @a[scores={br_weapon_mode_pick=1..}] at @s run playsound ui.button.click master @s ~ ~ ~ 1 1
 scoreboard players set @a[scores={br_weapon_mode_pick=1..}] br_weapon_mode_pick 0
 
@@ -408,6 +410,7 @@ execute as @a[scores={select_mode=13}] if score #br_weapon_mode br_sys matches 3
 execute as @a[scores={select_mode=13}] if score #br_weapon_mode br_sys matches 4 run tellraw @s {"text":"  🔫 武器限定：步槍限定","color":"aqua"}
 execute as @a[scores={select_mode=13}] if score #br_weapon_mode br_sys matches 5 run tellraw @s {"text":"  🔫 武器限定：機槍限定","color":"dark_red"}
 execute as @a[scores={select_mode=13}] if score #br_weapon_mode br_sys matches 6 run tellraw @s {"text":"  🔫 武器限定：狙擊限定","color":"dark_purple"}
+execute as @a[scores={select_mode=13}] if score #br_weapon_mode br_sys matches 7 run tellraw @s {"text":"  🔫 武器限定：重型武器限定","color":"gold"}
 # execute as @a[scores={select_mode=13}] if score #br_special_event dummy matches 1 run tellraw @s {"text":"  🎲 特殊事件：開啟","color":"green","bold":true}
 # execute as @a[scores={select_mode=13}] if score #br_special_event dummy matches 0 run tellraw @s {"text":"  🎲 特殊事件：關閉","color":"gray"}
 

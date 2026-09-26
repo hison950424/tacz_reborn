@@ -32,6 +32,7 @@ execute if score #br_weapon_mode br_sys matches 3 as @e[type=marker,tag=active_l
 execute if score #br_weapon_mode br_sys matches 4 as @e[type=marker,tag=active_loot,tag=crate_general,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ minecraft:barrel[facing=up]{LootTable:"br:chests/general_mode4"} replace
 execute if score #br_weapon_mode br_sys matches 5 as @e[type=marker,tag=active_loot,tag=crate_general,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ minecraft:barrel[facing=up]{LootTable:"br:chests/general_mode5"} replace
 execute if score #br_weapon_mode br_sys matches 6 as @e[type=marker,tag=active_loot,tag=crate_general,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ minecraft:barrel[facing=up]{LootTable:"br:chests/general_mode6"} replace
+execute if score #br_weapon_mode br_sys matches 7 as @e[type=marker,tag=active_loot,tag=crate_general,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ minecraft:barrel[facing=up]{LootTable:"br:chests/general_mode7"} replace
 
 # 醫療箱與視覺模型
 execute as @e[type=marker,tag=active_loot,tag=crate_medical,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ variantbarrels:cherry_barrel[facing=up]{LootTable:"br:chests/medical"} replace
@@ -47,5 +48,6 @@ execute if score #br_weapon_mode br_sys matches 3 as @e[type=marker,tag=active_l
 execute if score #br_weapon_mode br_sys matches 4 as @e[type=marker,tag=active_loot,tag=crate_high,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ variantbarrels:bamboo_barrel[facing=up]{LootTable:"br:chests/high_mode4"} replace
 execute if score #br_weapon_mode br_sys matches 5 as @e[type=marker,tag=active_loot,tag=crate_high,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ variantbarrels:bamboo_barrel[facing=up]{LootTable:"br:chests/high_mode5"} replace
 execute if score #br_weapon_mode br_sys matches 6 as @e[type=marker,tag=active_loot,tag=crate_high,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ variantbarrels:bamboo_barrel[facing=up]{LootTable:"br:chests/high_mode6"} replace
+execute if score #br_weapon_mode br_sys matches 7 as @e[type=marker,tag=active_loot,tag=crate_high,scores={rand_val=1..50}] at @s run setblock ~ ~ ~ variantbarrels:bamboo_barrel[facing=up]{LootTable:"br:chests/high_mode7"} replace
 
 # 備註: 這裡「不」移除 active_loot 標籤，讓它保留到遊戲結束，方便重置時精準清理。
