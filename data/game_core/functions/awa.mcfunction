@@ -374,7 +374,7 @@ suffuse:pp19 傷害7 690rpm 有效射程20m 爆頭傷害130% 彈藥65 垂直後�
 
 suffuse:qcq171 傷害7.5 800rpm 有效射程25m 爆頭傷害150% 彈藥31 垂直後座力0.4 水平後座力0.25 盔甲穿透率20%
 
-suffuse:mas38 傷害5 650rpm 有效射程24m 爆頭傷害130% 彈藥32 垂直後座力0.7 水平後座力0.23 盔甲穿透率20%
+suffuse:mas38 傷害3 650rpm 有效射程12m 爆頭傷害130% 彈藥24 垂直後座力0.7 水平後座力0.23 盔甲穿透率20%
 
 suffuse:ump45 傷害9 600rpm 有效射程30m 爆頭傷害130% 彈藥21 垂直後座力0.8 水平後座力0.2 盔甲穿透率15%
 
@@ -771,6 +771,8 @@ lrtactical:throwable{ThrowableId: "lrtactical:smoke_grenade"} M18煙霧彈 延�
 lrtactical:throwable{ThrowableId: "lrtactical:flash_grenade"} 閃光彈 延遲1.5s爆炸 可溫雷 致盲/失聰6~9s(依距離判定)
 
 lrtactical:throwable{ThrowableId: "lrtactical:c4"} C4 遙控炸彈 半徑3.5 中心點傷害185(往外遞減)
+
+lrtactical:throwable{ThrowableId: "lrtactical:detonator"}
 
 lrtactical:throwable{ThrowableId: "suffuse:m24"} 柄式手榴彈 半徑3.5 中心點傷害185(往外遞減) 延遲4.5s爆炸 可溫雷
 
