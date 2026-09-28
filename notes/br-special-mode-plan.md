@@ -2,6 +2,40 @@
 
 ---
 
+## 實作現況（2026-09-28 同步）
+
+### 完成狀態總表
+
+| 模組 | 項目 | 狀態 |
+|------|------|------|
+| 〇 空投機制 | 存活門檻抽獎（60%/30%）、延遲倒數、do_spawn 防重疊 | ✅ 完成 |
+| 模組 A | 武器模式 loot table（mode1-7）、loot_spawn 路由 | ✅ 完成 |
+| 模組 A | 設定書 UI（武器模式選擇） | ❓ 待確認 |
+| 模組 B | event/tick、dispatch（random 1..3）、event_glow、event_speed | ✅ 完成 |
+| 模組 B | event_bomb_airdrop | ❌ 待實作 |
+| 模組 C | 全部（loot table、偵測 tick、8 種效果函式） | ❌ 待實作 |
+
+### 關鍵 Scoreboard 現況
+
+| Scoreboard | 實際名稱 | 說明 |
+|------------|---------|------|
+| 武器模式 | `#br_weapon_mode br_sys` | 0=預設, 1~7=預設武器組合 |
+| 空投旗標 1 | `#br_airdrop_flag1 br_sys` | 0=未觸發, 1=未中, 2=待發, 3=完成 |
+| 空投旗標 2 | `#br_airdrop_flag2 br_sys` | 同上 |
+| 空投延遲 1 | `#br_airdrop_delay1 br_sys` | 秒倒數 |
+| 空投延遲 2 | `#br_airdrop_delay2 br_sys` | 秒倒數 |
+| 空投門檻 60% | `#br_threshold_60 br_sys` | 開局計算後固定 |
+| 空投門檻 30% | `#br_threshold_30 br_sys` | 開局計算後固定 |
+
+### 待辦清單
+
+1. **`event_bomb_airdrop.mcfunction`** — 隨機座標召喚 `tag=airdrop_bomb` 村民、落地偵測、15 格 100 傷害
+2. **`event/dispatch.mcfunction` 改 `random value 1..4`**，`matches 4` 對應炸彈空投
+3. **模組 C 特殊道具** — `pools/special_items.json`、箱型 `*_special` 版本、`special_item/tick.mcfunction` + 8 效果函式
+4. **誘餌信號彈** — 雪球落地座標廣播假空投訊息
+
+---
+
 ## 可行性評估（2026-08-23 同步）
 
 ### 分支現況
@@ -82,9 +116,9 @@ BR（大逃殺）模式在原有核心機制（縮圈、空投、倒地/救援�
 
 | Scoreboard | 說明 | 值 |
 |------------|------|----|
-| `#br_limit_weapon` | 限定武器 | 0=關, 1~9=限定的 cat 編號 |
-| `#br_special_event` | 特殊事件 | 0=關, 1=開 |
-| `#br_special_item` | 特殊道具 | 0=關, 1=開 |
+| `#br_weapon_mode br_sys` | 武器模式（已實作） | 0=預設, 1~7=七種預設組合 |
+| `#br_special_event br_sys` | 特殊事件 | 0=關, 1=開 |
+| `#br_special_item br_sys` | 特殊道具 | 0=關, 1=開 |
 
 **設定時機**：開局前設定，局中不變。
 
@@ -107,214 +141,89 @@ BR（大逃殺）模式在原有核心機制（縮圈、空投、倒地/救援�
 - 不保證一定有空投，視機率而定（一場 0~2 次）
 - 無次數上限（機率本身限制頻率）
 
-### 實作細節
+### 實作細節（✅ 已完成）
 
-新增 scoreboard：
-- `#br_airdrop_flag1`（0=未觸發, 1=已判定）
-- `#br_airdrop_flag2`（0=未觸發, 1=已判定）
-- `#br_airdrop_delay`（延遲倒數，0=無待發，>0=倒數中）
-- `#br_player_start`（開局時記錄總人數）
+Scoreboard（已建立）：
+- `#br_airdrop_flag1/2 br_sys`（0=未觸發, 1=未中, 2=待發, 3=完成）
+- `#br_airdrop_delay1/2 br_sys`（秒倒數）
+- `#br_threshold_60/30 br_sys`（開局時預算，固定值）
 
-在 `main_tick.mcfunction` 每秒週期中：
-
+`trigger1.mcfunction`（60% 門檻觸發）：
 ```mcfunction
-# 計算當前存活人數 → #br_alive
-execute store result score #br_alive br_sys if entity @a[scores={br_death_state=1}]
-
-# 60% 門檻（= start × 6 / 10）
-scoreboard players operation #br_threshold br_sys = #br_player_start br_sys
-scoreboard players operation #br_threshold br_sys *= #br_c6 br_sys   # c6=6
-scoreboard players operation #br_threshold br_sys /= #br_c10 br_sys  # c10=10
-execute if score #br_airdrop_flag1 br_sys matches 0 if score #br_alive br_sys <= #br_threshold br_sys run function br/airdrop/check_trigger1
-
-# 30% 門檻
-scoreboard players operation #br_threshold br_sys = #br_player_start br_sys
-scoreboard players operation #br_threshold br_sys *= #br_c3 br_sys   # c3=3
-scoreboard players operation #br_threshold br_sys /= #br_c10 br_sys
-execute if score #br_airdrop_flag2 br_sys matches 0 if score #br_alive br_sys <= #br_threshold br_sys run function br/airdrop/check_trigger2
-
-# 延遲倒數（若有待發空投）
-execute if score #br_airdrop_delay br_sys matches 1.. run scoreboard players remove #br_airdrop_delay br_sys 1
-execute if score #br_airdrop_delay br_sys matches 0 if score #br_airdrop_flag1 br_sys matches 2 run function br/airdrop/spawn
-execute if score #br_airdrop_delay br_sys matches 0 if score #br_airdrop_flag1 br_sys matches 2 run scoreboard players set #br_airdrop_flag1 br_sys 3
-execute if score #br_airdrop_delay br_sys matches 0 if score #br_airdrop_flag2 br_sys matches 2 run function br/airdrop/spawn
-execute if score #br_airdrop_delay br_sys matches 0 if score #br_airdrop_flag2 br_sys matches 2 run scoreboard players set #br_airdrop_flag2 br_sys 3
-```
-
-`br/airdrop/check_trigger1.mcfunction`：
-```mcfunction
-# 標記已判定，防止重複觸發
 scoreboard players set #br_airdrop_flag1 br_sys 1
-
-# 40% 機率：spreadplayers 偽隨機，取 X mod 10 < 4 判定
-summon minecraft:marker ~ 64 ~ {Tags:["br_lottery"]}
-spreadplayers ~ ~ 0 100 false @e[type=marker,tag=br_lottery,limit=1]
-execute store result score #lottery_x br_sys run data get entity @e[type=marker,tag=br_lottery,limit=1] Pos[0]
-kill @e[type=marker,tag=br_lottery]
-scoreboard players operation #lottery_x br_sys %= #br_c10 br_sys
-# < 4 = 抽中（40%）
-execute if score #lottery_x br_sys matches ..3 run function br/airdrop/set_delay1
+execute store result score #br_lottery br_sys run random value 1..10
+execute if score #br_lottery br_sys matches 1..4 run function game_core:gamemode/br/airdrop/set_delay1
 ```
 
-`br/airdrop/set_delay1.mcfunction`：
+`check_lottery.mcfunction`（每秒，含門檻偵測 + 倒數）：
 ```mcfunction
-# 隨機延遲 100~300 ticks（5~15 秒）
-# 用 spreadplayers X mod 201 + 100 近似
-summon minecraft:marker ~ 64 ~ {Tags:["br_delay_roll"]}
-spreadplayers ~ ~ 0 200 false @e[type=marker,tag=br_delay_roll,limit=1]
-execute store result score #br_airdrop_delay br_sys run data get entity @e[type=marker,tag=br_delay_roll,limit=1] Pos[0]
-kill @e[type=marker,tag=br_delay_roll]
-scoreboard players operation #br_airdrop_delay br_sys %= #br_c201 br_sys  # c201=201
-scoreboard players add #br_airdrop_delay br_sys 100
-# 標記為「待發」
-scoreboard players set #br_airdrop_flag1 br_sys 2
-```
-
-（`check_trigger2` / `set_delay2` 邏輯相同，操作 `flag2`）
-
-**開局時**初始化（`start.mcfunction`）：
-```mcfunction
-execute store result score #br_player_start br_sys if entity @a
-scoreboard players set #br_airdrop_flag1 br_sys 0
-scoreboard players set #br_airdrop_flag2 br_sys 0
-scoreboard players set #br_airdrop_delay br_sys 0
+execute store result score #br_alive br_sys if entity @a[scores={br_death_state=1}]
+execute if score #br_airdrop_flag1 br_sys matches 0 if score #br_alive br_sys <= #br_threshold_60 br_sys run function .../trigger1
+execute if score #br_airdrop_flag2 br_sys matches 0 if score #br_alive br_sys <= #br_threshold_30 br_sys run function .../trigger2
+execute if score #br_airdrop_delay1 br_sys matches 1.. run scoreboard players remove #br_airdrop_delay1 br_sys 1
+execute if score #br_airdrop_delay1 br_sys matches 0 if score #br_airdrop_flag1 br_sys matches 2 unless entity @e[type=minecraft:villager,tag=airdrop_bird] run function .../do_spawn1
+execute if score #br_airdrop_delay2 br_sys matches 1.. run scoreboard players remove #br_airdrop_delay2 br_sys 1
+execute if score #br_airdrop_delay2 br_sys matches 0 if score #br_airdrop_flag2 br_sys matches 2 unless entity @e[type=minecraft:villager,tag=airdrop_bird] run function .../do_spawn2
 ```
 
 ---
 
-## 二、模組 A：限定武器（br_limit_weapon）
+## 二、模組 A：武器模式（br_weapon_mode）✅ 已完成
 
-### 設計概念
-管理員選定**一種武器類別（cat1~cat9）**作為本局唯一允許的槍械來源。
-`#br_limit_weapon = 0` 表示關閉（使用原始 loot table）；`= N` 表示只允許 catN。
+### 設計概念（實際實作）
+管理員從 7 種**預設武器組合（mode1~7）**選擇本局武器池。
+`#br_weapon_mode br_sys = 0` 使用原始 loot table；`= 1~7` 各代表一種預設組合。
 
-### 實作方案：分層 Loot Table（共用 Pool）
+### 已實作架構
 
-**已確認**：現有 BR 箱子完全使用 loot table，且已是分層架構：
+Loot table 分層架構（已建立，已確認）：
 - `chests/*.json` 引用 `pools/*.json`，透過 `"type": "minecraft:loot_table"` 組合
 - 箱子由 `loot_spawn.mcfunction` 用 `setblock` + `LootTable:` NBT 生成
 
-現有 pool 結構：
+已建立的 loot table 檔案：
 ```
-pools/general.json     ← 手槍為主（已含各 cat 武器混合）
-pools/high.json        ← 高階武器為主
-pools/airdrop_mapN.json← 各地圖空投專屬（5 個）
-pools/medical.json     ← 醫療物資
-pools/attach.json      ← 配件
-```
-
-現有 chest 結構（已是分層）：
-```
-chests/general.json    → 引用 pools/general(75%) + medical(7.5%) + attach(7.5%) + high(10%)
-chests/high.json       → 引用 pools/high(75%) + general(15%) + medical(5%) + attach(5%)
-chests/airdrop_mapN.json→ 引用 pools/airdrop_mapN(99%) + 其他極低權重
+data/br/loot_tables/
+  pools/general_mode1-7.json       (7 個)
+  pools/high_mode1-7.json          (7 個)
+  pools/airdrop_mode1-7.json       (7 個)
+  chests/general_mode1-7.json      (7 個)
+  chests/high_mode1-7.json         (7 個)
+  chests/medical_mode1-7.json      (7 個)
+  chests/attach_mode1-7.json       (7 個)
 ```
 
-#### 需新增的 Pool 檔案（10 個）
+`loot_spawn.mcfunction` 已根據 `#br_weapon_mode br_sys matches 0~7` 路由到對應 chest 表，**無需再修改**。
 
-將現有 `pools/general.json` 和 `pools/high.json` 中的武器依 cat 拆分：
-
-```
-data/br/loot_tables/pools/weapons_cat1.json   ← 手槍（從 general/high 拆出）
-data/br/loot_tables/pools/weapons_cat2.json   ← 步槍
-data/br/loot_tables/pools/weapons_cat3.json   ← 散彈槍
-data/br/loot_tables/pools/weapons_cat4.json   ← 衝鋒槍
-data/br/loot_tables/pools/weapons_cat5.json   ← 輕機槍
-data/br/loot_tables/pools/weapons_cat6.json   ← 狙擊槍
-data/br/loot_tables/pools/weapons_cat7.json   ← 榴彈/特殊
-data/br/loot_tables/pools/weapons_cat8.json   ← 其他
-data/br/loot_tables/pools/weapons_cat9.json   ← 近戰
-data/br/loot_tables/pools/special_items.json  ← 特殊道具
-```
-
-#### 需新增的 Chest Wrapper（27 個 + 27 個特殊版 + 3 個純特殊）
-
-每個 catN wrapper 引用 `pools/weapons_catN` 取代原本的武器 pool，配件/醫療比例維持不變：
-
-`chests/general_cat1.json` 範例：
-```json
-{
-  "type": "minecraft:chest",
-  "pools": [{
-    "rolls": {"min": 6, "max": 14},
-    "entries": [
-      {"type": "minecraft:loot_table", "name": "br:pools/weapons_cat1", "weight": 7500},
-      {"type": "minecraft:loot_table", "name": "br:pools/medical",      "weight": 750},
-      {"type": "minecraft:loot_table", "name": "br:pools/attach",       "weight": 750}
-    ]
-  }]
-}
-```
-
-特殊道具版（`chests/general_cat1_special.json`）末尾多一個 pool：
-```json
-{"rolls": {"min": 0, "max": 1}, "entries": [
-  {"type": "minecraft:loot_table", "name": "br:pools/special_items", "weight": 1}
-]}
-```
-
-#### 檔案數量總計（約 67 個）
-
-| 類型 | 數量 |
-|------|------|
-| 武器 pool（cat1~9）＋特殊道具 pool | 10 |
-| 箱型 wrapper（3 箱型 × 9 cat） | 27 |
-| 特殊道具版 wrapper（3 × 9） | 27 |
-| 純特殊道具箱（general / high / airdrop） | 3 |
-| **合計** | **67** |
-
-#### 開局切換邏輯（`loot_spawn.mcfunction` 修改）
-
-在現有 `setblock` 指令前加入條件判斷，根據開關組合選擇對應 chest 表：
-
-```mcfunction
-# 限定武器=關，特殊道具=關 → 原有邏輯不動
-
-# 限定武器=關，特殊道具=開 → 純特殊道具版
-execute if score #br_limit_weapon dummy matches 0 if score #br_special_item dummy matches 1 \
-  as @e[tag=active_loot,tag=crate_general,...] at @s \
-  run setblock ~ ~ ~ minecraft:barrel[...]{LootTable:"br:chests/general_special"} replace
-
-# 限定武器=1~9，特殊道具=關 → 對應 catN wrapper
-execute if score #br_limit_weapon dummy matches 1..9 if score #br_special_item dummy matches 0 \
-  run function br/loot/apply_limit_weapon
-
-# 限定武器=1~9，特殊道具=開 → 對應 catN_special wrapper
-execute if score #br_limit_weapon dummy matches 1..9 if score #br_special_item dummy matches 1 \
-  run function br/loot/apply_limit_weapon_special
-```
-
-`br/loot/apply_limit_weapon.mcfunction` 用 `execute if score #br_limit_weapon dummy matches N` 逐一判斷，為各箱型套用 `catN` chest 表。
-
-**設定書 UI**：9 個類別循環切換按鈕（選一），`0=關` 作為初始值。
+### 待確認
+- 設定書 UI 是否已實作武器模式選擇（`lobby/tick.mcfunction` 中）
 
 ---
 
 ## 三、模組 B：特殊事件（br_special_event）
 
-### 設計概念
-遊戲中**每 30 秒**觸發一次抽選，可能抽到「無事件」或某個全域事件，事件類型**待討論確認**。
+### 已實作（✅）
 
-### 事件觸發邏輯（新增 `br/event/tick.mcfunction`）
-在 `main_tick.mcfunction` 每秒週期中呼叫：
-1. `#br_event_timer` 固定 600 ticks（30 秒）倒數
-2. 倒數歸零 → 隨機抽選事件（spreadplayers 偽隨機決定事件序號，含「無事件」選項）
-3. 執行對應事件函式（或無事件則跳過）
-4. 重設計時器為 600
+`event/tick.mcfunction`：每秒 +1，達 30 呼叫 dispatch，重設 0。
+`event/dispatch.mcfunction`：`random value 1..3`，1=靜默, 2=發光, 3=速度。
+`event/event_glow.mcfunction`：全體存活玩家 Glowing 30 秒。
+`event/event_speed.mcfunction`：全體存活玩家隨機 Speed II 或 Slowness II，30 秒。
 
-### 事件清單（`br/event/` 目錄）（**類型待討論，以下為草案**）
+### 事件清單
 
-| 事件 | 函式名 | 效果 | 持續時間 |
-|------|--------|------|----------|
-| 無事件 | — | 靜默跳過 | — |
-| 全場發光 | `event_glow.mcfunction` | 全體存活玩家 Glowing 30 秒，互相暴露位置 | 30 秒 |
-| 空投炸彈 | `event_bomb_airdrop.mcfunction` | 廣播座標並落下空投村民，落地後 15 格內 100 傷害爆炸 | 落地即觸發 |
-| 全場速度異常 | `event_speed.mcfunction` | 隨機 Speed II 或 Slowness II，全體存活玩家，30 秒 | 30 秒 |
+| 事件 | 函式名 | 狀態 |
+|------|--------|------|
+| 無事件（靜默） | — | ✅（dispatch 值 1） |
+| 全場發光 | `event_glow.mcfunction` | ✅ |
+| 全場速度異常 | `event_speed.mcfunction` | ✅ |
+| 空投炸彈 | `event_bomb_airdrop.mcfunction` | ❌ 待實作 |
 
-### 空投炸彈的特殊實作
-- 召喚與正常空投相同的村民（tag=`airdrop_bomb`）
-- 落地偵測在 `main_tick` 中增加對 `airdrop_bomb` tag 的判斷
-- 落地後：廣播警告 + 3 秒倒數 + `damage @a[distance=..15] 100 out_of_world`
+### 空投炸彈待實作細節
+1. 新增 `event_bomb_airdrop.mcfunction`
+   - 在地圖範圍內隨機座標召喚 `tag=airdrop_bomb` 的村民
+   - 廣播座標訊息（與正常空投格式相似）
+2. `main_tick.mcfunction` 中增加落地偵測（`unless entity @e[type=villager,tag=airdrop_bomb]` + marker 記錄最後座標）
+3. 落地後：廣播警告 → 3 秒倒數 → `damage @a[distance=..15] 100 out_of_world`
+4. `dispatch.mcfunction` 改為 `random value 1..4`，`matches 4` 對應炸彈空投
 
 ---
 
@@ -366,26 +275,41 @@ execute as @e[type=item,nbt={Item:{tag:{special:"detector"}}}] at @s run functio
 
 ---
 
-## 五、需新增/修改的檔案
+## 五、檔案現況
 
-| 檔案 | 類型 | 說明 |
-|------|------|------|
-| `gamemode/br/airdrop/lottery.mcfunction` | 新增 | 空投抽獎邏輯 |
-| `gamemode/br/event/tick.mcfunction` | 新增 | 事件 30 秒計時器與觸發 |
-| `gamemode/br/event/event_glow.mcfunction` | 新增 | 全場發光事件 |
-| `gamemode/br/event/event_bomb_airdrop.mcfunction` | 新增 | 空投炸彈事件 |
-| `gamemode/br/event/event_speed.mcfunction` | 新增 | 全場速度異常事件 |
-| `gamemode/br/special_item/tick.mcfunction` | 新增 | 特殊道具偵測主路由 |
-| `gamemode/br/special_item/use_*.mcfunction` | 新增 | 各特殊道具使用效果（8 個） |
-| `data/br/loot_tables/chests/limit_catN.json` | 新增 | 各 cat 限定武器箱（9 個） |
-| `data/br/loot_tables/chests/limit_catN_special.json` | 新增 | 各 cat 限定武器＋特殊道具箱（9 個） |
-| `data/br/loot_tables/chests/special_only.json` | 新增 | 僅特殊道具箱（1 個） |
-| `gamemode/br/loot/apply_limit_weapon.mcfunction` | 新增 | 根據 cat 編號套用限定武器 loot table |
-| `gamemode/br/loot/apply_limit_weapon_special.mcfunction` | 新增 | 限定武器＋特殊道具 loot table 套用 |
-| `gamemode/br/main_tick.mcfunction` | 修改 | 加入 event/tick、special_item/tick、新空投抽獎邏輯 |
-| `gamemode/br/start.mcfunction` | 修改 | 初始化三模組開關，根據開關組合切換 loot table |
-| `gamemode/br/phase/phase1_end.mcfunction`（或 phase2_start） | 修改 | 初始化空投抽獎計時器與計數 |
-| `core/init.mcfunction` | 修改 | 新增相關 scoreboard |
+### 已完成
+
+| 檔案 | 說明 |
+|------|------|
+| `gamemode/br/airdrop/trigger1/2.mcfunction` | ✅ 空投抽獎（random value 1..10） |
+| `gamemode/br/airdrop/set_delay1/2.mcfunction` | ✅ 延遲設定 |
+| `gamemode/br/airdrop/check_lottery.mcfunction` | ✅ 每秒門檻偵測 + 倒數 |
+| `gamemode/br/airdrop/do_spawn1/2.mcfunction` | ✅ 防重疊召喚 |
+| `gamemode/br/event/tick.mcfunction` | ✅ 30 秒計時器 |
+| `gamemode/br/event/dispatch.mcfunction` | ✅ random value 1..3 |
+| `gamemode/br/event/event_glow.mcfunction` | ✅ 全場發光 |
+| `gamemode/br/event/event_speed.mcfunction` | ✅ 全場速度異常 |
+| `data/br/loot_tables/chests/general_mode1-7.json` | ✅ 武器模式箱（7 個） |
+| `data/br/loot_tables/chests/high_mode1-7.json` | ✅（7 個） |
+| `data/br/loot_tables/chests/medical_mode1-7.json` | ✅（7 個） |
+| `data/br/loot_tables/chests/attach_mode1-7.json` | ✅（7 個） |
+| `data/br/loot_tables/pools/general_mode1-7.json` | ✅（7 個） |
+| `data/br/loot_tables/pools/high_mode1-7.json` | ✅（7 個） |
+| `data/br/loot_tables/pools/airdrop_mode1-7.json` | ✅（7 個） |
+| `gamemode/br/airdrop/loot_spawn.mcfunction` | ✅ 已路由 mode0-7 |
+| `gamemode/br/main_tick.mcfunction` | ✅ 已整合 event/tick、check_lottery |
+| `gamemode/br/start.mcfunction` | ✅ 已初始化武器模式與空投旗標 |
+| `core/init.mcfunction` | ✅ 已新增相關 scoreboard |
+
+### 待實作
+
+| 檔案 | 說明 |
+|------|------|
+| `gamemode/br/event/event_bomb_airdrop.mcfunction` | ❌ 炸彈空投事件 |
+| `gamemode/br/special_item/tick.mcfunction` | ❌ 特殊道具偵測主路由 |
+| `gamemode/br/special_item/use_*.mcfunction` | ❌ 8 種效果函式 |
+| `data/br/loot_tables/pools/special_items.json` | ❌ 特殊道具 pool |
+| `data/br/loot_tables/chests/*_special.json` | ❌ 含特殊道具的箱型版本 |
 
 ---
 
