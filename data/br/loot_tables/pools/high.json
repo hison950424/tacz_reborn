@@ -956,17 +956,6 @@
         {
           "type": "minecraft:item",
           "name": "lrtactical:throwable",
-          "weight": 35,
-          "functions": [
-            {
-              "function": "minecraft:set_nbt",
-              "tag": "{ThrowableId:\"lrtactical:c4\"}"
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "lrtactical:throwable",
           "weight": 15,
           "functions": [
             {

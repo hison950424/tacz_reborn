@@ -351,6 +351,42 @@ execute as @a[scores={br_fast_mode_pick=1..}] at @s run playsound ui.button.clic
 scoreboard players set @a[scores={br_fast_mode_pick=1..}] br_fast_mode_pick 0
 
 # ------------------------------------------
+# 路由 BR-WEAPON-MODE: 限定武器模式 (br_weapon_mode_pick trigger)
+# 0=無限定 1=手槍 2=衝鋒槍 3=散彈槍 4=步槍 5=機槍 6=狙擊
+# ------------------------------------------
+scoreboard players enable @a br_weapon_mode_pick
+# 按鈕值 1-7 對應模式 0-6（避免 set 0 與預設未觸發衝突）
+execute as @a[scores={br_weapon_mode_pick=1}] run scoreboard players set #br_weapon_mode br_sys 0
+execute as @a[scores={br_weapon_mode_pick=1}] run tellraw @s {"text":"[系統] 武器模式：無限定","color":"gray"}
+execute as @a[scores={br_weapon_mode_pick=2}] run scoreboard players set #br_weapon_mode br_sys 1
+execute as @a[scores={br_weapon_mode_pick=2}] run tellraw @s {"text":"[系統] 武器模式：手槍限定","color":"light_purple"}
+execute as @a[scores={br_weapon_mode_pick=3}] run scoreboard players set #br_weapon_mode br_sys 2
+execute as @a[scores={br_weapon_mode_pick=3}] run tellraw @s {"text":"[系統] 武器模式：衝鋒槍限定","color":"green"}
+execute as @a[scores={br_weapon_mode_pick=4}] run scoreboard players set #br_weapon_mode br_sys 3
+execute as @a[scores={br_weapon_mode_pick=4}] run tellraw @s {"text":"[系統] 武器模式：散彈槍限定","color":"red"}
+execute as @a[scores={br_weapon_mode_pick=5}] run scoreboard players set #br_weapon_mode br_sys 4
+execute as @a[scores={br_weapon_mode_pick=5}] run tellraw @s {"text":"[系統] 武器模式：步槍限定","color":"aqua"}
+execute as @a[scores={br_weapon_mode_pick=6}] run scoreboard players set #br_weapon_mode br_sys 5
+execute as @a[scores={br_weapon_mode_pick=6}] run tellraw @s {"text":"[系統] 武器模式：機槍限定","color":"dark_red"}
+execute as @a[scores={br_weapon_mode_pick=7}] run scoreboard players set #br_weapon_mode br_sys 6
+execute as @a[scores={br_weapon_mode_pick=7}] run tellraw @s {"text":"[系統] 武器模式：狙擊限定","color":"dark_purple"}
+execute as @a[scores={br_weapon_mode_pick=8}] run scoreboard players set #br_weapon_mode br_sys 7
+execute as @a[scores={br_weapon_mode_pick=8}] run tellraw @s {"text":"[系統] 武器模式：重型武器限定","color":"gold"}
+execute as @a[scores={br_weapon_mode_pick=1..}] at @s run playsound ui.button.click master @s ~ ~ ~ 1 1
+scoreboard players set @a[scores={br_weapon_mode_pick=1..}] br_weapon_mode_pick 0
+
+# ------------------------------------------
+# 路由 BR-EVENT: 特殊事件開關（開發暫停，事件數量不足＋缺冷卻機制）
+# ------------------------------------------
+# scoreboard players enable @a br_event_pick
+# execute as @a[scores={br_event_pick=1}] run scoreboard players set #br_special_event dummy 1
+# execute as @a[scores={br_event_pick=1}] run tellraw @s {"text":"[系統] 🎲 特殊事件：已開啟","color":"green","bold":true}
+# execute as @a[scores={br_event_pick=2}] run scoreboard players set #br_special_event dummy 0
+# execute as @a[scores={br_event_pick=2}] run tellraw @s {"text":"[系統] 🎲 特殊事件：已關閉","color":"gray"}
+# execute as @a[scores={br_event_pick=1..}] at @s run playsound ui.button.click master @s ~ ~ ~ 1 1
+# scoreboard players set @a[scores={br_event_pick=1..}] br_event_pick 0
+
+# ------------------------------------------
 # 路由 BR-INFO: 查看目前 BR 遊戲配置 (select_mode = 13)
 # ------------------------------------------
 execute as @a[scores={select_mode=13}] run tellraw @s ["",{"text":"━━━ BR 目前配置 ━━━","color":"gold","bold":true}]
@@ -367,6 +403,16 @@ execute as @a[scores={select_mode=13}] if score #global br_weather matches 2 run
 execute as @a[scores={select_mode=13}] if score #global br_weather matches 3 run tellraw @s {"text":"  ⛈ 天氣：雷雨","color":"dark_aqua"}
 execute as @a[scores={select_mode=13}] if score #global br_fast_mode matches 1 run tellraw @s {"text":"  ⚡ 快速模式：開啟","color":"red","bold":true}
 execute as @a[scores={select_mode=13}] if score #global br_fast_mode matches 0 run tellraw @s {"text":"  ⚡ 快速模式：關閉","color":"gray"}
+execute as @a[scores={select_mode=13}] if score #br_weapon_mode br_sys matches 0 run tellraw @s {"text":"  🔫 武器限定：無限定","color":"gray"}
+execute as @a[scores={select_mode=13}] if score #br_weapon_mode br_sys matches 1 run tellraw @s {"text":"  🔫 武器限定：手槍限定","color":"light_purple"}
+execute as @a[scores={select_mode=13}] if score #br_weapon_mode br_sys matches 2 run tellraw @s {"text":"  🔫 武器限定：衝鋒槍限定","color":"green"}
+execute as @a[scores={select_mode=13}] if score #br_weapon_mode br_sys matches 3 run tellraw @s {"text":"  🔫 武器限定：散彈槍限定","color":"red"}
+execute as @a[scores={select_mode=13}] if score #br_weapon_mode br_sys matches 4 run tellraw @s {"text":"  🔫 武器限定：步槍限定","color":"aqua"}
+execute as @a[scores={select_mode=13}] if score #br_weapon_mode br_sys matches 5 run tellraw @s {"text":"  🔫 武器限定：機槍限定","color":"dark_red"}
+execute as @a[scores={select_mode=13}] if score #br_weapon_mode br_sys matches 6 run tellraw @s {"text":"  🔫 武器限定：狙擊限定","color":"dark_purple"}
+execute as @a[scores={select_mode=13}] if score #br_weapon_mode br_sys matches 7 run tellraw @s {"text":"  🔫 武器限定：重型武器限定","color":"gold"}
+# execute as @a[scores={select_mode=13}] if score #br_special_event dummy matches 1 run tellraw @s {"text":"  🎲 特殊事件：開啟","color":"green","bold":true}
+# execute as @a[scores={select_mode=13}] if score #br_special_event dummy matches 0 run tellraw @s {"text":"  🎲 特殊事件：關閉","color":"gray"}
 
 # ------------------------------------------
 # 路由 E2: 管理員按下【開始大逃殺】(select_mode = 10)

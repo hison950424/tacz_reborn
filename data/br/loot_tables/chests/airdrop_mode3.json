@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:chest",
+  "pools": [{
+    "rolls": {"min": 3, "max": 6},
+    "entries": [
+      {"type":"minecraft:loot_table","name":"br:pools/airdrop_mode3","weight":9996},
+      {"type":"minecraft:loot_table","name":"br:pools/high_mode3","weight":1},
+      {"type":"minecraft:loot_table","name":"br:pools/medical","weight":1},
+      {"type":"minecraft:loot_table","name":"br:pools/attach","weight":1},
+      {"type":"minecraft:loot_table","name":"br:pools/general_mode3","weight":1}
+    ]
+  }]
+}

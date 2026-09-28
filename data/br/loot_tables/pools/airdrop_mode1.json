@@ -1,0 +1,43 @@
+{
+  "type": "minecraft:chest",
+  "pools": [{
+    "rolls": 1,
+    "entries": [
+    {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":40,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"tacz:lonetrail\",GunFireMode:\"SEMI\"}"}]},
+    {"type":"minecraft:item","name":"tacz:modern_kinetic_gun","weight":35,"functions":[{"function":"minecraft:set_nbt","tag":"{GunId:\"tacz:taurus500\",GunFireMode:\"SEMI\"}"}]},    
+    
+    
+    
+    
+    
+    
+    
+    
+    {"type":"minecraft:item","name":"lrtactical:throwable","weight":15,"functions":[{"function":"minecraft:set_nbt","tag":"{ThrowableId:\"lrtactical:smoke_grenade\"}"}]},
+    {"type":"minecraft:item","name":"lrtactical:throwable","weight":15,"functions":[{"function":"minecraft:set_nbt","tag":"{ThrowableId:\"lrtactical:flash_grenade\"}"}]},
+    {"type":"minecraft:item","name":"lrtactical:throwable","weight":20,"functions":[{"function":"minecraft:set_nbt","tag":"{ThrowableId:\"lrtactical:molotov\"}"}]},
+    {"type":"minecraft:item","name":"lrtactical:throwable","weight":40,"functions":[{"function":"minecraft:set_nbt","tag":"{ThrowableId:\"lrtactical:m67\"}"}]},
+    {"type":"minecraft:item","name":"lrtactical:throwable","weight":35,"functions":[{"function":"minecraft:set_nbt","tag":"{ThrowableId:\"suffuse:m24\"}"}]},
+    {"type":"minecraft:item","name":"lrtactical:throwable","weight":40,"functions":[{"function":"minecraft:set_nbt","tag":"{ThrowableId:\"lrtactical:rgn\"}"}]},
+    {"type":"minecraft:item","name":"lrtactical:throwable","weight":30,"functions":[{"function":"minecraft:set_nbt","tag":"{ThrowableId:\"suffuse:m24_cluster\"}"}]},
+    {"type":"minecraft:item","name":"lrtactical:consumable","weight":160,"functions":[{"function":"minecraft:set_nbt","tag":"{ConsumableId:\"lrtactical:cms\"}"}]},
+    {"type":"minecraft:item","name":"lrtactical:consumable","weight":120,"functions":[{"function":"minecraft:set_nbt","tag":"{ConsumableId:\"lrtactical:surv12\"}"}]},
+    {"type":"minecraft:item","name":"lrtactical:consumable","weight":100,"functions":[{"function":"minecraft:set_nbt","tag":"{ConsumableId:\"lrtactical:carfak\"}"}]},
+    {"type":"minecraft:item","name":"minecraft:diamond_helmet","weight":80},
+    {"type":"minecraft:item","name":"minecraft:diamond_chestplate","weight":80},
+    {"type":"minecraft:item","name":"minecraft:diamond_leggings","weight":80},
+    {"type":"minecraft:item","name":"minecraft:diamond_boots","weight":80},
+    {"type":"minecraft:loot_table","name":"br:custom/netherite_set","weight":240},
+    {"type":"minecraft:item","name":"tacz:attachment","weight":60,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:light_extended_mag_3\"}"}]},
+    {"type":"minecraft:item","name":"tacz:attachment","weight":55,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:sight_acro_pistol\"}"}]},
+    {"type":"minecraft:item","name":"tacz:attachment","weight":55,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:sight_rmr_dot\"}"}]},
+    {"type":"minecraft:item","name":"tacz:attachment","weight":50,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:sight_deltapoint_pistol\"}"}]},
+    {"type":"minecraft:item","name":"tacz:attachment","weight":50,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:ammo_mod_hp\"}"}]},
+    {"type":"minecraft:item","name":"tacz:attachment","weight":45,"functions":[{"function":"minecraft:set_nbt","tag":"{AttachmentId:\"tacz:ammo_mod_fmj\"}"}]},
+    {"type":"minecraft:item","name":"minecraft:light_gray_shulker_box","weight":100,"functions":[{"function":"minecraft:set_nbt","tag":"{tag:{backpack_1:1b},display:{Name:'{\"text\":\"一級背包\",\"color\":\"#AAAAAA\",\"italic\":false}'}}"}]},
+    {"type":"minecraft:item","name":"minecraft:blue_shulker_box","weight":150,"functions":[{"function":"minecraft:set_nbt","tag":"{tag:{backpack_2:1b},display:{Name:'{\"text\":\"二級背包\",\"color\":\"#55FFFF\",\"italic\":false}'}}"}]},
+    {"type":"minecraft:item","name":"minecraft:purple_shulker_box","weight":80,"functions":[{"function":"minecraft:set_nbt","tag":"{tag:{backpack_3:1b},display:{Name:'{\"text\":\"三級背包\",\"color\":\"#AA00AA\",\"italic\":false}'}}"}]},
+    {"type":"minecraft:loot_table","name":"br:custom/gillie_suit_forest","weight":80}
+    ]
+  }]
+}

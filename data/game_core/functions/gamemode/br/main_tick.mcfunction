@@ -86,6 +86,12 @@ execute if score #global br_phase matches 1..2 if score #global br_timer matches
 #靈魂祭壇
 execute as @e[type=text_display,tag=br_altar] run function game_core:gamemode/br/altar/tick
 
+# 特殊事件計時器（開發暫停，事件數量不足＋缺冷卻機制）
+# execute if score #global br_phase matches 2 if score #global br_timer matches 20 if score #br_special_event dummy matches 1 run function game_core:gamemode/br/event/tick
+
+# 空投抽獎門檻判定（每秒，戰鬥階段且非快速模式）
+execute if score #global br_phase matches 2 if score #global br_timer matches 20 if score #global br_fast_mode matches 0 run function game_core:gamemode/br/airdrop/check_lottery
+
 
 # ==========================================
 # --- 背包系統 ---10tick一次

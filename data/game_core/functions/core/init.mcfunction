@@ -482,6 +482,10 @@ scoreboard objectives add revive_pct dummy "救援進度(%)"
 
 # 設定常數 2，用於把 200 Ticks 換算成 100%
 scoreboard players set #2 br_sys 2
+# 空投抽獎百分比計算常數
+scoreboard players set #br_c3 br_sys 3
+scoreboard players set #br_c6 br_sys 6
+scoreboard players set #br_c10 br_sys 10
 scoreboard objectives add team_id dummy "隊伍數字ID"
 scoreboard objectives add br_health health "玩家即時血量"
 scoreboard objectives add br_slime_hp dummy "史萊姆血量暫存"
@@ -497,11 +501,14 @@ scoreboard objectives add br_time_pick trigger "BR 時間選擇觸發器"
 scoreboard objectives add br_weather_pick trigger "BR 天氣選擇觸發器"
 scoreboard objectives add br_fast_mode dummy "BR 快速模式 (0=一般 1=快速)"
 scoreboard objectives add br_fast_mode_pick trigger "BR 快速模式切換觸發器"
+scoreboard objectives add br_weapon_mode_pick trigger "BR 武器限定模式觸發器"
+scoreboard objectives add br_event_pick trigger "BR 特殊事件開關觸發器"
 scoreboard players set #global br_map 1
 scoreboard players set #global br_phase 0
 scoreboard players set #global br_time 1
 scoreboard players set #global br_weather 1
 scoreboard players set #global br_fast_mode 0
+scoreboard players set #br_weapon_mode br_sys 0
 scoreboard objectives add slime_alive dummy "史萊姆存活確認"
 scoreboard objectives add is_reviving dummy "是否正在被救援"
 scoreboard objectives add target_id dummy "正在救援的目標ID"
@@ -552,6 +559,12 @@ scoreboard objectives add evt_leaderboard dummy "比賽積分排行榜暫存"
 #更新排行榜
 function game_core:lobby/rp_leaderboard_update
 function game_core:lobby/event_leaderboard_update
+
+# ========== BR 三模組開關 ==========
+scoreboard players set #br_special_event dummy 0
+scoreboard players set #br_special_item dummy 0
+scoreboard players set #br_limit_weapon dummy 0
+scoreboard players set #br_event_timer dummy 0
 
 #=============================================
 #=========         縮圈系統         ===========
